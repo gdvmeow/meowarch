@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" role="img" aria-label="United States">
+  <path fill="#fff" d="M0 0h30v20H0z"/>
+  <path fill="#b22234" d="M0 0h30v1.539H0zm0 3.077h30v1.539H0zm0 3.077h30v1.539H0zm0 3.077h30v1.539H0zm0 3.077h30v1.539H0zm0 3.077h30v1.539H0zm0 3.077h30V20H0z"/>
+  <path fill="#3c3b6e" d="M0 0h12v10.77H0z"/>
+  <defs><path id="star" d="M0-1 .225-.309.951-.309.363.118.588.809 0 .382-.588.809-.363.118-.951-.309-.225-.309Z" fill="#fff"/></defs>
+  <g transform="translate(0 0) scale(.42)">
+    <use href="#star" transform="translate(2.2 2.3)"/><use href="#star" transform="translate(6.8 2.3)"/><use href="#star" transform="translate(11.4 2.3)"/><use href="#star" transform="translate(16 2.3)"/><use href="#star" transform="translate(20.6 2.3)"/><use href="#star" transform="translate(25.2 2.3)"/>
+    <use href="#star" transform="translate(4.5 4.9)"/><use href="#star" transform="translate(9.1 4.9)"/><use href="#star" transform="translate(13.7 4.9)"/><use href="#star" transform="translate(18.3 4.9)"/><use href="#star" transform="translate(22.9 4.9)"/>
+    <use href="#star" transform="translate(2.2 7.5)"/><use href="#star" transform="translate(6.8 7.5)"/><use href="#star" transform="translate(11.4 7.5)"/><use href="#star" transform="translate(16 7.5)"/><use href="#star" transform="translate(20.6 7.5)"/><use href="#star" transform="translate(25.2 7.5)"/>
+    <use href="#star" transform="translate(4.5 10.1)"/><use href="#star" transform="translate(9.1 10.1)"/><use href="#star" transform="translate(13.7 10.1)"/><use href="#star" transform="translate(18.3 10.1)"/><use href="#star" transform="translate(22.9 10.1)"/>
+    <use href="#star" transform="translate(2.2 12.7)"/><use href="#star" transform="translate(6.8 12.7)"/><use href="#star" transform="translate(11.4 12.7)"/><use href="#star" transform="translate(16 12.7)"/><use href="#star" transform="translate(20.6 12.7)"/><use href="#star" transform="translate(25.2 12.7)"/>
+    <use href="#star" transform="translate(4.5 15.3)"/><use href="#star" transform="translate(9.1 15.3)"/><use href="#star" transform="translate(13.7 15.3)"/><use href="#star" transform="translate(18.3 15.3)"/><use href="#star" transform="translate(22.9 15.3)"/>
+    <use href="#star" transform="translate(2.2 17.9)"/><use href="#star" transform="translate(6.8 17.9)"/><use href="#star" transform="translate(11.4 17.9)"/><use href="#star" transform="translate(16 17.9)"/><use href="#star" transform="translate(20.6 17.9)"/><use href="#star" transform="translate(25.2 17.9)"/>
+    <use href="#star" transform="translate(4.5 20.5)"/><use href="#star" transform="translate(9.1 20.5)"/><use href="#star" transform="translate(13.7 20.5)"/><use href="#star" transform="translate(18.3 20.5)"/><use href="#star" transform="translate(22.9 20.5)"/>
+    <use href="#star" transform="translate(2.2 23.1)"/><use href="#star" transform="translate(6.8 23.1)"/><use href="#star" transform="translate(11.4 23.1)"/><use href="#star" transform="translate(16 23.1)"/><use href="#star" transform="translate(20.6 23.1)"/><use href="#star" transform="translate(25.2 23.1)"/>
+  </g>
+</svg>

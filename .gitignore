@@ -1,0 +1,9 @@
+node_modules/
+dist/
+backups/
+.agents/
+.aws/
+.codex/
+.env.local
+.env.*.local
+.DS_Store
