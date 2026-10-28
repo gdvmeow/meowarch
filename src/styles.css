@@ -65,9 +65,6 @@ main:focus { outline: none; }
 .putty-text--hero .putty-glyph.is-hovered .putty-face { color: var(--putty-accent); font-family: var(--serif); font-style: italic; font-weight: 470; transform: translate3d(calc(var(--push-x) + var(--drag-x)), calc(var(--push-y) + var(--drag-y) - .14em), 0) rotate(calc(var(--drag-rotate) - 8deg)) scale(1.42); }
 .putty-text--hero .putty-glyph.is-dragging .putty-face { color: var(--putty-accent); font-family: var(--serif); font-style: italic; font-weight: 470; transform: translate3d(calc(var(--push-x) + var(--drag-x)), calc(var(--push-y) + var(--drag-y) - .14em), 0) rotate(var(--drag-rotate)) scale(1.48); transition: none; }
 .hero-italic-line em .putty-text--hero .putty-glyph.is-hovered .putty-face, .hero-italic-line em .putty-text--hero .putty-glyph.is-dragging .putty-face { font-family: 'Golos Text Variable', Arial, sans-serif; font-style: normal; font-weight: 650; }
-.putty-text--hero .putty-glyph::after { content: ''; position: absolute; inset: -.07em; border: 1.5px dashed var(--putty-accent); opacity: 0; pointer-events: none; transform: translate3d(calc(var(--push-x) + var(--drag-x)), calc(var(--push-y) + var(--drag-y) - .14em), 0) rotate(calc(var(--drag-rotate) - 8deg)) scale(1.42); transition: opacity .12s, transform .8s cubic-bezier(.18,.88,.28,1.22); }
-.putty-text--hero .putty-glyph.is-hovered::after, .putty-text--hero .putty-glyph.is-dragging::after { opacity: 1; }
-.putty-text--hero .putty-glyph.is-dragging::after { transform: translate3d(calc(var(--push-x) + var(--drag-x)), calc(var(--push-y) + var(--drag-y) - .14em), 0) rotate(var(--drag-rotate)) scale(1.48); transition: none; }
 @media (hover: hover) and (pointer: fine) { a:has(.putty-text):hover { transform: scale(1.025); } }
 .text-link { display: inline-block; padding: 5px 0 6px; font: 550 18px/1.25 var(--serif); letter-spacing: -.035em; white-space: nowrap; }
 .site-canvas { position: relative; flex: 1 0 auto; background: var(--paper); }
