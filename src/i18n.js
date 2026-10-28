@@ -1,7 +1,7 @@
 export const languages = [
-  { code: 'ru', flag: `${import.meta.env.BASE_URL}assets/flag-ru.svg`, label: 'Русский' },
-  { code: 'en', flag: `${import.meta.env.BASE_URL}assets/flag-us.svg`, label: 'English' },
-  { code: 'zh', flag: `${import.meta.env.BASE_URL}assets/flag-cn.svg`, label: '中文' },
+  { code: 'ru', flag: `${import.meta.env?.BASE_URL ?? '/'}assets/flag-ru.svg`, label: 'Русский' },
+  { code: 'en', flag: `${import.meta.env?.BASE_URL ?? '/'}assets/flag-us.svg`, label: 'English' },
+  { code: 'zh', flag: `${import.meta.env?.BASE_URL ?? '/'}assets/flag-cn.svg`, label: '中文' },
 ];
 
 export const copy = {
@@ -38,12 +38,10 @@ export const copy = {
     project: {
       back: 'Все проекты',
       zoom: 'Увеличить',
-      zoomMain: 'Увеличить основное изображение',
       zoomImage: alt => `Увеличить: ${alt}`,
       next: 'Следующий проект',
-      galleryLabel: title => `Изображения проекта «${title}»`,
       count: (index, total) => `${index} из ${total}`,
-      close: 'Закрыть ×',
+      close: 'Закрыть',
       previous: 'Назад',
       nextImage: 'Далее',
       previousLabel: 'Предыдущее изображение',
@@ -51,16 +49,31 @@ export const copy = {
     },
     about: {
       heading: 'О себе',
-      lineOne: 'Сначала понять место.',
-      lineTwo: 'Затем придать ему форму.',
-      body: 'Архитектура начинается с условий: участка, задачи, масштаба. План, свет, материал и деталь должны работать вместе — и в чертеже, и в жизни.',
+      role: 'Архитектура и графика',
+      body: '[Здесь будет мой рассказ: как я пришла в архитектуру, над чем работаю и что мне интересно исследовать.]',
+      educationHeading: 'Образование',
+      education: [
+        { period: '[Годы обучения]', institution: '[Название университета]', detail: '[Факультет, направление и квалификация]' },
+        { period: '[Год]', institution: '[Дополнительное образование]', detail: '[Курс, мастерская или профессиональная программа]' },
+      ],
+      toolsHeading: 'Рабочие инструменты',
+      tools: [
+        { label: 'Проектирование', value: '[CAD / BIM-программы]' },
+        { label: 'Визуализация', value: '[3D и рендеринг]' },
+        { label: 'Графика', value: '[Редакторы и ручные техники]' },
+      ],
+      portraitAlt: 'Портрет Виктории Терзян',
+      portraitLabel: 'Место для фотографии',
+      portraitCaption: 'Виктория Терзян',
       action: 'Связаться со мной',
     },
     contacts: {
       heading: 'Контакты',
+      intro: 'Расскажите о проекте или задайте вопрос.',
+      emailLabel: 'Электронная почта',
       copy: 'Скопировать адрес',
       copied: 'Адрес скопирован',
-      copyFailed: 'Не удалось скопировать',
+      copyFailed: 'Выделите адрес выше и скопируйте вручную.',
     },
     footer: {
       description: 'Архитектура и графика',
@@ -75,7 +88,8 @@ export const copy = {
       linkedin: { label: 'LinkedIn', detail: 'Профиль Виктории' },
       publications: { label: 'Публикации', detail: 'tori_arch.t.me' },
     },
-    pageTitles: { home: 'Архитектура и графика', portfolio: 'Проекты', about: 'О себе', contacts: 'Контакты' },
+    notFound: { heading: 'Страница не найдена', body: 'Возможно, ссылка изменилась. Все работы доступны в портфолио.', action: 'Открыть проекты' },
+    pageTitles: { home: 'Архитектура и графика', portfolio: 'Проекты', about: 'О себе', contacts: 'Контакты', notFound: 'Страница не найдена' },
     metaDescription: 'Виктория Терзян — архитектор. Проекты, архитектурный рисунок и контакты.',
   },
   en: {
@@ -111,12 +125,10 @@ export const copy = {
     project: {
       back: 'All projects',
       zoom: 'Enlarge',
-      zoomMain: 'Enlarge main image',
       zoomImage: alt => `Enlarge: ${alt}`,
       next: 'Next project',
-      galleryLabel: title => `Images of “${title}”`,
       count: (index, total) => `${index} of ${total}`,
-      close: 'Close ×',
+      close: 'Close',
       previous: 'Previous',
       nextImage: 'Next',
       previousLabel: 'Previous image',
@@ -124,16 +136,31 @@ export const copy = {
     },
     about: {
       heading: 'About',
-      lineOne: 'Understand the place first.',
-      lineTwo: 'Then give it form.',
-      body: 'Architecture begins with context: the site, the brief, the scale. Plan, light, material, and detail should work together — on paper and in life.',
+      role: 'Architecture and drawing',
+      body: '[My story will go here: how I came to architecture, what I work on, and what I enjoy exploring.]',
+      educationHeading: 'Education',
+      education: [
+        { period: '[Years of study]', institution: '[University name]', detail: '[Faculty, programme, and qualification]' },
+        { period: '[Year]', institution: '[Further education]', detail: '[Course, workshop, or professional programme]' },
+      ],
+      toolsHeading: 'Working tools',
+      tools: [
+        { label: 'Design', value: '[CAD / BIM software]' },
+        { label: 'Visualisation', value: '[3D and rendering]' },
+        { label: 'Drawing', value: '[Editors and manual techniques]' },
+      ],
+      portraitAlt: 'Portrait of Viktoria Terzyan',
+      portraitLabel: 'Space for a portrait',
+      portraitCaption: 'Viktoria Terzyan',
       action: 'Get in touch',
     },
     contacts: {
       heading: 'Contact',
+      intro: 'Tell me about your project or ask a question.',
+      emailLabel: 'Email',
       copy: 'Copy email address',
       copied: 'Email address copied',
-      copyFailed: 'Could not copy the address',
+      copyFailed: 'Select the address above and copy it manually.',
     },
     footer: {
       description: 'Architecture and drawing',
@@ -148,7 +175,8 @@ export const copy = {
       linkedin: { label: 'LinkedIn', detail: "Viktoria's profile" },
       publications: { label: 'Publications', detail: 'tori_arch.t.me' },
     },
-    pageTitles: { home: 'Architecture and drawing', portfolio: 'Projects', about: 'About', contacts: 'Contact' },
+    notFound: { heading: 'Page not found', body: 'The link may have changed. You can find all the work in the portfolio.', action: 'Explore projects' },
+    pageTitles: { home: 'Architecture and drawing', portfolio: 'Projects', about: 'About', contacts: 'Contact', notFound: 'Page not found' },
     metaDescription: 'Viktoria Terzyan is an architect. Projects, architectural drawing, and contact details.',
     projects: {
       house: {
@@ -216,12 +244,10 @@ export const copy = {
     project: {
       back: '全部项目',
       zoom: '查看大图',
-      zoomMain: '放大主图',
       zoomImage: alt => `放大：${alt}`,
       next: '下一个项目',
-      galleryLabel: title => `“${title}”项目图片`,
       count: (index, total) => `第 ${index} 张，共 ${total} 张`,
-      close: '关闭 ×',
+      close: '关闭',
       previous: '上一张',
       nextImage: '下一张',
       previousLabel: '上一张图片',
@@ -229,16 +255,31 @@ export const copy = {
     },
     about: {
       heading: '关于',
-      lineOne: '先理解场所。',
-      lineTwo: '再赋予它形态。',
-      body: '建筑始于具体条件：场地、需求与尺度。平面、光线、材料和细部应当彼此协调，在图纸上如此，在现实中亦如此。',
+      role: '建筑与绘图',
+      body: '[这里将介绍我如何走入建筑领域、目前的工作以及我感兴趣的研究方向。]',
+      educationHeading: '教育经历',
+      education: [
+        { period: '[就读年份]', institution: '[大学名称]', detail: '[院系、专业及学历]' },
+        { period: '[年份]', institution: '[继续教育]', detail: '[课程、工作坊或专业培训]' },
+      ],
+      toolsHeading: '工作工具',
+      tools: [
+        { label: '设计', value: '[CAD / BIM 软件]' },
+        { label: '可视化', value: '[三维建模与渲染]' },
+        { label: '绘图', value: '[编辑软件与手绘技法]' },
+      ],
+      portraitAlt: 'Viktoria Terzyan 的肖像',
+      portraitLabel: '个人照片预留位置',
+      portraitCaption: 'Viktoria Terzyan',
       action: '联系我',
     },
     contacts: {
       heading: '联系',
+      intro: '欢迎介绍您的项目或提出问题。',
+      emailLabel: '电子邮箱',
       copy: '复制邮箱地址',
       copied: '邮箱地址已复制',
-      copyFailed: '无法复制邮箱地址',
+      copyFailed: '请选中上方的邮箱地址并手动复制。',
     },
     footer: {
       description: '建筑与绘图',
@@ -253,7 +294,8 @@ export const copy = {
       linkedin: { label: 'LinkedIn', detail: 'Viktoria 的主页' },
       publications: { label: '文章', detail: 'tori_arch.t.me' },
     },
-    pageTitles: { home: '建筑与绘图', portfolio: '项目', about: '关于', contacts: '联系' },
+    notFound: { heading: '页面未找到', body: '链接可能已更改。您可以在作品集中浏览所有项目。', action: '浏览项目' },
+    pageTitles: { home: '建筑与绘图', portfolio: '项目', about: '关于', contacts: '联系', notFound: '页面未找到' },
     metaDescription: 'Viktoria Terzyan 是建筑师。查看建筑项目、绘图作品和联系信息。',
     projects: {
       house: {
@@ -292,17 +334,18 @@ export const copy = {
 
 export function localizeProject(project, language) {
   if (language === 'ru') return project;
-  const translated = copy[language].projects[project.id];
+  const translated = copy[language]?.projects?.[project.id];
+  if (!translated) return project;
   return {
     ...project,
     title: translated.title,
     category: translated.category,
     summary: translated.summary,
     description: translated.description,
-    images: project.images.map((image, index) => ({ ...image, alt: translated.imageAlts[index] })),
+    images: project.images.map((image, index) => ({ ...image, alt: translated.imageAlts[index] ?? image.alt })),
   };
 }
 
 export function localizeSocial(link, language) {
-  return { ...link, ...copy[language].social[link.id] };
+  return { ...link, ...copy[language]?.social[link.id] };
 }

@@ -14,9 +14,13 @@ export default function PuttyText({ children, className = '', variant = 'medium'
   const hoverRef = useRef(null);
   const dragRef = useRef(null);
   const frameRef = useRef(0);
+  const clickTimerRef = useRef(0);
   const suppressClickRef = useRef(false);
 
-  useEffect(() => () => cancelAnimationFrame(frameRef.current), []);
+  useEffect(() => () => {
+    cancelAnimationFrame(frameRef.current);
+    window.clearTimeout(clickTimerRef.current);
+  }, []);
 
   useEffect(() => {
     if (variant !== 'hero') return;
@@ -29,7 +33,7 @@ export default function PuttyText({ children, className = '', variant = 'medium'
       if (!active) return;
       // Measure the unchanged placeholder, so animation never moves the hit area
       // into another letter or the line above it.
-      root.querySelectorAll('.putty-glyph').forEach(glyph => {
+      const areas = [...root.querySelectorAll('.putty-glyph')].map(glyph => {
         const placeholder = glyph.querySelector('.putty-placeholder');
         const style = getComputedStyle(placeholder);
         context.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
@@ -39,10 +43,20 @@ export default function PuttyText({ children, className = '', variant = 'medium'
         const textRect = range.getBoundingClientRect();
         const glyphRect = glyph.getBoundingClientRect();
         const baseline = textRect.top - glyphRect.top + metrics.fontBoundingBoxAscent;
-        glyph.style.setProperty('--hit-top', `${baseline - metrics.actualBoundingBoxAscent}px`);
-        glyph.style.setProperty('--hit-left', `${-metrics.actualBoundingBoxLeft}px`);
-        glyph.style.setProperty('--hit-width', `${metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight}px`);
-        glyph.style.setProperty('--hit-height', `${metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent}px`);
+        return { glyph, bounds: {
+          top: baseline - metrics.actualBoundingBoxAscent,
+          left: -metrics.actualBoundingBoxLeft,
+          width: metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight,
+          height: metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent,
+        } };
+      });
+      // Keep native hit testing if a browser cannot supply full font metrics.
+      if (areas.some(({ bounds }) => Object.values(bounds).some(value => !Number.isFinite(value)))) {
+        delete root.dataset.hitReady;
+        return;
+      }
+      areas.forEach(({ glyph, bounds }) => {
+        Object.entries(bounds).forEach(([name, value]) => glyph.style.setProperty(`--hit-${name}`, `${value}px`));
       });
       root.dataset.hitReady = '';
     };
@@ -83,7 +97,8 @@ export default function PuttyText({ children, className = '', variant = 'medium'
     drag.glyph.style.removeProperty('--drag-rotate');
     if (drag.moved) {
       suppressClickRef.current = true;
-      window.setTimeout(() => { suppressClickRef.current = false; }, 250);
+      window.clearTimeout(clickTimerRef.current);
+      clickTimerRef.current = window.setTimeout(() => { suppressClickRef.current = false; }, 250);
     }
     if (drag.glyph.hasPointerCapture?.(drag.pointerId)) drag.glyph.releasePointerCapture(drag.pointerId);
     dragRef.current = null;
@@ -94,7 +109,7 @@ export default function PuttyText({ children, className = '', variant = 'medium'
   };
 
   const onPointerDown = event => {
-    if (variant !== 'hero' || event.button !== 0) return;
+    if (variant !== 'hero' || event.button !== 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const glyph = event.target.closest('.putty-glyph');
     if (!glyph || !rootRef.current?.contains(glyph)) return;
     setHover(glyph);
@@ -120,7 +135,7 @@ export default function PuttyText({ children, className = '', variant = 'medium'
       const glyph = event.target.closest('.putty-glyph');
       setHover(glyph && root.contains(glyph) ? glyph : null);
     }
-    if (variant === 'hero') {
+    if (variant === 'hero' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       cancelAnimationFrame(frameRef.current);
       frameRef.current = requestAnimationFrame(() => {
         const positions = [...root.querySelectorAll('.putty-glyph')].map(glyph => ({ glyph, rect: glyph.getBoundingClientRect() }));
@@ -170,6 +185,7 @@ export default function PuttyText({ children, className = '', variant = 'medium'
     onPointerLeave={onPointerLeave}
     onPointerUp={onPointerUp}
     onPointerCancel={release}
+    onLostPointerCapture={release}
     onClickCapture={onClickCapture}
   >
     <span className="visually-hidden">{label}</span>

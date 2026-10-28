@@ -59,7 +59,19 @@ export const projects = [
       { src: 'academic-board.webp', alt: 'Лист с архитектурными исследованиями' },
     ],
   },
-];
+].map(project => ({
+  ...project,
+  images: project.images.map(image => ({
+    ...(image.src === 'site-background-perspective.png'
+      ? { width: 1808, height: 870 }
+      : { width: 1448, height: 1086 }),
+    ...image,
+  })),
+}));
+
+// Add a portrait filename from public/assets when the real photo is ready.
+// Biography, education and tools live in copy.<language>.about in i18n.js.
+export const profile = { portrait: null };
 
 export const socialLinks = [
   { id: 'telegram', label: 'Telegram', detail: '@gdvmeow', href: 'https://t.me/gdvmeow' },
@@ -69,4 +81,4 @@ export const socialLinks = [
 ];
 
 export const contactEmail = 'gdvmeow@gmail.com';
-export const asset = name => `${import.meta.env.BASE_URL}assets/${name}`;
+export const asset = name => `${import.meta.env?.BASE_URL ?? '/'}assets/${name}`;

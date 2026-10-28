@@ -30,8 +30,14 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Verify routes and content
+        run: npm test
       - name: Build site
         run: npm run build
+      - name: Install browser for interface checks
+        run: npx playwright install --with-deps chromium
+      - name: Verify interface and accessibility
+        run: npm run test:browser
       - name: Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
       - name: Upload site
