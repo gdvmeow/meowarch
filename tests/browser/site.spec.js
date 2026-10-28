@@ -110,6 +110,7 @@ test('gallery isolates background, cycles, traps focus, closes and restores the 
   await opener.click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(21, 29, 23)');
   await expect(page.locator('.viewer-count')).toHaveText('1 из 3');
   await page.keyboard.press('ArrowLeft');
   await expect(page.locator('.viewer-count')).toHaveText('3 из 3');
@@ -140,12 +141,50 @@ test('clipboard success and denial give usable feedback', async ({ page, context
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await ready(page, '?page=contacts');
   await page.getByRole('button', { name: 'Скопировать адрес' }).click();
+  const copyPosition = await page.locator('.contact-primary').evaluate(el => ({
+    addressBottom: el.querySelector('.contact-email').getBoundingClientRect().bottom,
+    buttonTop: el.querySelector('.copy-button').getBoundingClientRect().top,
+  }));
+  expect(copyPosition.buttonTop - copyPosition.addressBottom).toBeGreaterThanOrEqual(16);
   await expect(page.getByRole('status')).toHaveText('Адрес скопирован');
+  await expect(page.getByText('Адрес скопирован', { exact: true })).toHaveCount(1);
+  await expect(page.locator('.copy-button')).toHaveText('Скопировать адрес');
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('gdvmeow@gmail.com');
   await page.evaluate(() => { navigator.clipboard.writeText = () => Promise.reject(new Error('denied')); });
   await page.locator('.copy-button').click();
   await expect(page.getByRole('status')).toContainText('скопируйте вручную');
   await expect(page.locator('main a[href="mailto:gdvmeow@gmail.com"]')).toBeVisible();
+});
+
+test('navigation and calls to action keep the original ink and paper palette', async ({ page }) => {
+  await ready(page);
+  const ink = 'rgb(37, 43, 38)';
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(238, 234, 226)');
+  await expect(page.locator('.section-heading .text-link')).toHaveCSS('color', ink);
+  await expect(page.locator('.hero-project-link')).toHaveCSS('color', ink);
+  await expect(page.locator('.hero-project-link .icon')).toHaveCount(0);
+  for (const path of ['?page=about', '?page=contacts', '?page=portfolio']) {
+    await ready(page, path);
+    await expect(page.locator('.site-nav [aria-current="page"]')).toHaveCSS('color', ink);
+    for (const link of await page.locator('main .text-link, main .copy-button').all()) await expect(link).toHaveCSS('color', ink);
+  }
+});
+
+test('social addresses stay at the right edge beside the external arrow', async ({ page }) => {
+  for (const width of [320, 390, 768, 1920]) {
+    await page.setViewportSize({ width, height: 962 });
+    await ready(page, '?page=contacts');
+    for (const row of await page.locator('.social-row').all()) {
+      const gap = await row.evaluate(el => {
+        const label = el.children[0].getBoundingClientRect();
+        const address = el.querySelector('.social-detail').getBoundingClientRect();
+        const arrow = el.querySelector('.icon').getBoundingClientRect();
+        return { right: arrow.left - address.right, expected: parseFloat(getComputedStyle(el).columnGap), separation: address.left - label.right };
+      });
+      expect(Math.abs(gap.right - gap.expected)).toBeLessThan(1);
+      expect(gap.separation).toBeGreaterThanOrEqual(gap.expected - 1);
+    }
+  }
 });
 
 test('mobile navigation, escape and current-page links close correctly', async ({ page }) => {
@@ -154,6 +193,7 @@ test('mobile navigation, escape and current-page links close correctly', async (
   const menu = page.getByRole('button', { name: 'Меню', exact: true });
   await menu.click();
   await expect(page.locator('#site-navigation a').first()).toBeFocused();
+  expect(await page.locator('header').evaluate(el => el.getBoundingClientRect().bottom <= document.querySelector('main').getBoundingClientRect().top)).toBe(true);
   await page.keyboard.press('Escape');
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
   await expect(menu).toBeFocused();

@@ -15,8 +15,7 @@ export function About({ t }) {
       </div>
       <figure className="about-portrait">{profile.portrait
         ? <img src={asset(profile.portrait.src)} alt={about.portraitAlt} width={profile.portrait.width} height={profile.portrait.height} decoding="async"/>
-        : <div className="portrait-placeholder" role="img" aria-label={about.portraitLabel}><svg viewBox="0 0 320 400" fill="none" aria-hidden="true"><circle cx="160" cy="150" r="44"/><path d="M70 400v-70c0-54 36-86 90-86s90 32 90 86v70"/></svg><span>{about.portraitLabel}</span></div>}
-        <figcaption translate="no">{about.portraitCaption}</figcaption>
+        : <div className="portrait-placeholder" role="img" aria-label={about.portraitLabel}><span>{about.portraitLabel}</span></div>}
       </figure>
     </div>
   </main>;
@@ -42,7 +41,7 @@ export function Contacts({ t, socialLinks }) {
   return <main id="main" tabIndex="-1" className="interior-page shell contacts-page">
     <div className="page-heading"><h1>{t.contacts.heading}</h1></div>
     <p className="contact-intro">{t.contacts.intro}</p>
-    <div className="contact-main"><div className="contact-primary"><p className="contact-label">{t.contacts.emailLabel}</p><a className="contact-email" href={`mailto:${contactEmail}`} translate="no">{contactEmail}</a><button className="copy-button" type="button" onClick={copyEmail}><Icon name="copy"/>{copyState === 'copied' ? t.contacts.copied : t.contacts.copy}</button><p className="copy-status" role="status">{copyState ? t.contacts[copyState] : ''}</p></div>
+    <div className="contact-main"><div className="contact-primary"><p className="contact-label">{t.contacts.emailLabel}</p><a className="contact-email" href={`mailto:${contactEmail}`} translate="no">{contactEmail}</a><button className="copy-button" type="button" onClick={copyEmail}>{t.contacts.copy}</button><p className="copy-status" role="status">{copyState ? t.contacts[copyState] : ''}</p></div>
       <div className="contact-socials">{socialLinks.map(item => <a className="social-row" href={item.href} target="_blank" rel="noopener noreferrer" key={item.id}><span>{item.label}</span><span className="social-detail">{item.detail}</span><Icon name="external"/></a>)}</div>
     </div>
   </main>;

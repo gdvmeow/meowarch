@@ -60,4 +60,4 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:browser
 
 В Settings → Pages источник публикации — GitHub Actions. Push в `main` запускает `.github/workflows/deploy-pages.yml`: проверку содержания и интерфейса, сборку и публикацию `dist/`. При неуспешной проверке текущая опубликованная версия сохраняется.
 
-Контакты: gdvmeow@gmail.com · [Telegram](https://t.me/gdvmeow) · [Behance](https://www.behance.net/gdvmeow) · [LinkedIn](https://www.linkedin.com/in/gdvmeow) · [Публикации](https://tori_arch.t.me).
+Контакты: gdvmeow@gmail.com · [Telegram](https://t.me/gdvmeow) · [Behance](https://www.behance.net/gdvmeow) · [LinkedIn](https://www.linkedin.com/in/gdvmeow) · [Публикации](https://t.me/tori_arch).

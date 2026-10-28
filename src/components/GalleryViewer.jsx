@@ -49,7 +49,7 @@ export default function GalleryViewer({ project, index, onChange, onClose, t }) 
         const dx = event.clientX - start.x, dy = event.clientY - start.y;
         if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
       }}><img src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} decoding="async"/></div>
-      <div className="viewer-bottom"><p>{image.alt}</p>{total > 1 && <div className="viewer-controls"><button type="button" onClick={() => step(-1)} aria-label={t.project.previousLabel}><Icon name="back"/><span>{t.project.previous}</span></button><button type="button" onClick={() => step(1)} aria-label={t.project.nextLabel}><span>{t.project.nextImage}</span><Icon name="next"/></button></div>}</div>
+      <div className="viewer-bottom"><p>{image.alt}</p>{total > 1 && <div className="viewer-controls"><button type="button" onClick={() => step(-1)} aria-label={t.project.previousLabel}>{t.project.previous}</button><button type="button" onClick={() => step(1)} aria-label={t.project.nextLabel}>{t.project.nextImage}</button></div>}</div>
     </div>
   </dialog>, document.body);
 }

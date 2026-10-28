@@ -110,7 +110,7 @@ export function Footer({ t, socialLinks }) {
           <div><span>{t.footer.platforms}</span>{socialLinks.map(item => <a href={item.href} target="_blank" rel="noopener noreferrer" key={item.id}>{item.label}</a>)}</div>
         </nav>
       </div>
-      <div className="footer-bottom"><span>{t.footer.copyright(new Date().getFullYear())}</span><a href="#top">{t.footer.top}<Icon name="down"/></a></div>
+      <div className="footer-bottom"><span>{t.footer.copyright(new Date().getFullYear())}</span><a href="#top">{t.footer.top}</a></div>
     </div>
     <div className="footer-art" aria-hidden="true"><img src={asset('footer-architect-drawing.webp')} alt="" width="1670" height="942" loading="lazy" decoding="async"/></div>
   </footer>;

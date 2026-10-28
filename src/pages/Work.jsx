@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { asset } from '../data.js';
 import { portfolioHref } from '../routing.js';
 import PuttyText from '../PuttyText.jsx';
-import Icon from '../components/Icon.jsx';
 import ProjectTile from '../components/ProjectTile.jsx';
 import GalleryViewer from '../components/GalleryViewer.jsx';
 
@@ -14,7 +13,7 @@ export function Home({ t, projects }) {
           <h1><span><PuttyText variant="hero">{t.hero.architecture}</PuttyText></span><span className="hero-italic-line"><PuttyText variant="hero">{t.hero.and}</PuttyText><em><PuttyText variant="hero">{t.hero.graphics}</PuttyText></em></span></h1>
           <p className="hero-description">{t.hero.description}</p>
         </div>
-        <a className="hero-project-link" href="?page=portfolio">{t.hero.action}<Icon name="next"/></a>
+        <a className="hero-project-link" href="?page=portfolio">{t.hero.action}</a>
       </div>
     </section>
     <section className="selected-section shell" aria-labelledby="selected-heading">
@@ -35,7 +34,7 @@ export function Portfolio({ t, projects, route }) {
         {filters.map(value => <a key={value} href={portfolioHref({ filter: value, view })} aria-current={filter === value ? 'true' : undefined}>{t.portfolio[value]}</a>)}
       </nav>
       <nav className="portfolio-view" aria-label={t.portfolio.viewLabel}>
-        {['grid', 'list'].map(value => <a key={value} href={portfolioHref({ filter, view: value })} aria-current={view === value ? 'true' : undefined} aria-label={t.portfolio[value]}><Icon name={value}/><span>{t.portfolio[value]}</span></a>)}
+        {['grid', 'list'].map(value => <a key={value} href={portfolioHref({ filter, view: value })} aria-current={view === value ? 'true' : undefined} aria-label={t.portfolio[value]}><span>{t.portfolio[value]}</span></a>)}
       </nav>
     </div>
     <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>
@@ -47,7 +46,7 @@ export function Portfolio({ t, projects, route }) {
 function ProjectImage({ image, onOpen, t, priority = false }) {
   return <figure className="project-plate">
     <button className="project-image-button" type="button" onClick={onOpen} aria-label={t.project.zoomImage(image.alt)}>
-      <img src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} decoding="async"/><span className="zoom-label" aria-hidden="true"><Icon name="zoom"/>{t.project.zoom}</span>
+      <img src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} decoding="async"/><span className="zoom-label" aria-hidden="true">{t.project.zoom}</span>
     </button><figcaption>{image.alt}</figcaption>
   </figure>;
 }
@@ -58,14 +57,14 @@ export function ProjectPage({ project, projects, t }) {
   const closeImage = useCallback(() => setZoomIndex(null), []);
   return <main id="main" tabIndex="-1" className="project-page">
     <div className="shell project-heading">
-      <a className="back-link" href="?page=portfolio"><Icon name="back"/>{t.project.back}</a>
+      <a className="back-link" href="?page=portfolio">{t.project.back}</a>
       <p className="project-category">{project.category}</p>
       <h1>{project.title}</h1>
       <div className="project-intro"><p>{project.summary}</p><p>{project.description}</p></div>
     </div>
     <div className="project-cover shell"><ProjectImage image={project.images[0]} onOpen={() => setZoomIndex(0)} t={t} priority/></div>
     {project.images.length > 1 && <div className="shell project-gallery">{project.images.slice(1).map((image, index) => <ProjectImage key={image.src} image={image} onOpen={() => setZoomIndex(index + 1)} t={t}/>)}</div>}
-    <a className="shell project-next" href={`?project=${next.id}`}><span>{t.project.next}</span><span className="next-title">{next.title}<Icon name="next"/></span></a>
+    <a className="shell project-next" href={`?project=${next.id}`}><span>{t.project.next}</span><span className="next-title">{next.title}</span></a>
     {zoomIndex !== null && <GalleryViewer project={project} index={zoomIndex} onChange={setZoomIndex} onClose={closeImage} t={t}/>}
   </main>;
 }

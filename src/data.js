@@ -77,7 +77,7 @@ export const socialLinks = [
   { id: 'telegram', label: 'Telegram', detail: '@gdvmeow', href: 'https://t.me/gdvmeow' },
   { id: 'behance', label: 'Behance', detail: 'behance.net/gdvmeow', href: 'https://www.behance.net/gdvmeow' },
   { id: 'linkedin', label: 'LinkedIn', detail: 'Профиль Виктории', href: 'https://www.linkedin.com/in/gdvmeow' },
-  { id: 'publications', label: 'Публикации', detail: 'tori_arch.t.me', href: 'https://tori_arch.t.me' },
+  { id: 'publications', label: 'Публикации', detail: 't.me/tori_arch', href: 'https://t.me/tori_arch' },
 ];
 
 export const contactEmail = 'gdvmeow@gmail.com';
