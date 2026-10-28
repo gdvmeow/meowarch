@@ -51,6 +51,8 @@ main:focus { outline: none; }
 .site-nav a[aria-current='page'] { font-weight: 680; }
 .putty-glyph { position: relative; display: inline-block; white-space: pre; cursor: inherit; touch-action: auto; --push-x: 0px; --push-y: 0px; --drag-x: 0px; --drag-y: 0px; --drag-rotate: 0deg; --putty-accent: var(--accent-clay); }
 .putty-text--hero .putty-glyph { touch-action: pan-y; }
+.putty-text--hero[data-hit-ready], .putty-text--hero[data-hit-ready] .putty-word, .putty-text--hero[data-hit-ready] .putty-glyph, .putty-text--hero[data-hit-ready] .putty-face { pointer-events: none; }
+.putty-text--hero[data-hit-ready] .putty-glyph::before { content: ''; position: absolute; top: var(--hit-top); left: var(--hit-left); width: var(--hit-width); height: var(--hit-height); pointer-events: auto; }
 .putty-glyph[data-tone='1'] { --putty-accent: var(--accent-sage); }
 .putty-glyph[data-tone='2'] { --putty-accent: var(--accent-ochre); }
 .site-footer .putty-glyph[data-tone='0'] { --putty-accent: var(--accent-clay-light); }

@@ -18,6 +18,47 @@ export default function PuttyText({ children, className = '', variant = 'medium'
 
   useEffect(() => () => cancelAnimationFrame(frameRef.current), []);
 
+  useEffect(() => {
+    if (variant !== 'hero') return;
+    const root = rootRef.current;
+    const context = document.createElement('canvas').getContext('2d');
+    if (!context) return;
+    let active = true;
+
+    const measureHitAreas = () => {
+      if (!active) return;
+      // Measure the unchanged placeholder, so animation never moves the hit area
+      // into another letter or the line above it.
+      root.querySelectorAll('.putty-glyph').forEach(glyph => {
+        const placeholder = glyph.querySelector('.putty-placeholder');
+        const style = getComputedStyle(placeholder);
+        context.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+        const metrics = context.measureText(placeholder.textContent);
+        const range = document.createRange();
+        range.selectNodeContents(placeholder);
+        const textRect = range.getBoundingClientRect();
+        const glyphRect = glyph.getBoundingClientRect();
+        const baseline = textRect.top - glyphRect.top + metrics.fontBoundingBoxAscent;
+        glyph.style.setProperty('--hit-top', `${baseline - metrics.actualBoundingBoxAscent}px`);
+        glyph.style.setProperty('--hit-left', `${-metrics.actualBoundingBoxLeft}px`);
+        glyph.style.setProperty('--hit-width', `${metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight}px`);
+        glyph.style.setProperty('--hit-height', `${metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent}px`);
+      });
+      root.dataset.hitReady = '';
+    };
+
+    const observer = new ResizeObserver(measureHitAreas);
+    root.querySelectorAll('.putty-word').forEach(word => observer.observe(word));
+    document.fonts.ready.then(measureHitAreas);
+    document.fonts.addEventListener('loadingdone', measureHitAreas);
+    return () => {
+      active = false;
+      observer.disconnect();
+      document.fonts.removeEventListener('loadingdone', measureHitAreas);
+      delete root.dataset.hitReady;
+    };
+  }, [label, variant]);
+
   const setHover = glyph => {
     if (hoverRef.current === glyph) return;
     hoverRef.current?.classList.remove('is-hovered');
