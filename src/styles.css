@@ -151,7 +151,7 @@ main:focus { outline: none; }
 .project-heading { padding-top: 42px; padding-bottom: 52px; }
 .back-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-bottom: 45px; color: var(--muted); font: 480 16px/1.35 var(--serif); letter-spacing: -.025em; }
 .project-category { margin-bottom: 18px; color: var(--muted); font-size: 13px; }
-.project-heading h1 { max-width: 1120px; font-size: clamp(68px, 9.5vw, 132px); font-weight: 580; letter-spacing: -.05em; line-height: 1; overflow-wrap: anywhere; hyphens: auto; }
+.project-heading h1 { max-width: 1120px; font-size: clamp(68px, 9.5vw, 132px); font-weight: 580; letter-spacing: -.05em; line-height: 1; overflow-wrap: anywhere; hyphens: none; }
 .project-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; max-width: 980px; margin-top: 42px; }
 .project-intro p:first-child { font: 390 clamp(21px, 2vw, 28px)/1.45 var(--serif); letter-spacing: -.03em; }
 .project-intro p:last-child { color: var(--muted); font-size: 15px; line-height: 1.75; }
@@ -337,7 +337,7 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .project-page { padding-bottom: 64px; }
   .back-link { margin-bottom: 32px; }
   .project-category { margin-bottom: 12px; font-size: 12px; }
-  .project-heading h1 { font-size: clamp(32px, 10vw, 80px); }
+  .project-heading h1 { font-size: clamp(36px, 11vw, 80px); }
   .project-intro { grid-template-columns: 1fr; gap: 20px; margin-top: 28px; }
   .project-intro p:first-child { max-width: 32ch; font-size: 23px; }
   .project-intro p:last-child { max-width: 52ch; font-size: 14px; }
