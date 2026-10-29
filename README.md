@@ -12,7 +12,7 @@
 
 Архитектурные проекты, ручная подача и академический рисунок.
 
-[Работы](https://gdvmeow.github.io/meowarch/?page=portfolio) · [О себе](https://gdvmeow.github.io/meowarch/?page=about) · [Образование](https://gdvmeow.github.io/meowarch/?page=education) · [Контакты](https://gdvmeow.github.io/meowarch/?page=contacts)
+[Портфолио](https://gdvmeow.github.io/meowarch/?page=portfolio) · [О себе](https://gdvmeow.github.io/meowarch/?page=about) · [Образование и опыт](https://gdvmeow.github.io/meowarch/?page=education) · [Контакты](https://gdvmeow.github.io/meowarch/?page=contacts)
 
 ---
 

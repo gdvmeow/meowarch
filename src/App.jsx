@@ -39,7 +39,7 @@ export default function App() {
         : route.type === 'project' ? <ProjectPage key={route.projectId} project={activeProject} projects={localizedProjects} t={t}/>
         : route.type === 'about' ? <About t={t}/>
         : route.type === 'contacts' ? <Contacts t={t} socialLinks={localizedSocialLinks}/>
-        : route.type === 'education' ? <Education t={t}/>
+        : route.type === 'education' ? <Education t={t} route={route}/>
         : route.type === 'notFound' ? <NotFound t={t}/>
         : <Home t={t} projects={localizedProjects}/>}
     </div>

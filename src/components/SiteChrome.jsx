@@ -58,7 +58,7 @@ export function Header({ route, t, language, onLanguageChange }) {
   const [open, setOpen] = useState(false);
   const headerRef = useRef(null);
   const menuRef = useRef(null);
-  const activePage = route.type === 'project' ? 'portfolio' : route.type;
+  const activePage = ['project', 'education'].includes(route.type) ? 'portfolio' : route.type;
   useEffect(() => setOpen(false), [route.key]);
   useEffect(() => {
     if (!open) return;

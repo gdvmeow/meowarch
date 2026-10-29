@@ -4,6 +4,7 @@ import { access, readFile, readdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { projects, socialLinks } from '../src/data.js';
 import { scanStudies } from '../src/scanStudies.js';
+import { certificatePages } from '../src/educationDocument.js';
 import { copy, languages, localizeProject, localizeSocial } from '../src/i18n.js';
 
 function shape(value) {
@@ -67,6 +68,23 @@ test('the scan dump contributes exactly 16 distinct sheets, with every source pa
   assert.ok(!scanStudies.some(p => p.id === 'socrates'));
   const publicFiles = await readdir(new URL('../public/assets/', import.meta.url));
   assert.ok(!publicFiles.some(file => /\.pdf$/i.test(file)), 'Original documents stay outside public assets');
+});
+
+test('the separate certificate has three verified public pages without source document bytes', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/education.json', import.meta.url), 'utf8'));
+  assert.equal(manifest.sourcePages, 3);
+  assert.deepEqual(manifest.publicPages, [1, 2, 3]);
+  assert.equal(certificatePages.length, 3);
+  assert.deepEqual(certificatePages.map(page => page.src), manifest.publicAssets.map(page => page.src));
+  for (const page of certificatePages) {
+    const bytes = await readFile(new URL(`../public/assets/${page.src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), page.sha256);
+    assert.ok(page.width > 0 && page.height > 0);
+    assert.ok(!scanStudies.some(work => work.images.some(image => image.src === page.src)));
+  }
+  const publicFiles = await readdir(new URL('../public/assets/', import.meta.url));
+  assert.ok(!publicFiles.some(file => /\.pdf$/i.test(file)));
+  assert.ok(!publicFiles.includes('education-certificate.webp'));
 });
 
 test('social targets retain valid URLs across languages', () => {

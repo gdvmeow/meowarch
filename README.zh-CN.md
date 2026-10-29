@@ -12,7 +12,7 @@
 
 建筑设计项目、手绘表现与学院素描。
 
-[作品](https://gdvmeow.github.io/meowarch/?page=portfolio) · [关于](https://gdvmeow.github.io/meowarch/?page=about) · [教育经历](https://gdvmeow.github.io/meowarch/?page=education) · [联系](https://gdvmeow.github.io/meowarch/?page=contacts)
+[作品集](https://gdvmeow.github.io/meowarch/?page=portfolio) · [关于](https://gdvmeow.github.io/meowarch/?page=about) · [教育与经历](https://gdvmeow.github.io/meowarch/?page=education) · [联系](https://gdvmeow.github.io/meowarch/?page=contacts)
 
 ---
 

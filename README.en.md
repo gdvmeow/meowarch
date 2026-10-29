@@ -12,7 +12,7 @@
 
 Architectural projects, hand-drawn presentation and academic drawing.
 
-[Work](https://gdvmeow.github.io/meowarch/?page=portfolio) · [About](https://gdvmeow.github.io/meowarch/?page=about) · [Education](https://gdvmeow.github.io/meowarch/?page=education) · [Contact](https://gdvmeow.github.io/meowarch/?page=contacts)
+[Portfolio](https://gdvmeow.github.io/meowarch/?page=portfolio) · [About](https://gdvmeow.github.io/meowarch/?page=about) · [Education & experience](https://gdvmeow.github.io/meowarch/?page=education) · [Contact](https://gdvmeow.github.io/meowarch/?page=contacts)
 
 ---
 

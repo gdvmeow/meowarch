@@ -15,7 +15,7 @@ export function readRoute(search, projects) {
   return {
     type: page,
     key: page,
-    ...(page === 'portfolio' && {
+    ...(['portfolio', 'education'].includes(page) && {
       filter: projects.some(project => project.group === params.get('filter')) ? params.get('filter') : 'all',
       view: params.get('view') === 'list' ? 'list' : 'grid',
     }),
@@ -27,4 +27,8 @@ export function portfolioHref({ filter = 'all', view = 'grid' } = {}) {
   if (filters.has(filter) && filter !== 'all') params.set('filter', filter);
   if (view === 'list') params.set('view', view);
   return `?${params}`;
+}
+
+export function educationHref(state = {}) {
+  return portfolioHref(state).replace('page=portfolio', 'page=education');
 }

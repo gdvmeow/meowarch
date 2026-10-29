@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { projects } from '../src/data.js';
-import { readRoute, portfolioHref } from '../src/routing.js';
+import { readRoute, portfolioHref, educationHref } from '../src/routing.js';
 
 test('valid project deep links resolve and take precedence over page parameters', () => {
   for (const project of projects) {
@@ -28,6 +28,19 @@ test('portfolio links round-trip each available filter and layout', () => {
     }
   }
   assert.equal(portfolioHref(), '?page=portfolio');
+});
+
+test('the two portfolio sections preserve filter and view in reciprocal links', () => {
+  const catalog = [{ group: 'architecture' }, { group: 'graphics' }];
+  for (const filter of ['all', 'architecture', 'graphics']) {
+    for (const view of ['grid', 'list']) {
+      const state = { filter, view };
+      assert.deepEqual(readRoute(educationHref(state), catalog), {
+        type: 'education', key: 'education', filter, view,
+      });
+      assert.equal(portfolioHref(readRoute(educationHref(state), catalog)), portfolioHref(state));
+    }
+  }
 });
 
 test('unsupported filter and layout parameters recover to valid defaults', () => {

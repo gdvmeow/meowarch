@@ -111,13 +111,15 @@ main:focus { outline: none; }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
 .section-heading h2 { font-size: clamp(36px, 4.6vw, 66px); font-weight: 530; letter-spacing: -.065em; line-height: 1.05; }
 .section-heading .text-link { flex: none; }
-.selected-grid { display: grid; grid-template-columns: 1.5fr .85fr; gap: 40px; align-items: start; }
-.selected-small { margin-top: 104px; }
-.project-tile { display: block; min-width: 0; }
+.selected-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; align-items: start; }
+.selected-small { margin-top: 32px; }
+.project-tile { display: block; min-width: 0; transition: transform 220ms var(--ease); }
+.project-tile:focus-visible { transform: translateY(-3px); outline-offset: 8px; }
+.project-tile:focus-visible .tile-meta h3 { text-decoration-color: currentColor; }
 .tile-image { position: relative; overflow: hidden; }
 .tile-image img { width: 100%; height: auto; object-fit: contain; }
-.tile-meta { min-width: 0; padding-top: 18px; }
-.tile-meta h3 { font: 440 clamp(24px, 2.3vw, 34px)/1.22 var(--serif); letter-spacing: -.045em; overflow-wrap: anywhere; hyphens: auto; transition: color .18s; }
+.tile-meta { min-width: 0; padding-top: 16px; }
+.tile-meta h3 { font: 440 clamp(24px, 2.3vw, 34px)/1.22 var(--serif); letter-spacing: -.045em; overflow-wrap: anywhere; hyphens: none; text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: .16em; transition: color .18s, text-decoration-color .2s; }
 .tile-meta p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
 /* Work index: shareable filters, two layouts, one card hierarchy. */
@@ -125,21 +127,22 @@ main:focus { outline: none; }
 .page-heading { padding-top: 76px; }
 .page-heading h1 { font-size: clamp(68px, 9.5vw, 132px); font-weight: 580; letter-spacing: -.075em; line-height: 1; }
 .portfolio-page .page-heading h1, .contacts-page .page-heading h1, .education-page .page-heading h1 { letter-spacing: -.05em; }
-.portfolio-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
-.portfolio-heading > .text-link { flex: none; }
+.portfolio-heading { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: flex-start; column-gap: 32px; row-gap: 16px; }
+.portfolio-heading h1 { min-width: 0; hyphens: none; }
+.portfolio-heading--education h1 { font-size: clamp(56px, 6.3vw, 92px); }
+.portfolio-section-link { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; padding-block: 6px; font: 500 clamp(22px, 2.4vw, 34px)/1.15 'Golos Text Variable', Arial, sans-serif; letter-spacing: -.04em; text-wrap: balance; hyphens: none; text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: .16em; transition: transform 220ms var(--ease), text-decoration-color 220ms; }
+.portfolio-section-link:focus-visible { text-decoration-color: currentColor; }
 .portfolio-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 36px; margin-bottom: 42px; }
 .project-filters, .portfolio-view { display: flex; align-items: center; gap: 6px; }
 .project-filters a, .portfolio-view a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 3px; color: var(--muted); font: 480 16px/1.35 var(--serif); letter-spacing: -.025em; }
 .project-filters a:first-child { margin-left: -16px; }
 .project-filters a[aria-current], .portfolio-view a[aria-current] { color: var(--ink); background: var(--paper-deep); font-weight: 600; }
 .portfolio-view a { padding-inline: 12px; }
-.portfolio-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 72px; align-items: start; }
-.portfolio-grid .project-tile { grid-column: span 6; }
-.portfolio-grid .project-tile:nth-child(4n+1), .portfolio-grid .project-tile:nth-child(4n) { grid-column: span 7; }
-.portfolio-grid .project-tile:nth-child(4n+2), .portfolio-grid .project-tile:nth-child(4n+3) { grid-column: span 5; }
-.portfolio-grid .project-tile:nth-child(even) { padding-top: 100px; }
+.portfolio-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 32px; align-items: start; }
+.portfolio-rail { display: flex; flex-direction: column; gap: 64px; min-width: 0; }
+.portfolio-rail + .portfolio-rail { padding-top: 32px; }
 .portfolio-grid.is-list { display: block; }
-.portfolio-grid.is-list .project-tile { display: grid; grid-template-columns: minmax(0, 1fr) 220px; align-items: center; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+.portfolio-grid.is-list .project-tile { margin-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) 220px; align-items: center; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
 .portfolio-grid.is-list .project-tile:first-child { padding-top: 0; }
 .portfolio-grid.is-list .tile-image { grid-column: 2; grid-row: 1; }
 .portfolio-grid.is-list .tile-meta { grid-column: 1; grid-row: 1; padding: 0; }
@@ -210,16 +213,16 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 .portrait-placeholder > span { padding: 24px; color: var(--muted); font: 400 16px/1.4 var(--serif); text-align: center; }
 
 /* Education documents are separate from the artwork catalog. */
-.education-page .page-heading h1 { font-size: clamp(42px, 8.5vw, 110px); }
-.credential-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 80px; margin-top: 64px; }
-.credential-copy { max-width: 520px; }
+
+.credential-layout { margin-top: 48px; }
+.credential-copy { max-width: 720px; }
 .credential-period { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
 .credential-copy h2 { font: 440 clamp(30px, 3.4vw, 46px)/1.2 var(--serif); letter-spacing: -.045em; }
 .credential-school { font: 400 22px/1.5 var(--serif); margin-top: 28px; }
 .credential-copy > p:last-of-type { color: var(--muted); font-size: 15px; line-height: 1.75; margin-top: 20px; }
-.credential-copy .text-link { margin-top: 28px; }
-.credential-document { width: 100%; max-width: 440px; justify-self: end; }
-.credential-document figcaption { color: var(--muted); font-size: 12px; line-height: 1.6; padding-top: 12px; }
+.credential-documents { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 24px; margin-top: 40px; min-width: 0; }
+.credential-document { width: 100%; }
+.credential-document figcaption { color: var(--muted); font-size: 13px; line-height: 1.6; padding-top: 12px; }
 
 /* Contact: the address remains usable when clipboard permission is denied. */
 .contacts-page { min-height: 680px; }
@@ -257,6 +260,9 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 .footer-art img { width: min(1320px, calc(100% - var(--gutter) * 2)); height: auto; opacity: .78; }
 
 @media (hover: hover) and (pointer: fine) {
+  .project-tile:hover { transform: translateY(-3px); }
+  .project-tile:hover .tile-meta h3 { text-decoration-color: currentColor; }
+  .portfolio-section-link:hover { transform: translateY(-2px); text-decoration-color: currentColor; }
   .site-nav a:hover, .header-contact:hover, .text-link:hover, .back-link:hover, .contact-email:hover, .hero-project-link:hover, .copy-button:hover { transform: scale(1.025); color: var(--ink); }
   .language-trigger:hover { background: var(--paper-deep); }
   .social-row:hover .social-detail { color: var(--ink); }
@@ -321,8 +327,10 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .page-heading { padding-top: 48px; }
   .page-heading h1 { font-size: clamp(56px, 12vw, 88px); }
   .portfolio-heading { align-items: baseline; flex-wrap: wrap; column-gap: 16px; row-gap: 8px; }
-  .portfolio-heading > .text-link { font-size: 16px; }
-  .credential-layout { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; }
+  .portfolio-heading--education h1 { font-size: clamp(34px, 8.8vw, 56px); }
+  .portfolio-section-link { font-size: clamp(21px, 5.5vw, 28px); }
+  .credential-layout { margin-top: 36px; }
+  .credential-documents { grid-template-columns: 1fr; gap: 32px; margin-top: 32px; }
   .credential-document { justify-self: start; }
   .portfolio-toolbar { flex-wrap: wrap; row-gap: 8px; margin-top: 16px; margin-bottom: 24px; }
   .project-filters a { padding-inline: 12px; font-size: 15px; }
@@ -330,7 +338,7 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .portfolio-view { margin-left: -8px; }
   .portfolio-view a { padding-inline: 8px; font-size: 14px; }
   .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
-  .portfolio-grid .project-tile:nth-child(n) { grid-column: auto; padding-top: 0; }
+  .portfolio-rail { display: contents; }
   .portfolio-grid.is-list .project-tile { grid-template-columns: minmax(0, 1fr) clamp(80px, 24vw, 112px); gap: 16px; padding: 24px 0; }
   .portfolio-grid.is-list .tile-meta h3 { font-size: clamp(22px, 6vw, 24px); }
   .project-heading { padding-top: 24px; padding-bottom: 32px; }
@@ -398,6 +406,11 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .education li, .tools dl > div { grid-template-columns: 1fr; gap: 3px; }
 }
 
+@media (max-width: 900px) {
+  .portfolio-heading--education { display: block; }
+  .portfolio-heading--education .portfolio-section-link { margin-top: 8px; }
+}
+
 @media (hover: none) {
   .project-image-button .zoom-label { opacity: 1; transform: none; }
 }
@@ -405,5 +418,10 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .project-tile:focus-visible, .project-tile:hover, .portfolio-section-link:hover { transform: none; }
   .putty-face, .putty-glyph.is-hovered .putty-face, .putty-glyph.is-dragging .putty-face { transform: none !important; }
 }
+
+.site-canvas > main:not(.about-page) { animation: page-in 160ms ease-out both; }
+.viewer-image img { animation: page-in 160ms ease-out both; }
+@keyframes page-in { from { opacity: .75; } to { opacity: 1; } }

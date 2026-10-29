@@ -110,6 +110,120 @@ test('portfolio restores filters and layouts with one cover per real work', asyn
   }
 });
 
+test('Portfolio navigation and paired section headings retain catalog state', async ({ page }) => {
+  await ready(page);
+  for (const [language, topLabel, workLabel, educationLabel] of [
+    ['ru', 'Портфолио', 'Работы', 'Образование и опыт'],
+    ['en', 'Portfolio', 'Work', 'Education & experience'],
+    ['zh', '作品集', '作品', '教育与经历'],
+  ]) {
+    await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+    for (const width of [320, 390, 1440]) {
+      await page.setViewportSize({ width, height: 844 });
+      await ready(page, '?page=portfolio&filter=graphics&view=list');
+      await expect(page.locator('main h1')).toHaveText(workLabel);
+      await expect(page.locator('.portfolio-section-link')).toHaveText(educationLabel);
+      const topLink = page.locator('.site-nav a[href="?page=portfolio"]');
+      await expect(topLink).toHaveText(topLabel);
+      await expect(topLink).toHaveAttribute('aria-current', 'page');
+      await page.locator('.portfolio-section-link').click();
+      await expect(page).toHaveURL(/page=education&filter=graphics&view=list/);
+      await expect(page.locator('main h1')).toHaveText(educationLabel);
+      await expect(page.locator('.portfolio-section-link')).toHaveText(workLabel);
+      await expect(topLink).toHaveAttribute('aria-current', 'page');
+      await page.locator('.portfolio-section-link').click();
+      await expect(page).toHaveURL(/page=portfolio&filter=graphics&view=list/);
+      await expect(page.locator('.portfolio-grid')).toHaveClass(/is-list/);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  }
+});
+
+test('the long English education title keeps its reciprocal link nearby', async ({ page }) => {
+  await ready(page);
+  await page.evaluate(() => localStorage.setItem('meowarch-language', 'en'));
+  for (const width of [320, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await ready(page, '?page=education');
+    const heading = await page.locator('main h1').boundingBox();
+    const link = await page.locator('.portfolio-section-link').boundingBox();
+    if (width < 900) {
+      expect(Math.abs(link.x - heading.x)).toBeLessThan(1);
+      expect(link.y).toBeGreaterThanOrEqual(heading.y + heading.height);
+    } else {
+      expect(link.x - (heading.x + heading.width)).toBeGreaterThanOrEqual(16);
+      expect(link.x - (heading.x + heading.width)).toBeLessThanOrEqual(40);
+      expect(heading.height).toBeLessThan(100);
+    }
+  }
+});
+
+test('all three certificate pages appear in order and open a complete accessible gallery', async ({ page }) => {
+  await ready(page, '?page=education');
+  const sheets = page.locator('.credential-document');
+  await expect(sheets).toHaveCount(3);
+  for (let i = 0; i < 3; i++) {
+    const image = sheets.nth(i).locator('img');
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate(el => el.decode());
+    await expect(image).toHaveAttribute('src', new RegExp(`certificate-page-${i + 1}\\.webp$`));
+    expect(await image.evaluate(el => Math.abs(el.getBoundingClientRect().width / el.getBoundingClientRect().height - el.naturalWidth / el.naturalHeight))).toBeLessThan(.005);
+  }
+  const opener = sheets.nth(1).locator('button');
+  await opener.click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await expect(page.locator('.viewer-count')).toHaveText('2 из 3');
+  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /certificate-page-2\.webp$/);
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('.viewer-count')).toHaveText('3 из 3');
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('.viewer-count')).toHaveText('1 из 3');
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(opener).toBeFocused();
+});
+
+test('the full catalog follows two steady rails without tall empty row gaps', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 960 });
+  await ready(page, '?page=portfolio');
+  const rails = page.locator('.portfolio-rail');
+  await expect(rails).toHaveCount(2);
+  for (const rail of await rails.all()) {
+    const cards = await rail.locator('.project-tile').all();
+    expect(cards.length).toBeGreaterThan(0);
+    const boxes = await Promise.all(cards.map(card => card.boundingBox()));
+    for (let i = 1; i < boxes.length; i++) {
+      expect(boxes[i].x - boxes[0].x).toBeLessThan(1);
+      expect(boxes[i].y - (boxes[i - 1].y + boxes[i - 1].height)).toBeGreaterThanOrEqual(63);
+      expect(boxes[i].y - (boxes[i - 1].y + boxes[i - 1].height)).toBeLessThanOrEqual(65);
+    }
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('.project-tile')).toHaveCount(projects.length);
+  const order = await page.locator('.project-tile').evaluateAll(cards => cards.map(card => card.getAttribute('href')));
+  expect(order).toEqual(projects.map(project => `?project=${project.id}`));
+});
+
+test('card hover, keyboard focus and touch activation share one direct affordance', async ({ page, browser }) => {
+  await page.setViewportSize({ width: 1440, height: 960 });
+  await ready(page, '?page=portfolio');
+  const tile = page.locator('.project-tile').first();
+  await tile.hover();
+  await expect.poll(() => tile.evaluate(el => getComputedStyle(el).transform)).toBe('matrix(1, 0, 0, 1, 0, -3)');
+  await expect(tile.locator('h3')).toHaveCSS('text-decoration-color', 'rgb(37, 43, 38)');
+  await tile.focus();
+  await expect(tile).toHaveCSS('outline-style', 'solid');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(tile).toHaveCSS('transform', 'none');
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const touchPage = await context.newPage();
+  await ready(touchPage, '?page=portfolio');
+  await touchPage.locator('.project-tile').first().tap();
+  await expect(touchPage).toHaveURL(new RegExp(`project=${projects[0].id}`));
+  await context.close();
+});
+
 test('history restores catalog scroll and new pages start at the top', async ({ page }) => {
   await ready(page, '?page=portfolio');
   await page.locator('a[href="?project=socrates"] .tile-meta h3').click();
@@ -282,7 +396,7 @@ test('mobile navigation, escape and current-page links close correctly', async (
   await page.locator('#site-navigation').getByRole('link', { name: 'О себе' }).click();
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
   await menu.click();
-  await page.locator('#site-navigation').getByRole('link', { name: 'Работы' }).click();
+  await page.locator('#site-navigation').getByRole('link', { name: 'Портфолио' }).click();
   await expect(page.locator('main h1')).toHaveText('Работы');
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
 });

@@ -3,15 +3,40 @@
   "sourceSha256": "0f09ebb6726b84285141db5941ba5cf297cc50253c4e595690fbf7f355da1446",
   "sourcePages": 3,
   "publicPages": [
-    1
-  ],
-  "privatePages": [
+    1,
     2,
     3
   ],
+  "privatePages": [],
   "type": "Свидетельство с отличием",
   "programme": "Живопись",
-  "publicAsset": "education-certificate.webp",
-  "publicDerivative": "Извлечена только обложка страницы 1; обрезаны 12 px по краям, сохранён WebP без EXIF/скрытого текста. Страницы с личными полями, номерами и подписями не входят в public или историю Git.",
-  "original": "Исходный PDF не изменён; резервная копия — backups/education/original.pdf (игнорируется Git)."
+  "publicDerivative": "Все три страницы представлены проверенными растровыми WebP без EXIF, XMP и скрытого текста; личные поля на странице 2 закрыты непрозрачными пикселями. Остальное содержание сохранено.",
+  "original": "Исходный PDF не изменён и остаётся вне публичных файлов и Git.",
+  "publicAssets": [
+    {
+      "page": 1,
+      "src": "certificate-page-1.webp",
+      "width": 1424,
+      "height": 1839,
+      "sha256": "1be722b89f761a5c941708402a85d05605e753261209b031949f76772318ee0e"
+    },
+    {
+      "page": 2,
+      "src": "certificate-page-2.webp",
+      "width": 1570,
+      "height": 2046,
+      "sha256": "ba88a845991bb8a72c165eda3e9372a629fc5c93a6bedda86d3ce02f200849bf"
+    },
+    {
+      "page": 3,
+      "src": "certificate-page-3.webp",
+      "width": 1516,
+      "height": 1968,
+      "sha256": "ee27c248b0c1bb23ece415b5aa9e8b315ba1645df868ea35ee9725e6c06efc70"
+    }
+  ],
+  "redactedFields": [
+    "Full date of birth (page 2)",
+    "Registration number (page 2)"
+  ]
 }

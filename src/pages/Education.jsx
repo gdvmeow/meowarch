@@ -1,35 +1,36 @@
 import React, { useCallback, useState } from 'react';
 import { asset } from '../data.js';
+import { certificatePages } from '../educationDocument.js';
 import GalleryViewer from '../components/GalleryViewer.jsx';
+import PortfolioHeading from '../components/PortfolioHeading.jsx';
 
-export default function Education({ t }) {
-  const [open, setOpen] = useState(false);
-  const close = useCallback(() => setOpen(false), []);
+export default function Education({ t, route }) {
+  const [index, setIndex] = useState(null);
+  const close = useCallback(() => setIndex(null), []);
   const education = t.education;
-  // Only the public cover is included. Personal pages remain in the original PDF.
   const document = {
     title: education.title,
-    images: [{ src: 'education-certificate.webp', width: 1663, height: 2155, alt: education.imageAlt }],
+    images: certificatePages.map((page, i) => ({ ...page, alt: education.pageAlts[i] })),
   };
-  const image = document.images[0];
   return <main id="main" tabIndex="-1" className="interior-page shell education-page">
-    <div className="page-heading"><h1>{education.heading}</h1></div>
+    <PortfolioHeading active="education" route={route} t={t}/>
     <section className="credential-layout" aria-labelledby="credential-heading">
       <div className="credential-copy">
         <p className="credential-period">2019 — 2024</p>
         <h2 id="credential-heading">{education.title}</h2>
         <p className="credential-school">{education.school}</p>
         <p>{education.description}</p>
-        <a className="text-link" href="?page=portfolio">{t.project.back}</a>
       </div>
-      <figure className="credential-document">
-        <button className="project-image-button" type="button" onClick={() => setOpen(true)} aria-label={t.project.zoomImage(image.alt)}>
-          <img src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} decoding="async"/>
-          <span className="zoom-label" aria-hidden="true">{t.project.zoom}</span>
-        </button>
-        <figcaption>{education.caption}</figcaption>
-      </figure>
+      <div className="credential-documents">
+        {document.images.map((image, i) => <figure className="credential-document" key={image.src}>
+          <button className="project-image-button" type="button" onClick={() => setIndex(i)} aria-label={t.project.zoomImage(image.alt)}>
+            <img src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async"/>
+            <span className="zoom-label" aria-hidden="true">{t.project.zoom}</span>
+          </button>
+          <figcaption>{t.project.count(i + 1, document.images.length)} · {image.alt}</figcaption>
+        </figure>)}
+      </div>
     </section>
-    {open && <GalleryViewer project={document} index={0} onChange={() => {}} onClose={close} t={t}/>}
+    {index !== null && <GalleryViewer project={document} index={index} onChange={setIndex} onClose={close} t={t}/>}
   </main>;
 }

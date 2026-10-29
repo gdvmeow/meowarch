@@ -4,6 +4,7 @@ import { portfolioHref } from '../routing.js';
 import PuttyText from '../PuttyText.jsx';
 import ProjectTile from '../components/ProjectTile.jsx';
 import GalleryViewer from '../components/GalleryViewer.jsx';
+import PortfolioHeading from '../components/PortfolioHeading.jsx';
 
 export function Home({ t, projects }) {
   const selected = projects.slice(0, 2);
@@ -30,7 +31,7 @@ export function Portfolio({ t, projects, route }) {
   const shown = projects.filter(project => filter === 'all' || project.group === filter);
   const filters = ['all', ...new Set(projects.map(project => project.group))];
   return <main id="main" tabIndex="-1" className="interior-page shell portfolio-page">
-    <div className="page-heading portfolio-heading"><h1>{t.portfolio.heading}</h1><a className="text-link" href="?page=education">{t.education.heading}</a></div>
+    <PortfolioHeading active="portfolio" route={route} t={t}/>
     {!single && <div className="portfolio-toolbar">
       <nav className="project-filters" aria-label={t.portfolio.filtersLabel}>
         {filters.map(value => <a key={value} href={portfolioHref({ filter: value, view })} aria-current={filter === value ? 'true' : undefined}>{t.portfolio[value]}</a>)}
@@ -40,7 +41,11 @@ export function Portfolio({ t, projects, route }) {
       </nav>
     </div>}
     <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>
-      {shown.map(project => <ProjectTile key={project.id} project={project}/>)}
+      {view === 'list' ? shown.map(project => <ProjectTile key={project.id} project={project}/>)
+        : <>
+          <div className="portfolio-rail">{shown.slice(0, Math.ceil(shown.length / 2)).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
+          <div className="portfolio-rail">{shown.slice(Math.ceil(shown.length / 2)).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
+        </>}
     </div>
   </main>;
 }
