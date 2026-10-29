@@ -26,14 +26,20 @@ export function Contacts({ t, socialLinks }) {
   const [copyState, setCopyState] = useState('');
   const timerRef = useRef(null);
   const mountedRef = useRef(true);
+  const copyingRef = useRef(false);
   useEffect(() => {
     mountedRef.current = true;
     return () => { mountedRef.current = false; window.clearTimeout(timerRef.current); };
   }, []);
   const copyEmail = async () => {
+    if (copyingRef.current) return;
+    copyingRef.current = true;
+    window.clearTimeout(timerRef.current);
+    setCopyState('copying');
     let state;
     try { await navigator.clipboard.writeText(contactEmail); state = 'copied'; }
     catch { state = 'copyFailed'; }
+    copyingRef.current = false;
     if (!mountedRef.current) return;
     setCopyState(state);
     window.clearTimeout(timerRef.current);
@@ -42,7 +48,10 @@ export function Contacts({ t, socialLinks }) {
   return <main id="main" tabIndex="-1" className="interior-page shell contacts-page">
     <div className="page-heading"><h1>{t.contacts.heading}</h1></div>
     <p className="contact-intro">{t.contacts.intro}</p>
-    <div className="contact-main"><div className="contact-primary"><p className="contact-label">{t.contacts.emailLabel}</p><a className="contact-email" href={`mailto:${contactEmail}`} translate="no">{contactEmail}</a><button className="copy-button" type="button" onClick={copyEmail}>{t.contacts.copy}</button><p className="copy-status" role="status">{copyState ? t.contacts[copyState] : ''}</p></div>
+    <div className="contact-main"><div className="contact-primary">
+      <div className="contact-address"><a className="contact-email" href={`mailto:${contactEmail}`} translate="no">{contactEmail}</a><button className="copy-button" type="button" aria-label={t.contacts.copy} aria-busy={copyState === 'copying'} data-state={copyState || 'idle'} onClick={copyEmail}><Icon name="copy"/><Icon name="check"/></button></div>
+      <p className="copy-status" role="status" aria-atomic="true"><span className={copyState === 'copyFailed' ? '' : 'visually-hidden'}>{['copied', 'copyFailed'].includes(copyState) ? t.contacts[copyState] : ''}</span></p>
+    </div>
       <div className="contact-socials">{socialLinks.map(item => <a className="social-row" href={item.href} target="_blank" rel="noopener noreferrer" key={item.id}><span>{item.label}</span><span className="social-detail">{item.detail}</span><Icon name="external"/></a>)}</div>
     </div>
   </main>;

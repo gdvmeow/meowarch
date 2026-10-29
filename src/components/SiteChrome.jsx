@@ -3,6 +3,7 @@ import { asset, contactEmail } from '../data.js';
 import { languages } from '../i18n.js';
 import PuttyText from '../PuttyText.jsx';
 import Icon from './Icon.jsx';
+import ChoiceText from './ChoiceText.jsx';
 
 const navigation = ['portfolio', 'about', 'contacts'];
 
@@ -80,7 +81,7 @@ export function Header({ route, t, language, onLanguageChange }) {
       <nav id="site-navigation" className={`site-nav ${open ? 'is-open' : ''}`} aria-label={t.navigationLabel} onClick={event => {
         if (event.target.closest('a')) setOpen(false);
       }}>
-        {navigation.map(page => <a key={page} href={`?page=${page}`} aria-current={activePage === page ? 'page' : undefined}>{t.nav[page]}</a>)}
+        {navigation.map(page => <a key={page} href={`?page=${page}`} aria-current={activePage === page ? 'page' : undefined}><ChoiceText>{t.nav[page]}</ChoiceText></a>)}
       </nav>
       <div className="header-actions">
         <a className="header-contact" href={`mailto:${contactEmail}`}>{t.write}</a>
@@ -99,7 +100,6 @@ export function Footer({ t, socialLinks }) {
       <div className="footer-main">
         <div className="footer-identity">
           <h2 translate="no"><PuttyText>{t.name}</PuttyText></h2>
-          <p>{t.footer.description}</p>
           <a className="footer-email" href={`mailto:${contactEmail}`} translate="no">{contactEmail}</a>
         </div>
         <nav className="footer-links" aria-label={t.footerNavigationLabel}>

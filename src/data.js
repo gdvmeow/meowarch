@@ -69,7 +69,7 @@ export const profile = { portrait: { src: 'about-photo.webp', width: 1280, heigh
 export const socialLinks = [
   { id: 'telegram', label: 'Telegram', detail: '@gdvmeow', href: 'https://t.me/gdvmeow' },
   { id: 'behance', label: 'Behance', detail: 'behance.net/gdvmeow', href: 'https://www.behance.net/gdvmeow' },
-  { id: 'linkedin', label: 'LinkedIn', detail: 'Профиль Виктории', href: 'https://www.linkedin.com/in/gdvmeow' },
+  { id: 'linkedin', label: 'LinkedIn', detail: 'linkedin.com/in/gdvmeow', href: 'https://linkedin.com/in/gdvmeow' },
   { id: 'publications', label: 'Публикации', detail: 't.me/tori_arch', href: 'https://t.me/tori_arch' },
 ];
 

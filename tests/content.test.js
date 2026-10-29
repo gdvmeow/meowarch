@@ -22,6 +22,7 @@ test('all languages have matching interface and profile fields', () => {
 });
 
 test('every project has an existing image with dimensions and a translated description', async () => {
+  assert.equal(projects.length, 20);
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);

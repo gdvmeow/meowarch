@@ -6,6 +6,8 @@ import PuttyText from '../PuttyText.jsx';
 import ProjectTile from '../components/ProjectTile.jsx';
 import GalleryViewer from '../components/GalleryViewer.jsx';
 import PortfolioHeading from '../components/PortfolioHeading.jsx';
+import Icon from '../components/Icon.jsx';
+import ChoiceText from '../components/ChoiceText.jsx';
 
 export function Home({ t, projects }) {
   const selected = projects.slice(0, 2);
@@ -16,11 +18,11 @@ export function Home({ t, projects }) {
           <h1><span><PuttyText variant="hero">{t.hero.architecture}</PuttyText></span><span className="hero-italic-line"><PuttyText variant="hero">{t.hero.and}</PuttyText><em><PuttyText variant="hero">{t.hero.graphics}</PuttyText></em></span></h1>
           <p className="hero-description">{t.hero.description}</p>
         </div>
-        <a className="hero-project-link" href="?page=portfolio">{t.hero.action}</a>
+        <a className="hero-project-link" href="#selected-work">{t.hero.action}</a>
       </div>
     </section>
-    <section className="selected-section shell" aria-labelledby="selected-heading">
-      <div className="section-heading"><h2 id="selected-heading">{t.selectedProjects}</h2><a className="text-link" href="?page=portfolio">{t.fullPortfolio}</a></div>
+    <section id="selected-work" className="selected-section shell" aria-labelledby="selected-heading">
+      <div className="section-heading"><h2 id="selected-heading">{t.selectedProjects}</h2><a className="portfolio-cta" href="?page=portfolio"><span>{t.fullPortfolio}</span><Icon name="arrowRight"/></a></div>
       <div className="selected-grid">{selected.map((project, index) => <ProjectTile key={project.id} project={project} className={index === 0 ? 'selected-large' : 'selected-small'}/>)}</div>
     </section>
   </main>;
@@ -36,10 +38,10 @@ export function Portfolio({ t, projects, route }) {
     <PortfolioHeading active="portfolio" route={route} t={t}/>
     {!single && <div className="portfolio-toolbar">
       <nav className="project-filters" aria-label={t.portfolio.filtersLabel}>
-        {filters.map(value => <a key={value} href={portfolioHref({ filter: value, view })} aria-current={filter === value ? 'true' : undefined}>{t.portfolio[value]}</a>)}
+        {filters.map(value => <a key={value} href={portfolioHref({ filter: value, view })} aria-current={filter === value ? 'true' : undefined}><ChoiceText>{t.portfolio[value]}</ChoiceText></a>)}
       </nav>
       <nav className="portfolio-view" aria-label={t.portfolio.viewLabel}>
-        {['grid', 'list'].map(value => <a key={value} href={portfolioHref({ filter, view: value })} aria-current={view === value ? 'true' : undefined} aria-label={t.portfolio[value]}><span>{t.portfolio[value]}</span></a>)}
+        {['grid', 'list'].map(value => <button key={value} type="button" data-navigation-href={portfolioHref({ filter, view: value })} aria-pressed={view === value} aria-label={t.portfolio[value]}><Icon name={value} className={`view-icon view-icon--${value}`}/></button>)}
       </nav>
     </div>}
     <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>

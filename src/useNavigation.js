@@ -24,9 +24,9 @@ export default function useNavigation() {
 
     const navigate = event => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const link = event.target.closest('a[href^="?"]');
+      const link = event.target.closest('a[href^="?"], button[data-navigation-href]');
       if (!link || link.target || link.hasAttribute('download')) return;
-      const url = new URL(link.href);
+      const url = new URL(link.dataset.navigationHref ?? link.href, window.location.href);
       if (url.origin !== window.location.origin || url.pathname !== window.location.pathname) return;
       event.preventDefault();
       if (url.search === window.location.search) {

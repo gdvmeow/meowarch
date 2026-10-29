@@ -217,16 +217,16 @@ export const scanStudies = [
   {
     "id": "head-muscles",
     "group": "graphics",
-    "title": "Мышцы головы и шеи",
+    "title": "Экорше Гудона",
     "category": "Академический рисунок",
-    "summary": "Фронтальный рисунок анатомической модели.",
+    "summary": "Фронтальный рисунок головы экорше Гудона.",
     "description": "Карандашная анатомическая штудия головы и шеи. Проработаны мышечные группы, пропорции и светотеневая моделировка объёма.",
     "images": [
       {
         "src": "head-muscles.webp",
         "width": 1631,
         "height": 2312,
-        "alt": "Мышцы головы и шеи — полный лист"
+        "alt": "Экорше Гудона — полный лист"
       }
     ]
   },
@@ -369,12 +369,12 @@ export const scanStudyTranslations = {
       ]
     },
     "head-muscles": {
-      "title": "Head and neck muscles",
+      "title": "Houdon’s écorché",
       "category": "Academic drawing",
-      "summary": "A frontal drawing of an anatomical model.",
+      "summary": "A frontal study of the head of Houdon’s écorché.",
       "description": "A pencil anatomy study of the head and neck, exploring muscle groups, proportions and tonal modelling of volume.",
       "imageAlts": [
-        "Head and neck muscles — full sheet"
+        "Houdon’s écorché — full sheet"
       ]
     },
     "skull-studies": {
@@ -507,12 +507,12 @@ export const scanStudyTranslations = {
       ]
     },
     "head-muscles": {
-      "title": "头颈肌肉",
+      "title": "乌东人体解剖像",
       "category": "学院素描",
-      "summary": "解剖模型的正面绘图。",
+      "summary": "乌东人体解剖像头部的正面素描。",
       "description": "头颈解剖铅笔习作，研究肌群、比例及体积的明暗塑造。",
       "imageAlts": [
-        "头颈肌肉 — 完整图纸"
+        "乌东人体解剖像 — 完整图纸"
       ]
     },
     "skull-studies": {

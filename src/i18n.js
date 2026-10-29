@@ -26,7 +26,7 @@ export const copy = {
       action: 'Смотреть работы',
     },
     selectedProjects: 'Избранные работы',
-    fullPortfolio: 'Портфолио',
+    fullPortfolio: 'Смотреть портфолио',
     portfolio: {
       heading: 'Работы',
       filtersLabel: 'Разделы работ',
@@ -93,7 +93,7 @@ export const copy = {
     social: {
       telegram: { label: 'Telegram', detail: '@gdvmeow' },
       behance: { label: 'Behance', detail: 'behance.net/gdvmeow' },
-      linkedin: { label: 'LinkedIn', detail: 'Профиль Виктории' },
+      linkedin: { label: 'LinkedIn', detail: 'linkedin.com/in/gdvmeow' },
       publications: { label: 'Публикации', detail: 't.me/tori_arch' },
     },
     notFound: { heading: 'Страница не найдена', body: 'Возможно, ссылка изменилась. Все работы доступны в портфолио.', action: 'Открыть работы' },
@@ -119,7 +119,7 @@ export const copy = {
       action: 'Explore work',
     },
     selectedProjects: 'Selected work',
-    fullPortfolio: 'Portfolio',
+    fullPortfolio: 'View portfolio',
     portfolio: {
       heading: 'Work',
       filtersLabel: 'Project categories',
@@ -186,7 +186,7 @@ export const copy = {
     social: {
       telegram: { label: 'Telegram', detail: '@gdvmeow' },
       behance: { label: 'Behance', detail: 'behance.net/gdvmeow' },
-      linkedin: { label: 'LinkedIn', detail: "Viktoria's profile" },
+      linkedin: { label: 'LinkedIn', detail: 'linkedin.com/in/gdvmeow' },
       publications: { label: 'Publications', detail: 't.me/tori_arch' },
     },
     notFound: { heading: 'Page not found', body: 'The link may have changed. You can find all the work in the portfolio.', action: 'Explore work' },
@@ -245,7 +245,7 @@ export const copy = {
       action: '浏览作品',
     },
     selectedProjects: '精选作品',
-    fullPortfolio: '作品集',
+    fullPortfolio: '浏览作品集',
     portfolio: {
       heading: '作品',
       filtersLabel: '项目类别',
@@ -312,7 +312,7 @@ export const copy = {
     social: {
       telegram: { label: 'Telegram', detail: '@gdvmeow' },
       behance: { label: 'Behance', detail: 'behance.net/gdvmeow' },
-      linkedin: { label: 'LinkedIn', detail: 'Viktoria 的主页' },
+      linkedin: { label: 'LinkedIn', detail: 'linkedin.com/in/gdvmeow' },
       publications: { label: '文章', detail: 't.me/tori_arch' },
     },
     notFound: { heading: '页面未找到', body: '链接可能已更改。您可以在作品集中浏览所有项目。', action: '浏览作品' },

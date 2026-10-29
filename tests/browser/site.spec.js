@@ -95,7 +95,7 @@ test('portfolio restores filters and layouts with one cover per real work', asyn
   await page.getByRole('navigation', { name: 'Разделы работ' }).getByRole('link', { name: 'Графика' }).click();
   await expect(page).toHaveURL(/filter=graphics/);
   await expect(page.locator('.project-tile')).toHaveCount(projects.filter(p => p.group === 'graphics').length);
-  await page.getByRole('navigation', { name: 'Вид работ' }).getByRole('link', { name: 'Список' }).click();
+  await page.getByRole('navigation', { name: 'Вид работ' }).getByRole('button', { name: 'Список' }).click();
   await expect(page).toHaveURL(/view=list/);
   await page.reload();
   await expect(page.locator('.portfolio-grid')).toHaveClass(/is-list/);
@@ -379,14 +379,15 @@ test('clipboard success and denial give usable feedback', async ({ page, context
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await ready(page, '?page=contacts');
   await page.getByRole('button', { name: 'Скопировать адрес' }).click();
-  const copyPosition = await page.locator('.contact-primary').evaluate(el => ({
-    addressBottom: el.querySelector('.contact-email').getBoundingClientRect().bottom,
-    buttonTop: el.querySelector('.copy-button').getBoundingClientRect().top,
+  const copyPosition = await page.locator('.contact-address').evaluate(el => ({
+    addressRight: el.querySelector('.contact-email').getBoundingClientRect().right,
+    buttonLeft: el.querySelector('.copy-button').getBoundingClientRect().left,
   }));
-  expect(copyPosition.buttonTop - copyPosition.addressBottom).toBeGreaterThanOrEqual(16);
+  expect(copyPosition.buttonLeft - copyPosition.addressRight).toBeGreaterThanOrEqual(8);
   await expect(page.getByRole('status')).toHaveText('Адрес скопирован');
-  await expect(page.getByText('Адрес скопирован', { exact: true })).toHaveCount(1);
-  await expect(page.locator('.copy-button')).toHaveText('Скопировать адрес');
+  await expect(page.locator('.copy-button')).toHaveAttribute('data-state', 'copied');
+  await expect(page.locator('.copy-button')).toHaveAccessibleName('Скопировать адрес');
+  await expect(page.locator('.copy-button')).toHaveText('');
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('gdvmeow@gmail.com');
   await page.evaluate(() => { navigator.clipboard.writeText = () => Promise.reject(new Error('denied')); });
   await page.locator('.copy-button').click();
@@ -398,7 +399,7 @@ test('navigation and calls to action keep the original ink and paper palette', a
   await ready(page);
   const ink = 'rgb(37, 43, 38)';
   await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(238, 234, 226)');
-  await expect(page.locator('.section-heading .text-link')).toHaveCSS('color', ink);
+  await expect(page.locator('.portfolio-cta')).toHaveCSS('color', ink);
   await expect(page.locator('.hero-project-link')).toHaveCSS('color', ink);
   await expect(page.locator('.hero-project-link .icon')).toHaveCount(0);
   for (const path of ['?page=about', '?page=contacts', '?page=portfolio']) {
@@ -551,4 +552,105 @@ test('page, language popup and modal pass automated accessibility checks', async
   await ready(page, '?project=socrates');
   await page.locator('.project-cover button').click();
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
+});
+
+
+test('visible choices keep stable targets, a real type hierarchy and icon-only view controls', async ({ page }) => {
+  for (const language of ['ru', 'en', 'zh']) {
+    await ready(page);
+    await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+    for (const width of [320, 390, 768, 1440, 2400]) {
+      await page.setViewportSize({ width, height: 960 });
+      await ready(page, '?page=portfolio');
+      const filters = page.locator('.project-filters a');
+      const boxes = await filters.evaluateAll(links => links.map(el => {
+        const rect = el.getBoundingClientRect();
+        return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+      }));
+      for (let i = 0; i < await filters.count(); i++) {
+        await filters.nth(i).click();
+        await page.waitForTimeout(250);
+        const sizes = await filters.evaluateAll(links => links.map(el => ({
+          selected: el.hasAttribute('aria-current'),
+          size: parseFloat(getComputedStyle(el.querySelector('.choice-text > span')).fontSize),
+          fill: getComputedStyle(el).backgroundColor,
+          height: el.getBoundingClientRect().height,
+        })));
+        expect(sizes.filter(item => item.selected)).toHaveLength(1);
+        expect(sizes[i].size).toBeGreaterThanOrEqual(Math.max(...sizes.filter(item => !item.selected).map(item => item.size)) * 1.3);
+        expect(sizes.every(item => item.fill === 'rgba(0, 0, 0, 0)' && item.height >= 44)).toBe(true);
+        const after = await filters.evaluateAll(links => links.map(el => {
+          const rect = el.getBoundingClientRect();
+          return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+        }));
+        expect(after).toEqual(boxes);
+      }
+      const buttons = page.locator('.portfolio-view button');
+      await expect(buttons).toHaveCount(2);
+      await expect(buttons.nth(0)).toHaveAttribute('aria-pressed', 'true');
+      await buttons.nth(1).focus();
+      await page.keyboard.press('Space');
+      await expect(page).toHaveURL(/view=list/);
+      await expect(buttons.nth(1)).toHaveAttribute('aria-pressed', 'true');
+      await expect(buttons.nth(1)).toBeFocused();
+      await expect(buttons.nth(1)).toHaveCSS('outline-style', 'solid');
+      await expect(buttons.nth(1)).toHaveText('');
+      await page.goBack();
+      await expect(buttons.nth(0)).toHaveAttribute('aria-pressed', 'true');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  }
+});
+
+test('home actions, footer group, Houdon deep link and LinkedIn are coherent in every language', async ({ page }) => {
+  for (const [language, title] of [['ru', 'Экорше Гудона'], ['en', 'Houdon’s écorché'], ['zh', '乌东人体解剖像']]) {
+    await ready(page);
+    await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+    for (const width of [320, 390, 768, 1440, 2400]) {
+      await page.setViewportSize({ width, height: 960 });
+      await ready(page);
+      await expect(page.locator('.hero-project-link')).toHaveAttribute('href', '#selected-work');
+      await expect(page.locator('.portfolio-cta')).toHaveAttribute('href', '?page=portfolio');
+      await page.locator('.hero-project-link').click();
+      await expect(page.locator('#selected-work')).toBeInViewport();
+      await page.locator('.portfolio-cta').click();
+      await expect(page).toHaveURL(/page=portfolio/);
+      await expect(page.locator('.footer-identity > p')).toHaveCount(0);
+      const gap = await page.locator('.footer-identity').evaluate(el => el.querySelector('a').getBoundingClientRect().top - el.querySelector('h2').getBoundingClientRect().bottom);
+      expect(gap).toBeLessThanOrEqual(10);
+      await ready(page, '?project=head-muscles');
+      await expect(page.locator('main h1')).toHaveText(title);
+      await expect(page.locator('.project-cover img')).toHaveAttribute('alt', new RegExp(title));
+      await ready(page, '?page=contacts');
+      await expect(page.locator('.social-row[href="https://linkedin.com/in/gdvmeow"] .social-detail')).toHaveText('linkedin.com/in/gdvmeow');
+      await expect(page.locator('.contact-label')).toHaveCount(0);
+      const geometry = await page.locator('.contact-address').evaluate(el => {
+        const address = el.querySelector('a').getBoundingClientRect();
+        const button = el.querySelector('button').getBoundingClientRect();
+        return { gap: button.left - address.right, aligned: Math.abs(button.top + button.height / 2 - address.top - address.height / 2), right: button.right, addressHeight: address.height, lineHeight: parseFloat(getComputedStyle(el.querySelector('a')).lineHeight) };
+      });
+      expect(geometry.gap).toBeGreaterThanOrEqual(8);
+      expect(geometry.aligned).toBeLessThan(1);
+      expect(geometry.right).toBeLessThanOrEqual(width);
+      expect(geometry.addressHeight).toBeLessThanOrEqual(geometry.lineHeight + 1);
+    }
+  }
+});
+
+test('new control motion respects reduced motion while preserving success and selection', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await ready(page);
+  await page.locator('.portfolio-cta').hover();
+  await expect(page.locator('.portfolio-cta .icon')).toHaveCSS('transform', 'none');
+  await ready(page, '?page=portfolio');
+  await page.locator('.portfolio-view button').first().hover();
+  for (const shape of await page.locator('.portfolio-view .icon > *').all()) await expect(shape).toHaveCSS('transform', 'none');
+  await ready(page, '?page=contacts');
+  await page.evaluate(() => { navigator.clipboard.writeText = () => Promise.resolve(); });
+  await page.locator('.copy-button').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.copy-button')).toHaveAttribute('data-state', 'copied');
+  await expect(page.locator('.copy-button .icon').last()).toHaveCSS('opacity', '1');
+  await expect(page.locator('.copy-button .icon').last()).toHaveCSS('transform', 'none');
+  await expect(page.getByRole('status')).toHaveText('Адрес скопирован');
 });
