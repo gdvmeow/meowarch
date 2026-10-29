@@ -555,7 +555,7 @@ test('page, language popup and modal pass automated accessibility checks', async
 });
 
 
-test('visible choices keep stable targets, a real type hierarchy and icon-only view controls', async ({ page }) => {
+test('visible choices follow actual text widths, keep type hierarchy and icon-only view controls', async ({ page }) => {
   for (const language of ['ru', 'en', 'zh']) {
     await ready(page);
     await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
@@ -563,10 +563,6 @@ test('visible choices keep stable targets, a real type hierarchy and icon-only v
       await page.setViewportSize({ width, height: 960 });
       await ready(page, '?page=portfolio');
       const filters = page.locator('.project-filters a');
-      const boxes = await filters.evaluateAll(links => links.map(el => {
-        const rect = el.getBoundingClientRect();
-        return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
-      }));
       for (let i = 0; i < await filters.count(); i++) {
         await filters.nth(i).click();
         await page.waitForTimeout(250);
@@ -579,11 +575,16 @@ test('visible choices keep stable targets, a real type hierarchy and icon-only v
         expect(sizes.filter(item => item.selected)).toHaveLength(1);
         expect(sizes[i].size).toBeGreaterThanOrEqual(Math.max(...sizes.filter(item => !item.selected).map(item => item.size)) * 1.3);
         expect(sizes.every(item => item.fill === 'rgba(0, 0, 0, 0)' && item.height >= 44)).toBe(true);
-        const after = await filters.evaluateAll(links => links.map(el => {
-          const rect = el.getBoundingClientRect();
-          return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+        const geometry = await filters.evaluateAll(links => links.map(el => {
+          const box = el.getBoundingClientRect();
+          const text = el.querySelector('.choice-text > span').getBoundingClientRect();
+          return { x: box.x, y: box.y, right: box.right, width: box.width, textWidth: text.width };
         }));
-        expect(after).toEqual(boxes);
+        const gap = await page.locator('.project-filters').evaluate(el => parseFloat(getComputedStyle(el).columnGap));
+        for (let j = 0; j < geometry.length; j++) {
+          expect(Math.abs(geometry[j].width - geometry[j].textWidth)).toBeLessThan(1);
+          if (j && Math.abs(geometry[j].y - geometry[j - 1].y) < 12) expect(Math.abs(geometry[j].x - geometry[j - 1].right - gap)).toBeLessThan(1);
+        }
       }
       const buttons = page.locator('.portfolio-view button');
       await expect(buttons).toHaveCount(2);

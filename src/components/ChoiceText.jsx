@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Reserve the selected size so changing the choice never moves its neighbours.
+// Let the current text size set the width, so neighbours follow it naturally.
 export default function ChoiceText({ children }) {
-  return <span className="choice-text" data-label={children}><span>{children}</span></span>;
+  return <span className="choice-text"><span>{children}</span></span>;
 }

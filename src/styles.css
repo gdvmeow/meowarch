@@ -79,9 +79,7 @@ main:focus { outline: none; }
 .wordmark { justify-self: start; font: 480 26px/1.15 var(--serif); letter-spacing: -.065em; white-space: nowrap; }
 .site-nav { display: flex; align-items: center; gap: 34px; }
 .site-nav a, .header-contact { display: inline-flex; align-items: center; min-height: 44px; font: 530 17px/1.2 var(--serif); letter-spacing: -.035em; }
-.choice-text { display: inline-grid; align-items: baseline; }
-.choice-text::before { content: attr(data-label); visibility: hidden; font-size: var(--choice-large); font-weight: 530; pointer-events: none; }
-.choice-text::before, .choice-text > span { grid-area: 1 / 1; }
+.choice-text { display: inline-flex; align-items: baseline; }
 .choice-text > span { transition: font-size 220ms var(--ease), color 180ms; }
 .site-nav { --choice-large: 21px; }
 .site-nav a[aria-current='page'] { font-weight: 530; }
