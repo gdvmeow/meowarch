@@ -16,7 +16,7 @@ export function readRoute(search, projects) {
     type: page,
     key: page,
     ...(page === 'portfolio' && {
-      filter: filters.has(params.get('filter')) ? params.get('filter') : 'all',
+      filter: projects.some(project => project.group === params.get('filter')) ? params.get('filter') : 'all',
       view: params.get('view') === 'list' ? 'list' : 'grid',
     }),
   };

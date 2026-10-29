@@ -18,10 +18,11 @@ test('missing projects and unknown pages have a recovery route', () => {
   assert.equal(readRoute('', projects).type, 'home');
 });
 
-test('portfolio links round-trip each filter and layout', () => {
+test('portfolio links round-trip each available filter and layout', () => {
+  const catalog = [{ group: 'architecture' }, { group: 'graphics' }];
   for (const filter of ['all', 'architecture', 'graphics']) {
     for (const view of ['grid', 'list']) {
-      assert.deepEqual(readRoute(portfolioHref({ filter, view }), projects), {
+      assert.deepEqual(readRoute(portfolioHref({ filter, view }), catalog), {
         type: 'portfolio', key: 'portfolio', filter, view,
       });
     }
@@ -33,4 +34,8 @@ test('unsupported filter and layout parameters recover to valid defaults', () =>
   const route = readRoute('?page=portfolio&filter=invalid&view=invalid', projects);
   assert.equal(route.filter, 'all');
   assert.equal(route.view, 'grid');
+});
+
+test('removed work categories recover to the complete current catalog', () => {
+  assert.equal(readRoute('?page=portfolio&filter=architecture', projects).filter, 'all');
 });

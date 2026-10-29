@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { projects } from '../../src/data.js';
 
-const pages = ['', '?page=portfolio', '?page=about', '?page=contacts', '?project=house', '?project=structure', '?project=courtyard', '?project=drawing', '?project=form', '?project=missing'];
+const pages = ['', '?page=portfolio', '?page=about', '?page=contacts', ...projects.map(project => `?project=${project.id}`), '?project=missing'];
 
 async function ready(page, path = '') {
   await page.goto(`./${path}`);
@@ -39,7 +40,7 @@ test('all three languages cover each page without clipping', async ({ page }) =>
   for (const language of ['en', 'zh', 'ru']) {
     await page.locator('.language-trigger').click();
     await page.locator(`.language-option[lang="${language === 'zh' ? 'zh-CN' : language}"]`).click();
-    for (const path of ['', '?page=about', '?page=contacts', '?page=portfolio', '?project=house', '?project=drawing']) {
+    for (const path of pages) {
       await ready(page, path);
       await expect(page.locator('html')).toHaveAttribute('lang', language === 'zh' ? 'zh-CN' : language);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -71,33 +72,33 @@ test('language menu supports arrows, escape, tab dismissal and has no selection 
   expect(await page.locator('.language-menu').evaluate(el => getComputedStyle(el).borderTopWidth)).toBe('1px');
 });
 
-test('portfolio filters and layouts survive deep links, reload and browser history', async ({ page }) => {
-  await ready(page, '?page=portfolio');
-  await page.getByRole('navigation', { name: 'Разделы проектов' }).getByRole('link', { name: 'Графика' }).click();
-  await expect(page).toHaveURL(/filter=graphics/);
-  await expect(page.locator('.project-tile')).toHaveCount(2);
-  await page.getByRole('navigation', { name: 'Вид проектов' }).getByRole('link', { name: 'Список' }).click();
-  await expect(page).toHaveURL(/view=list/);
-  await page.reload();
-  await expect(page.locator('.portfolio-grid')).toHaveClass(/is-list/);
-  await expect(page.locator('.project-tile')).toHaveCount(2);
-  await page.goBack();
-  await expect(page.locator('.portfolio-grid')).not.toHaveClass(/is-list/);
-  await page.goBack();
-  await expect(page.locator('.project-tile')).toHaveCount(5);
+test('a single real work has no redundant controls and legacy filters still show it', async ({ page }) => {
+  for (const query of ['?page=portfolio', '?page=portfolio&filter=architecture', '?page=portfolio&filter=graphics&view=list']) {
+    await ready(page, query);
+    await expect(page.locator('.project-tile')).toHaveCount(1);
+    await expect(page.locator('.project-tile')).toHaveAttribute('href', '?project=socrates');
+    await expect(page.locator('.portfolio-toolbar')).toHaveCount(0);
+    await expect(page.locator('.tile-pair img')).toHaveCount(2);
+    await page.reload();
+    await expect(page.locator('.project-tile')).toHaveCount(1);
+  }
+  for (const id of ['house', 'structure', 'courtyard', 'drawing', 'form']) {
+    await ready(page, `?project=${id}`);
+    await expect(page.locator('main h1')).toHaveText('Страница не найдена');
+  }
 });
 
 test('history restores catalog scroll and new pages start at the top', async ({ page }) => {
   await ready(page, '?page=portfolio');
-  await page.locator('a[href="?project=drawing"]').click();
-  await expect(page).toHaveURL(/project=drawing/);
+  await page.locator('a[href="?project=socrates"] .tile-meta h3').click();
+  await expect(page).toHaveURL(/project=socrates/);
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
   await page.goBack();
   await expect(page).toHaveURL(/page=portfolio/);
   await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(100);
   await expect(page.locator('main')).toBeFocused();
   await page.goForward();
-  await expect(page).toHaveURL(/project=drawing/);
+  await expect(page).toHaveURL(/project=socrates/);
   await page.evaluate(() => scrollTo({ top: 400, behavior: 'instant' }));
   await page.goBack();
   await page.goForward();
@@ -105,17 +106,17 @@ test('history restores catalog scroll and new pages start at the top', async ({ 
 });
 
 test('gallery isolates background, cycles, traps focus, closes and restores the opener', async ({ page }) => {
-  await ready(page, '?project=house');
+  await ready(page, '?project=socrates');
   const opener = page.locator('.project-cover button');
   await opener.click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
   await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(21, 29, 23)');
-  await expect(page.locator('.viewer-count')).toHaveText('1 из 3');
+  await expect(page.locator('.viewer-count')).toHaveText('1 из 2');
   await page.keyboard.press('ArrowLeft');
-  await expect(page.locator('.viewer-count')).toHaveText('3 из 3');
+  await expect(page.locator('.viewer-count')).toHaveText('2 из 2');
   await page.keyboard.press('ArrowRight');
-  await expect(page.locator('.viewer-count')).toHaveText('1 из 3');
+  await expect(page.locator('.viewer-count')).toHaveText('1 из 2');
   for (let i = 0; i < 7; i++) {
     await page.keyboard.press('Tab');
     expect(await dialog.evaluate(el => el.contains(document.activeElement))).toBe(true);
@@ -128,13 +129,10 @@ test('gallery isolates background, cycles, traps focus, closes and restores the 
   await expect(dialog).toHaveCount(0);
 });
 
-test('a single-image project has a usable gallery without dead paging controls', async ({ page }) => {
-  await ready(page, '?project=drawing');
-  await page.locator('.project-cover button').click();
-  await expect(page.locator('.viewer-count')).toHaveText('1 из 1');
-  await expect(page.locator('.viewer-controls')).toHaveCount(0);
-  await page.getByRole('button', { name: 'Закрыть', exact: true }).click();
-  await expect(page.getByRole('dialog')).toHaveCount(0);
+test('the only work does not link to itself as a next project', async ({ page }) => {
+  await ready(page, '?project=socrates');
+  await expect(page.locator('.project-next')).toHaveCount(0);
+  await expect(page.locator('main .project-image-button')).toHaveCount(2);
 });
 
 test('clipboard success and denial give usable feedback', async ({ page, context }) => {
@@ -201,8 +199,8 @@ test('mobile navigation, escape and current-page links close correctly', async (
   await page.locator('#site-navigation').getByRole('link', { name: 'О себе' }).click();
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
   await menu.click();
-  await page.locator('#site-navigation').getByRole('link', { name: 'Проекты' }).click();
-  await expect(page.locator('main h1')).toHaveText('Проекты');
+  await page.locator('#site-navigation').getByRole('link', { name: 'Работы' }).click();
+  await expect(page.locator('main h1')).toHaveText('Работы');
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
 });
 
@@ -249,7 +247,7 @@ test('reduced motion keeps glyphs still and prevents an invisible drag', async (
 });
 
 test('drawings preserve their natural dimensions and project captions', async ({ page }) => {
-  for (const id of ['house', 'structure', 'courtyard', 'drawing', 'form']) {
+  for (const { id } of projects) {
     await ready(page, `?project=${id}`);
     for (const image of await page.locator('main .project-image-button img').all()) {
       await image.scrollIntoViewIfNeeded();
@@ -261,16 +259,39 @@ test('drawings preserve their natural dimensions and project captions', async ({
   }
 });
 
+test('portrait artwork stays complete in featured, grid and list cards and opens both scans', async ({ page }) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 960 });
+    for (const path of ['', '?page=portfolio&filter=graphics', '?page=portfolio&view=list&filter=graphics']) {
+      await ready(page, path);
+      const image = page.locator('a[href="?project=socrates"] .tile-image').first();
+      const ratio = await image.evaluate(el => {
+        const rect = el.getBoundingClientRect();
+        return rect.width / rect.height;
+      });
+      expect(Math.abs(ratio - 1650 / 2153)).toBeLessThan(.002);
+    }
+  }
+  await ready(page, '?project=socrates');
+  await expect(page.locator('main h1')).toHaveText('Сократ');
+  await expect(page.locator('.project-image-button')).toHaveCount(2);
+  await page.locator('.project-cover button').click();
+  await expect(page.locator('.viewer-count')).toHaveText('1 из 2');
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('.viewer-count')).toHaveText('2 из 2');
+  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /socrates-02.webp$/);
+});
+
 test('page, language popup and modal pass automated accessibility checks', async ({ page }) => {
   test.setTimeout(90000);
-  for (const path of ['', '?page=portfolio', '?page=about', '?page=contacts', '?project=house', '?project=missing']) {
+  for (const path of ['', '?page=portfolio', '?page=about', '?page=contacts', '?project=socrates', '?project=missing']) {
     await ready(page, path);
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
   }
   await page.locator('.language-trigger').click();
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
-  await ready(page, '?project=house');
+  await ready(page, '?project=socrates');
   await page.locator('.project-cover button').click();
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
 });

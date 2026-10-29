@@ -6,6 +6,7 @@ import ProjectTile from '../components/ProjectTile.jsx';
 import GalleryViewer from '../components/GalleryViewer.jsx';
 
 export function Home({ t, projects }) {
+  const selected = projects.slice(0, 2);
   return <main id="main" tabIndex="-1" className="home-page">
     <section className="home-hero" aria-label={t.pageTitles.home}>
       <div className="shell hero-shell">
@@ -18,33 +19,34 @@ export function Home({ t, projects }) {
     </section>
     <section className="selected-section shell" aria-labelledby="selected-heading">
       <div className="section-heading"><h2 id="selected-heading">{t.selectedProjects}</h2><a className="text-link" href="?page=portfolio">{t.fullPortfolio}</a></div>
-      <div className="selected-grid"><ProjectTile project={projects[0]} className="selected-large"/><ProjectTile project={projects[1]} className="selected-small"/></div>
+      <div className={`selected-grid${selected.length === 1 ? ' is-single' : ''}`}>{selected.map((project, index) => <ProjectTile key={project.id} project={project} expanded={selected.length === 1} className={index === 0 ? 'selected-large' : 'selected-small'}/>)}</div>
     </section>
   </main>;
 }
 
 export function Portfolio({ t, projects, route }) {
   const { filter, view } = route;
+  const single = projects.length === 1;
   const shown = projects.filter(project => filter === 'all' || project.group === filter);
-  const filters = ['all', 'architecture', 'graphics'];
+  const filters = ['all', ...new Set(projects.map(project => project.group))];
   return <main id="main" tabIndex="-1" className="interior-page shell portfolio-page">
     <div className="page-heading"><h1>{t.portfolio.heading}</h1></div>
-    <div className="portfolio-toolbar">
+    {!single && <div className="portfolio-toolbar">
       <nav className="project-filters" aria-label={t.portfolio.filtersLabel}>
         {filters.map(value => <a key={value} href={portfolioHref({ filter: value, view })} aria-current={filter === value ? 'true' : undefined}>{t.portfolio[value]}</a>)}
       </nav>
       <nav className="portfolio-view" aria-label={t.portfolio.viewLabel}>
         {['grid', 'list'].map(value => <a key={value} href={portfolioHref({ filter, view: value })} aria-current={view === value ? 'true' : undefined} aria-label={t.portfolio[value]}><span>{t.portfolio[value]}</span></a>)}
       </nav>
-    </div>
-    <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>
-      {shown.map(project => <ProjectTile key={project.id} project={project}/>)}
+    </div>}
+    <div className={`portfolio-grid ${single ? 'is-single' : view === 'list' ? 'is-list' : ''}`}>
+      {shown.map(project => <ProjectTile key={project.id} project={project} expanded={single}/>)}
     </div>
   </main>;
 }
 
 function ProjectImage({ image, onOpen, t, priority = false }) {
-  return <figure className="project-plate">
+  return <figure className={`project-plate${image.height > image.width ? ' project-plate--portrait' : ''}`}>
     <button className="project-image-button" type="button" onClick={onOpen} aria-label={t.project.zoomImage(image.alt)}>
       <img src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} decoding="async"/><span className="zoom-label" aria-hidden="true">{t.project.zoom}</span>
     </button><figcaption>{image.alt}</figcaption>
@@ -64,7 +66,7 @@ export function ProjectPage({ project, projects, t }) {
     </div>
     <div className="project-cover shell"><ProjectImage image={project.images[0]} onOpen={() => setZoomIndex(0)} t={t} priority/></div>
     {project.images.length > 1 && <div className="shell project-gallery">{project.images.slice(1).map((image, index) => <ProjectImage key={image.src} image={image} onOpen={() => setZoomIndex(index + 1)} t={t}/>)}</div>}
-    <a className="shell project-next" href={`?project=${next.id}`}><span>{t.project.next}</span><span className="next-title">{next.title}</span></a>
+    {projects.length > 1 && <a className="shell project-next" href={`?project=${next.id}`}><span>{t.project.next}</span><span className="next-title">{next.title}</span></a>}
     {zoomIndex !== null && <GalleryViewer project={project} index={zoomIndex} onChange={setZoomIndex} onClose={closeImage} t={t}/>}
   </main>;
 }

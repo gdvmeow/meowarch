@@ -1,73 +1,17 @@
 export const projects = [
   {
-    id: 'house',
-    title: 'Дом на рельефе',
-    category: 'Частная архитектура',
-    group: 'architecture',
-    summary: 'Дом, в котором перепад участка становится частью пространства.',
-    description: 'Три уровня следуют естественному рельефу. Общие и приватные помещения связаны маршрутом через дом, светом и видом на ландшафт.',
-    images: [
-      { src: 'project-01.webp', alt: 'Разрез жилого дома на склоне' },
-      { src: 'ihs-plan.webp', alt: 'Архитектурный план дома' },
-      { src: 'ihs-section.webp', alt: 'Разрез дома и прилегающего участка' },
-    ],
-  },
-  {
-    id: 'structure',
-    title: 'Структура и свет',
-    category: 'Архитектура',
-    group: 'architecture',
-    summary: 'Объём, собранный вокруг света и внутреннего двора.',
-    description: 'Исследование взаимосвязи объёмов, открытых пространств и естественного освещения — от общей схемы до архитектурной формы.',
-    images: [
-      { src: 'project-02.webp', alt: 'Аксонометрия здания с внутренним двором' },
-      { src: 'academic-board.webp', alt: 'Планы, разрезы и пространственные схемы' },
-    ],
-  },
-  {
-    id: 'courtyard',
-    title: 'Память двора',
-    category: 'Общественное пространство',
-    group: 'architecture',
-    summary: 'Открытый двор как последовательность разных мест.',
-    description: 'План объединяет проходные и камерные зоны. Пространство меняется по мере движения: от улицы к тихому центру.',
-    images: [
-      { src: 'project-03.webp', alt: 'Генеральный план пространства с внутренним двором' },
-      { src: 'academic-wash.webp', alt: 'Эскизы архитектурного пространства' },
-    ],
-  },
-  {
-    id: 'drawing',
-    title: 'Городской фрагмент',
-    category: 'Архитектурный рисунок',
+    id: 'socrates',
+    title: 'Сократ',
+    category: 'Академический рисунок',
     group: 'graphics',
-    summary: 'Ритм фасадов и характер городской ткани.',
-    description: 'Рисунок застройки: наблюдение за пропорциями, светом и тем, как отдельные здания складываются в улицу.',
+    summary: 'Гипсовая голова в двух ракурсах. Бумага, карандаш.',
+    description: 'Учебная работа с гипсовой моделью: пропорции и конструкция головы, светотеневые отношения и передача объёма штриховкой.',
     images: [
-      { src: 'site-background-perspective.png', alt: 'Авторский чертёж городского здания' },
+      { src: 'socrates-01.webp', alt: 'Гипсовая голова Сократа — первый ракурс', width: 1650, height: 2153 },
+      { src: 'socrates-02.webp', alt: 'Гипсовая голова Сократа — второй ракурс', width: 1503, height: 2011 },
     ],
   },
-  {
-    id: 'form',
-    title: 'Наблюдение и форма',
-    category: 'Графика',
-    group: 'graphics',
-    summary: 'Изучение объёма и света через рисунок.',
-    description: 'Серия графических исследований формы, пропорций и тональных отношений.',
-    images: [
-      { src: 'academic-heads.webp', alt: 'Серия рисунков скульптурных голов' },
-      { src: 'academic-board.webp', alt: 'Лист с архитектурными исследованиями' },
-    ],
-  },
-].map(project => ({
-  ...project,
-  images: project.images.map(image => ({
-    ...(image.src === 'site-background-perspective.png'
-      ? { width: 1808, height: 870 }
-      : { width: 1448, height: 1086 }),
-    ...image,
-  })),
-}));
+];
 
 // Add a portrait filename from public/assets when the real photo is ready.
 // Biography, education and tools live in copy.<language>.about in i18n.js.
