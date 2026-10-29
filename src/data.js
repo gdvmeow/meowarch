@@ -1,3 +1,5 @@
+import { scanStudies } from './scanStudies.js';
+
 export const projects = [
   {
     id: 'low-rise-house',
@@ -58,11 +60,11 @@ export const projects = [
       { src: 'socrates-02.webp', alt: 'Гипсовая голова Сократа — второй ракурс', width: 1503, height: 2011 },
     ],
   },
+  ...scanStudies,
 ];
 
-// Add a portrait filename from public/assets when the real photo is ready.
 // Biography, education and tools live in copy.<language>.about in i18n.js.
-export const profile = { portrait: null };
+export const profile = { portrait: { src: 'about-photo.webp', width: 1280, height: 960 } };
 
 export const socialLinks = [
   { id: 'telegram', label: 'Telegram', detail: '@gdvmeow', href: 'https://t.me/gdvmeow' },

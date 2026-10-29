@@ -1,0 +1,17 @@
+{
+  "sourceFile": "Муниципальное_бюджетное_учреждение (2).pdf",
+  "sourceSha256": "0f09ebb6726b84285141db5941ba5cf297cc50253c4e595690fbf7f355da1446",
+  "sourcePages": 3,
+  "publicPages": [
+    1
+  ],
+  "privatePages": [
+    2,
+    3
+  ],
+  "type": "Свидетельство с отличием",
+  "programme": "Живопись",
+  "publicAsset": "education-certificate.webp",
+  "publicDerivative": "Извлечена только обложка страницы 1; обрезаны 12 px по краям, сохранён WebP без EXIF/скрытого текста. Страницы с личными полями, номерами и подписями не входят в public или историю Git.",
+  "original": "Исходный PDF не изменён; резервная копия — backups/education/original.pdf (игнорируется Git)."
+}

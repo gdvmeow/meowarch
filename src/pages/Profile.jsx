@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { asset, contactEmail, profile } from '../data.js';
 import Icon from '../components/Icon.jsx';
+import PuttyText from '../PuttyText.jsx';
 
 export function About({ t }) {
   const about = t.about;
@@ -8,7 +9,7 @@ export function About({ t }) {
     <div className="page-heading"><h1>{about.heading}</h1></div>
     <div className="about-grid">
       <div className="about-profile">
-        <div className="about-intro"><h2 translate="no">{t.name}</h2><p className="about-role">{about.role}</p><p className="about-bio">{about.body}</p></div>
+        <div className="about-intro"><h2 translate="no"><PuttyText>{t.name}</PuttyText></h2><p className="about-role">{about.role}</p><p className="about-bio">{about.body}</p></div>
         <section className="education" aria-labelledby="education-heading"><h3 id="education-heading">{about.educationHeading}</h3><ol>{about.education.map((item, index) => <li key={index}><span className="education-period">{item.period}</span><div><h4>{item.institution}</h4><p>{item.detail}</p></div></li>)}</ol></section>
         <section className="tools" aria-labelledby="tools-heading"><h3 id="tools-heading">{about.toolsHeading}</h3><dl>{about.tools.map(item => <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></section>
         <a className="text-link" href="?page=contacts">{about.action}</a>

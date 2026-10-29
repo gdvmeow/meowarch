@@ -106,7 +106,7 @@ export function Footer({ t, socialLinks }) {
           <a className="footer-email" href={`mailto:${contactEmail}`} translate="no">{contactEmail}</a>
         </div>
         <nav className="footer-links" aria-label={t.footerNavigationLabel}>
-          <div><span>{t.footer.sections}</span>{navigation.map(page => <a href={`?page=${page}`} key={page}>{t.nav[page]}</a>)}</div>
+          <div><span>{t.footer.sections}</span>{[...navigation, 'education'].map(page => <a href={`?page=${page}`} key={page}>{t.nav[page]}</a>)}</div>
           <div><span>{t.footer.platforms}</span>{socialLinks.map(item => <a href={item.href} target="_blank" rel="noopener noreferrer" key={item.id}>{item.label}</a>)}</div>
         </nav>
       </div>

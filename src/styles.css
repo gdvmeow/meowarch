@@ -112,10 +112,8 @@ main:focus { outline: none; }
 .selected-grid { display: grid; grid-template-columns: 1.5fr .85fr; gap: 40px; align-items: start; }
 .selected-small { margin-top: 104px; }
 .project-tile { display: block; min-width: 0; }
-.tile-image { position: relative; overflow: hidden; background: #fff; }
-.tile-image img { width: 100%; height: 100%; object-fit: contain; transition: transform .5s var(--ease); }
-.selected-large .tile-image { aspect-ratio: 1.5; }
-.selected-small .tile-image { aspect-ratio: 1.22; }
+.tile-image { position: relative; overflow: hidden; }
+.tile-image img { width: 100%; height: auto; object-fit: contain; }
 .tile-meta { padding-top: 18px; }
 .tile-meta h3 { font: 440 clamp(24px, 2.3vw, 34px)/1.22 var(--serif); letter-spacing: -.045em; transition: color .18s; }
 .tile-meta p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
@@ -124,6 +122,8 @@ main:focus { outline: none; }
 .interior-page { padding-bottom: 112px; }
 .page-heading { padding-top: 76px; }
 .page-heading h1 { font-size: clamp(68px, 9.5vw, 132px); font-weight: 580; letter-spacing: -.075em; line-height: 1; }
+.portfolio-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
+.portfolio-heading > .text-link { flex: none; }
 .portfolio-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 36px; margin-bottom: 42px; }
 .project-filters, .portfolio-view { display: flex; align-items: center; gap: 6px; }
 .project-filters a, .portfolio-view a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 3px; color: var(--muted); font: 480 16px/1.35 var(--serif); letter-spacing: -.025em; }
@@ -135,11 +135,10 @@ main:focus { outline: none; }
 .portfolio-grid .project-tile:nth-child(4n+1), .portfolio-grid .project-tile:nth-child(4n) { grid-column: span 7; }
 .portfolio-grid .project-tile:nth-child(4n+2), .portfolio-grid .project-tile:nth-child(4n+3) { grid-column: span 5; }
 .portfolio-grid .project-tile:nth-child(even) { padding-top: 100px; }
-.portfolio-grid .tile-image { aspect-ratio: 1.4; }
 .portfolio-grid.is-list { display: block; }
 .portfolio-grid.is-list .project-tile { display: grid; grid-template-columns: minmax(0, 1fr) 220px; align-items: center; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
 .portfolio-grid.is-list .project-tile:first-child { padding-top: 0; }
-.portfolio-grid.is-list .tile-image { grid-column: 2; grid-row: 1; aspect-ratio: 1.55; }
+.portfolio-grid.is-list .tile-image { grid-column: 2; grid-row: 1; }
 .portfolio-grid.is-list .tile-meta { grid-column: 1; grid-row: 1; padding: 0; }
 .portfolio-grid.is-list .tile-meta h3 { font-size: clamp(26px, 3.1vw, 43px); }
 .project-page { padding-bottom: 96px; }
@@ -149,7 +148,7 @@ main:focus { outline: none; }
 .project-heading { padding-top: 42px; padding-bottom: 52px; }
 .back-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-bottom: 45px; color: var(--muted); font: 480 16px/1.35 var(--serif); letter-spacing: -.025em; }
 .project-category { margin-bottom: 18px; color: var(--muted); font-size: 13px; }
-.project-heading h1 { max-width: 1120px; font-size: clamp(68px, 9.5vw, 132px); font-weight: 580; letter-spacing: -.075em; line-height: 1; }
+.project-heading h1 { max-width: 1120px; font-size: clamp(68px, 9.5vw, 132px); font-weight: 580; letter-spacing: -.075em; line-height: 1; overflow-wrap: anywhere; hyphens: auto; }
 .project-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; max-width: 980px; margin-top: 42px; }
 .project-intro p:first-child { font: 390 clamp(21px, 2vw, 28px)/1.45 var(--serif); letter-spacing: -.03em; }
 .project-intro p:last-child { color: var(--muted); font-size: 15px; line-height: 1.75; }
@@ -202,9 +201,22 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 .tools dt { color: var(--muted); }
 .about-profile > .text-link { margin-top: 28px; }
 .about-portrait { max-width: 390px; width: 100%; justify-self: end; }
-.about-portrait > img, .portrait-placeholder { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.about-portrait > img { width: 100%; height: auto; }
+.portrait-placeholder { width: 100%; aspect-ratio: 3 / 4; }
 .portrait-placeholder { display: grid; place-items: center; background: var(--paper-deep); }
 .portrait-placeholder > span { padding: 24px; color: var(--muted); font: 400 16px/1.4 var(--serif); text-align: center; }
+
+/* Education documents are separate from the artwork catalog. */
+.education-page .page-heading h1 { font-size: clamp(42px, 8.5vw, 110px); }
+.credential-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 80px; margin-top: 64px; }
+.credential-copy { max-width: 520px; }
+.credential-period { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+.credential-copy h2 { font: 440 clamp(30px, 3.4vw, 46px)/1.2 var(--serif); letter-spacing: -.045em; }
+.credential-school { font: 400 22px/1.5 var(--serif); margin-top: 28px; }
+.credential-copy > p:last-of-type { color: var(--muted); font-size: 15px; line-height: 1.75; margin-top: 20px; }
+.credential-copy .text-link { margin-top: 28px; }
+.credential-document { width: 100%; max-width: 440px; justify-self: end; }
+.credential-document figcaption { color: var(--muted); font-size: 12px; line-height: 1.6; padding-top: 12px; }
 
 /* Contact: the address remains usable when clipboard permission is denied. */
 .contacts-page { min-height: 680px; }
@@ -247,7 +259,6 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .social-row:hover .social-detail { color: var(--ink); }
   .project-next:hover .next-title { transform: translateX(3px); }
   .language-option:hover { background: var(--paper-deep); }
-  .project-tile:hover .tile-image img { transform: scale(1.025); }
   .portfolio-toolbar a:hover { color: var(--ink); background: var(--paper-deep); }
   .project-image-button:hover .zoom-label { opacity: 1; transform: none; }
   .site-footer a:hover { color: var(--accent-sage-light); }
@@ -300,13 +311,16 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .section-heading .text-link { font-size: 14px; white-space: nowrap; }
   .selected-grid { grid-template-columns: 1fr; gap: 36px; }
   .selected-small { margin-top: 0; }
-  .selected-large .tile-image, .selected-small .tile-image { aspect-ratio: 1.4; }
   .tile-meta { padding-top: 14px; }
   .tile-meta h3 { font-size: 27px; }
   .tile-meta p { margin-top: 6px; font-size: 12px; }
   .interior-page { padding-bottom: 72px; }
   .page-heading { padding-top: 48px; }
   .page-heading h1 { font-size: clamp(56px, 12vw, 88px); }
+  .portfolio-heading { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .portfolio-heading > .text-link { font-size: 16px; }
+  .credential-layout { grid-template-columns: 1fr; gap: 36px; margin-top: 36px; }
+  .credential-document { justify-self: start; }
   .portfolio-toolbar { flex-wrap: wrap; row-gap: 12px; margin-top: 24px; margin-bottom: 30px; }
   .project-filters a { padding-inline: 12px; font-size: 15px; }
   .project-filters a:first-child { margin-left: -12px; }
@@ -314,10 +328,8 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .portfolio-view a { padding-inline: 8px; font-size: 14px; }
   .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 36px; }
   .portfolio-grid .project-tile:nth-child(n) { grid-column: auto; padding-top: 0; }
-  .portfolio-grid .tile-image { aspect-ratio: 1.4; }
   .portfolio-grid.is-list .project-tile { grid-template-columns: minmax(0, 1fr) 112px; gap: 20px; padding: 20px 0; }
   .portfolio-grid.is-list .tile-meta h3 { font-size: 24px; }
-  .portfolio-grid.is-list .tile-image { aspect-ratio: 1.2; }
   .project-heading { padding-top: 24px; padding-bottom: 32px; }
   .project-page { padding-bottom: 64px; }
   .back-link { margin-bottom: 32px; }
@@ -361,7 +373,7 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 @media (max-width: 500px) {
   .menu-label { display: none; }
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
-  .about-portrait { grid-row: 1; justify-self: start; width: 55%; max-width: 240px; }
+  .about-portrait { grid-row: 1; justify-self: start; width: 100%; max-width: 390px; }
   .portrait-placeholder > span { padding: 16px 12px; font-size: 14px; }
   .education li { grid-template-columns: 104px minmax(0, 1fr); gap: 16px; }
   .education-period { font-size: 12px; }

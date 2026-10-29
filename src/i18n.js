@@ -1,3 +1,5 @@
+import { scanStudyTranslations } from './scanStudies.js';
+
 export const languages = [
   { code: 'ru', flag: `${import.meta.env?.BASE_URL ?? '/'}assets/flag-ru.svg`, label: 'Русский' },
   { code: 'en', flag: `${import.meta.env?.BASE_URL ?? '/'}assets/flag-us.svg`, label: 'English' },
@@ -15,7 +17,7 @@ export const copy = {
     menu: 'Меню',
     closeMenu: 'Закрыть',
     write: 'Написать',
-    nav: { portfolio: 'Работы', about: 'О себе', contacts: 'Контакты' },
+    nav: { portfolio: 'Работы', about: 'О себе', contacts: 'Контакты', education: 'Образование' },
     hero: {
       architecture: 'Архитектура',
       and: 'и',
@@ -46,6 +48,14 @@ export const copy = {
       nextImage: 'Далее',
       previousLabel: 'Предыдущее изображение',
       nextLabel: 'Следующее изображение',
+    },
+    education: {
+      heading: 'Образование',
+      title: 'Свидетельство с отличием',
+      school: 'Детская художественная школа № 2, Сочи',
+      description: 'Пятилетняя предпрофессиональная программа «Живопись». Рисунок, живопись, композиция, история искусства, пленэр и скульптура.',
+      imageAlt: 'Обложка свидетельства с отличием по программе «Живопись»',
+      caption: 'Свидетельство об освоении программы «Живопись»',
     },
     about: {
       heading: 'О себе',
@@ -88,7 +98,7 @@ export const copy = {
       publications: { label: 'Публикации', detail: 't.me/tori_arch' },
     },
     notFound: { heading: 'Страница не найдена', body: 'Возможно, ссылка изменилась. Все работы доступны в портфолио.', action: 'Открыть работы' },
-    pageTitles: { home: 'Архитектура и графика', portfolio: 'Работы', about: 'О себе', contacts: 'Контакты', notFound: 'Страница не найдена' },
+    pageTitles: { home: 'Архитектура и графика', portfolio: 'Работы', about: 'О себе', contacts: 'Контакты', education: 'Образование', notFound: 'Страница не найдена' },
     metaDescription: 'Виктория Терзян — архитектурные проекты, ручная подача, академический рисунок и контакты.',
   },
   en: {
@@ -101,7 +111,7 @@ export const copy = {
     menu: 'Menu',
     closeMenu: 'Close',
     write: 'Email me',
-    nav: { portfolio: 'Work', about: 'About', contacts: 'Contact' },
+    nav: { portfolio: 'Work', about: 'About', contacts: 'Contact', education: 'Education' },
     hero: {
       architecture: 'Architecture',
       and: 'and',
@@ -132,6 +142,14 @@ export const copy = {
       nextImage: 'Next',
       previousLabel: 'Previous image',
       nextLabel: 'Next image',
+    },
+    education: {
+      heading: 'Education',
+      title: 'Certificate with honours',
+      school: 'Children’s Art School No. 2, Sochi',
+      description: 'A five-year pre-professional Painting programme. Drawing, painting, composition, art history, plein air studies and sculpture.',
+      imageAlt: 'Cover of the certificate with honours for the Painting programme',
+      caption: 'Certificate of completion of the Painting programme',
     },
     about: {
       heading: 'About',
@@ -174,9 +192,10 @@ export const copy = {
       publications: { label: 'Publications', detail: 't.me/tori_arch' },
     },
     notFound: { heading: 'Page not found', body: 'The link may have changed. You can find all the work in the portfolio.', action: 'Explore work' },
-    pageTitles: { home: 'Architecture and drawing', portfolio: 'Work', about: 'About', contacts: 'Contact', notFound: 'Page not found' },
+    pageTitles: { home: 'Architecture and drawing', portfolio: 'Work', about: 'About', contacts: 'Contact', education: 'Education', notFound: 'Page not found' },
     metaDescription: 'Viktoria Terzyan — architectural projects, hand-drawn presentation, academic drawing and contact details.',
     projects: {
+      ...scanStudyTranslations.en,
       'low-rise-house': {
         title: 'Low-rise house', category: 'Residential architecture',
         summary: 'A house with a sloping roof and expressive glazing.',
@@ -219,7 +238,7 @@ export const copy = {
     menu: '菜单',
     closeMenu: '关闭',
     write: '联系我',
-    nav: { portfolio: '作品', about: '关于', contacts: '联系' },
+    nav: { portfolio: '作品', about: '关于', contacts: '联系', education: '教育经历' },
     hero: {
       architecture: '建筑设计',
       and: '与',
@@ -250,6 +269,14 @@ export const copy = {
       nextImage: '下一张',
       previousLabel: '上一张图片',
       nextLabel: '下一张图片',
+    },
+    education: {
+      heading: '教育经历',
+      title: '优秀结业证书',
+      school: '索契第二儿童艺术学校',
+      description: '五年制绘画专业预备课程，涵盖素描、绘画、构图、美术史、户外写生与雕塑。',
+      imageAlt: '绘画课程优秀结业证书封面',
+      caption: '绘画课程结业证书',
     },
     about: {
       heading: '关于',
@@ -292,9 +319,10 @@ export const copy = {
       publications: { label: '文章', detail: 't.me/tori_arch' },
     },
     notFound: { heading: '页面未找到', body: '链接可能已更改。您可以在作品集中浏览所有项目。', action: '浏览作品' },
-    pageTitles: { home: '建筑与绘图', portfolio: '作品', about: '关于', contacts: '联系', notFound: '页面未找到' },
+    pageTitles: { home: '建筑与绘图', portfolio: '作品', about: '关于', contacts: '联系', education: '教育经历', notFound: '页面未找到' },
     metaDescription: 'Viktoria Terzyan — 建筑设计项目、手绘表现、学院素描与联系信息。',
     projects: {
+      ...scanStudyTranslations.zh,
       'low-rise-house': {
         title: '低层住宅', category: '住宅建筑',
         summary: '以斜屋顶和富有表现力的玻璃立面塑造的住宅。',

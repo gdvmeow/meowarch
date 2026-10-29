@@ -30,7 +30,7 @@ export function Portfolio({ t, projects, route }) {
   const shown = projects.filter(project => filter === 'all' || project.group === filter);
   const filters = ['all', ...new Set(projects.map(project => project.group))];
   return <main id="main" tabIndex="-1" className="interior-page shell portfolio-page">
-    <div className="page-heading"><h1>{t.portfolio.heading}</h1></div>
+    <div className="page-heading portfolio-heading"><h1>{t.portfolio.heading}</h1><a className="text-link" href="?page=education">{t.education.heading}</a></div>
     {!single && <div className="portfolio-toolbar">
       <nav className="project-filters" aria-label={t.portfolio.filtersLabel}>
         {filters.map(value => <a key={value} href={portfolioHref({ filter: value, view })} aria-current={filter === value ? 'true' : undefined}>{t.portfolio[value]}</a>)}

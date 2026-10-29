@@ -1,0 +1,289 @@
+{
+  "source": {
+    "file": "ТЕРЗЯН В.С АД 1111.pdf",
+    "sha256": "77a498fae5375afb74244d1f2940a1d9559d4b4222137b7fdebc7aa7d23eed00",
+    "pages": 24
+  },
+  "summary": {
+    "selectedImages": 16,
+    "newProjects": 15,
+    "excludedSocratesPages": 4,
+    "duplicateScans": 4
+  },
+  "processing": {
+    "script": "scripts/prepare-scan-dump.py",
+    "method": "Только детерминированная коррекция существующих пикселей: освещение, оттенок бумаги, тоновая кривая, ориентация; узкая маска волокна на пустом поле страницы 7. Без генерации и перерисовки.",
+    "originals": "Исходный PDF не меняется; все 24 извлечённых скана и локальное сравнение сохранены в игнорируемой папке backups/scan-review.",
+    "grouping": "16 изображений образуют 15 работ: план 19 и разрез 18 показаны внутри одной работы. Сократ в новый набор не включён."
+  },
+  "pages": [
+    {
+      "page": 1,
+      "originalSha256": "c82a051ee5cea0991e5a101b93293298d3ea9466f4a808d2159fa80dd0c32dd9",
+      "status": "excluded-socrates",
+      "projectId": "socrates",
+      "reason": "Уже опубликованный первый ракурс из отдельного PDF; существующая пара остаётся без изменений."
+    },
+    {
+      "page": 2,
+      "originalSha256": "0c23e86ed766a14de18ad3a3c3dac47d4ec34dcb86baa31270984ae07c4d6814",
+      "status": "excluded-socrates",
+      "projectId": "socrates",
+      "reason": "Уже опубликованный второй ракурс. Сравнение: 2/3 контрастнее и зернистее, 4 пересвечен; для единства сохранён прежний отдельный источник. Не входит в 16 новых изображений."
+    },
+    {
+      "page": 3,
+      "originalSha256": "26ad9e8757b0d3361aa845000a98732ba092aa4a0eb54afe20419bb0948187c4",
+      "status": "excluded-socrates",
+      "projectId": "socrates",
+      "reason": "Уже опубликованный второй ракурс. Сравнение: 2/3 контрастнее и зернистее, 4 пересвечен; для единства сохранён прежний отдельный источник. Не входит в 16 новых изображений."
+    },
+    {
+      "page": 4,
+      "originalSha256": "9adf7115673527a8f50dfeb5062c86c8325c21c13bfd4db2828e4ea6e41109e0",
+      "status": "excluded-socrates",
+      "projectId": "socrates",
+      "reason": "Уже опубликованный второй ракурс. Сравнение: 2/3 контрастнее и зернистее, 4 пересвечен; для единства сохранён прежний отдельный источник. Не входит в 16 новых изображений."
+    },
+    {
+      "page": 5,
+      "originalSha256": "8d6cfbb47d99b9e305479998fc719c3b71fae3530b85497c9bf54d2ce555b9b9",
+      "status": "selected",
+      "uniqueImage": 1,
+      "projectId": "towered-cathedral",
+      "title": "Собор с башнями",
+      "reason": "Единственный скан этого рисунка.",
+      "asset": "towered-cathedral.webp",
+      "width": 1524,
+      "height": 2201,
+      "processedSha256": "9b623cbdd0e2bd9339580e125a083581cfeb2be472b53dd97f472ca4289a53f0"
+    },
+    {
+      "page": 6,
+      "originalSha256": "65b4e1fb6d45a07423c5b12e30673164522b82cdc9bb9ece55f45c2ebdd5012b",
+      "status": "duplicate",
+      "duplicateOfPage": 7,
+      "projectId": "arcaded-facade",
+      "reason": "Совпадает по рисунку с 7, но расфокусирован."
+    },
+    {
+      "page": 7,
+      "originalSha256": "035aab887f5595f8b18b983f1d46c8a5f57085081986c898c7c6b1883e607629",
+      "status": "selected",
+      "uniqueImage": 2,
+      "projectId": "arcaded-facade",
+      "title": "Фасад с аркадой",
+      "reason": "Те же детали фасада, что на странице 6, но тонкие линии и декор существенно резче; страница 6 расфокусирована.",
+      "asset": "arcaded-facade.webp",
+      "width": 1545,
+      "height": 2216,
+      "processedSha256": "064b0e6d988b3432eecbc65a07e26371bb60957b4d3644a840944a7760d9ff45"
+    },
+    {
+      "page": 8,
+      "originalSha256": "d37a297bfbaa080b439af315fef04580033b6d8109f9c1580b80972956a5b2a5",
+      "status": "duplicate",
+      "duplicateOfPage": 9,
+      "projectId": "portal-facade",
+      "reason": "Совпадает с 9, немного менее резкий."
+    },
+    {
+      "page": 9,
+      "originalSha256": "a2ebc50a468494d37aa6227d911d3378e682d78009c2c675250a8791028b372d",
+      "status": "selected",
+      "uniqueImage": 3,
+      "projectId": "portal-facade",
+      "title": "Фасад с порталом",
+      "reason": "Совпадает с 8 по рисунку и композиции; штрих и мелкий декор чуть резче, тон читается лучше.",
+      "asset": "portal-facade.webp",
+      "width": 2024,
+      "height": 1422,
+      "processedSha256": "200ad4147cfc5a0c58c1cc6747bfd18f30d9510fa3d85f72fd8ecc7081f55f8b"
+    },
+    {
+      "page": 10,
+      "originalSha256": "ae9c2ecb90ec371b4be6497feaa178fe8c69bd41693e99a2d7929f978df3df06",
+      "status": "selected",
+      "uniqueImage": 4,
+      "projectId": "domed-church",
+      "title": "Храм с куполами",
+      "reason": "Единственный скан этого рисунка. Развёрнут на 90° против часовой стрелки.",
+      "asset": "three-domed-church.webp",
+      "width": 2024,
+      "height": 1418,
+      "processedSha256": "724513e70131f08e0dcb5c4a4b89fadd4ea7f3ec8e01dce05982d5f54b1a18ab"
+    },
+    {
+      "page": 11,
+      "originalSha256": "d8ea3e970cb1ab87caee040b428c0db909b864275478c9fb1a0bf5ffdfd0cc92",
+      "status": "selected",
+      "uniqueImage": 5,
+      "projectId": "dome-colonnade",
+      "title": "Купол и колоннада",
+      "reason": "Единственный скан этой пространственной композиции. Развёрнут на 90° против часовой стрелки.",
+      "asset": "rotunda.webp",
+      "width": 2024,
+      "height": 1417,
+      "processedSha256": "4dba270ea1d187e780e754c25938f672bb5912f0a440a1654c519971944f2272"
+    },
+    {
+      "page": 12,
+      "originalSha256": "7de597f675acf50450709b5588ed48dae6ce23e1c507d9d8b01b1b268a1efe90",
+      "status": "selected",
+      "uniqueImage": 6,
+      "projectId": "graphic-textures",
+      "title": "Графические фактуры",
+      "reason": "Самостоятельный лист с фактурами; не является фрагментом пейзажа на странице 13.",
+      "asset": "graphic-textures.webp",
+      "width": 1393,
+      "height": 2024,
+      "processedSha256": "0ea4eed390de7dcb578f2defa087e109ace226bba37fa5c58e52315684a56800"
+    },
+    {
+      "page": 13,
+      "originalSha256": "72bb016c224bffdf72aaa96d41f03f60d2ea70710f3ad1a768ebcbff08737803",
+      "status": "selected",
+      "uniqueImage": 7,
+      "projectId": "line-landscape",
+      "title": "Пейзаж в линии",
+      "reason": "Самостоятельный пейзажный лист. Развёрнут на 90° против часовой стрелки.",
+      "asset": "line-landscape.webp",
+      "width": 2024,
+      "height": 1435,
+      "processedSha256": "dd350cf09896fd942ecc1f7f4906330c122712c91bf14c512873daa939c695cc"
+    },
+    {
+      "page": 14,
+      "originalSha256": "8326796c94e32fcf965c3070dde8859c9d82be69211ca79ce0d430da7a13903a",
+      "status": "duplicate",
+      "duplicateOfPage": 15,
+      "projectId": "garden-site-plan",
+      "reason": "Совпадает с 15; выбран более резкий вариант."
+    },
+    {
+      "page": 15,
+      "originalSha256": "0786e12aad82f5bb3b7bc942cfc6bdd6282dff5c3f0495b9f72e2826b3267366",
+      "status": "selected",
+      "uniqueImage": 8,
+      "projectId": "garden-site-plan",
+      "title": "Генплан участка",
+      "reason": "Те же цветные посадки, обозначения и подпись, что на 14; выбран более резкий скан, цвет сохранён.",
+      "asset": "garden-site-plan.webp",
+      "width": 1420,
+      "height": 2024,
+      "processedSha256": "44036f0eb29679cf54e1d512cab1d59868c36fa6fc4b6b5e0e4013dd570eb262"
+    },
+    {
+      "page": 16,
+      "originalSha256": "e0c3f81f0003de58a26453722c8ff5ffab9fc9c27539255c4fcdca5b4614bb2c",
+      "status": "selected",
+      "uniqueImage": 9,
+      "projectId": "projection-study",
+      "title": "Проекционные построения",
+      "reason": "Отдельное задание с дугами переноса проекций, отличается от группы тел на 17.",
+      "asset": "projection-study.webp",
+      "width": 2024,
+      "height": 1428,
+      "processedSha256": "f9b318f5cdb73736d81f2c20964d39906f626ed7b56594555dfbc2cc11facfa6"
+    },
+    {
+      "page": 17,
+      "originalSha256": "0a2e738c9bb2361c2b6595f4103e04d16a2ac31dcdef1e99cc623282d87a6298",
+      "status": "selected",
+      "uniqueImage": 10,
+      "projectId": "geometric-solids",
+      "title": "Геометрические тела",
+      "reason": "Отдельное задание с группой геометрических тел; не дубль страницы 16.",
+      "asset": "geometric-solids.webp",
+      "width": 2024,
+      "height": 1435,
+      "processedSha256": "a1816124699591ac0365bdaf7c9c0df878ca5f5373c223249a56757aa770972b"
+    },
+    {
+      "page": 18,
+      "originalSha256": "3765f89ef7df11600d588fe3f58e7cb9f9961a9a06e74440e621a51dcb4c43be",
+      "status": "selected",
+      "uniqueImage": 11,
+      "projectId": "residential-plan-section",
+      "title": "План и разрез жилого дома",
+      "reason": "Самостоятельный разрез. Объединён с планом 19 по совпадающим осям и глубине 11000 = 6000 + 5000; оба листа сохранены.",
+      "asset": "residential-section.webp",
+      "width": 2024,
+      "height": 1443,
+      "processedSha256": "231e94859793a222e502ca04260e7283a192008a9679a8abeccccd929cfbb27d"
+    },
+    {
+      "page": 19,
+      "originalSha256": "7c7f95521c5b456ab596ecd6c5bc73768be5691400ce318b5c2eed279a944dbd",
+      "status": "selected",
+      "uniqueImage": 12,
+      "projectId": "residential-plan-section",
+      "title": "План и разрез жилого дома",
+      "reason": "Самостоятельный план. Обложка проекта с разрезом 18; оба листа доступны внутри работы.",
+      "asset": "residential-floor-plan.webp",
+      "width": 2024,
+      "height": 1471,
+      "processedSha256": "a609b2c3dbd6283458c4f330e62e183d70c862098734627d6e98d9f92151df25"
+    },
+    {
+      "page": 20,
+      "originalSha256": "ebb945d6b944903bab87bad945dd83eb239a5e6e73ac4a6c78ea3d2f70415328",
+      "status": "selected",
+      "uniqueImage": 13,
+      "projectId": "drawing-studio",
+      "title": "Учебная мастерская",
+      "reason": "Единственный скан интерьерного рисунка мастерской.",
+      "asset": "drawing-studio.webp",
+      "width": 1395,
+      "height": 2024,
+      "processedSha256": "371191f094fbaaf6296a968747ad8dc78437f3b658c111d739db8ec55f635d70"
+    },
+    {
+      "page": 21,
+      "originalSha256": "e4e642f64ba4822bb89571021c5c953d97272a44dd42f9259693b46f68f29a83",
+      "status": "selected",
+      "uniqueImage": 14,
+      "projectId": "faceted-head",
+      "title": "Обрубовка головы",
+      "reason": "Единственный скан обрубовочной головы; отличается от Сократа, анатомической головы и черепов.",
+      "asset": "faceted-head.webp",
+      "width": 1410,
+      "height": 2024,
+      "processedSha256": "ba9cb8baa06f50dd354055c8ab8f86de01386843f96926cddb11831b8a5eb50e"
+    },
+    {
+      "page": 22,
+      "originalSha256": "4bc364193197fa42b440335fc2e20b2fb88019698d14cec837a41b4f83481869",
+      "status": "duplicate",
+      "duplicateOfPage": 23,
+      "projectId": "head-muscles",
+      "reason": "Совпадает с 23; выбран вариант с большим исходным разрешением."
+    },
+    {
+      "page": 23,
+      "originalSha256": "7c87f6fb74b39f7191e611bef09f3106a80990e6b1cce04ffc5eb5bc28305f1c",
+      "status": "selected",
+      "uniqueImage": 15,
+      "projectId": "head-muscles",
+      "title": "Мышцы головы и шеи",
+      "reason": "Тот же анатомический рисунок, что на 22; выше исходное разрешение, сохранены тонкие штрихи. Тон согласован программно.",
+      "asset": "head-muscles.webp",
+      "width": 1631,
+      "height": 2312,
+      "processedSha256": "adb14f7c3089fb9fe85951ff563e7e71c2da426ab085942165501a6b791e3485"
+    },
+    {
+      "page": 24,
+      "originalSha256": "3a67164eeb8c678a8d84140644a9d426c62d9331113068b7af4098dc4fe130c3",
+      "status": "selected",
+      "uniqueImage": 16,
+      "projectId": "skull-studies",
+      "title": "Череп: два ракурса",
+      "reason": "Самостоятельный лист с двумя ракурсами черепа, это одно изображение, не два проекта.",
+      "asset": "skull-studies.webp",
+      "width": 1430,
+      "height": 2024,
+      "processedSha256": "9748bf417560ca8b6caf2d252f3fb2e3092a1121d851773b081867c6398ff5c7"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { projects } from '../../src/data.js';
 
-const pages = ['', '?page=portfolio', '?page=about', '?page=contacts', ...projects.map(project => `?project=${project.id}`), '?project=missing'];
+const pages = ['', '?page=portfolio', '?page=about', '?page=contacts', '?page=education', ...projects.map(project => `?project=${project.id}`), '?project=missing'];
 
 async function ready(page, path = '') {
   await page.goto(`./${path}`);
@@ -19,6 +19,7 @@ async function glyphPoint(glyph, xRatio = .5, yRatio = .5) {
 }
 
 test('each page has a landmark, coherent headings, no runtime failures or horizontal overflow', async ({ page }) => {
+  test.setTimeout(180000);
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   for (const width of [320, 390, 768, 1440, 1920]) {
@@ -35,6 +36,7 @@ test('each page has a landmark, coherent headings, no runtime failures or horizo
 });
 
 test('all three languages cover each page without clipping', async ({ page }) => {
+  test.setTimeout(120000);
   await page.setViewportSize({ width: 390, height: 844 });
   await ready(page);
   for (const language of ['en', 'zh', 'ru']) {
@@ -79,15 +81,25 @@ test('portfolio restores filters and layouts with one cover per real work', asyn
     const tile = page.locator(`a.project-tile[href="?project=${project.id}"]`);
     await expect(tile.locator('img')).toHaveCount(1);
     await expect(tile.locator('img')).toHaveAttribute('src', new RegExp(`${(project.cover ?? project.images[0]).src}$`));
+    await tile.locator('img').scrollIntoViewIfNeeded();
+    await tile.locator('img').evaluate(im => im.decode());
+    const frame = await tile.locator('.tile-image').evaluate(el => {
+      const image = el.querySelector('img');
+      const box = el.getBoundingClientRect();
+      const rect = image.getBoundingClientRect();
+      return { gap: Math.abs(box.height - rect.height) + Math.abs(box.width - rect.width), ratio: rect.width / rect.height, naturalRatio: image.naturalWidth / image.naturalHeight };
+    });
+    expect(frame.gap, project.id).toBeLessThan(1);
+    expect(Math.abs(frame.ratio - frame.naturalRatio), project.id).toBeLessThan(.005);
   }
   await page.getByRole('navigation', { name: 'Разделы работ' }).getByRole('link', { name: 'Графика' }).click();
   await expect(page).toHaveURL(/filter=graphics/);
-  await expect(page.locator('.project-tile')).toHaveCount(1);
+  await expect(page.locator('.project-tile')).toHaveCount(projects.filter(p => p.group === 'graphics').length);
   await page.getByRole('navigation', { name: 'Вид работ' }).getByRole('link', { name: 'Список' }).click();
   await expect(page).toHaveURL(/view=list/);
   await page.reload();
   await expect(page.locator('.portfolio-grid')).toHaveClass(/is-list/);
-  await expect(page.locator('.project-tile')).toHaveCount(1);
+  await expect(page.locator('.project-tile')).toHaveCount(projects.filter(p => p.group === 'graphics').length);
   await page.goBack();
   await expect(page.locator('.portfolio-grid')).not.toHaveClass(/is-list/);
   await page.goBack();
@@ -303,7 +315,7 @@ test('Socrates has one cover while its second scan stays inside the work', async
 
 test('page, language popup and modal pass automated accessibility checks', async ({ page }) => {
   test.setTimeout(90000);
-  for (const path of ['', '?page=portfolio', '?page=about', '?page=contacts', '?project=socrates', '?project=missing']) {
+  for (const path of ['', '?page=portfolio', '?page=about', '?page=contacts', '?page=education', '?project=socrates', '?project=missing']) {
     await ready(page, path);
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);

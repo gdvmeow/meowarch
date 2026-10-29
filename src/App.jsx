@@ -5,6 +5,7 @@ import useNavigation from './useNavigation.js';
 import { Header, Footer } from './components/SiteChrome.jsx';
 import { Home, Portfolio, ProjectPage } from './pages/Work.jsx';
 import { About, Contacts, NotFound } from './pages/Profile.jsx';
+import Education from './pages/Education.jsx';
 
 export default function App() {
   const route = useNavigation();
@@ -38,6 +39,7 @@ export default function App() {
         : route.type === 'project' ? <ProjectPage key={route.projectId} project={activeProject} projects={localizedProjects} t={t}/>
         : route.type === 'about' ? <About t={t}/>
         : route.type === 'contacts' ? <Contacts t={t} socialLinks={localizedSocialLinks}/>
+        : route.type === 'education' ? <Education t={t}/>
         : route.type === 'notFound' ? <NotFound t={t}/>
         : <Home t={t} projects={localizedProjects}/>}
     </div>

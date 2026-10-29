@@ -1,4 +1,4 @@
-const pages = new Set(['portfolio', 'about', 'contacts']);
+const pages = new Set(['portfolio', 'about', 'contacts', 'education']);
 const filters = new Set(['all', 'architecture', 'graphics']);
 
 export function readRoute(search, projects) {
