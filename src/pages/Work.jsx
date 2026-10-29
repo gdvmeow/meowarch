@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { asset } from '../data.js';
 import { portfolioHref } from '../routing.js';
+import { balancedRailBreak } from '../portfolioLayout.js';
 import PuttyText from '../PuttyText.jsx';
 import ProjectTile from '../components/ProjectTile.jsx';
 import GalleryViewer from '../components/GalleryViewer.jsx';
@@ -29,6 +30,7 @@ export function Portfolio({ t, projects, route }) {
   const { filter, view } = route;
   const single = projects.length === 1;
   const shown = projects.filter(project => filter === 'all' || project.group === filter);
+  const railBreak = balancedRailBreak(shown);
   const filters = ['all', ...new Set(projects.map(project => project.group))];
   return <main id="main" tabIndex="-1" className="interior-page shell portfolio-page">
     <PortfolioHeading active="portfolio" route={route} t={t}/>
@@ -43,8 +45,8 @@ export function Portfolio({ t, projects, route }) {
     <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>
       {view === 'list' ? shown.map(project => <ProjectTile key={project.id} project={project}/>)
         : <>
-          <div className="portfolio-rail">{shown.slice(0, Math.ceil(shown.length / 2)).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
-          <div className="portfolio-rail">{shown.slice(Math.ceil(shown.length / 2)).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
+          <div className="portfolio-rail">{shown.slice(0, railBreak).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
+          <div className="portfolio-rail">{shown.slice(railBreak).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
         </>}
     </div>
   </main>;

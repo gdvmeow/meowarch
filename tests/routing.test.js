@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { projects } from '../src/data.js';
 import { readRoute, portfolioHref, educationHref } from '../src/routing.js';
+import { balancedRailBreak } from '../src/portfolioLayout.js';
 
 test('valid project deep links resolve and take precedence over page parameters', () => {
   for (const project of projects) {
@@ -51,4 +52,10 @@ test('unsupported filter and layout parameters recover to valid defaults', () =>
 
 test('removed work categories recover to the complete current catalog', () => {
   assert.equal(readRoute('?page=portfolio&filter=architecture', [{ group: 'graphics' }]).filter, 'all');
+});
+
+test('natural scan proportions determine stable, continuous catalog rail breaks', () => {
+  assert.equal(balancedRailBreak(projects), 9);
+  assert.equal(balancedRailBreak(projects.filter(project => project.group === 'architecture')), 3);
+  assert.equal(balancedRailBreak(projects.filter(project => project.group === 'graphics')), 6);
 });

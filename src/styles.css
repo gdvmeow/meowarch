@@ -409,6 +409,7 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 @media (max-width: 900px) {
   .portfolio-heading--education { display: block; }
   .portfolio-heading--education .portfolio-section-link { margin-top: 8px; }
+  .credential-documents { grid-template-columns: 1fr; gap: 32px; }
 }
 
 @media (hover: none) {

@@ -205,6 +205,49 @@ test('the full catalog follows two steady rails without tall empty row gaps', as
   expect(order).toEqual(projects.map(project => `?project=${project.id}`));
 });
 
+test('each catalog filter balances natural sheets while preserving the source and Tab order', async ({ page }) => {
+  for (const width of [768, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 960 });
+    for (const filter of ['all', 'architecture', 'graphics']) {
+      await ready(page, `?page=portfolio${filter === 'all' ? '' : `&filter=${filter}`}`);
+      const shown = projects.filter(project => filter === 'all' || project.group === filter);
+      const rails = page.locator('.portfolio-rail');
+      const cards = await rails.locator('.project-tile').all();
+      expect(await Promise.all(cards.map(card => card.getAttribute('href')))).toEqual(shown.map(project => `?project=${project.id}`));
+      const ends = await rails.evaluateAll(elements => elements.map(rail => {
+        const card = rail.querySelector('.project-tile:last-child');
+        const box = card.getBoundingClientRect();
+        return box.bottom;
+      }));
+      expect(Math.abs(ends[0] - ends[1]), `${width} ${filter}`).toBeLessThan(650);
+      if (width === 1440 && filter === 'graphics') {
+        await cards[0].focus();
+        for (let i = 1; i < cards.length; i++) {
+          await page.keyboard.press('Tab');
+          await expect(cards[i]).toBeFocused();
+        }
+      }
+    }
+  }
+});
+
+test('certificate pages use a readable single column at tablet width', async ({ page }) => {
+  await page.setViewportSize({ width: 768, height: 960 });
+  await ready(page, '?page=education');
+  const documents = await page.locator('.credential-document').evaluateAll(elements => elements.map(el => {
+    const rect = el.getBoundingClientRect();
+    return { x: rect.x, top: rect.top, bottom: rect.bottom, width: rect.width };
+  }));
+  expect(documents).toHaveLength(3);
+  for (let i = 0; i < documents.length; i++) {
+    expect(documents[i].width).toBeGreaterThan(600);
+    if (i) {
+      expect(Math.abs(documents[i].x - documents[0].x)).toBeLessThan(1);
+      expect(documents[i].top - documents[i - 1].bottom).toBeGreaterThanOrEqual(31);
+    }
+  }
+});
+
 test('card hover, keyboard focus and touch activation share one direct affordance', async ({ page, browser }) => {
   await page.setViewportSize({ width: 1440, height: 960 });
   await ready(page, '?page=portfolio');
