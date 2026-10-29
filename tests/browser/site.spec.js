@@ -127,6 +127,56 @@ test('history restores catalog scroll and new pages start at the top', async ({ 
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(400);
 });
 
+test('list titles and categories stay inside their column, clear of thumbnails in every language', async ({ page }) => {
+  await ready(page, '?page=portfolio&view=list');
+  for (const language of ['ru', 'en', 'zh']) {
+    await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+    await ready(page, '?page=portfolio&view=list');
+    for (const width of [320, 360, 390, 768, 1440]) {
+      await page.setViewportSize({ width, height: 844 });
+      const rows = await page.locator('.project-tile').evaluateAll(tiles => tiles.map(tile => {
+        const column = tile.querySelector('.tile-meta').getBoundingClientRect();
+        const thumbnail = tile.querySelector('.tile-image').getBoundingClientRect();
+        return [...tile.querySelectorAll('.tile-meta h3, .tile-meta p')].map(text => {
+          const range = document.createRange();
+          range.selectNodeContents(text);
+          const rect = range.getBoundingClientRect();
+          return { text: text.textContent, overflow: rect.right - column.right, separation: thumbnail.left - rect.right };
+        });
+      }).flat());
+      for (const row of rows) {
+        expect(row.overflow, `${language} ${width}: ${row.text}`).toBeLessThanOrEqual(1);
+        expect(row.separation, `${language} ${width}: ${row.text}`).toBeGreaterThanOrEqual(12);
+      }
+    }
+  }
+});
+
+test('the six longest project titles wrap between whole words on narrow screens', async ({ page }) => {
+  const ids = ['low-rise-house', 'single-storey-house', 'house-construction', 'graphic-textures', 'projection-study', 'geometric-solids'];
+  await ready(page);
+  for (const language of ['ru', 'en']) {
+    await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      for (const id of ids) {
+        await ready(page, `?project=${id}`);
+        const broken = await page.locator('main h1').evaluate(el => {
+          const text = el.firstChild;
+          // A written hyphen is an intentional break between lexical words.
+          return [...text.textContent.matchAll(/[\p{L}\p{N}]+/gu)].filter(match => {
+            const range = document.createRange();
+            range.setStart(text, match.index);
+            range.setEnd(text, match.index + match[0].length);
+            return new Set([...range.getClientRects()].filter(rect => rect.width).map(rect => Math.round(rect.top))).size > 1;
+          }).map(match => match[0]);
+        });
+        expect(broken, `${language} ${width}: ${id}`).toEqual([]);
+      }
+    }
+  }
+});
+
 test('gallery isolates background, cycles, traps focus, closes and restores the opener', async ({ page }) => {
   await ready(page, '?project=socrates');
   const opener = page.locator('.project-cover button');

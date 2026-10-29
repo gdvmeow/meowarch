@@ -15,9 +15,7 @@ function LanguageSwitcher({ language, onChange, onOpen, t }) {
 
   useEffect(() => {
     if (!open) return;
-    const focusFrame = requestAnimationFrame(() => {
-      optionRefs.current[languages.findIndex(item => item.code === language)]?.focus({ preventScroll: true });
-    });
+    optionRefs.current[languages.findIndex(item => item.code === language)]?.focus({ preventScroll: true });
     const outside = event => { if (!rootRef.current?.contains(event.target)) setOpen(false); };
     const escape = event => {
       if (event.key === 'Escape') { setOpen(false); triggerRef.current?.focus(); }
@@ -25,7 +23,6 @@ function LanguageSwitcher({ language, onChange, onOpen, t }) {
     document.addEventListener('pointerdown', outside);
     document.addEventListener('keydown', escape);
     return () => {
-      cancelAnimationFrame(focusFrame);
       document.removeEventListener('pointerdown', outside);
       document.removeEventListener('keydown', escape);
     };
