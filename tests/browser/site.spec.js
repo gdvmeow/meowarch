@@ -292,6 +292,25 @@ test('drawings preserve their natural dimensions and project captions', async ({
   }
 });
 
+test('the full About photo fills a substantial desktop column at 100% and 80% scale', async ({ browser }) => {
+  for (const scale of [1, .8]) {
+    const context = await browser.newContext({ viewport: { width: 1920 / scale, height: 1080 / scale }, deviceScaleFactor: scale });
+    const page = await context.newPage();
+    await ready(page, '?page=about');
+    const photo = page.locator('.about-portrait img');
+    await photo.evaluate(image => image.decode());
+    const geometry = await photo.evaluate(image => {
+      const rect = image.getBoundingClientRect();
+      return { width: rect.width, ratio: rect.width / rect.height, share: rect.width / document.querySelector('.about-grid').clientWidth, source: [image.naturalWidth, image.naturalHeight] };
+    });
+    expect(geometry.source).toEqual([1280, 960]);
+    expect(Math.abs(geometry.ratio - 4 / 3)).toBeLessThan(.005);
+    expect(geometry.width * scale).toBeGreaterThan(440);
+    expect(geometry.share).toBeGreaterThan(.43);
+    await context.close();
+  }
+});
+
 test('Socrates has one cover while its second scan stays inside the work', async ({ page }) => {
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 960 });
