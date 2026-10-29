@@ -111,12 +111,9 @@ main:focus { outline: none; }
 .section-heading .text-link { flex: none; }
 .selected-grid { display: grid; grid-template-columns: 1.5fr .85fr; gap: 40px; align-items: start; }
 .selected-small { margin-top: 104px; }
-.selected-grid.is-single { display: block; max-width: 1040px; margin-inline: auto; }
-.tile-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
-.is-single .tile-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-top: 22px; }
 .project-tile { display: block; min-width: 0; }
-.tile-image { position: relative; overflow: hidden; background: var(--image-ground); }
-.tile-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+.tile-image { position: relative; overflow: hidden; background: #fff; }
+.tile-image img { width: 100%; height: 100%; object-fit: contain; transition: transform .5s var(--ease); }
 .selected-large .tile-image { aspect-ratio: 1.5; }
 .selected-small .tile-image { aspect-ratio: 1.22; }
 .tile-meta { padding-top: 18px; }
@@ -145,7 +142,6 @@ main:focus { outline: none; }
 .portfolio-grid.is-list .tile-image { grid-column: 2; grid-row: 1; aspect-ratio: 1.55; }
 .portfolio-grid.is-list .tile-meta { grid-column: 1; grid-row: 1; padding: 0; }
 .portfolio-grid.is-list .tile-meta h3 { font-size: clamp(26px, 3.1vw, 43px); }
-.portfolio-grid.is-single { display: block; max-width: 1040px; margin: 48px auto 0; }
 .project-page { padding-bottom: 96px; }
 .project-page:has(.project-next) { padding-bottom: 0; }
 
@@ -304,8 +300,6 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .section-heading .text-link { font-size: 14px; white-space: nowrap; }
   .selected-grid { grid-template-columns: 1fr; gap: 36px; }
   .selected-small { margin-top: 0; }
-  .tile-pair { gap: 20px; }
-  .is-single .tile-meta { display: block; padding-top: 16px; }
   .selected-large .tile-image, .selected-small .tile-image { aspect-ratio: 1.4; }
   .tile-meta { padding-top: 14px; }
   .tile-meta h3 { font-size: 27px; }
@@ -365,9 +359,6 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 }
 
 @media (max-width: 500px) {
-  .tile-pair { grid-template-columns: 1fr; width: 100%; }
-  .is-single .project-tile { display: flex; flex-direction: column; }
-  .is-single .tile-meta { order: -1; padding-top: 0; margin-bottom: 20px; }
   .menu-label { display: none; }
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
   .about-portrait { grid-row: 1; justify-self: start; width: 55%; max-width: 240px; }

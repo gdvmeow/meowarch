@@ -22,7 +22,7 @@ test('every project has an existing image with dimensions and a translated descr
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);
-    for (const image of project.images) {
+    for (const image of [...project.images, ...(project.cover ? [project.cover] : [])]) {
       await access(new URL(`../public/assets/${image.src}`, import.meta.url));
       assert.ok(image.width > 0 && image.height > 0);
     }
@@ -30,7 +30,10 @@ test('every project has an existing image with dimensions and a translated descr
       const localized = localizeProject(project, code);
       for (const field of ['title', 'category', 'summary', 'description']) assert.ok(localized[field]?.trim());
       assert.ok(localized.images.every(image => image.alt?.trim()));
-      if (code !== 'ru') assert.equal(localized.title, copy[code].projects[project.id].title);
+      if (code !== 'ru') {
+        assert.equal(localized.title, copy[code].projects[project.id].title);
+        assert.equal(copy[code].projects[project.id].imageAlts.length, project.images.length);
+      }
     }
   }
 });

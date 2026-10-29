@@ -19,7 +19,7 @@ export function Home({ t, projects }) {
     </section>
     <section className="selected-section shell" aria-labelledby="selected-heading">
       <div className="section-heading"><h2 id="selected-heading">{t.selectedProjects}</h2><a className="text-link" href="?page=portfolio">{t.fullPortfolio}</a></div>
-      <div className={`selected-grid${selected.length === 1 ? ' is-single' : ''}`}>{selected.map((project, index) => <ProjectTile key={project.id} project={project} expanded={selected.length === 1} className={index === 0 ? 'selected-large' : 'selected-small'}/>)}</div>
+      <div className="selected-grid">{selected.map((project, index) => <ProjectTile key={project.id} project={project} className={index === 0 ? 'selected-large' : 'selected-small'}/>)}</div>
     </section>
   </main>;
 }
@@ -39,8 +39,8 @@ export function Portfolio({ t, projects, route }) {
         {['grid', 'list'].map(value => <a key={value} href={portfolioHref({ filter, view: value })} aria-current={view === value ? 'true' : undefined} aria-label={t.portfolio[value]}><span>{t.portfolio[value]}</span></a>)}
       </nav>
     </div>}
-    <div className={`portfolio-grid ${single ? 'is-single' : view === 'list' ? 'is-list' : ''}`}>
-      {shown.map(project => <ProjectTile key={project.id} project={project} expanded={single}/>)}
+    <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>
+      {shown.map(project => <ProjectTile key={project.id} project={project}/>)}
     </div>
   </main>;
 }

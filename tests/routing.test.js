@@ -37,5 +37,5 @@ test('unsupported filter and layout parameters recover to valid defaults', () =>
 });
 
 test('removed work categories recover to the complete current catalog', () => {
-  assert.equal(readRoute('?page=portfolio&filter=architecture', projects).filter, 'all');
+  assert.equal(readRoute('?page=portfolio&filter=architecture', [{ group: 'graphics' }]).filter, 'all');
 });

@@ -72,16 +72,26 @@ test('language menu supports arrows, escape, tab dismissal and has no selection 
   expect(await page.locator('.language-menu').evaluate(el => getComputedStyle(el).borderTopWidth)).toBe('1px');
 });
 
-test('a single real work has no redundant controls and legacy filters still show it', async ({ page }) => {
-  for (const query of ['?page=portfolio', '?page=portfolio&filter=architecture', '?page=portfolio&filter=graphics&view=list']) {
-    await ready(page, query);
-    await expect(page.locator('.project-tile')).toHaveCount(1);
-    await expect(page.locator('.project-tile')).toHaveAttribute('href', '?project=socrates');
-    await expect(page.locator('.portfolio-toolbar')).toHaveCount(0);
-    await expect(page.locator('.tile-pair img')).toHaveCount(2);
-    await page.reload();
-    await expect(page.locator('.project-tile')).toHaveCount(1);
+test('portfolio restores filters and layouts with one cover per real work', async ({ page }) => {
+  await ready(page, '?page=portfolio');
+  await expect(page.locator('.project-tile')).toHaveCount(projects.length);
+  for (const project of projects) {
+    const tile = page.locator(`a.project-tile[href="?project=${project.id}"]`);
+    await expect(tile.locator('img')).toHaveCount(1);
+    await expect(tile.locator('img')).toHaveAttribute('src', new RegExp(`${(project.cover ?? project.images[0]).src}$`));
   }
+  await page.getByRole('navigation', { name: 'Разделы работ' }).getByRole('link', { name: 'Графика' }).click();
+  await expect(page).toHaveURL(/filter=graphics/);
+  await expect(page.locator('.project-tile')).toHaveCount(1);
+  await page.getByRole('navigation', { name: 'Вид работ' }).getByRole('link', { name: 'Список' }).click();
+  await expect(page).toHaveURL(/view=list/);
+  await page.reload();
+  await expect(page.locator('.portfolio-grid')).toHaveClass(/is-list/);
+  await expect(page.locator('.project-tile')).toHaveCount(1);
+  await page.goBack();
+  await expect(page.locator('.portfolio-grid')).not.toHaveClass(/is-list/);
+  await page.goBack();
+  await expect(page.locator('.project-tile')).toHaveCount(projects.length);
   for (const id of ['house', 'structure', 'courtyard', 'drawing', 'form']) {
     await ready(page, `?project=${id}`);
     await expect(page.locator('main h1')).toHaveText('Страница не найдена');
@@ -129,10 +139,21 @@ test('gallery isolates background, cycles, traps focus, closes and restores the 
   await expect(dialog).toHaveCount(0);
 });
 
-test('the only work does not link to itself as a next project', async ({ page }) => {
-  await ready(page, '?project=socrates');
-  await expect(page.locator('.project-next')).toHaveCount(0);
-  await expect(page.locator('main .project-image-button')).toHaveCount(2);
+test('project navigation advances to a different real work and wraps around', async ({ page }) => {
+  for (const [index, project] of projects.entries()) {
+    await ready(page, `?project=${project.id}`);
+    const next = projects[(index + 1) % projects.length];
+    await expect(page.locator('.project-next')).toHaveAttribute('href', `?project=${next.id}`);
+  }
+});
+
+test('a one-sheet architecture project opens a gallery without inactive paging controls', async ({ page }) => {
+  await ready(page, '?project=low-rise-house');
+  await page.locator('.project-cover button').click();
+  await expect(page.locator('.viewer-count')).toHaveText('1 из 1');
+  await expect(page.locator('.viewer-controls')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Закрыть', exact: true }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
 test('clipboard success and denial give usable feedback', async ({ page, context }) => {
@@ -259,17 +280,15 @@ test('drawings preserve their natural dimensions and project captions', async ({
   }
 });
 
-test('portrait artwork stays complete in featured, grid and list cards and opens both scans', async ({ page }) => {
+test('Socrates has one cover while its second scan stays inside the work', async ({ page }) => {
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 960 });
-    for (const path of ['', '?page=portfolio&filter=graphics', '?page=portfolio&view=list&filter=graphics']) {
+    for (const path of ['?page=portfolio&filter=graphics', '?page=portfolio&view=list&filter=graphics']) {
       await ready(page, path);
-      const image = page.locator('a[href="?project=socrates"] .tile-image').first();
-      const ratio = await image.evaluate(el => {
-        const rect = el.getBoundingClientRect();
-        return rect.width / rect.height;
-      });
-      expect(Math.abs(ratio - 1650 / 2153)).toBeLessThan(.002);
+      const tile = page.locator('a.project-tile[href="?project=socrates"]');
+      await expect(tile.locator('img')).toHaveCount(1);
+      await expect(tile.locator('img')).toHaveCSS('object-fit', 'contain');
+      await expect(tile.locator('img')).toHaveAttribute('src', /socrates-01.webp$/);
     }
   }
   await ready(page, '?project=socrates');
