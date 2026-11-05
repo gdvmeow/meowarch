@@ -400,8 +400,7 @@ test('navigation and calls to action keep the original ink and paper palette', a
   const ink = 'rgb(37, 43, 38)';
   await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(238, 234, 226)');
   await expect(page.locator('.portfolio-cta')).toHaveCSS('color', ink);
-  await expect(page.locator('.hero-project-link')).toHaveCSS('color', ink);
-  await expect(page.locator('.hero-project-link .icon')).toHaveCount(0);
+  await expect(page.locator('.hero-project-link')).toHaveCount(0);
   for (const path of ['?page=about', '?page=contacts', '?page=portfolio']) {
     await ready(page, path);
     await expect(page.locator('.site-nav [aria-current="page"]')).toHaveCSS('color', ink);
@@ -610,10 +609,8 @@ test('home actions, footer group, Houdon deep link and LinkedIn are coherent in 
     for (const width of [320, 390, 768, 1440, 2400]) {
       await page.setViewportSize({ width, height: 960 });
       await ready(page);
-      await expect(page.locator('.hero-project-link')).toHaveAttribute('href', '#selected-work');
+      await expect(page.locator('.hero-project-link')).toHaveCount(0);
       await expect(page.locator('.portfolio-cta')).toHaveAttribute('href', '?page=portfolio');
-      await page.locator('.hero-project-link').click();
-      await expect(page.locator('#selected-work')).toBeInViewport();
       await page.locator('.portfolio-cta').click();
       await expect(page).toHaveURL(/page=portfolio/);
       await expect(page.locator('.footer-identity > p')).toHaveCount(0);

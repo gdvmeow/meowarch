@@ -18,7 +18,6 @@ export function Home({ t, projects }) {
           <h1><span><PuttyText variant="hero">{t.hero.architecture}</PuttyText></span><span className="hero-italic-line"><PuttyText variant="hero">{t.hero.and}</PuttyText><em><PuttyText variant="hero">{t.hero.graphics}</PuttyText></em></span></h1>
           <p className="hero-description">{t.hero.description}</p>
         </div>
-        <a className="hero-project-link" href="#selected-work">{t.hero.action}</a>
       </div>
     </section>
     <section id="selected-work" className="selected-section shell" aria-labelledby="selected-heading">

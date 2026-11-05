@@ -22,7 +22,7 @@ test('all languages have matching interface and profile fields', () => {
 });
 
 test('every project has an existing image with dimensions and a translated description', async () => {
-  assert.equal(projects.length, 20);
+  assert.equal(projects.length, 22);
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);
@@ -97,4 +97,24 @@ test('social targets retain valid URLs across languages', () => {
       assert.ok(localized.label && localized.detail);
     }
   }
+});
+
+
+test('the two November architecture works retain distinct sheets and complete translations', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/architecture-2026-11-05.json', import.meta.url), 'utf8'));
+  assert.deepEqual(manifest.works.map(work => work.projectId), ['mansard-house', 'house-on-slope']);
+  for (const entry of manifest.works) {
+    const project = projects.find(work => work.id === entry.projectId);
+    assert.equal(project.group, 'architecture');
+    assert.equal(project.images.length, 1);
+    assert.equal(project.images[0].src, entry.asset);
+    assert.equal(project.images[0].width, entry.width);
+    assert.equal(project.images[0].height, entry.height);
+    const bytes = await readFile(new URL(`../public/assets/${entry.asset}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.processedSha256);
+    await assert.rejects(access(new URL(`../public/assets/${entry.sourceFile}`, import.meta.url)));
+    for (const { code } of languages) assert.ok(localizeProject(project, code).images[0].alt);
+  }
+  assert.equal(projects.find(work => work.id === 'mansard-house').title, 'Малоэтажный жилой дом');
+  assert.equal(projects.find(work => work.id === 'house-on-slope').title, 'Дом на яру');
 });

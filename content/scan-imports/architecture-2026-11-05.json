@@ -1,0 +1,29 @@
+{
+  "importDate": "2026-11-05",
+  "works": [
+    {
+      "sourceFile": "IMG_1920.JPG",
+      "sourceSha256": "91d1e104e6cebbde90ccce81bdf1bfeb580747e6c4f27ebf916b4db24fd7e09b",
+      "sourceBytes": 2810727,
+      "projectId": "mansard-house",
+      "asset": "mansard-house-sheet.webp",
+      "width": 2416,
+      "height": 3575,
+      "processedSha256": "d4c93f58970d18aaef5b81b36ad2752f01e6eb0fc7b0286143568fdcd1281a8b",
+      "processedBytes": 1984276,
+      "processing": "Auto orientation, WebP quality 94, metadata removed. Full frame; no crop or retouch."
+    },
+    {
+      "sourceFile": "IMG_1928.HEIC",
+      "sourceSha256": "529fb69e9452afd5ea15517387e387f29502c7213126f1207dff875b320fa123",
+      "sourceBytes": 1772011,
+      "projectId": "house-on-slope",
+      "asset": "house-on-slope-sheet.webp",
+      "width": 2359,
+      "height": 3287,
+      "processedSha256": "6af622934e2f14af4efba3e40f8b893ce9388425aeeb71c970d42f24b8bee459",
+      "processedBytes": 1994120,
+      "processing": "Auto orientation, WebP quality 94, metadata removed. Full frame; no crop or retouch."
+    }
+  ]
+}

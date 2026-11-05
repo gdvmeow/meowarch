@@ -194,6 +194,24 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — architectural projects, hand-drawn presentation, academic drawing and contact details.',
     projects: {
       ...scanStudyTranslations.en,
+      "mansard-house": {
+        "title": "Low-rise house",
+        "category": "Residential architecture",
+        "summary": "A house with a mansard roof, garage and balcony.",
+        "description": "A hand-drawn colour presentation: front elevation, ground- and upper-floor plans, a site plan and a room schedule.",
+        "imageAlts": [
+          "Low-rise house — front elevation, two floor plans, site plan and room schedule"
+        ]
+      },
+      "house-on-slope": {
+        "title": "House on a slope",
+        "category": "Residential architecture",
+        "summary": "An individual house on a site with a pronounced slope.",
+        "description": "An architecture sheet on coloured paper: two floor plans, a building section, a stair section and two elevations. The ground-floor plan is shown within the site’s contours and planting.",
+        "imageAlts": [
+          "House on a slope — two floor plans, sections, elevations and a site layout with contours"
+        ]
+      },
       'low-rise-house': {
         title: 'Low-rise house', category: 'Residential architecture',
         summary: 'A house with a sloping roof and expressive glazing.',
@@ -320,6 +338,24 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — 建筑设计项目、手绘表现、学院素描与联系信息。',
     projects: {
       ...scanStudyTranslations.zh,
+      "mansard-house": {
+        "title": "低层住宅",
+        "category": "住宅建筑",
+        "summary": "带折线坡屋顶、车库和阳台的住宅。",
+        "description": "手绘彩色建筑表现：正立面、首层与二层平面、场地总平面及房间明细表。",
+        "imageAlts": [
+          "低层住宅 — 正立面、两层平面、总平面及房间明细表"
+        ]
+      },
+      "house-on-slope": {
+        "title": "坡地住宅",
+        "category": "住宅建筑",
+        "summary": "位于明显坡地上的独立住宅。",
+        "description": "在彩色纸上绘制的建筑图纸：两层平面、建筑剖面、楼梯剖面及两个立面。首层平面结合场地等高线与绿化布置呈现。",
+        "imageAlts": [
+          "坡地住宅 — 两层平面、剖面、立面及带等高线的场地布置"
+        ]
+      },
       'low-rise-house': {
         title: '低层住宅', category: '住宅建筑',
         summary: '以斜屋顶和富有表现力的玻璃立面塑造的住宅。',
