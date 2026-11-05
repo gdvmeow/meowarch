@@ -140,8 +140,31 @@ test('personal profile has complete facts and every requested software tool', as
     const strings = value => typeof value === 'string' ? [value] : value && typeof value === 'object' ? Object.values(value).flatMap(strings) : [];
     assert.ok(!strings(about).some(text => /\[[^\]]+\]/.test(text)), code);
     assert.equal(about.iconsNote, undefined);
-    assert.match(about.education[0].title, /МКАГ/);
+    assert.equal(about.approachHeading, undefined);
+    assert.equal(about.approach, undefined);
+    assert.match(about.education[0].title, /ГБПОУ «МКАГ»/);
     assert.match(about.education[0].period, /2025/);
     assert.match(about.education[1].period, /2019.*2024/);
+  }
+});
+
+
+test('renamed studies preserve their original links, image metadata and translated names', async () => {
+  const expected = {
+    'portal-facade': { names: { ru: 'Фонтан Треви', en: 'Trevi Fountain', zh: '特雷维喷泉' }, width: 2024, height: 1422 },
+    'line-landscape': { names: { ru: 'Антураж и стаффаж', en: 'Entourage and staffage', zh: '环境配景与人物点景' }, width: 2024, height: 1435 },
+  };
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/terzyan-dump.json', import.meta.url), 'utf8'));
+  for (const [id, entry] of Object.entries(expected)) {
+    const project = projects.find(project => project.id === id);
+    assert.ok(project);
+    assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: `${id}.webp`, width: entry.width, height: entry.height }]);
+    assert.equal(manifest.pages.find(page => page.projectId === id && page.status === 'selected').title, entry.names.ru);
+    for (const { code } of languages) {
+      const localized = localizeProject(project, code);
+      assert.equal(localized.id, id);
+      assert.equal(localized.title, entry.names[code]);
+      assert.ok(localized.images[0].alt.startsWith(entry.names[code]));
+    }
   }
 });

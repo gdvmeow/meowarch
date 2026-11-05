@@ -60,52 +60,47 @@ export const copy = {
       "heading": "О себе",
       "role": "Архитектура, проектирование и дизайн",
       "body": [
-        "Мне 19 лет. Я занимаюсь архитектурой и дизайном, опираясь на художественную подготовку и архитектурное образование.",
-        "Работаю с частными жилыми проектами: продумываю пространство, разрабатываю чертежи и трёхмерные модели, готовлю визуальную подачу. Мне важно, чтобы идея была понятной и в плане, и в объёме."
+        "Мне 19 лет. Я учусь архитектуре в колледже ГБПОУ «МКАГ» в Москве и работаю над проектами частных домов.",
+        "Разрабатываю планировки и чертежи, делаю 3D-модели и визуализации."
       ],
       "competenciesHeading": "Чем я занимаюсь",
       "competencies": [
         {
           "title": "Концепция и планировка",
-          "body": "Разрабатываю концепции, продумываю функциональное зонирование и связи между помещениями. Собираю планировку вокруг задач будущих жильцов."
+          "body": "Продумываю концепцию дома, назначение комнат и связи между ними. В планировке учитываю потребности будущих жильцов."
         },
         {
           "title": "Чертежи и документация",
-          "body": "Готовлю планы этажей, фасады и разрезы. Работаю с конструктивом и проектной документацией, увязываю решения между собой."
+          "body": "Готовлю планы этажей, фасады и разрезы. Работаю с конструктивом и проектной документацией."
         },
         {
           "title": "Модель и визуализация",
-          "body": "Создаю трёхмерные модели, работаю с материалами и светом. Готовлю визуализации и презентации, которые помогают объяснить проект."
+          "body": "Делаю 3D-модели, подбираю материалы и освещение, готовлю визуализации и презентации проекта."
         },
         {
           "title": "Генплан и благоустройство",
-          "body": "Работаю с размещением здания на участке и благоустройством территории. Рассматриваю дом вместе с его окружением."
+          "body": "Размещаю дом на участке и разрабатываю благоустройство вокруг него."
         }
       ],
       "practiceHeading": "Практика в Сочи",
       "practice": [
-        "Во время практики в архитектурной организации в Сочи я разработала план частного дома: функциональное зонирование и связи между помещениями.",
-        "План приняли почти без корректировок и передали инженеру. Затем проект перешёл к строительству. Этот опыт показал мне, как решение на чертеже становится частью реального дома."
+        "На практике в архитектурной организации в Сочи я разработала планировку частного дома. Продумала функциональные зоны и связи между помещениями.",
+        "Планировку приняли почти без правок и передали инженеру. Затем проект перешёл к строительству."
       ],
       "educationHeading": "Образование и художественная подготовка",
       "education": [
         {
-          "title": "МКАГ, Москва",
-          "body": "Получаю архитектурное образование и применяю знания в работе над жилыми проектами.",
+          "title": "ГБПОУ «МКАГ», Москва",
+          "body": "Учусь архитектуре и применяю полученные знания в проектах жилых домов.",
           "period": "2025 — настоящее время"
         },
         {
           "title": "Художественная школа",
-          "body": "Окончила художественную школу с красным дипломом. Моя база — академический рисунок, живопись, композиция, перспектива и пластическая анатомия. Есть дипломы и награды.",
+          "body": "Окончила художественную школу с красным дипломом. Изучала академический рисунок, живопись, композицию, перспективу и пластическую анатомию. У меня есть дипломы и награды.",
           "period": "2019 — 2024"
         }
       ],
       "educationLink": "Посмотреть образование и опыт",
-      "approachHeading": "Как я работаю",
-      "approach": [
-        "Обсуждаю задачу, задаю вопросы и понятно представляю свои решения. Умею вести переговоры, презентовать идеи и работать в команде.",
-        "Беру ответственность за свою часть работы, предлагаю варианты и адаптируюсь к изменениям. В проектировании соединяю творческий поиск и аналитическое мышление."
-      ],
       "toolsHeading": "Рабочие инструменты",
       "toolsIntro": "Программы, которые использую для проектирования, моделирования, визуализации и графической подачи.",
       "portraitAlt": "Портрет Виктории Терзян",
@@ -190,52 +185,47 @@ export const copy = {
       "heading": "About",
       "role": "Architecture, planning and design",
       "body": [
-        "I’m 19 and work in architecture and design, building on an art background and an architectural education.",
-        "I work on private residential projects: planning spaces, developing drawings and 3D models, and preparing visual presentations. I want an idea to be clear both on the plan and in three dimensions."
+        "I’m 19 and study architecture at ГБПОУ «МКАГ» college in Moscow. I work on private home designs.",
+        "I develop layouts and drawings, make 3D models and prepare visualisations."
       ],
       "competenciesHeading": "What I do",
       "competencies": [
         {
           "title": "Concepts and layouts",
-          "body": "I develop concepts, organise functional zones and work out how rooms connect. I shape layouts around the needs of the people who will live there."
+          "body": "I work out the concept for a house, the purpose of each room and how the rooms connect. I take the needs of its future residents into account when planning the layout."
         },
         {
           "title": "Drawings and documentation",
-          "body": "I prepare floor plans, elevations and sections. I work with structural design and project documentation, keeping the different decisions coordinated."
+          "body": "I prepare floor plans, elevations and sections. I work with structural design and project documentation."
         },
         {
           "title": "Modelling and visualisation",
-          "body": "I create 3D models and work with materials and lighting. I prepare visualisations and presentations that help explain the design."
+          "body": "I make 3D models, choose materials and lighting, and prepare visualisations and project presentations."
         },
         {
           "title": "Site planning and landscape",
-          "body": "I work on the building’s position on its site and the surrounding outdoor space, considering the house together with its setting."
+          "body": "I plan where the house sits on its site and design the outdoor space around it."
         }
       ],
       "practiceHeading": "Practice in Sochi",
       "practice": [
-        "During a placement at an architectural organisation in Sochi, I developed a private house plan, including its functional zoning and the connections between rooms.",
-        "The plan was accepted with almost no revisions and passed to an engineer. The project then moved into construction. It gave me a direct view of how a decision on paper becomes part of a real home."
+        "During a placement at an architectural organisation in Sochi, I developed a layout for a private house. I worked out its functional zones and the connections between rooms.",
+        "The layout was accepted with almost no changes and passed to an engineer. The project then moved into construction."
       ],
       "educationHeading": "Education and art background",
       "education": [
         {
-          "title": "МКАГ, Moscow",
-          "body": "I’m studying architecture and applying what I learn to residential projects.",
+          "title": "ГБПОУ «МКАГ» college, Moscow",
+          "body": "I study architecture and use what I learn in residential projects.",
           "period": "2025 — present"
         },
         {
           "title": "Art school",
-          "body": "I graduated from art school with honours. My foundation includes academic drawing, painting, composition, perspective and artistic anatomy. I also have diplomas and awards.",
+          "body": "I graduated from art school with honours. I studied academic drawing, painting, composition, perspective and artistic anatomy. I also have diplomas and awards.",
           "period": "2019 — 2024"
         }
       ],
       "educationLink": "View education and experience",
-      "approachHeading": "How I work",
-      "approach": [
-        "I discuss the brief, ask questions and present my decisions clearly. I can negotiate, communicate ideas and work as part of a team.",
-        "I take responsibility for my part of the work, put forward options and adapt to changes. My design process combines creative exploration with analytical thinking."
-      ],
       "toolsHeading": "Working tools",
       "toolsIntro": "The programs I use for design, modelling, visualisation and graphic presentation.",
       "portraitAlt": "Portrait of Viktoria Terzyan",
@@ -371,52 +361,47 @@ export const copy = {
       "heading": "关于我",
       "role": "建筑、空间规划与设计",
       "body": [
-        "我今年19岁，从事建筑与设计，将美术训练和建筑教育融入工作。",
-        "我参与私人住宅项目，推敲空间布局、绘制图纸、建立三维模型并准备视觉表达。我希望一个设计既能在平面上说清楚，也能在立体空间中被理解。"
+        "我今年19岁，在莫斯科的ГБПОУ «МКАГ»学院学习建筑，也参与私人住宅设计。",
+        "我设计平面布局、绘制图纸、建立三维模型并制作效果图。"
       ],
       "competenciesHeading": "我的工作内容",
       "competencies": [
         {
           "title": "概念与空间布局",
-          "body": "发展设计概念，安排功能分区，梳理房间之间的联系，根据未来居住者的需求组织平面。"
+          "body": "我推敲住宅的设计概念、各个房间的用途及相互联系，并根据未来居住者的需求安排平面布局。"
         },
         {
           "title": "图纸与项目文件",
-          "body": "绘制楼层平面、立面和剖面，参与结构设计与项目文件工作，协调不同设计决定。"
+          "body": "我绘制楼层平面、立面和剖面，也参与结构设计和项目文件工作。"
         },
         {
           "title": "模型与可视化",
-          "body": "建立三维模型，推敲材质与光线，准备可视化图像和演示材料，帮助他人理解设计。"
+          "body": "我建立三维模型，选择材质和光照，制作效果图和项目演示材料。"
         },
         {
           "title": "总平面与场地设计",
-          "body": "研究建筑在场地中的位置及周边室外空间，将住宅与其环境一起考虑。"
+          "body": "我安排住宅在场地中的位置，设计周围的室外空间。"
         }
       ],
       "practiceHeading": "在索契的实践",
       "practice": [
-        "在索契一家建筑机构实习期间，我为一栋私人住宅设计了平面布局，包括功能分区和房间之间的联系。",
-        "方案几乎未经修改便获采纳，随后交给工程师，项目进入施工阶段。这段经历让我看到，图纸上的决定如何成为真实住宅的一部分。"
+        "在索契一家建筑机构实习期间，我为一栋私人住宅设计了平面布局，安排功能分区和房间之间的联系。",
+        "方案几乎未经修改便获采纳，随后交给工程师。之后，项目进入施工阶段。"
       ],
       "educationHeading": "教育与美术基础",
       "education": [
         {
-          "title": "МКАГ，莫斯科",
-          "body": "学习建筑，并将所学运用到住宅项目中。",
+          "title": "ГБПОУ «МКАГ»学院，莫斯科",
+          "body": "我学习建筑，并将所学用于住宅项目。",
           "period": "2025年至今"
         },
         {
           "title": "美术学校",
-          "body": "以优异成绩从美术学校毕业。我的基础包括学院素描、绘画、构图、透视和艺术解剖，也获得过证书与奖项。",
+          "body": "我以优异成绩从美术学校毕业，学过学院素描、绘画、构图、透视和艺术解剖，也获得过证书与奖项。",
           "period": "2019 — 2024"
         }
       ],
       "educationLink": "查看教育与经历",
-      "approachHeading": "我的工作方式",
-      "approach": [
-        "我会讨论需求、提出问题，并清楚地说明设计决定，能够进行沟通协商、展示想法，也能与团队合作。",
-        "我对自己负责的工作承担责任，主动提出方案，并适应变化。在设计中，我将创意探索与分析思考结合起来。"
-      ],
       "toolsHeading": "工作软件",
       "toolsIntro": "我用于设计、建模、可视化和图形表达的软件。",
       "portraitAlt": "Viktoria Terzyan的照片",

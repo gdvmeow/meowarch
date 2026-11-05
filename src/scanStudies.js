@@ -35,16 +35,16 @@ export const scanStudies = [
   {
     "id": "portal-facade",
     "group": "graphics",
-    "title": "Фасад с порталом",
+    "title": "Фонтан Треви",
     "category": "Архитектурная графика",
-    "summary": "Монументальный фасад с центральной аркой и скульптурной композицией.",
-    "description": "Ручной архитектурный рисунок: колонны, ниши, оконные проёмы и скульптура перед фасадом. Линия и лёгкий тон раскрывают глубину композиции.",
+    "summary": "Рисунок фонтана Треви с центральной аркой и скульптурами.",
+    "description": "Учебный рисунок фонтана Треви. Колонны, ниши, окна и скульптуры выполнены линией и лёгким тоном.",
     "images": [
       {
         "src": "portal-facade.webp",
         "width": 2024,
         "height": 1422,
-        "alt": "Фасад с порталом — полный лист"
+        "alt": "Фонтан Треви — полный лист"
       }
     ]
   },
@@ -99,16 +99,16 @@ export const scanStudies = [
   {
     "id": "line-landscape",
     "group": "graphics",
-    "title": "Пейзаж в линии",
+    "title": "Антураж и стаффаж",
     "category": "Линейная графика",
-    "summary": "Архитектура, лестница, деревья и фигуры в графическом пейзаже.",
-    "description": "Линейная композиция с чёрными акцентами и штриховыми фактурами. Пространство раскрывается через планы, силуэты растительности и движение человеческих фигур.",
+    "summary": "Архитектурный антураж и стаффаж: деревья, лестница и человеческие фигуры.",
+    "description": "Линейная композиция с архитектурой, растительностью и человеческими фигурами. Чёрные акценты и штриховка передают глубину пространства.",
     "images": [
       {
         "src": "line-landscape.webp",
         "width": 2024,
         "height": 1435,
-        "alt": "Пейзаж в линии — полный лист"
+        "alt": "Антураж и стаффаж — полный лист"
       }
     ]
   },
@@ -269,12 +269,12 @@ export const scanStudyTranslations = {
       ]
     },
     "portal-facade": {
-      "title": "Façade and portal",
+      "title": "Trevi Fountain",
       "category": "Architectural drawing",
-      "summary": "A monumental façade with a central arch and sculptural composition.",
-      "description": "A hand-drawn architectural study of columns, niches, windows and sculpture in front of a façade. Line and light tonal work convey depth.",
+      "summary": "A drawing of the Trevi Fountain, with its central arch and sculptures.",
+      "description": "A drawing study of the Trevi Fountain. Columns, niches, windows and sculptures are drawn with line and light tonal shading.",
       "imageAlts": [
-        "Façade and portal — full sheet"
+        "Trevi Fountain — full sheet"
       ]
     },
     "domed-church": {
@@ -305,12 +305,12 @@ export const scanStudyTranslations = {
       ]
     },
     "line-landscape": {
-      "title": "Landscape in line",
+      "title": "Entourage and staffage",
       "category": "Line drawing",
-      "summary": "Architecture, stairs, trees and figures in a graphic landscape.",
-      "description": "A line composition with black accents and hatched textures. Layered planes, plant silhouettes and human figures articulate the space.",
+      "summary": "Architectural entourage and staffage: trees, stairs and human figures.",
+      "description": "A line drawing of architecture, plants and human figures. Black accents and hatching convey depth.",
       "imageAlts": [
-        "Landscape in line — full sheet"
+        "Entourage and staffage — full sheet"
       ]
     },
     "garden-site-plan": {
@@ -407,12 +407,12 @@ export const scanStudyTranslations = {
       ]
     },
     "portal-facade": {
-      "title": "立面与入口",
+      "title": "特雷维喷泉",
       "category": "建筑绘图",
-      "summary": "带中央拱门与雕塑构图的纪念性立面。",
-      "description": "手绘建筑习作，描绘柱、壁龛、窗及立面前的雕塑，以线条和轻调子表现空间深度。",
+      "summary": "特雷维喷泉绘图，描绘中央拱门和雕塑。",
+      "description": "特雷维喷泉绘图习作，以线条和轻调子描绘柱、壁龛、窗及雕塑。",
       "imageAlts": [
-        "立面与入口 — 完整图纸"
+        "特雷维喷泉 — 完整图纸"
       ]
     },
     "domed-church": {
@@ -443,12 +443,12 @@ export const scanStudyTranslations = {
       ]
     },
     "line-landscape": {
-      "title": "线描风景",
+      "title": "环境配景与人物点景",
       "category": "线描",
-      "summary": "图形化风景中的建筑、台阶、树木与人物。",
-      "description": "线描构图结合黑色块面与排线肌理，通过层次、植物剪影及人物表现空间。",
+      "summary": "建筑环境配景与人物点景：树木、台阶及人物。",
+      "description": "由建筑、植物和人物组成的线描，以黑色块面和排线表现空间深度。",
       "imageAlts": [
-        "线描风景 — 完整图纸"
+        "环境配景与人物点景 — 完整图纸"
       ]
     },
     "garden-site-plan": {

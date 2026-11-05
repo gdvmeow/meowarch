@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { projects } from '../../src/data.js';
+import { copy, localizeProject } from '../../src/i18n.js';
 
 const pages = ['', '?page=portfolio', '?page=about', '?page=contacts', '?page=education', ...projects.map(project => `?project=${project.id}`), '?project=missing'];
 
@@ -676,7 +677,8 @@ test('personal About keeps all fifteen branded tools and usable section links', 
       }
       expect(await page.locator('main').innerText()).not.toMatch(/\[[^\]]+\]/);
       await expect(page.locator('.competency-grid > div')).toHaveCount(4);
-      await expect(page.locator('.about-education')).toContainText('МКАГ');
+      await expect(page.locator('.about-approach, #approach-heading')).toHaveCount(0);
+      await expect(page.locator('.about-education')).toContainText('ГБПОУ «МКАГ»');
       await expect(page.locator('.about-education')).toContainText('2025');
       await expect(page.locator('.about-education')).toContainText('2019');
       await expect(page.locator('.about-education')).toContainText('2024');
@@ -688,6 +690,37 @@ test('personal About keeps all fifteen branded tools and usable section links', 
       await expect(page.locator('.education-practice')).toBeVisible();
       await expect(page.locator('.credential-document')).toHaveCount(3);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  }
+});
+
+
+test('renamed studies retain deep links and show current names in cards, metadata and galleries', async ({ page }) => {
+  for (const language of ['ru', 'en', 'zh']) {
+    await ready(page);
+    await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+    for (const id of ['portal-facade', 'line-landscape']) {
+      const project = localizeProject(projects.find(project => project.id === id), language);
+      await ready(page, '?page=portfolio');
+      const card = page.locator(`.project-tile[href="?project=${id}"]`);
+      await expect(card).toContainText(project.title);
+      await card.click();
+      await expect(page).toHaveURL(new RegExp(`project=${id}`));
+      await expect(page.locator('main h1')).toHaveText(project.title);
+      await expect(page).toHaveTitle(`${project.title} — ${copy[language].name}`);
+      await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', project.summary);
+      await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', await page.title());
+      await expect(page.locator('meta[property="og:description"]')).toHaveAttribute('content', project.summary);
+      await expect(page.locator('.project-cover img')).toHaveAttribute('alt', project.images[0].alt);
+      await page.locator('.project-cover button').click();
+      await expect(page.getByRole('dialog')).toBeVisible();
+      await expect(page.getByRole('dialog')).toHaveAccessibleName(project.title);
+      await expect(page.locator('.viewer-image img')).toHaveAttribute('src', new RegExp(`${id}\.webp$`));
+      await page.keyboard.press('Escape');
+      await expect(page.getByRole('dialog')).toHaveCount(0);
+      await expect(page.locator('.project-cover button')).toBeFocused();
+      await page.reload();
+      await expect(page.locator('main h1')).toHaveText(project.title);
     }
   }
 });
