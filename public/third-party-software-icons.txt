@@ -1,0 +1,112 @@
+All 15 tools have local images. Nine functional pictograms are original project artwork, not vendor logos. Six identify the corresponding programs using sourced graphics. Product names and trademarks remain owned by their respective developers. No affiliation or endorsement is implied.
+
+archicad
+Source: https://graphisoft.com/contact-us/press-relations#/documents/archicad-logo-98604
+Rights/status: CC0-1.0
+Changes: Single-color SVG uses brand colour from Simple Icons metadata.
+
+blender
+Source: https://download.blender.org/branding/blender_logo.svg
+Rights/status: Vendor logo usage guidelines: credit among other software marks; trademark retained
+Terms: https://www.blender.org/about/logo/
+Changes: None; full mark with wordmark and original colours.
+
+sketchup
+Source: https://www.sketchup.com
+Rights/status: CC0-1.0
+Changes: Single-color SVG uses brand colour from Simple Icons metadata.
+
+rhinoceros
+Source: https://www.rhino3d.com/reseller/graphics/RhinoHead-2800x2800.png
+Rights/status: Vendor-provided graphics, subject to trademark usage rules
+Terms: https://www.rhino3d.com/mcneel/trademarks/
+Changes: Proportional downscale to 160×160, no recolouring.
+
+twinmotion
+Source: https://www.twinmotion.com
+Rights/status: CC0-1.0
+Changes: Single-color SVG uses brand colour from Simple Icons metadata.
+
+grasshopper
+Source: https://www.rhino3d.com/reseller/support/grasshopper/grasshopper.png
+Rights/status: Vendor-provided graphics, subject to trademark usage rules
+Terms: https://www.rhino3d.com/reseller/graphics/
+Changes: Proportional downscale to 160×160, no recolouring. Replaces developer-component illustration with the actual product mark.
+
+renga
+Source: local:public/assets/software/renga.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+nanocad
+Source: local:public/assets/software/nanocad.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+autocad
+Source: local:public/assets/software/autocad.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+revit
+Source: local:public/assets/software/revit.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+3ds-max
+Source: local:public/assets/software/3ds-max.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+lumion
+Source: local:public/assets/software/lumion.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+photoshop
+Source: local:public/assets/software/photoshop.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+illustrator
+Source: local:public/assets/software/illustrator.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+indesign
+Source: local:public/assets/software/indesign.svg
+Rights/status: Project-original artwork; no third-party paths or vendor marks
+Changes: Created for this site; functional drawing, not an official logo.
+
+The original pictograms were made for: renga, nanocad, autocad, revit, 3ds-max, lumion, photoshop, illustrator, indesign. They do not trace or reproduce vendor marks.
+
+Restricted or unconfirmed vendor marks (NOT distributed; the above original pictograms are used instead):
+renga: Brandbook page 9 restricts placing marks or parts of marks in lists; an original functional pictogram is used instead.
+https://rengabim.com/files//files/RengaBrandbook_v3.3.pdf
+
+nanocad: Official site requires rightsholder consent for copying and reuse of materials; no open icon resource confirmed.
+https://nanocad.ru/
+
+lumion: Official brand asset endpoint unavailable; no current suitable asset with confirmed reuse terms obtained.
+https://lumion.com/brand.html
+
+autocad: Product icons require permission and a specific agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
+https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
+
+revit: Product icons require permission and a specific agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
+https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
+
+3ds-max: Product icons require permission and a specific agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
+https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
+
+photoshop: Product icons require an Adobe partnership agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
+https://www.adobe.com/legal/permissions/icons-web-logos.html
+
+illustrator: Product icons require an Adobe partnership agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
+https://www.adobe.com/legal/permissions/icons-web-logos.html
+
+indesign: Product icons require an Adobe partnership agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
+https://www.adobe.com/legal/permissions/icons-web-logos.html
+
+Simple Icons source paths for Archicad, SketchUp and Twinmotion: CC0-1.0, https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md. This collection copyright license does not grant vendor trademark rights.
+Autodesk, AutoCAD, Revit and 3ds Max are trademarks of Autodesk, Inc. and/or its subsidiaries and affiliates. All other product names and marks belong to their respective holders. This site is independent of Autodesk.

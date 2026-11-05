@@ -57,23 +57,62 @@ export const copy = {
       pageAlts: ['Обложка свидетельства с отличием по программе «Живопись»', 'Свидетельство Виктории Терзян об окончании программы «Живопись» с отличием', 'Приложение к свидетельству: учебные предметы и итоговые оценки'],
     },
     about: {
-      heading: 'О себе',
-      role: 'Архитектура и графика',
-      body: '[Здесь будет мой рассказ: как я пришла в архитектуру, над чем работаю и что мне интересно исследовать.]',
-      educationHeading: 'Образование',
-      education: [
-        { period: '[Годы обучения]', institution: '[Название университета]', detail: '[Факультет, направление и квалификация]' },
-        { period: '[Год]', institution: '[Дополнительное образование]', detail: '[Курс, мастерская или профессиональная программа]' },
+      "heading": "О себе",
+      "role": "Архитектура, проектирование и дизайн",
+      "body": [
+        "Мне 19 лет. Я занимаюсь архитектурой и дизайном, опираясь на художественную подготовку и архитектурное образование.",
+        "Работаю с частными жилыми проектами: продумываю пространство, разрабатываю чертежи и трёхмерные модели, готовлю визуальную подачу. Мне важно, чтобы идея была понятной и в плане, и в объёме."
       ],
-      toolsHeading: 'Рабочие инструменты',
-      tools: [
-        { label: 'Проектирование', value: '[CAD / BIM-программы]' },
-        { label: 'Визуализация', value: '[3D и рендеринг]' },
-        { label: 'Графика', value: '[Редакторы и ручные техники]' },
+      "competenciesHeading": "Чем я занимаюсь",
+      "competencies": [
+        {
+          "title": "Концепция и планировка",
+          "body": "Разрабатываю концепции, продумываю функциональное зонирование и связи между помещениями. Собираю планировку вокруг задач будущих жильцов."
+        },
+        {
+          "title": "Чертежи и документация",
+          "body": "Готовлю планы этажей, фасады и разрезы. Работаю с конструктивом и проектной документацией, увязываю решения между собой."
+        },
+        {
+          "title": "Модель и визуализация",
+          "body": "Создаю трёхмерные модели, работаю с материалами и светом. Готовлю визуализации и презентации, которые помогают объяснить проект."
+        },
+        {
+          "title": "Генплан и благоустройство",
+          "body": "Работаю с размещением здания на участке и благоустройством территории. Рассматриваю дом вместе с его окружением."
+        }
       ],
-      portraitAlt: 'Портрет Виктории Терзян',
-      portraitLabel: 'Место для фотографии',
-      action: 'Связаться со мной',
+      "practiceHeading": "Практика в Сочи",
+      "practice": [
+        "Во время практики в архитектурной организации в Сочи я разработала план частного дома: функциональное зонирование и связи между помещениями.",
+        "План приняли почти без корректировок и передали инженеру. Затем проект перешёл к строительству. Этот опыт показал мне, как решение на чертеже становится частью реального дома."
+      ],
+      "educationHeading": "Образование и художественная подготовка",
+      "education": [
+        {
+          "title": "МКАГ, Москва",
+          "body": "Получаю архитектурное образование и применяю знания в работе над жилыми проектами.",
+          "period": "2025 — настоящее время"
+        },
+        {
+          "title": "Художественная школа",
+          "body": "Окончила художественную школу с красным дипломом. Моя база — академический рисунок, живопись, композиция, перспектива и пластическая анатомия. Есть дипломы и награды.",
+          "period": "2019 — 2024"
+        }
+      ],
+      "educationLink": "Посмотреть образование и опыт",
+      "approachHeading": "Как я работаю",
+      "approach": [
+        "Обсуждаю задачу, задаю вопросы и понятно представляю свои решения. Умею вести переговоры, презентовать идеи и работать в команде.",
+        "Беру ответственность за свою часть работы, предлагаю варианты и адаптируюсь к изменениям. В проектировании соединяю творческий поиск и аналитическое мышление."
+      ],
+      "toolsHeading": "Рабочие инструменты",
+      "toolsIntro": "Программы, которые использую для проектирования, моделирования, визуализации и графической подачи.",
+      "iconsNote": "Помеченные авторские иконки нарисованы для этого сайта и не являются фирменными знаками программ.",
+      "portraitAlt": "Портрет Виктории Терзян",
+      "portraitLabel": "Место для фотографии",
+      "action": "Обсудить проект",
+      "originalIconLabel": "Авторская иконка"
     },
     contacts: {
       heading: 'Контакты',
@@ -150,23 +189,62 @@ export const copy = {
       pageAlts: ['Cover of the certificate with honours for the Painting programme', 'Viktoria Terzyan’s certificate of completion with honours in Painting', 'Certificate supplement: subjects and final grades'],
     },
     about: {
-      heading: 'About',
-      role: 'Architecture and drawing',
-      body: '[My story will go here: how I came to architecture, what I work on, and what I enjoy exploring.]',
-      educationHeading: 'Education',
-      education: [
-        { period: '[Years of study]', institution: '[University name]', detail: '[Faculty, programme, and qualification]' },
-        { period: '[Year]', institution: '[Further education]', detail: '[Course, workshop, or professional programme]' },
+      "heading": "About",
+      "role": "Architecture, planning and design",
+      "body": [
+        "I’m 19 and work in architecture and design, building on an art background and an architectural education.",
+        "I work on private residential projects: planning spaces, developing drawings and 3D models, and preparing visual presentations. I want an idea to be clear both on the plan and in three dimensions."
       ],
-      toolsHeading: 'Working tools',
-      tools: [
-        { label: 'Design', value: '[CAD / BIM software]' },
-        { label: 'Visualisation', value: '[3D and rendering]' },
-        { label: 'Drawing', value: '[Editors and manual techniques]' },
+      "competenciesHeading": "What I do",
+      "competencies": [
+        {
+          "title": "Concepts and layouts",
+          "body": "I develop concepts, organise functional zones and work out how rooms connect. I shape layouts around the needs of the people who will live there."
+        },
+        {
+          "title": "Drawings and documentation",
+          "body": "I prepare floor plans, elevations and sections. I work with structural design and project documentation, keeping the different decisions coordinated."
+        },
+        {
+          "title": "Modelling and visualisation",
+          "body": "I create 3D models and work with materials and lighting. I prepare visualisations and presentations that help explain the design."
+        },
+        {
+          "title": "Site planning and landscape",
+          "body": "I work on the building’s position on its site and the surrounding outdoor space, considering the house together with its setting."
+        }
       ],
-      portraitAlt: 'Portrait of Viktoria Terzyan',
-      portraitLabel: 'Space for a portrait',
-      action: 'Get in touch',
+      "practiceHeading": "Practice in Sochi",
+      "practice": [
+        "During a placement at an architectural organisation in Sochi, I developed a private house plan, including its functional zoning and the connections between rooms.",
+        "The plan was accepted with almost no revisions and passed to an engineer. The project then moved into construction. It gave me a direct view of how a decision on paper becomes part of a real home."
+      ],
+      "educationHeading": "Education and art background",
+      "education": [
+        {
+          "title": "МКАГ, Moscow",
+          "body": "I’m studying architecture and applying what I learn to residential projects.",
+          "period": "2025 — present"
+        },
+        {
+          "title": "Art school",
+          "body": "I graduated from art school with honours. My foundation includes academic drawing, painting, composition, perspective and artistic anatomy. I also have diplomas and awards.",
+          "period": "2019 — 2024"
+        }
+      ],
+      "educationLink": "View education and experience",
+      "approachHeading": "How I work",
+      "approach": [
+        "I discuss the brief, ask questions and present my decisions clearly. I can negotiate, communicate ideas and work as part of a team.",
+        "I take responsibility for my part of the work, put forward options and adapt to changes. My design process combines creative exploration with analytical thinking."
+      ],
+      "toolsHeading": "Working tools",
+      "toolsIntro": "The programs I use for design, modelling, visualisation and graphic presentation.",
+      "iconsNote": "Icons marked as original were drawn for this site and are not the programs’ official marks.",
+      "portraitAlt": "Portrait of Viktoria Terzyan",
+      "portraitLabel": "Space for a portrait",
+      "action": "Discuss a project",
+      "originalIconLabel": "Original icon"
     },
     contacts: {
       heading: 'Contact',
@@ -294,23 +372,62 @@ export const copy = {
       pageAlts: ['绘画课程优秀结业证书封面', 'Viktoria Terzyan 的绘画专业优秀结业证书', '证书附页：课程及最终成绩'],
     },
     about: {
-      heading: '关于',
-      role: '建筑与绘图',
-      body: '[这里将介绍我如何走入建筑领域、目前的工作以及我感兴趣的研究方向。]',
-      educationHeading: '教育经历',
-      education: [
-        { period: '[就读年份]', institution: '[大学名称]', detail: '[院系、专业及学历]' },
-        { period: '[年份]', institution: '[继续教育]', detail: '[课程、工作坊或专业培训]' },
+      "heading": "关于我",
+      "role": "建筑、空间规划与设计",
+      "body": [
+        "我今年19岁，从事建筑与设计，将美术训练和建筑教育融入工作。",
+        "我参与私人住宅项目，推敲空间布局、绘制图纸、建立三维模型并准备视觉表达。我希望一个设计既能在平面上说清楚，也能在立体空间中被理解。"
       ],
-      toolsHeading: '工作工具',
-      tools: [
-        { label: '设计', value: '[CAD / BIM 软件]' },
-        { label: '可视化', value: '[三维建模与渲染]' },
-        { label: '绘图', value: '[编辑软件与手绘技法]' },
+      "competenciesHeading": "我的工作内容",
+      "competencies": [
+        {
+          "title": "概念与空间布局",
+          "body": "发展设计概念，安排功能分区，梳理房间之间的联系，根据未来居住者的需求组织平面。"
+        },
+        {
+          "title": "图纸与项目文件",
+          "body": "绘制楼层平面、立面和剖面，参与结构设计与项目文件工作，协调不同设计决定。"
+        },
+        {
+          "title": "模型与可视化",
+          "body": "建立三维模型，推敲材质与光线，准备可视化图像和演示材料，帮助他人理解设计。"
+        },
+        {
+          "title": "总平面与场地设计",
+          "body": "研究建筑在场地中的位置及周边室外空间，将住宅与其环境一起考虑。"
+        }
       ],
-      portraitAlt: 'Viktoria Terzyan 的肖像',
-      portraitLabel: '个人照片预留位置',
-      action: '联系我',
+      "practiceHeading": "在索契的实践",
+      "practice": [
+        "在索契一家建筑机构实习期间，我为一栋私人住宅设计了平面布局，包括功能分区和房间之间的联系。",
+        "方案几乎未经修改便获采纳，随后交给工程师，项目进入施工阶段。这段经历让我看到，图纸上的决定如何成为真实住宅的一部分。"
+      ],
+      "educationHeading": "教育与美术基础",
+      "education": [
+        {
+          "title": "МКАГ，莫斯科",
+          "body": "学习建筑，并将所学运用到住宅项目中。",
+          "period": "2025年至今"
+        },
+        {
+          "title": "美术学校",
+          "body": "以优异成绩从美术学校毕业。我的基础包括学院素描、绘画、构图、透视和艺术解剖，也获得过证书与奖项。",
+          "period": "2019 — 2024"
+        }
+      ],
+      "educationLink": "查看教育与经历",
+      "approachHeading": "我的工作方式",
+      "approach": [
+        "我会讨论需求、提出问题，并清楚地说明设计决定，能够进行沟通协商、展示想法，也能与团队合作。",
+        "我对自己负责的工作承担责任，主动提出方案，并适应变化。在设计中，我将创意探索与分析思考结合起来。"
+      ],
+      "toolsHeading": "工作软件",
+      "toolsIntro": "我用于设计、建模、可视化和图形表达的软件。",
+      "iconsNote": "标注为原创的图标为本网站绘制，并非软件的官方标志。",
+      "portraitAlt": "Viktoria Terzyan的照片",
+      "portraitLabel": "照片位置",
+      "action": "讨论项目",
+      "originalIconLabel": "原创图标"
     },
     contacts: {
       heading: '联系',

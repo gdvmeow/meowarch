@@ -652,3 +652,42 @@ test('new control motion respects reduced motion while preserving success and se
   await expect(page.locator('.copy-button .icon').last()).toHaveCSS('transform', 'none');
   await expect(page.getByRole('status')).toHaveText('Адрес скопирован');
 });
+
+test('personal About keeps all fifteen tools, honest icon limitations and usable section links', async ({ page }) => {
+  for (const language of ['ru', 'en', 'zh']) {
+    await ready(page);
+    await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+    for (const width of [320, 390, 768, 1440]) {
+      await page.setViewportSize({ width, height: 960 });
+      await ready(page, '?page=about');
+      await expect(page.locator('.software-grid li')).toHaveCount(15);
+      await expect(page.locator('.software-grid img')).toHaveCount(15);
+      await expect(page.locator('.software-grid small')).toHaveCount(9);
+      for (const image of await page.locator('.software-grid img').all()) {
+        await image.scrollIntoViewIfNeeded();
+        await image.evaluate(image => image.decode());
+        expect(await image.evaluate(image => image.naturalWidth > 0)).toBe(true);
+        await expect(image).toHaveAttribute('alt', '');
+      }
+      for (const item of await page.locator('.software-grid li').all()) {
+        const box = await item.evaluate(el => { const rect = el.getBoundingClientRect(); return { left: rect.left, right: rect.right }; });
+        expect(box.left).toBeGreaterThanOrEqual(0);
+        expect(box.right).toBeLessThanOrEqual(width);
+      }
+      expect(await page.locator('main').innerText()).not.toMatch(/\[[^\]]+\]/);
+      await expect(page.locator('.competency-grid > div')).toHaveCount(4);
+      await expect(page.locator('.about-education')).toContainText('МКАГ');
+      await expect(page.locator('.about-education')).toContainText('2025');
+      await expect(page.locator('.about-education')).toContainText('2019');
+      await expect(page.locator('.about-education')).toContainText('2024');
+      await page.locator('.about-contact').focus();
+      await expect(page.locator('.about-contact')).toHaveCSS('outline-style', 'solid');
+      await page.keyboard.press('Enter');
+      await expect(page).toHaveURL(/page=contacts/);
+      await ready(page, '?page=education');
+      await expect(page.locator('.education-practice')).toBeVisible();
+      await expect(page.locator('.credential-document')).toHaveCount(3);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  }
+});

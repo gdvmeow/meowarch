@@ -118,3 +118,30 @@ test('the two November architecture works retain distinct sheets and complete tr
   assert.equal(projects.find(work => work.id === 'mansard-house').title, 'Малоэтажный жилой дом');
   assert.equal(projects.find(work => work.id === 'house-on-slope').title, 'Дом на яру');
 });
+
+test('personal profile has complete facts and every requested software tool', async () => {
+  const { software } = await import('../src/software.js');
+  assert.deepEqual(software.map(tool => tool.name), ['Renga', 'NanoCAD', 'AutoCAD', 'Autodesk Revit', 'Archicad', 'Blender', 'SketchUp', '3ds Max', 'Rhinoceros 3D', 'Grasshopper', 'Lumion', 'Twinmotion', 'Adobe Photoshop', 'Adobe Illustrator', 'Adobe InDesign']);
+  const manifest = JSON.parse(await readFile(new URL('../content/software-icons.json', import.meta.url), 'utf8'));
+  for (const tool of software) {
+    if (tool.icon) {
+      const entry = manifest.assets.find(asset => asset.id === tool.id);
+      assert.ok(entry?.source && entry?.license);
+      const bytes = await readFile(new URL(`../public/assets/software/${tool.icon}`, import.meta.url));
+      assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256);
+    } else assert.fail(`Missing icon for ${tool.name}`);
+  }
+  for (const { code } of languages) {
+    const about = copy[code].about;
+    assert.equal(about.body.length, 2);
+    assert.equal(about.competencies.length, 4);
+    assert.equal(about.practice.length, 2);
+    assert.equal(about.education.length, 2);
+    const strings = value => typeof value === 'string' ? [value] : value && typeof value === 'object' ? Object.values(value).flatMap(strings) : [];
+    assert.ok(!strings(about).some(text => /\[[^\]]+\]/.test(text)), code);
+    assert.ok(about.iconsNote);
+    assert.match(about.education[0].title, /МКАГ/);
+    assert.match(about.education[0].period, /2025/);
+    assert.match(about.education[1].period, /2019.*2024/);
+  }
+});

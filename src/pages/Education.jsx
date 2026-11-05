@@ -14,6 +14,8 @@ export default function Education({ t, route }) {
   };
   return <main id="main" tabIndex="-1" className="interior-page shell education-page">
     <PortfolioHeading active="education" route={route} t={t}/>
+    <section className="education-current" aria-labelledby="current-study-heading"><p className="credential-period">{t.about.education[0].period}</p><h2 id="current-study-heading">{t.about.education[0].title}</h2><p>{t.about.education[0].body}</p></section>
+    <section className="education-practice" aria-labelledby="education-practice-heading"><h2 id="education-practice-heading">{t.about.practiceHeading}</h2><div className="about-prose">{t.about.practice.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></section>
     <section className="credential-layout" aria-labelledby="credential-heading">
       <div className="credential-copy">
         <p className="credential-period">2019 — 2024</p>
