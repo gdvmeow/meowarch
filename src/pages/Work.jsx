@@ -10,7 +10,12 @@ import Icon from '../components/Icon.jsx';
 import ChoiceText from '../components/ChoiceText.jsx';
 
 export function Home({ t, projects }) {
-  const selected = projects.slice(0, 2);
+  // Pair an architectural study with a drawing in each rail. The full catalog
+  // remains in its source order; this small selection is deliberately curated.
+  const selectedRails = [
+    ['low-rise-house', 'portal-facade'],
+    ['folded-roof-cafe', 'socrates'],
+  ].map(ids => ids.map(id => projects.find(project => project.id === id)).filter(Boolean));
   return <main id="main" tabIndex="-1" className="home-page">
     <section className="home-hero" aria-label={t.pageTitles.home}>
       <div className="shell hero-shell">
@@ -22,7 +27,7 @@ export function Home({ t, projects }) {
     </section>
     <section id="selected-work" className="selected-section shell" aria-labelledby="selected-heading">
       <div className="section-heading"><h2 id="selected-heading">{t.selectedProjects}</h2><a className="portfolio-cta" href="?page=portfolio"><span>{t.fullPortfolio}</span><Icon name="arrowRight"/></a></div>
-      <div className="selected-grid">{selected.map((project, index) => <ProjectTile key={project.id} project={project} className={index === 0 ? 'selected-large' : 'selected-small'}/>)}</div>
+      <div className="selected-grid">{selectedRails.map((rail, index) => <div className="selected-rail" key={index}>{rail.map(project => <ProjectTile key={project.id} project={project}/>)}</div>)}</div>
     </section>
   </main>;
 }
@@ -39,9 +44,12 @@ export function Portfolio({ t, projects, route }) {
       <nav className="project-filters" aria-label={t.portfolio.filtersLabel}>
         {filters.map(value => <a key={value} href={portfolioHref({ filter: value, view })} aria-current={filter === value ? 'true' : undefined}><ChoiceText>{t.portfolio[value]}</ChoiceText></a>)}
       </nav>
+      <div className="portfolio-controls">
+      <p className="portfolio-count" role="status" aria-atomic="true"><span className="visually-hidden">{t.portfolio.heading}: </span>{shown.length} / {projects.length}</p>
       <nav className="portfolio-view" aria-label={t.portfolio.viewLabel}>
         {['grid', 'list'].map(value => <button key={value} type="button" data-navigation-href={portfolioHref({ filter, view: value })} aria-pressed={view === value} aria-label={t.portfolio[value]}><Icon name={value} className={`view-icon view-icon--${value}`}/></button>)}
       </nav>
+      </div>
     </div>}
     <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>
       {view === 'list' ? shown.map(project => <ProjectTile key={project.id} project={project}/>)
@@ -64,6 +72,7 @@ function ProjectImage({ image, onOpen, t, priority = false }) {
 export function ProjectPage({ project, projects, t }) {
   const [zoomIndex, setZoomIndex] = useState(null);
   const next = projects[(projects.findIndex(item => item.id === project.id) + 1) % projects.length];
+  const nextImage = next.cover ?? next.images[0];
   const closeImage = useCallback(() => setZoomIndex(null), []);
   return <main id="main" tabIndex="-1" className="project-page">
     <div className="shell project-heading">
@@ -74,7 +83,7 @@ export function ProjectPage({ project, projects, t }) {
     </div>
     <div className="project-cover shell"><ProjectImage image={project.images[0]} onOpen={() => setZoomIndex(0)} t={t} priority/></div>
     {project.images.length > 1 && <div className="shell project-gallery">{project.images.slice(1).map((image, index) => <ProjectImage key={image.src} image={image} onOpen={() => setZoomIndex(index + 1)} t={t}/>)}</div>}
-    {projects.length > 1 && <a className="shell project-next" href={`?project=${next.id}`}><span>{t.project.next}</span><span className="next-title">{next.title}</span></a>}
+    {projects.length > 1 && <a className="shell project-next" href={`?project=${next.id}`}><span className="next-label">{t.project.next}<Icon name="arrowRight"/></span><span className="next-title">{next.title}</span><span className="next-preview"><img src={asset(nextImage.src)} alt="" width={nextImage.width} height={nextImage.height} loading="lazy" decoding="async"/></span></a>}
     {zoomIndex !== null && <GalleryViewer project={project} index={zoomIndex} onChange={setZoomIndex} onClose={closeImage} t={t}/>}
   </main>;
 }
