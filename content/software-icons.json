@@ -1,6 +1,50 @@
 {
   "retrieved": "2026-11-05",
+  "use": "Informational identification of software used by the portfolio author; no partnership or endorsement claimed. Vendor conditions are recorded, not represented as statutory legal conclusions.",
   "assets": [
+    {
+      "id": "renga",
+      "file": "renga.png",
+      "collection": "Renga Software official website",
+      "source": "https://rengabim.com/upload/medialibrary/d44/6xxo35h4j9h585a93efyhuf79rfncpvy/renga_compact_logo.png",
+      "licenseSource": "https://rengabim.com/files//files/RengaBrandbook_v3.3.pdf",
+      "license": "Proprietary vendor mark; brandbook restrictions retained",
+      "changes": "Removed only outer blank white padding (crop box (51, 0, 140, 109)); product artwork, colours and proportions unchanged.",
+      "sha256": "68893cb8979daa997975350869732cdb087cfc5576d8278a18ef4c91c6a5861f",
+      "sourceSha256": "6e4edf3a60773ae24fcb15c7236e2cb7ed26bff16d9ed0a2feb477fe01626a3e"
+    },
+    {
+      "id": "nanocad",
+      "file": "nanocad.svg",
+      "collection": "nanoCAD official product page",
+      "source": "https://nanocad.com/upload/iblock/e0c/tvofck0dxogifwww4zcpz3nhje406ac3/logo%20nanoCAD.svg",
+      "licenseSource": "https://nanocad.ru/",
+      "license": "Proprietary vendor mark; no open copyright license claimed",
+      "changes": "Line endings and whitespace normalized; vector artwork, colours and proportions unchanged.",
+      "sha256": "1373b084a73ec754b0b0f4c5312b288ef6ba7a4afbe9ca44398698452165cbb2"
+    },
+    {
+      "id": "autocad",
+      "file": "autocad.svg",
+      "collection": "Simple Icons",
+      "license": "CC0-1.0 for collection artwork; vendor trademark restrictions retained",
+      "source": "https://www.autodesk.com/blogs/autocad",
+      "assetSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/autocad.svg",
+      "licenseSource": "https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md",
+      "changes": "Unmodified vector path; canonical brand colour from Simple Icons metadata.",
+      "sha256": "c780aee56ff05978492096c6963167a0cd8cd3b5857bb3f33ea9ca743b7567ba"
+    },
+    {
+      "id": "revit",
+      "file": "revit.svg",
+      "collection": "Simple Icons",
+      "license": "CC0-1.0 for collection artwork; vendor trademark restrictions retained",
+      "source": "https://www.autodesk.com/products/revit",
+      "assetSource": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/autodeskrevit.svg",
+      "licenseSource": "https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md",
+      "changes": "Unmodified vector path; canonical brand colour from Simple Icons metadata.",
+      "sha256": "6dd59d328e3cd75521b0a721f5d566eb99eccab6f804fc4a87f2bced8ecc6aea"
+    },
     {
       "id": "archicad",
       "file": "archicad.svg",
@@ -13,14 +57,13 @@
     },
     {
       "id": "blender",
-      "file": "blender.svg",
-      "collection": "Blender Foundation official branding",
-      "license": "Vendor logo usage guidelines: credit among other software marks; trademark retained",
-      "source": "https://download.blender.org/branding/blender_logo.svg",
-      "assetSource": "https://github.com/simple-icons/simple-icons/tree/develop/icons",
-      "changes": "None; full mark with wordmark and original colours.",
-      "sha256": "6939bb61212a23c6a6b174dde29e27a3c40d2be54d26d2bf7d82bab858307e56",
-      "licenseSource": "https://www.blender.org/about/logo/"
+      "file": "blender.png",
+      "collection": "Blender Foundation official square icon",
+      "source": "https://download.blender.org/branding/square/blender_icon_256x256.png",
+      "licenseSource": "https://www.blender.org/about/logo/",
+      "license": "Vendor-provided software identification mark; trademark retained",
+      "changes": "None; original vendor colours and proportions.",
+      "sha256": "0ce16543ec375a2aba260f3a5a0aadf0538d1fa74ae3795be91bd21ef1101eaa"
     },
     {
       "id": "sketchup",
@@ -33,25 +76,25 @@
       "sha256": "3612885e38f420b838565846f43b7a3b78cad3e7ed0f1e9e1a39402fdb34794e"
     },
     {
+      "id": "3ds-max",
+      "file": "3ds-max.png",
+      "collection": "Autodesk official AREA resource",
+      "source": "https://area-resources-prd.autodesk.com/groups/000/006/icon_image_128-128.jpg",
+      "licenseSource": "https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use",
+      "license": "Proprietary vendor mark; explicit permission-and-agreement requirement",
+      "changes": "Removed only outer blank white padding (crop box (27, 24, 124, 126)); product artwork, colours and proportions unchanged.",
+      "sha256": "e9350a1c50388c61af79dc75d5039b9f3a7593b3f09a90a064b23f2d3865b81a",
+      "sourceSha256": "9297879188a73fe5e9da539f74cf53329822e1c942eac820721f754a779820b2"
+    },
+    {
       "id": "rhinoceros",
       "file": "rhinoceros.png",
       "collection": "McNeel official graphics",
       "license": "Vendor-provided graphics, subject to trademark usage rules",
       "source": "https://www.rhino3d.com/reseller/graphics/RhinoHead-2800x2800.png",
-      "assetSource": "https://github.com/simple-icons/simple-icons/tree/develop/icons",
       "changes": "Proportional downscale to 160×160, no recolouring.",
       "sha256": "c22841991721ab9de1c4a41314638cd0c79bad9d9b39288e4506292311959e54",
       "licenseSource": "https://www.rhino3d.com/mcneel/trademarks/"
-    },
-    {
-      "id": "twinmotion",
-      "file": "twinmotion.svg",
-      "collection": "Simple Icons",
-      "license": "CC0-1.0",
-      "source": "https://www.twinmotion.com",
-      "assetSource": "https://github.com/simple-icons/simple-icons/tree/develop/icons",
-      "changes": "Single-color SVG uses brand colour from Simple Icons metadata.",
-      "sha256": "c31d6379b01a00fb88f881cb115d0aa4c3b78da36a1476b63f223e5144712bee"
     },
     {
       "id": "grasshopper",
@@ -64,144 +107,95 @@
       "sha256": "ee606f2193e972d9c596ccaf620ce0c01054a1edb35b390aefeec9a8beb5b4e2"
     },
     {
-      "id": "renga",
-      "file": "renga.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/renga.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "0a98ac3648e7a64a93917837357f0bbddcafd7979127b4fded749af61eddff30"
-    },
-    {
-      "id": "nanocad",
-      "file": "nanocad.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/nanocad.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "a1e80bf5e27b89f3f83eeb576afb2b1379b9a7e077324b3c7fc7e87d1cad7746"
-    },
-    {
-      "id": "autocad",
-      "file": "autocad.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/autocad.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "e59e58d7a3ecd9eab23779c63e79ca117cd7a06702320652d8a8d472a0e484a7"
-    },
-    {
-      "id": "revit",
-      "file": "revit.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/revit.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "4a9231b1653eb957f6eae3c2d08895cb5597832192ee152b12518ee5e2763bc9"
-    },
-    {
-      "id": "3ds-max",
-      "file": "3ds-max.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/3ds-max.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "db374ef3f651c25436560a98b01807c6006003a941e1519d9181669147fa362d"
-    },
-    {
       "id": "lumion",
-      "file": "lumion.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/lumion.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "41f5a8b3ee515c274a5ec3893ec7ea3ad64c7e0dbae25572eaeef91414aef831"
+      "file": "lumion.png",
+      "collection": "Lumion official website",
+      "source": "https://lumion.com/favicon/apple-touch-icon.png",
+      "licenseSource": "https://www.lumion3d.co.kr/lumionbrandguidelines.pdf",
+      "license": "Vendor brand guidelines; trademark retained",
+      "changes": "None; original vendor colours and proportions.",
+      "sha256": "5e374b9a9beebc5d5cb73a8f20f1b9e06309337168f407e6330638e5194ecda3"
+    },
+    {
+      "id": "twinmotion",
+      "file": "twinmotion.svg",
+      "collection": "Simple Icons",
+      "license": "CC0-1.0",
+      "source": "https://www.twinmotion.com",
+      "assetSource": "https://github.com/simple-icons/simple-icons/tree/develop/icons",
+      "changes": "Single-color SVG uses brand colour from Simple Icons metadata.",
+      "sha256": "c31d6379b01a00fb88f881cb115d0aa4c3b78da36a1476b63f223e5144712bee"
     },
     {
       "id": "photoshop",
       "file": "photoshop.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/photoshop.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "95ea2eb7f1c7f4cd9a1a2c24b5e0b2a7d8300012f1837e9ca60803387e3a027b"
+      "collection": "Adobe official product artwork",
+      "source": "https://www.adobe.com/content/dam/acom/one-console/icons_rebrand/ps_appicon.svg",
+      "licenseSource": "https://www.adobe.com/legal/permissions/icons-web-logos.html",
+      "license": "Proprietary vendor mark; Adobe partnership-agreement restriction",
+      "changes": "None; original vendor colours, rounded square and proportions.",
+      "sha256": "1ae0b88fb920987477a2e630899ad0d0017c55fd3e7ac81c1e4e8ec4a9fd8260"
     },
     {
       "id": "illustrator",
       "file": "illustrator.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/illustrator.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "b78b9283e8d43d73239b3d195341e80320886827ad91fb0a3239e92cff7b8d49"
+      "collection": "Adobe official product artwork",
+      "source": "https://www.adobe.com/content/dam/acom/one-console/icons_rebrand/ai_appicon.svg",
+      "licenseSource": "https://www.adobe.com/legal/permissions/icons-web-logos.html",
+      "license": "Proprietary vendor mark; Adobe partnership-agreement restriction",
+      "changes": "None; original vendor colours, rounded square and proportions.",
+      "sha256": "fcbb5aef207d19a25b709afc7c5369a4b5be2f46d0c86ae73573b1e5ecdedf48"
     },
     {
       "id": "indesign",
       "file": "indesign.svg",
-      "collection": "Original portfolio pictograms",
-      "license": "Project-original artwork; no third-party paths or vendor marks",
-      "source": "local:public/assets/software/indesign.svg",
-      "changes": "Created for this site; functional drawing, not an official logo.",
-      "sha256": "72cdde7028a31fba91203de6f4854efc0ae8f9fbe9c5014121187ae6c7fe5e36"
+      "collection": "Adobe official product artwork",
+      "source": "https://www.adobe.com/content/dam/acom/one-console/icons_rebrand/id_appicon.svg",
+      "licenseSource": "https://www.adobe.com/legal/permissions/icons-web-logos.html",
+      "license": "Proprietary vendor mark; Adobe partnership-agreement restriction",
+      "changes": "None; original vendor colours, rounded square and proportions.",
+      "sha256": "f530c3f98619268f77802d71407705189c6da8f3c4ad713d21b6340455142233"
     }
   ],
-  "rightsNote": "Collection copyright licenses do not grant vendor trademark permission. Vendor-specific restrictions override downloadable availability and PD-textlogo classifications. No blanket brand authorization is claimed.",
-  "restrictedBrandMarks": [
+  "publishedVendorConditions": [
     {
-      "id": "renga",
+      "ids": [
+        "photoshop",
+        "illustrator",
+        "indesign"
+      ],
+      "source": "https://www.adobe.com/legal/permissions/icons-web-logos.html",
+      "rule": "Adobe states third-party use of product icons requires an Adobe partnership agreement. No such agreement or exception is claimed here."
+    },
+    {
+      "ids": [
+        "autocad",
+        "revit",
+        "3ds-max"
+      ],
+      "source": "https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use",
+      "rule": "Autodesk states logos and product icons require permission and a specific agreement. No such agreement or exception is claimed here."
+    },
+    {
+      "ids": [
+        "renga"
+      ],
       "source": "https://rengabim.com/files//files/RengaBrandbook_v3.3.pdf",
-      "reason": "Brandbook page 9 restricts placing marks or parts of marks in lists; the brand mark is omitted and a project-original functional pictogram is used."
+      "rule": "Brandbook page 9 prohibits recolouring, distortion, and incorporating logos or parts into illustrations, diagrams or lists. No portfolio exception is published in this document."
     },
     {
-      "id": "nanocad",
+      "ids": [
+        "nanocad"
+      ],
       "source": "https://nanocad.ru/",
-      "reason": "Official site requires rightsholder consent for copying and reuse of materials; no open icon resource confirmed."
+      "rule": "Russian website footer requires rightsholder consent for copying and use of website materials. This general notice is distinct from an icon-specific or statutory prohibition."
     },
     {
-      "id": "lumion",
-      "source": "https://lumion.com/brand.html",
-      "reason": "Official brand asset endpoint unavailable; no current suitable asset with confirmed reuse terms obtained."
-    },
-    {
-      "id": "autocad",
-      "source": "https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use",
-      "reason": "Product icons require permission and a specific agreement; none supplied. The brand mark is omitted and a project-original functional pictogram is used."
-    },
-    {
-      "id": "revit",
-      "source": "https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use",
-      "reason": "Product icons require permission and a specific agreement; none supplied. The brand mark is omitted and a project-original functional pictogram is used."
-    },
-    {
-      "id": "3ds-max",
-      "source": "https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use",
-      "reason": "Product icons require permission and a specific agreement; none supplied. The brand mark is omitted and a project-original functional pictogram is used."
-    },
-    {
-      "id": "photoshop",
-      "source": "https://www.adobe.com/legal/permissions/icons-web-logos.html",
-      "reason": "Product icons require an Adobe partnership agreement; none supplied. The brand mark is omitted and a project-original functional pictogram is used."
-    },
-    {
-      "id": "illustrator",
-      "source": "https://www.adobe.com/legal/permissions/icons-web-logos.html",
-      "reason": "Product icons require an Adobe partnership agreement; none supplied. The brand mark is omitted and a project-original functional pictogram is used."
-    },
-    {
-      "id": "indesign",
-      "source": "https://www.adobe.com/legal/permissions/icons-web-logos.html",
-      "reason": "Product icons require an Adobe partnership agreement; none supplied. The brand mark is omitted and a project-original functional pictogram is used."
+      "ids": [
+        "lumion"
+      ],
+      "source": "https://www.lumion3d.co.kr/lumionbrandguidelines.pdf",
+      "rule": "Vendor guidelines require original colours/proportions, clear space, and no misleading affiliation. Retrieved from regional Lumion site; no claim of a current blanket licence."
     }
-  ],
-  "originalPictograms": [
-    "renga",
-    "nanocad",
-    "autocad",
-    "revit",
-    "3ds-max",
-    "lumion",
-    "photoshop",
-    "illustrator",
-    "indesign"
   ]
 }

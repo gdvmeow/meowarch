@@ -1,112 +1,112 @@
-All 15 tools have local images. Nine functional pictograms are original project artwork, not vendor logos. Six identify the corresponding programs using sourced graphics. Product names and trademarks remain owned by their respective developers. No affiliation or endorsement is implied.
+Software artwork provenance. Product names and marks belong to their respective developers.
+
+renga
+Source: https://rengabim.com/upload/medialibrary/d44/6xxo35h4j9h585a93efyhuf79rfncpvy/renga_compact_logo.png
+Artwork status: Proprietary vendor mark; brandbook restrictions retained
+Changes: Removed only outer blank white padding (crop box (51, 0, 140, 109)); product artwork, colours and proportions unchanged.
+Terms: https://rengabim.com/files//files/RengaBrandbook_v3.3.pdf
+
+nanocad
+Source: https://nanocad.com/upload/iblock/e0c/tvofck0dxogifwww4zcpz3nhje406ac3/logo%20nanoCAD.svg
+Artwork status: Proprietary vendor mark; no open copyright license claimed
+Changes: Line endings and whitespace normalized; vector artwork, colours and proportions unchanged.
+Terms: https://nanocad.ru/
+
+autocad
+Source: https://www.autodesk.com/blogs/autocad
+Artwork status: CC0-1.0 for collection artwork; vendor trademark restrictions retained
+Changes: Unmodified vector path; canonical brand colour from Simple Icons metadata.
+Collection asset: https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/autocad.svg
+Terms: https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md
+
+revit
+Source: https://www.autodesk.com/products/revit
+Artwork status: CC0-1.0 for collection artwork; vendor trademark restrictions retained
+Changes: Unmodified vector path; canonical brand colour from Simple Icons metadata.
+Collection asset: https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/autodeskrevit.svg
+Terms: https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md
 
 archicad
 Source: https://graphisoft.com/contact-us/press-relations#/documents/archicad-logo-98604
-Rights/status: CC0-1.0
+Artwork status: CC0-1.0
 Changes: Single-color SVG uses brand colour from Simple Icons metadata.
+Collection asset: https://github.com/simple-icons/simple-icons/tree/develop/icons
 
 blender
-Source: https://download.blender.org/branding/blender_logo.svg
-Rights/status: Vendor logo usage guidelines: credit among other software marks; trademark retained
+Source: https://download.blender.org/branding/square/blender_icon_256x256.png
+Artwork status: Vendor-provided software identification mark; trademark retained
+Changes: None; original vendor colours and proportions.
 Terms: https://www.blender.org/about/logo/
-Changes: None; full mark with wordmark and original colours.
 
 sketchup
 Source: https://www.sketchup.com
-Rights/status: CC0-1.0
+Artwork status: CC0-1.0
 Changes: Single-color SVG uses brand colour from Simple Icons metadata.
+Collection asset: https://github.com/simple-icons/simple-icons/tree/develop/icons
+
+3ds-max
+Source: https://area-resources-prd.autodesk.com/groups/000/006/icon_image_128-128.jpg
+Artwork status: Proprietary vendor mark; explicit permission-and-agreement requirement
+Changes: Removed only outer blank white padding (crop box (27, 24, 124, 126)); product artwork, colours and proportions unchanged.
+Terms: https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
 
 rhinoceros
 Source: https://www.rhino3d.com/reseller/graphics/RhinoHead-2800x2800.png
-Rights/status: Vendor-provided graphics, subject to trademark usage rules
-Terms: https://www.rhino3d.com/mcneel/trademarks/
+Artwork status: Vendor-provided graphics, subject to trademark usage rules
 Changes: Proportional downscale to 160×160, no recolouring.
-
-twinmotion
-Source: https://www.twinmotion.com
-Rights/status: CC0-1.0
-Changes: Single-color SVG uses brand colour from Simple Icons metadata.
+Terms: https://www.rhino3d.com/mcneel/trademarks/
 
 grasshopper
 Source: https://www.rhino3d.com/reseller/support/grasshopper/grasshopper.png
-Rights/status: Vendor-provided graphics, subject to trademark usage rules
-Terms: https://www.rhino3d.com/reseller/graphics/
+Artwork status: Vendor-provided graphics, subject to trademark usage rules
 Changes: Proportional downscale to 160×160, no recolouring. Replaces developer-component illustration with the actual product mark.
-
-renga
-Source: local:public/assets/software/renga.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
-
-nanocad
-Source: local:public/assets/software/nanocad.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
-
-autocad
-Source: local:public/assets/software/autocad.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
-
-revit
-Source: local:public/assets/software/revit.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
-
-3ds-max
-Source: local:public/assets/software/3ds-max.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
+Terms: https://www.rhino3d.com/reseller/graphics/
 
 lumion
-Source: local:public/assets/software/lumion.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
+Source: https://lumion.com/favicon/apple-touch-icon.png
+Artwork status: Vendor brand guidelines; trademark retained
+Changes: None; original vendor colours and proportions.
+Terms: https://www.lumion3d.co.kr/lumionbrandguidelines.pdf
+
+twinmotion
+Source: https://www.twinmotion.com
+Artwork status: CC0-1.0
+Changes: Single-color SVG uses brand colour from Simple Icons metadata.
+Collection asset: https://github.com/simple-icons/simple-icons/tree/develop/icons
 
 photoshop
-Source: local:public/assets/software/photoshop.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
+Source: https://www.adobe.com/content/dam/acom/one-console/icons_rebrand/ps_appicon.svg
+Artwork status: Proprietary vendor mark; Adobe partnership-agreement restriction
+Changes: None; original vendor colours, rounded square and proportions.
+Terms: https://www.adobe.com/legal/permissions/icons-web-logos.html
 
 illustrator
-Source: local:public/assets/software/illustrator.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
+Source: https://www.adobe.com/content/dam/acom/one-console/icons_rebrand/ai_appicon.svg
+Artwork status: Proprietary vendor mark; Adobe partnership-agreement restriction
+Changes: None; original vendor colours, rounded square and proportions.
+Terms: https://www.adobe.com/legal/permissions/icons-web-logos.html
 
 indesign
-Source: local:public/assets/software/indesign.svg
-Rights/status: Project-original artwork; no third-party paths or vendor marks
-Changes: Created for this site; functional drawing, not an official logo.
+Source: https://www.adobe.com/content/dam/acom/one-console/icons_rebrand/id_appicon.svg
+Artwork status: Proprietary vendor mark; Adobe partnership-agreement restriction
+Changes: None; original vendor colours, rounded square and proportions.
+Terms: https://www.adobe.com/legal/permissions/icons-web-logos.html
 
-The original pictograms were made for: renga, nanocad, autocad, revit, 3ds-max, lumion, photoshop, illustrator, indesign. They do not trace or reproduce vendor marks.
+Published vendor conditions (not assertions of statutory legal conclusions):
 
-Restricted or unconfirmed vendor marks (NOT distributed; the above original pictograms are used instead):
-renga: Brandbook page 9 restricts placing marks or parts of marks in lists; an original functional pictogram is used instead.
+photoshop, illustrator, indesign: Adobe states third-party use of product icons requires an Adobe partnership agreement. No such agreement or exception is claimed here.
+https://www.adobe.com/legal/permissions/icons-web-logos.html
+
+autocad, revit, 3ds-max: Autodesk states logos and product icons require permission and a specific agreement. No such agreement or exception is claimed here.
+https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
+
+renga: Brandbook page 9 prohibits recolouring, distortion, and incorporating logos or parts into illustrations, diagrams or lists. No portfolio exception is published in this document.
 https://rengabim.com/files//files/RengaBrandbook_v3.3.pdf
 
-nanocad: Official site requires rightsholder consent for copying and reuse of materials; no open icon resource confirmed.
+nanocad: Russian website footer requires rightsholder consent for copying and use of website materials. This general notice is distinct from an icon-specific or statutory prohibition.
 https://nanocad.ru/
 
-lumion: Official brand asset endpoint unavailable; no current suitable asset with confirmed reuse terms obtained.
-https://lumion.com/brand.html
+lumion: Vendor guidelines require original colours/proportions, clear space, and no misleading affiliation. Retrieved from regional Lumion site; no claim of a current blanket licence.
+https://www.lumion3d.co.kr/lumionbrandguidelines.pdf
 
-autocad: Product icons require permission and a specific agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
-https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
-
-revit: Product icons require permission and a specific agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
-https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
-
-3ds-max: Product icons require permission and a specific agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
-https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use
-
-photoshop: Product icons require an Adobe partnership agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
-https://www.adobe.com/legal/permissions/icons-web-logos.html
-
-illustrator: Product icons require an Adobe partnership agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
-https://www.adobe.com/legal/permissions/icons-web-logos.html
-
-indesign: Product icons require an Adobe partnership agreement; none supplied. Vendor mark omitted; an original functional pictogram is used.
-https://www.adobe.com/legal/permissions/icons-web-logos.html
-
-Simple Icons source paths for Archicad, SketchUp and Twinmotion: CC0-1.0, https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md. This collection copyright license does not grant vendor trademark rights.
-Autodesk, AutoCAD, Revit and 3ds Max are trademarks of Autodesk, Inc. and/or its subsidiaries and affiliates. All other product names and marks belong to their respective holders. This site is independent of Autodesk.
+Simple Icons collection artwork: CC0-1.0, https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md. Collection copyright status does not grant vendor trademark permission.

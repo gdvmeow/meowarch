@@ -653,7 +653,7 @@ test('new control motion respects reduced motion while preserving success and se
   await expect(page.getByRole('status')).toHaveText('Адрес скопирован');
 });
 
-test('personal About keeps all fifteen tools, honest icon limitations and usable section links', async ({ page }) => {
+test('personal About keeps all fifteen branded tools and usable section links', async ({ page }) => {
   for (const language of ['ru', 'en', 'zh']) {
     await ready(page);
     await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
@@ -662,7 +662,7 @@ test('personal About keeps all fifteen tools, honest icon limitations and usable
       await ready(page, '?page=about');
       await expect(page.locator('.software-grid li')).toHaveCount(15);
       await expect(page.locator('.software-grid img')).toHaveCount(15);
-      await expect(page.locator('.software-grid small')).toHaveCount(9);
+      await expect(page.locator('.software-grid small, .software-note')).toHaveCount(0);
       for (const image of await page.locator('.software-grid img').all()) {
         await image.scrollIntoViewIfNeeded();
         await image.evaluate(image => image.decode());

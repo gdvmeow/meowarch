@@ -230,8 +230,6 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 .software-grid li { display: flex; align-items: center; gap: 14px; min-width: 0; min-height: 56px; }
 .software-grid img { flex: none; width: 40px; height: 40px; object-fit: contain; }
 .software-name { display: block; font-size: 16px; line-height: 1.4; }
-.software-grid small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.4; }
-.software-note { max-width: 85ch; margin-top: 28px; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .about-contact { margin-top: 48px; font-size: 24px; }
 .education-practice { margin-top: 56px; }
 .about-education .about-education-period { margin: 0 0 12px; font-size: 13px; color: var(--muted); }

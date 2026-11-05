@@ -139,7 +139,7 @@ test('personal profile has complete facts and every requested software tool', as
     assert.equal(about.education.length, 2);
     const strings = value => typeof value === 'string' ? [value] : value && typeof value === 'object' ? Object.values(value).flatMap(strings) : [];
     assert.ok(!strings(about).some(text => /\[[^\]]+\]/.test(text)), code);
-    assert.ok(about.iconsNote);
+    assert.equal(about.iconsNote, undefined);
     assert.match(about.education[0].title, /МКАГ/);
     assert.match(about.education[0].period, /2025/);
     assert.match(about.education[1].period, /2019.*2024/);

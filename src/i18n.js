@@ -108,11 +108,9 @@ export const copy = {
       ],
       "toolsHeading": "Рабочие инструменты",
       "toolsIntro": "Программы, которые использую для проектирования, моделирования, визуализации и графической подачи.",
-      "iconsNote": "Помеченные авторские иконки нарисованы для этого сайта и не являются фирменными знаками программ.",
       "portraitAlt": "Портрет Виктории Терзян",
       "portraitLabel": "Место для фотографии",
-      "action": "Обсудить проект",
-      "originalIconLabel": "Авторская иконка"
+      "action": "Обсудить проект"
     },
     contacts: {
       heading: 'Контакты',
@@ -240,11 +238,9 @@ export const copy = {
       ],
       "toolsHeading": "Working tools",
       "toolsIntro": "The programs I use for design, modelling, visualisation and graphic presentation.",
-      "iconsNote": "Icons marked as original were drawn for this site and are not the programs’ official marks.",
       "portraitAlt": "Portrait of Viktoria Terzyan",
       "portraitLabel": "Space for a portrait",
-      "action": "Discuss a project",
-      "originalIconLabel": "Original icon"
+      "action": "Discuss a project"
     },
     contacts: {
       heading: 'Contact',
@@ -423,11 +419,9 @@ export const copy = {
       ],
       "toolsHeading": "工作软件",
       "toolsIntro": "我用于设计、建模、可视化和图形表达的软件。",
-      "iconsNote": "标注为原创的图标为本网站绘制，并非软件的官方标志。",
       "portraitAlt": "Viktoria Terzyan的照片",
       "portraitLabel": "照片位置",
-      "action": "讨论项目",
-      "originalIconLabel": "原创图标"
+      "action": "讨论项目"
     },
     contacts: {
       heading: '联系',
