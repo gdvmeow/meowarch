@@ -1,0 +1,30 @@
+{
+  "period": "2026-05/2026-06",
+  "processing": "EXIF orientation only, full frame, RGB WebP quality 94; no crop, colour correction or generation. Original JPEGs remain unchanged outside public assets.",
+  "photos": [
+    {
+      "sourceFile": "IMG_2790.jpeg",
+      "sourceSha256": "239bac1c52fe75ce05e30495e40e7b3a6f4d990388f96106a00e0da9482c915a",
+      "asset": "practice-house-model.webp",
+      "width": 960,
+      "height": 1280,
+      "processedSha256": "9b21f97a006d0eaccd5a313fe531e56857e3fd1f6baa76f42ccb577666d9761e"
+    },
+    {
+      "sourceFile": "IMG_2792.jpeg",
+      "sourceSha256": "481a340fbe45d0415d39722245a4a8efafe7af1696950f8bab62812460237e52",
+      "asset": "practice-sochi-facades.webp",
+      "width": 960,
+      "height": 1280,
+      "processedSha256": "cbedd98b2bb8a9a048c7d2d6f284080348e5e31e707a802f2118b97622f5fdde"
+    },
+    {
+      "sourceFile": "IMG_2788.jpeg",
+      "sourceSha256": "c7b95a40c2fbfd96c24b5e32309abafba369ead1d832e8bfd6ae548cb84bef39",
+      "asset": "practice-workspace.webp",
+      "width": 960,
+      "height": 1280,
+      "processedSha256": "2e497417a23b5bdb633ab09469b3fe7e0c56875077ca7a73747273ef4714881b"
+    }
+  ]
+}

@@ -22,7 +22,7 @@ test('all languages have matching interface and profile fields', () => {
 });
 
 test('every project has an existing image with dimensions and a translated description', async () => {
-  assert.equal(projects.length, 22);
+  assert.equal(projects.length, 23);
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);
@@ -167,4 +167,44 @@ test('renamed studies preserve their original links, image metadata and translat
       assert.ok(localized.images[0].alt.startsWith(entry.names[code]));
     }
   }
+});
+
+test('practice photos retain their full frames and localized dates and captions', async () => {
+  const { practicePhotos } = await import('../src/practice.js');
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/practice-2026.json', import.meta.url), 'utf8'));
+  assert.equal(manifest.period, '2026-05/2026-06');
+  assert.equal(practicePhotos.length, 3);
+  for (const [index, photo] of practicePhotos.entries()) {
+    const entry = manifest.photos[index];
+    assert.equal(entry.asset, photo.src);
+    assert.deepEqual([photo.width, photo.height], [960, 1280]);
+    const bytes = await readFile(new URL(`../public/assets/${photo.src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.processedSha256);
+    await assert.rejects(access(new URL(`../public/assets/${entry.sourceFile}`, import.meta.url)));
+  }
+  for (const { code } of languages) {
+    assert.match(copy[code].about.practicePeriod, /2026/);
+    assert.equal(copy[code].about.practicePhotoAlts.length, 3);
+    assert.ok(copy[code].about.practicePhotoAlts.every(alt => alt.trim()));
+  }
+  assert.match(copy.ru.about.practice[0], /менее недели/);
+  assert.match(copy.en.about.practice[0], /less than a week/);
+  assert.match(copy.zh.about.practice[0], /不到一周/);
+});
+
+test('the Rotterdam house preserves the complete source sheet and a separate facade detail', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/rotterdam-house.json', import.meta.url), 'utf8'));
+  const project = projects.find(project => project.id === manifest.projectId);
+  assert.equal(manifest.sourcePages, 1);
+  assert.equal(manifest.sourceTitle, 'TWO-FAMILY HOUSE IN ROTTERDAM');
+  assert.equal(project.group, 'architecture');
+  assert.equal(project.images.length, 2);
+  for (const [index, image] of project.images.entries()) {
+    const entry = manifest.assets[index];
+    assert.deepEqual([image.src, image.width, image.height], [entry.src, entry.width, entry.height]);
+    const bytes = await readFile(new URL(`../public/assets/${image.src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256);
+  }
+  assert.deepEqual(manifest.assets[0].cropBox, [0, 0, 1978, 2630]);
+  await assert.rejects(access(new URL(`../public/assets/${manifest.sourceFile}`, import.meta.url)));
 });

@@ -220,7 +220,33 @@ test('each catalog filter balances natural sheets while preserving the source an
         const box = card.getBoundingClientRect();
         return box.bottom;
       }));
-      expect(Math.abs(ends[0] - ends[1]), `${width} ${filter}`).toBeLessThan(650);
+      // Full, uncropped sheets can force uneven rail endings. Compare the
+      // chosen boundary with the best possible source-order-preserving split.
+      const bestDifference = await rails.evaluateAll(elements => {
+        const sourceCards = elements.flatMap(rail => [...rail.querySelectorAll('.project-tile')]);
+        const gap = parseFloat(getComputedStyle(elements[0]).rowGap);
+        const offset = elements[1].getBoundingClientRect().top - elements[0].getBoundingClientRect().top;
+        const heights = elements.map(rail => {
+          const probe = rail.cloneNode(false);
+          Object.assign(probe.style, {
+            position: 'fixed', left: '-100000px', top: '0',
+            width: `${rail.getBoundingClientRect().width}px`,
+            margin: '0', visibility: 'hidden', pointerEvents: 'none',
+          });
+          sourceCards.forEach(card => probe.append(card.cloneNode(true)));
+          rail.parentElement.append(probe);
+          const measured = [...probe.children].map(card => card.getBoundingClientRect().height);
+          probe.remove();
+          return measured;
+        });
+        return Math.min(...sourceCards.slice(1).map((_, index) => {
+          const boundary = index + 1;
+          const left = heights[0].slice(0, boundary).reduce((sum, height) => sum + height, 0) + gap * (boundary - 1);
+          const right = heights[1].slice(boundary).reduce((sum, height) => sum + height, 0) + gap * (sourceCards.length - boundary - 1) + offset;
+          return Math.abs(left - right);
+        }));
+      });
+      expect(Math.abs(ends[0] - ends[1]), `${width} ${filter}`).toBeLessThanOrEqual(bestDifference + 100);
       if (width === 1440 && filter === 'graphics') {
         await cards[0].focus();
         for (let i = 1; i < cards.length; i++) {

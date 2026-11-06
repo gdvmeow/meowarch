@@ -36,15 +36,15 @@ test('catalog result count follows filters, views and browser history in every l
     await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
     await page.setViewportSize({ width: 320, height: 844 });
     await ready(page, '?page=portfolio');
-    await expect(page.locator('.portfolio-count')).toContainText('22 / 22');
+    await expect(page.locator('.portfolio-count')).toContainText(`${projects.length} / ${projects.length}`);
     await page.locator('.project-filters a[href*="filter=graphics"]').click();
     const count = projects.filter(project => project.group === 'graphics').length;
-    await expect(page.locator('.portfolio-count')).toContainText(`${count} / 22`);
+    await expect(page.locator('.portfolio-count')).toContainText(`${count} / ${projects.length}`);
     await page.locator('.portfolio-view button').last().click();
-    await expect(page.locator('.portfolio-count')).toContainText(`${count} / 22`);
+    await expect(page.locator('.portfolio-count')).toContainText(`${count} / ${projects.length}`);
     await page.goBack();
     await page.goBack();
-    await expect(page.locator('.portfolio-count')).toContainText('22 / 22');
+    await expect(page.locator('.portfolio-count')).toContainText(`${projects.length} / ${projects.length}`);
     expect(await page.locator('.portfolio-controls').evaluate(el => el.getBoundingClientRect().right <= innerWidth)).toBe(true);
   }
 });

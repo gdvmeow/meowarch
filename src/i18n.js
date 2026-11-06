@@ -83,8 +83,10 @@ export const copy = {
         }
       ],
       "practiceHeading": "Практика в Сочи",
+      "practicePeriod": "Май — июнь 2026",
+      "practicePhotoAlts": ["Модель частного дома на экране ноутбука во время практики", "Современные фасады в Сочи", "Рабочее пространство во время практики в Сочи"],
       "practice": [
-        "На практике в архитектурной организации в Сочи я разработала планировку частного дома. Продумала функциональные зоны и связи между помещениями.",
+        "На практике в архитектурной организации в Сочи я разработала планировку частного дома. Работа заняла менее недели и началась почти с нуля: были только наброски планов и размеры. Я продумала функциональные зоны и связи между помещениями.",
         "Планировку приняли почти без правок и передали инженеру. Затем проект перешёл к строительству."
       ],
       "educationHeading": "Образование и художественная подготовка",
@@ -208,8 +210,10 @@ export const copy = {
         }
       ],
       "practiceHeading": "Practice in Sochi",
+      "practicePeriod": "May–June 2026",
+      "practicePhotoAlts": ["A private-house model on a laptop during the placement", "Contemporary facades in Sochi", "The workspace during the placement in Sochi"],
       "practice": [
-        "During a placement at an architectural organisation in Sochi, I developed a layout for a private house. I worked out its functional zones and the connections between rooms.",
+        "During a placement at an architectural organisation in Sochi, I developed a layout for a private house. The project work took less than a week, starting almost from scratch with only rough floor-plan sketches and dimensions. I worked out the functional zones and connections between rooms.",
         "The layout was accepted with almost no changes and passed to an engineer. The project then moved into construction."
       ],
       "educationHeading": "Education and art background",
@@ -258,6 +262,16 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — architectural projects, hand-drawn presentation, academic drawing and contact details.',
     projects: {
       ...scanStudyTranslations.en,
+      "two-family-house-rotterdam": {
+        "title": "Two-family house in Rotterdam",
+        "category": "Architectural graphics",
+        "summary": "A house with a detailed ornamental facade.",
+        "description": "An architectural presentation sheet with a front elevation and four floor plans. Tonal shading brings out the ornamental gable, window surrounds, cornices and masonry patterns. A separate detail shows the complete facade.",
+        "imageAlts": [
+          "Two-family house in Rotterdam — full sheet with a front elevation and four floor plans",
+          "Two-family house in Rotterdam — complete facade from finial to base"
+        ]
+      },
       "mansard-house": {
         "title": "Low-rise house",
         "category": "Residential architecture",
@@ -384,8 +398,10 @@ export const copy = {
         }
       ],
       "practiceHeading": "在索契的实践",
+      "practicePeriod": "2026年5月至6月",
+      "practicePhotoAlts": ["实习期间笔记本电脑屏幕上的私人住宅模型", "索契的现代建筑立面", "在索契实习期间的工作空间"],
       "practice": [
-        "在索契一家建筑机构实习期间，我为一栋私人住宅设计了平面布局，安排功能分区和房间之间的联系。",
+        "在索契一家建筑机构实习期间，我为一栋私人住宅设计了平面布局。项目工作用时不到一周，几乎从零开始，最初只有平面草图和尺寸。我安排了功能分区及房间之间的联系。",
         "方案几乎未经修改便获采纳，随后交给工程师。之后，项目进入施工阶段。"
       ],
       "educationHeading": "教育与美术基础",
@@ -434,6 +450,16 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — 建筑设计项目、手绘表现、学院素描与联系信息。',
     projects: {
       ...scanStudyTranslations.zh,
+      "two-family-house-rotterdam": {
+        "title": "鹿特丹双户住宅",
+        "category": "建筑表现",
+        "summary": "带有精细装饰立面的住宅。",
+        "description": "建筑图纸展示了正立面及四幅平面图。明暗刻画呈现装饰性山墙、窗框、檐口与砌体纹理。另附立面局部图，完整展示从顶部装饰到基座的立面。",
+        "imageAlts": [
+          "鹿特丹双户住宅 — 包含正立面及四幅平面图的完整图纸",
+          "鹿特丹双户住宅 — 从顶部装饰到基座的完整立面"
+        ]
+      },
       "mansard-house": {
         "title": "低层住宅",
         "category": "住宅建筑",

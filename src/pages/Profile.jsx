@@ -3,6 +3,7 @@ import { asset, contactEmail, profile } from '../data.js';
 import Icon from '../components/Icon.jsx';
 import PuttyText from '../PuttyText.jsx';
 import { software } from '../software.js';
+import PracticeSection from '../components/PracticeSection.jsx';
 
 export function About({ t }) {
   const about = t.about;
@@ -18,7 +19,7 @@ export function About({ t }) {
       </figure>
     </div>
     <section className="about-section" aria-labelledby="competencies-heading"><h2 id="competencies-heading">{about.competenciesHeading}</h2><div className="competency-grid">{about.competencies.map(item => <div key={item.title}><h3>{item.title}</h3><p>{item.body}</p></div>)}</div></section>
-    <section className="about-section about-practice" aria-labelledby="practice-heading"><h2 id="practice-heading">{about.practiceHeading}</h2><div className="about-prose">{about.practice.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></section>
+    <PracticeSection t={t} className="about-section about-practice" headingId="practice-heading"/>
     <section className="about-section" aria-labelledby="education-heading"><h2 id="education-heading">{about.educationHeading}</h2><div className="about-education">{about.education.map(item => <div key={item.title}><p className="about-education-period">{item.period}</p><h3>{item.title}</h3><p>{item.body}</p></div>)}</div><a className="text-link" href="?page=education">{about.educationLink}</a></section>
     <section className="about-section software-section" aria-labelledby="tools-heading"><h2 id="tools-heading">{about.toolsHeading}</h2><p className="software-intro">{about.toolsIntro}</p><ul className="software-grid">{software.map(tool => <li key={tool.id} data-software={tool.id}><img src={asset(`software/${tool.icon}`)} alt="" width="40" height="40" loading="lazy" decoding="async"/><span className="software-name" translate="no">{tool.name}</span></li>)}</ul></section>
     <a className="text-link about-contact" href="?page=contacts">{about.action}</a>

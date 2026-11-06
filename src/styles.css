@@ -223,11 +223,16 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 .about-portrait { width: 100%; min-width: 0; }
 .about-portrait > img { width: 100%; height: auto; }
 .about-section { margin-top: clamp(64px, 7vw, 104px); }
-.about-section > h2, .education-practice > h2 { max-width: 24ch; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.15; letter-spacing: -.05em; font-weight: 520; }
+.about-section > h2, .practice-heading > h2 { max-width: 24ch; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.15; letter-spacing: -.05em; font-weight: 520; }
 .competency-grid, .about-education { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 64px; margin-top: 32px; }
 .competency-grid h3, .about-education h3 { font: 450 26px/1.25 var(--serif); letter-spacing: -.035em; }
 .competency-grid p, .about-education p { max-width: 62ch; margin-top: 14px; color: var(--muted); font-size: 16px; line-height: 1.75; }
 .about-practice, .education-practice { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 64px; align-items: baseline; }
+.practice-period { margin-top: 18px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.practice-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; align-items: start; }
+.practice-gallery figure { min-width: 0; }
+.practice-gallery img { width: 100%; height: auto; }
+.practice-gallery figcaption { margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .about-prose { max-width: 65ch; font-size: 18px; line-height: 1.75; }
 .about-prose p + p { margin-top: 20px; }
 .about-section > .text-link { margin-top: 24px; }
@@ -247,6 +252,8 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .about-bio { font-size: 16px; }
   .competency-grid, .about-education { grid-template-columns: 1fr; gap: 28px; margin-top: 26px; }
   .about-practice, .education-practice { grid-template-columns: 1fr; gap: 24px; }
+  .practice-gallery { grid-template-columns: 1fr; gap: 28px; }
+  .practice-period { margin-top: 12px; }
   .about-prose { font-size: 17px; }
   .software-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
   .software-grid li { gap: 10px; }
