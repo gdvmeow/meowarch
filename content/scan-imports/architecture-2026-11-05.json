@@ -2,16 +2,29 @@
   "importDate": "2026-11-05",
   "works": [
     {
-      "sourceFile": "IMG_1920.JPG",
-      "sourceSha256": "91d1e104e6cebbde90ccce81bdf1bfeb580747e6c4f27ebf916b4db24fd7e09b",
-      "sourceBytes": 2810727,
+      "sourceFile": "IMG_1920.png",
+      "sourceSha256": "a7c2f0b4fc306e560e5caf80143fae0e74b224236e18fb5d6917be6698c9338e",
+      "sourceBytes": 3883224,
       "projectId": "mansard-house",
       "asset": "mansard-house-sheet.webp",
-      "width": 2416,
-      "height": 3575,
-      "processedSha256": "d4c93f58970d18aaef5b81b36ad2752f01e6eb0fc7b0286143568fdcd1281a8b",
-      "processedBytes": 1984276,
-      "processing": "Auto orientation, WebP quality 94, metadata removed. Full frame; no crop or retouch."
+      "width": 1384,
+      "height": 2048,
+      "processedSha256": "ce74cc02e842d9d790bc1cd22e6f2362f6047307cbd3f24b116036525cc588b3",
+      "processedBytes": 2664540,
+      "processing": "Lossless WebP at the supplied PNG resolution. Full frame, identical RGB pixels; no crop, resize, colour correction, retouching or generation. Original source files remain unchanged.",
+      "replacementDate": "2026-11-06",
+      "previousVersion": {
+        "sourceFile": "IMG_1920.JPG",
+        "sourceSha256": "91d1e104e6cebbde90ccce81bdf1bfeb580747e6c4f27ebf916b4db24fd7e09b",
+        "sourceBytes": 2810727,
+        "projectId": "mansard-house",
+        "asset": "mansard-house-sheet.webp",
+        "width": 2416,
+        "height": 3575,
+        "processedSha256": "d4c93f58970d18aaef5b81b36ad2752f01e6eb0fc7b0286143568fdcd1281a8b",
+        "processedBytes": 1984276,
+        "processing": "Auto orientation, WebP quality 94, metadata removed. Full frame; no crop or retouch."
+      }
     },
     {
       "sourceFile": "IMG_1928.HEIC",

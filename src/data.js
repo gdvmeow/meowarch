@@ -59,8 +59,8 @@ export const projects = [
       {
         "src": "mansard-house-sheet.webp",
         "alt": "Малоэтажный жилой дом — фасад, планы двух этажей, генплан и экспликация помещений",
-        "width": 2416,
-        "height": 3575
+        "width": 1384,
+        "height": 2048
       }
     ]
   },
