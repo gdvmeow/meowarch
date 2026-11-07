@@ -262,6 +262,12 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — architectural projects, hand-drawn presentation, academic drawing and contact details.',
     projects: {
       ...scanStudyTranslations.en,
+      'caesar-study': {
+        title: 'Caesar', category: 'Academic drawing',
+        summary: 'A frontal construction study of Caesar’s head. Pencil on paper.',
+        description: 'A line drawing of the head and neck, marking the axes and main planes. Light hatching defines the eye sockets and cheekbones; the construction lines remain visible.',
+        imageAlts: ['Caesar — full sheet with a frontal head study, construction axes and planes'],
+      },
       "two-family-house-rotterdam": {
         "title": "Two-family house in Rotterdam",
         "category": "Architectural graphics",
@@ -450,6 +456,12 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — 建筑设计项目、手绘表现、学院素描与联系信息。',
     projects: {
       ...scanStudyTranslations.zh,
+      'caesar-study': {
+        title: '恺撒', category: '学院素描',
+        summary: '恺撒头像的正面结构素描。纸本铅笔。',
+        description: '以线条构建头部与颈部，标示轴线和主要转折面。轻排线刻画眼窝与颧骨，保留辅助构造线。',
+        imageAlts: ['恺撒— 完整画面，展示正面头像、构造轴线与转折面'],
+      },
       "two-family-house-rotterdam": {
         "title": "鹿特丹双户住宅",
         "category": "建筑表现",

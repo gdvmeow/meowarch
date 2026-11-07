@@ -1,0 +1,15 @@
+{
+  "sourceFile": "IMG_2811 (2).HEIC",
+  "sourceSha256": "a7247e06b7f33069233eb4d8c50e3e12ebd5b3aa3c62248cbb5f352dcb764e3d",
+  "projectId": "caesar-study",
+  "sourceTitle": "Цезарь",
+  "processing": "Full frame at native resolution. HEIC decoded with libheif; embedded Display P3 profile converted to sRGB; RGB WebP quality 95, method 6. EXIF, GPS and XMP metadata removed. No crop, resizing, tonal adjustment, retouching or generation. The original HEIC is unchanged and remains outside public assets.",
+  "assets": [
+    {
+      "src": "caesar-study.webp",
+      "width": 2296,
+      "height": 3061,
+      "sha256": "bd96be410882f71b8530b342796d26e15b141dab0209ca60c8dd0473a155c3b8"
+    }
+  ]
+}

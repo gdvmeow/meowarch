@@ -22,7 +22,7 @@ test('all languages have matching interface and profile fields', () => {
 });
 
 test('every project has an existing image with dimensions and a translated description', async () => {
-  assert.equal(projects.length, 23);
+  assert.equal(projects.length, 24);
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);
@@ -207,4 +207,35 @@ test('the Rotterdam house preserves the complete source sheet and a separate fac
   }
   assert.deepEqual(manifest.assets[0].cropBox, [0, 0, 1978, 2630]);
   await assert.rejects(access(new URL(`../public/assets/${manifest.sourceFile}`, import.meta.url)));
+});
+
+
+test('the Caesar study preserves its supplied title, full frame and private source metadata boundary', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/caesar.json', import.meta.url), 'utf8'));
+  const project = projects.find(project => project.id === manifest.projectId);
+  assert.equal(project.title, 'Цезарь');
+  assert.equal(manifest.sourceTitle, project.title);
+  assert.equal(project.group, 'graphics');
+  assert.equal(project.category, 'Академический рисунок');
+  assert.equal(project.images.length, 1);
+  const [entry] = manifest.assets;
+  assert.deepEqual([entry.src, entry.width, entry.height], ['caesar-study.webp', 2296, 3061]);
+  assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: entry.src, width: entry.width, height: entry.height }]);
+  const bytes = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256);
+  assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
+  assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
+  const chunks = [];
+  for (let offset = 12; offset + 8 <= bytes.length;) {
+    const length = bytes.readUInt32LE(offset + 4);
+    chunks.push(bytes.toString('ascii', offset, offset + 4));
+    offset += 8 + length + length % 2;
+  }
+  assert.ok(!chunks.some(chunk => ['EXIF', 'XMP '].includes(chunk)), 'Private source metadata must not be published');
+  await assert.rejects(access(new URL(`../public/assets/${manifest.sourceFile}`, import.meta.url)));
+  for (const { code } of languages) {
+    const localized = localizeProject(project, code);
+    assert.equal(localized.title, { ru: 'Цезарь', en: 'Caesar', zh: '恺撒' }[code]);
+    assert.ok(localized.images[0].alt.startsWith(localized.title));
+  }
 });
