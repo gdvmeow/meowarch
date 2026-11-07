@@ -70,7 +70,7 @@ export const scanStudies = [
     "title": "Купол и колоннада",
     "category": "Архитектурная графика",
     "summary": "Перспективный рисунок купольного здания и площади с колоннадой.",
-    "description": "Учебная работа с пространственной композицией: купол, фасад и охватывающая площадь колоннада. Рисунок исследует масштаб и перспективные сокращения.",
+    "description": "Учебный рисунок купола, фасада и колоннады вокруг площади. Основное внимание уделено масштабу и перспективным сокращениям.",
     "images": [
       {
         "src": "rotunda.webp",
@@ -290,7 +290,7 @@ export const scanStudyTranslations = {
       "title": "Dome and colonnade",
       "category": "Architectural drawing",
       "summary": "A perspective drawing of a domed building and a colonnaded square.",
-      "description": "A spatial composition study of a dome, façade and a colonnade enclosing a square, exploring scale and perspective foreshortening.",
+      "description": "A perspective study of a dome, facade and the colonnade around a square, with attention to scale and foreshortening.",
       "imageAlts": [
         "Dome and colonnade — full sheet"
       ]
@@ -326,7 +326,7 @@ export const scanStudyTranslations = {
       "title": "Projection study",
       "category": "Descriptive geometry",
       "summary": "Transferring a form between projections and a spatial view.",
-      "description": "A study drawing with projection lines, transfer arcs and a spatial construction. Auxiliary lines preserve the sequence of the solution.",
+      "description": "A drawing exercise with projection lines, transfer arcs and a three-dimensional construction. The auxiliary lines show how the form was constructed.",
       "imageAlts": [
         "Projection study — full sheet"
       ]
@@ -363,7 +363,7 @@ export const scanStudyTranslations = {
       "title": "Faceted head",
       "category": "Academic drawing",
       "summary": "A plaster head with the form divided into geometric planes.",
-      "description": "A constructive pencil study of a faceted head. The planes reveal proportions, changes in surface direction and the distribution of light and shadow.",
+      "description": "A pencil study of a faceted head, showing its proportions, the angles of its planes and the distribution of light and shade.",
       "imageAlts": [
         "Faceted head — full sheet"
       ]
@@ -372,7 +372,7 @@ export const scanStudyTranslations = {
       "title": "Houdon’s écorché",
       "category": "Academic drawing",
       "summary": "A frontal study of the head of Houdon’s écorché.",
-      "description": "A pencil anatomy study of the head and neck, exploring muscle groups, proportions and tonal modelling of volume.",
+      "description": "A pencil anatomy study of the head and neck, showing muscle groups and proportions through tonal modelling.",
       "imageAlts": [
         "Houdon’s écorché — full sheet"
       ]
@@ -410,7 +410,7 @@ export const scanStudyTranslations = {
       "title": "特雷维喷泉",
       "category": "建筑绘图",
       "summary": "特雷维喷泉绘图，描绘中央拱门和雕塑。",
-      "description": "特雷维喷泉绘图习作，以线条和轻调子描绘柱、壁龛、窗及雕塑。",
+      "description": "特雷维喷泉绘画习作，以线条和淡淡的明暗描绘柱、壁龛、窗与雕塑。",
       "imageAlts": [
         "特雷维喷泉 — 完整图纸"
       ]
@@ -428,7 +428,7 @@ export const scanStudyTranslations = {
       "title": "穹顶与柱廊",
       "category": "建筑绘图",
       "summary": "穹顶建筑与柱廊广场的透视绘图。",
-      "description": "空间构图习作：穹顶、立面及围合广场的柱廊，研究尺度与透视缩短。",
+      "description": "穹顶、立面与广场周围柱廊的透视习作，着重表现尺度关系和透视变化。",
       "imageAlts": [
         "穹顶与柱廊 — 完整图纸"
       ]
@@ -436,7 +436,7 @@ export const scanStudyTranslations = {
     "graphic-textures": {
       "title": "图形肌理",
       "category": "图形构成",
-      "summary": "以线条、色块及装饰肌理组成的构图。",
+      "summary": "由线条、块面与装饰肌理组成的构图。",
       "description": "黑白图纸结合几何与自由形态肌理，通过线条密度、图案尺度和对比形成整体构图。",
       "imageAlts": [
         "图形肌理 — 完整图纸"
@@ -499,7 +499,7 @@ export const scanStudyTranslations = {
     },
     "faceted-head": {
       "title": "切面头像",
-      "category": "学院素描",
+      "category": "素描习作",
       "summary": "以几何切面划分形体的石膏头像。",
       "description": "切面头像的结构铅笔习作，通过平面转折研究比例、表面方向及明暗分布。",
       "imageAlts": [
@@ -508,7 +508,7 @@ export const scanStudyTranslations = {
     },
     "head-muscles": {
       "title": "乌东人体解剖像",
-      "category": "学院素描",
+      "category": "素描习作",
       "summary": "乌东人体解剖像头部的正面素描。",
       "description": "头颈解剖铅笔习作，研究肌群、比例及体积的明暗塑造。",
       "imageAlts": [
@@ -517,7 +517,7 @@ export const scanStudyTranslations = {
     },
     "skull-studies": {
       "title": "头骨：两个视角",
-      "category": "学院素描",
+      "category": "素描习作",
       "summary": "同一张纸上的头骨解剖习作。",
       "description": "不同角度的两幅头骨铅笔绘图，以结构线与排线表现骨骼结构及主要体块关系。",
       "imageAlts": [

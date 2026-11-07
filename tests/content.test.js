@@ -187,7 +187,7 @@ test('practice photos retain their full frames and localized dates and captions'
     assert.equal(copy[code].about.practicePhotoAlts.length, 3);
     assert.ok(copy[code].about.practicePhotoAlts.every(alt => alt.trim()));
   }
-  assert.match(copy.ru.about.practice[0], /менее недели/);
+  assert.match(copy.ru.about.practice[0], /меньше недели/);
   assert.match(copy.en.about.practice[0], /less than a week/);
   assert.match(copy.zh.about.practice[0], /不到一周/);
 });
@@ -335,5 +335,16 @@ test('Antinous retains the exact supplied JPEG bytes and complete translations',
     const localized = localizeProject(project, code);
     assert.equal(localized.title, { ru: 'Антиной', en: 'Antinous', zh: '安提诺乌斯' }[code]);
     assert.ok(localized.images[0].alt.startsWith(localized.title));
+  }
+});
+
+
+test('static metadata describes the portfolio without asserting an unprovided qualification', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(html, /<title>Виктория Терзян \| Архитектура и графика<\/title>/);
+  assert.ok(!html.includes('Виктория Терзян — архитектор'));
+  for (const { code } of languages) {
+    assert.ok(copy[code].metaDescription.trim());
+    assert.ok(copy[code].about.education[0].title.includes('ГБПОУ «МКАГ»'));
   }
 });

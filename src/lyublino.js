@@ -4,8 +4,8 @@ export const lyublinoProject = {
   "title": "Учебный проект реставрации жилого дома в Люблино",
   "category": "Учебный проект · Жилая архитектура",
   "group": "architecture",
-  "summary": "От клоузуры на бумаге к BIM-модели в Renga и итоговому проектному листу.",
-  "description": "Учебная разработка среднеэтажного многоквартирного дома в Люблино. Ручная графика, цифровая модель и архитектурные чертежи собраны в одну последовательную историю проекта.",
+  "summary": "Среднеэтажный многоквартирный дом в Люблино.",
+  "description": "Учебный проект прошёл три этапа: клоузуру на бумаге, разработку BIM-модели в Renga и подготовку итогового проектного листа.",
   "stagesLabel": "Этапы проекта",
   "cover": {
     "src": "lyublino/cover.webp",
@@ -144,7 +144,7 @@ export const lyublinoProject = {
     {
       "id": "clausura",
       "title": "Клоузура на бумаге",
-      "text": "Первая стадия проекта: ручной поиск композиции жилых объёмов и архитектуры фасадов. На одном листе собраны перспектива, генплан, фасады, планы и разрез.",
+      "text": "В клоузуре определены композиция жилых объёмов и архитектура фасадов. Ручная подача включает перспективу, генплан, фасады, планы и разрез.",
       "imageIndexes": [
         0
       ]
@@ -152,7 +152,7 @@ export const lyublinoProject = {
     {
       "id": "renga",
       "title": "BIM-модель в Renga",
-      "text": "Развитие объёмной композиции и фасадов в цифровой модели: от первых построений до цветового решения.",
+      "text": "В Renga уточнены объёмная композиция, фасады и цветовое решение дома.",
       "imageIndexes": [
         1,
         2,
@@ -169,7 +169,7 @@ export const lyublinoProject = {
     {
       "id": "presentation",
       "title": "Итоговый проектный лист",
-      "text": "Визуализация, генплан, планы этажей с экспликациями, разрез и фасады объединены в итоговую подачу.",
+      "text": "Итоговая подача включает визуализацию, генплан, планы этажей с экспликациями, разрез и фасады.",
       "imageIndexes": [
         11,
         12,
@@ -186,11 +186,11 @@ export const lyublinoProject = {
   "resources": {
     "heading": "Материалы проекта",
     "description": "Проектный лист, чертежи и изображения модели.",
-    "archiveLabel": "Скачать проект",
+    "archiveLabel": "Скачать материалы",
     "groupLabels": {
       "clausura": "Клоузура",
-      "renga": "Модель в Renga",
-      "presentation": "Листы PDF"
+      "renga": "Изображения модели",
+      "presentation": "Чертежи PDF"
     },
     "archive": {
       "src": "lyublino/lyublino-materials.zip",
@@ -312,10 +312,10 @@ export const lyublinoProject = {
 
 export const lyublinoTranslations = {
   "en": {
-    "title": "Residential restoration in Lyublino · Student project",
+    "title": "Apartment building restoration in Lyublino",
     "category": "Student project · Residential architecture",
-    "summary": "From a hand-drawn concept to a Renga BIM model and a final presentation sheet.",
-    "description": "A student design study for a mid-rise apartment building in Lyublino. Hand drawing, a digital model and architectural drawings form a single chronological project.",
+    "summary": "A mid-rise apartment building in Lyublino.",
+    "description": "A student project developed through a hand-drawn concept, a BIM model in Renga and a final presentation sheet.",
     "stagesLabel": "Project stages",
     "imageAlts": [
       "Concept sheet: perspective, site plan, elevations, plans and section",
@@ -333,33 +333,33 @@ export const lyublinoTranslations = {
       "Evening rendering",
       "Site plan · 1:800",
       "Ground-floor plan · 1:200",
-      "Typical residential section · 1:200",
+      "Typical residential section plan · 1:200",
       "Building section · 1:200",
       "Front and side elevations · 1:200",
-      "Base-floor plan",
+      "Floor plan",
       "Front elevation"
     ],
     "sections": [
       {
         "title": "Hand-drawn concept",
-        "text": "The first stage explores the composition of the residential volumes and their facades by hand. One sheet combines a perspective, site plan, elevations, floor plans and section."
+        "text": "The concept drawing establishes the building form and facades. It includes a perspective, site plan, elevations, floor plans and a section."
       },
       {
         "title": "BIM model in Renga",
-        "text": "Developing the building form and facades in a digital model, from the first volumes to the colour scheme."
+        "text": "The building form, facades and colour scheme are developed in Renga."
       },
       {
         "title": "Final presentation sheet",
-        "text": "A rendering, site plan, floor plans with schedules, section and elevations brought together on the final presentation sheet."
+        "text": "The final presentation includes a rendering, site plan, floor plans with room schedules, a section and elevations."
       }
     ],
     "resources": {
       "heading": "Project materials",
       "description": "Presentation sheet, drawings and model views.",
-      "archiveLabel": "Download project",
+      "archiveLabel": "Download materials",
       "groupLabels": {
         "clausura": "Concept sheet",
-        "renga": "Renga model",
+        "renga": "Model images",
         "presentation": "PDF drawings"
       },
       "fileLabels": [
@@ -375,17 +375,17 @@ export const lyublinoTranslations = {
         "Colour scheme · 3",
         "Colour scheme · 4",
         "Colour scheme · 5",
-        "Base-floor plan",
+        "Floor plan",
         "Presentation sheet",
         "Front elevation"
       ]
     }
   },
   "zh": {
-    "title": "柳布利诺住宅修缮 · 课程设计",
+    "title": "柳布利诺住宅楼修缮",
     "category": "课程设计 · 住宅建筑",
-    "summary": "从纸本构思草图到 Renga BIM 模型，再到最终项目图板。",
-    "description": "位于柳布利诺的中层多户住宅课程设计。手绘、数字模型与建筑图纸按创作顺序汇集为一个完整项目。",
+    "summary": "柳布利诺的一栋中层住宅楼。",
+    "description": "课程设计分为三个阶段：手绘构思、Renga BIM 建模和最终图板制作。",
     "stagesLabel": "项目阶段",
     "imageAlts": [
       "构思图板：透视图、总平面图、立面图、平面图与剖面图",
@@ -406,21 +406,21 @@ export const lyublinoTranslations = {
       "标准住宅单元平面图 · 1:200",
       "建筑剖面图 · 1:200",
       "正立面与侧立面 · 1:200",
-      "基础楼层平面图",
+      "楼层平面图",
       "正立面"
     ],
     "sections": [
       {
         "title": "纸本构思草图",
-        "text": "项目的第一阶段以手绘探索住宅体量组合与立面设计。一张图板汇集透视图、总平面图、立面图、各层平面图及剖面图。"
+        "text": "手绘草图确定住宅的体量组合与立面设计，包括透视图、总平面图、立面图、楼层平面图和剖面图。"
       },
       {
         "title": "Renga BIM 模型",
-        "text": "在数字模型中逐步完善建筑体量与立面，从初步体量到最终配色。"
+        "text": "在 Renga 中细化建筑体量、立面与配色方案。"
       },
       {
         "title": "最终项目图板",
-        "text": "最终图板汇集效果图、总平面图、附明细表的各层平面图、剖面图及立面图。"
+        "text": "最终图板包括效果图、总平面图、附房间明细表的楼层平面图、剖面图与立面图。"
       }
     ],
     "resources": {
@@ -429,7 +429,7 @@ export const lyublinoTranslations = {
       "archiveLabel": "下载项目资料",
       "groupLabels": {
         "clausura": "构思图板",
-        "renga": "Renga 模型",
+        "renga": "模型视图",
         "presentation": "PDF 图纸"
       },
       "fileLabels": [
@@ -445,7 +445,7 @@ export const lyublinoTranslations = {
         "配色方案 · 3",
         "配色方案 · 4",
         "配色方案 · 5",
-        "基础楼层平面图",
+        "楼层平面图",
         "项目图板",
         "正立面"
       ]

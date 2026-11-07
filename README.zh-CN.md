@@ -4,15 +4,15 @@
 
 # Viktoria Terzyan
 
-**建筑与绘图**
+**建筑与手绘**
 
 [浏览作品集 ↗](https://gdvmeow.github.io/meowarch/)
 
 <a href="https://gdvmeow.github.io/meowarch/"><img src="public/assets/low-rise-house-cover.webp" alt="低层住宅 — 手绘建筑表现" width="860"></a>
 
-建筑设计项目、手绘表现与学院素描。
+建筑设计项目、手绘表现与素描习作。
 
-[作品集](https://gdvmeow.github.io/meowarch/?page=portfolio) · [关于](https://gdvmeow.github.io/meowarch/?page=about) · [教育与经历](https://gdvmeow.github.io/meowarch/?page=education) · [联系](https://gdvmeow.github.io/meowarch/?page=contacts)
+[作品集](https://gdvmeow.github.io/meowarch/?page=portfolio) · [关于我](https://gdvmeow.github.io/meowarch/?page=about) · [教育与经历](https://gdvmeow.github.io/meowarch/?page=education) · [联系方式](https://gdvmeow.github.io/meowarch/?page=contacts)
 
 ---
 
