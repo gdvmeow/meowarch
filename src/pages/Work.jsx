@@ -11,11 +11,11 @@ import Icon from '../components/Icon.jsx';
 import ChoiceText from '../components/ChoiceText.jsx';
 
 export function Home({ t, projects }) {
-  // Pair an architectural study with a drawing in each rail. The full catalog
-  // remains in its source order; this small selection is deliberately curated.
+  // The author’s selected works, in reading order across the two rails.
+  // The full catalog remains in its original source order.
   const selectedRails = [
-    ['low-rise-house', 'portal-facade'],
-    ['folded-roof-cafe', 'socrates'],
+    ['lyublino-restoration', 'two-family-house-rotterdam'],
+    ['line-landscape', 'socrates'],
   ].map(ids => ids.map(id => projects.find(project => project.id === id)).filter(Boolean));
   return <main id="main" tabIndex="-1" className="home-page">
     <section className="home-hero" aria-label={t.pageTitles.home}>

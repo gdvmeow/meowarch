@@ -22,7 +22,7 @@ test('all languages have matching interface and profile fields', () => {
 });
 
 test('every project has an existing image with dimensions and a translated description', async () => {
-  assert.equal(projects.length, 25);
+  assert.equal(projects.length, 26);
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);
@@ -310,5 +310,30 @@ test('Lyublino is one complete, chronological project with all 15 source files a
     assert.ok(localized.resources.heading && localized.resources.description && localized.resources.archiveLabel);
     const visitorCopy = [localized.summary, localized.description, ...localized.sections.map(s => s.text), localized.resources.description, ...localized.resources.files.map(f => f.label)].join(' ');
     assert.doesNotMatch(visitorCopy, /HEIC|JPEG|EXIF|metadata|exact duplicate|точн[а-я ]*копи|Некоммерческ|watermark|水印|副本|转换/i);
+  }
+});
+
+
+test('Antinous retains the exact supplied JPEG bytes and complete translations', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/antinous.json', import.meta.url), 'utf8'));
+  const project = projects.find(project => project.id === manifest.projectId);
+  const expectedHash = 'bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7';
+  assert.equal(manifest.sourceSha256, expectedHash);
+  assert.equal(project.title, 'Антиной');
+  assert.equal(project.group, 'graphics');
+  assert.equal(project.category, 'Академический рисунок');
+  assert.equal(project.images.length, 1);
+  assert.equal(project.cover, undefined);
+  const [entry] = manifest.assets;
+  assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: 'antinous.jpg', width: 1536, height: 2048 }]);
+  const bytes = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
+  assert.equal(bytes.length, 638037);
+  assert.equal(bytes.readUInt16BE(0), 0xffd8);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), expectedHash);
+  assert.equal(entry.sha256, expectedHash);
+  for (const { code } of languages) {
+    const localized = localizeProject(project, code);
+    assert.equal(localized.title, { ru: 'Антиной', en: 'Antinous', zh: '安提诺乌斯' }[code]);
+    assert.ok(localized.images[0].alt.startsWith(localized.title));
   }
 });

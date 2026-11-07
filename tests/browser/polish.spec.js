@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { projects } from '../../src/data.js';
+import { localizeProject } from '../../src/i18n.js';
 
 async function ready(page, path = '') {
   await page.goto(`./${path}`);
@@ -7,25 +8,34 @@ async function ready(page, path = '') {
   await expect(page.locator('main h1')).toBeVisible();
 }
 
-test('the selected works show architecture and drawing in balanced uncropped rails', async ({ page }) => {
+test('the selected works retain the author’s order, translations and uncropped rails', async ({ page }) => {
+  const ids = ['lyublino-restoration', 'two-family-house-rotterdam', 'line-landscape', 'socrates'];
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 844 });
     await ready(page);
-    const cards = page.locator('.selected-grid .project-tile');
-    await expect(cards).toHaveCount(4);
-    expect(await cards.evaluateAll(items => items.map(item => item.getAttribute('href')))).toEqual([
-      '?project=low-rise-house', '?project=portal-facade', '?project=folded-roof-cafe', '?project=socrates',
-    ]);
-    if (width < 760) expect((await cards.first().boundingBox()).y).toBeLessThan(844 * .85);
-    for (const card of await cards.all()) {
-      const image = card.locator('img');
-      await image.scrollIntoViewIfNeeded();
-      await image.evaluate(image => image.decode());
-      expect(await image.evaluate(image => Math.abs(image.clientWidth / image.clientHeight - image.naturalWidth / image.naturalHeight))).toBeLessThan(.01);
-    }
-    if (width === 1440) {
-      const ends = await page.locator('.selected-rail').evaluateAll(rails => rails.map(rail => rail.getBoundingClientRect().bottom));
-      expect(Math.abs(ends[0] - ends[1])).toBeLessThan(100);
+    for (const language of ['ru', 'en', 'zh']) {
+      await page.evaluate(language => localStorage.setItem('meowarch-language', language), language);
+      await ready(page);
+      const cards = page.locator('.selected-grid .project-tile');
+      await expect(cards).toHaveCount(4);
+      expect(await cards.evaluateAll(items => items.map(item => item.getAttribute('href')))).toEqual(ids.map(id => `?project=${id}`));
+      if (width < 760) expect((await cards.first().boundingBox()).y).toBeLessThan(844 * .85);
+      for (let index = 0; index < ids.length; index++) {
+        const card = cards.nth(index);
+        const source = projects.find(project => project.id === ids[index]);
+        await expect(card.locator('h3')).toHaveText(localizeProject(source, language).title);
+        const image = card.locator('img');
+        await image.scrollIntoViewIfNeeded();
+        await image.evaluate(image => image.decode());
+        expect(await image.evaluate(image => Math.abs(image.clientWidth / image.clientHeight - image.naturalWidth / image.naturalHeight))).toBeLessThan(.01);
+      }
+      await expect(page.locator('.selected-rail')).toHaveCount(2);
+      if (width === 1440) {
+        const rails = await page.locator('.selected-rail').evaluateAll(items => items.map(item => { const r = item.getBoundingClientRect(); return { left: r.left, right: r.right, width: r.width }; }));
+        expect(rails[0].right).toBeLessThan(rails[1].left);
+        expect(rails[0].width / rails[1].width).toBeCloseTo(7 / 5, 1);
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     }
   }
 });

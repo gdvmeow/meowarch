@@ -266,6 +266,12 @@ export const copy = {
     projects: {
       ...scanStudyTranslations.en,
       'lyublino-restoration': lyublinoTranslations.en,
+      antinous: {
+        title: 'Antinous', category: 'Academic drawing',
+        summary: 'Antinous’s head in three-quarter view. Pencil on paper.',
+        description: 'Hatching conveys the volume of the face, curls and neck. The drawing explores light and shade and the transitions between the main planes.',
+        imageAlts: ['Antinous — photograph of a pencil head study in three-quarter view'],
+      },
       'caesar-study': {
         title: 'Caesar', category: 'Academic drawing',
         summary: 'A frontal construction study of Caesar’s head. Pencil on paper.',
@@ -462,6 +468,12 @@ export const copy = {
     projects: {
       ...scanStudyTranslations.zh,
       'lyublino-restoration': lyublinoTranslations.zh,
+      antinous: {
+        title: '安提诺乌斯', category: '学院素描',
+        summary: '安提诺乌斯头像的四分之三侧面。纸本铅笔。',
+        description: '排线表现面部、卷发和颈部的体积，刻画明暗关系与主要转折面之间的过渡。',
+        imageAlts: ['安提诺乌斯 — 四分之三侧面铅笔头像素描的照片'],
+      },
       'caesar-study': {
         title: '恺撒', category: '学院素描',
         summary: '恺撒头像的正面结构素描。纸本铅笔。',

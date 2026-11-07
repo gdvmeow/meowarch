@@ -1,0 +1,17 @@
+{
+  "projectId": "antinous",
+  "sourceFile": "IMG_8189.JPG",
+  "sourceTitle": "Антиной",
+  "sourceSha256": "bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7",
+  "processing": "None. Original JPEG copied byte for byte; no crop, rotation, resizing, color correction, recompression or metadata changes.",
+  "metadataReview": "JFIF only; no EXIF, GPS, XMP, IPTC or identifying metadata found.",
+  "assets": [
+    {
+      "src": "antinous.jpg",
+      "width": 1536,
+      "height": 2048,
+      "sizeBytes": 638037,
+      "sha256": "bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7"
+    }
+  ]
+}
