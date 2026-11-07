@@ -1,3 +1,4 @@
+import { fourArtworksTranslations } from './fourArtworks.js';
 import { lyublinoTranslations } from './lyublino.js';
 import { scanStudyTranslations } from './scanStudies.js';
 
@@ -265,6 +266,7 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan’s portfolio: architectural projects, hand-drawn presentations and academic drawing.',
     projects: {
       ...scanStudyTranslations.en,
+      ...fourArtworksTranslations.en,
       'lyublino-restoration': lyublinoTranslations.en,
       antinous: {
         title: 'Antinous', category: 'Academic drawing',
@@ -467,6 +469,7 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan 的作品集：建筑设计项目、手绘表现与素描习作。',
     projects: {
       ...scanStudyTranslations.zh,
+      ...fourArtworksTranslations.zh,
       'lyublino-restoration': lyublinoTranslations.zh,
       antinous: {
         title: '安提诺乌斯', category: '素描习作',

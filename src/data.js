@@ -1,3 +1,4 @@
+import { fourArtworks } from './fourArtworks.js';
 import { lyublinoProject } from './lyublino.js';
 import { scanStudies } from './scanStudies.js';
 
@@ -127,7 +128,9 @@ export const projects = [
       { src: 'caesar-study-white.webp', alt: 'Цезарь — полный лист с фронтальным рисунком головы, осями и плоскостями построения', width: 2296, height: 3061 },
     ],
   },
-  ...scanStudies,
+  ...scanStudies.slice(0, 1),
+  ...fourArtworks,
+  ...scanStudies.slice(1),
   {
     id: 'antinous',
     title: 'Антиной',

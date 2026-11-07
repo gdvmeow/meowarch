@@ -22,7 +22,7 @@ test('all languages have matching interface and profile fields', () => {
 });
 
 test('every project has an existing image with dimensions and a translated description', async () => {
-  assert.equal(projects.length, 26);
+  assert.equal(projects.length, 30);
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);
@@ -346,5 +346,31 @@ test('static metadata describes the portfolio without asserting an unprovided qu
   for (const { code } of languages) {
     assert.ok(copy[code].metaDescription.trim());
     assert.ok(copy[code].about.education[0].title.includes('ГБПОУ «МКАГ»'));
+  }
+});
+
+
+test('four supplied artworks retain their complete frames and translations', async () => {
+  const entries = [
+    ['composition', 'Композиция', 960, 1280, '9763067d8bc9fe456a5d12ddd251f0da222867de5951aef0fff279ebc5640074'],
+    ['column', 'Колонна', 960, 1280, 'de0a602b745e40730545c6cc841b7fa9adccf3c2ebaf156a9b76115c97a7085c'],
+    ['still-life', 'Натюрморт', 1280, 986, 'f7a8d4473ddeccb1b8c1b7604cc38815b7e0f0ab69ed4452cadc2339e7f5cdf9'],
+    ['decorative-painting', 'Декоративная живопись', 994, 1280, 'e1f7bbda33fbf896665c63c547d0d94560e3afdb7d5e29aab9f24456ac3c292c'],
+  ];
+  for (const [id, title, width, height, hash] of entries) {
+    const project = projects.find(project => project.id === id);
+    assert.equal(project.title, title);
+    assert.equal(project.group, 'graphics');
+    assert.equal(project.images.length, 1);
+    assert.deepEqual([project.images[0].width, project.images[0].height], [width, height]);
+    const bytes = await readFile(new URL(`../public/assets/${project.images[0].src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), hash);
+    assert.ok(!bytes.includes(Buffer.from('Exif\0\0')));
+    assert.ok(!bytes.includes(Buffer.from('http://ns.adobe.com/xap/')));
+    for (const { code } of languages) {
+      const local = localizeProject(project, code);
+      for (const field of ['title', 'category', 'summary', 'description']) assert.ok(local[field]?.trim());
+      assert.ok(local.images[0].alt.trim());
+    }
   }
 });
