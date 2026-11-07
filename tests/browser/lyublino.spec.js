@@ -80,6 +80,14 @@ test('stage links, full-resolution gallery, focus, wraparound and route changes 
   await expect(page.locator('.viewer-count')).toHaveText('20 из 20');
   await page.keyboard.press('Escape');
   await plates.first().click();
+  await page.locator('.viewer-caption a').focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('.viewer-count')).toHaveText('2 из 20');
+  await expect(page.locator('.viewer-caption a')).toBeFocused();
+  await expect(page.locator('.viewer-caption a')).toHaveAttribute('href', /renga-01.webp$/);
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('.viewer-count')).toHaveText('3 из 20');
+  await expect(page.locator('.viewer-caption a')).toBeFocused();
   await page.evaluate(() => { history.pushState({}, '', '?project=caesar-study'); dispatchEvent(new PopStateEvent('popstate')); });
   await expect(page.locator('dialog')).toHaveCount(0);
   await expect(page.locator('body')).not.toHaveCSS('overflow', 'hidden');
