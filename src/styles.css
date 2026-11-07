@@ -130,6 +130,8 @@ main:focus { outline: none; }
 .tile-image img { width: 100%; height: auto; object-fit: contain; }
 .tile-meta { min-width: 0; padding-top: 16px; }
 .tile-meta h3 { font: 440 clamp(24px, 2.3vw, 34px)/1.22 var(--serif); letter-spacing: -.045em; overflow-wrap: anywhere; hyphens: none; text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: .16em; transition: color .18s, text-decoration-color .2s; }
+.tile-arrow { display: inline-block; width: .7em; height: .7em; margin-inline-start: .24em; vertical-align: .02em; transition: transform .2s var(--ease), color .2s; }
+.project-tile:focus-visible .tile-arrow { color: var(--accent-sage); transform: translate(3px, -3px); }
 .tile-meta p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
 /* Work index: shareable filters, two layouts, one card hierarchy. */
@@ -318,6 +320,7 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
 @media (hover: hover) and (pointer: fine) {
   .project-tile:hover { transform: translateY(-3px); }
   .project-tile:hover .tile-meta h3 { text-decoration-color: currentColor; }
+  .project-tile:hover .tile-arrow { color: var(--accent-sage); transform: translate(3px, -3px); }
   .portfolio-section-link:hover { transform: translateY(-2px); text-decoration-color: currentColor; }
   .site-nav a:hover, .header-contact:hover, .text-link:hover, .back-link:hover, .contact-email:hover, .hero-project-link:hover { transform: scale(1.025); color: var(--ink); }
   .language-trigger:hover { background: var(--paper-deep); }
@@ -491,7 +494,7 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .project-tile:focus-visible, .project-tile:hover, .portfolio-section-link:hover { transform: none; }
   .putty-face, .putty-glyph.is-hovered .putty-face, .putty-glyph.is-dragging .putty-face { transform: none !important; }
-  .portfolio-cta .icon, .portfolio-view .icon > *, .copy-button .icon, .site-nav a:hover, .header-contact:hover, .text-link:hover, .back-link:hover, .contact-email:hover, .hero-project-link:hover, .project-next:hover .next-title, .next-label .icon { transform: none !important; }
+  .tile-arrow, .portfolio-cta .icon, .portfolio-view .icon > *, .copy-button .icon, .site-nav a:hover, .header-contact:hover, .text-link:hover, .back-link:hover, .contact-email:hover, .hero-project-link:hover, .project-next:hover .next-title, .next-label .icon { transform: none !important; }
 }
 
 .site-canvas > main:not(.about-page) { animation: page-in 160ms ease-out both; }

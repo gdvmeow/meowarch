@@ -74,13 +74,11 @@ export function Header({ route, t, language, onLanguageChange }) {
   }, [open]);
 
   return <header id="top" className="site-header" ref={headerRef} onBlur={event => {
-    if (open && !event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+    if (open && event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) setOpen(false);
   }}>
     <div className="header-inner shell">
       <a className="wordmark" href="?" aria-label={t.homeLabel} translate="no"><PuttyText>{t.name}</PuttyText></a>
-      <nav id="site-navigation" className={`site-nav ${open ? 'is-open' : ''}`} aria-label={t.navigationLabel} onClick={event => {
-        if (event.target.closest('a')) setOpen(false);
-      }}>
+      <nav id="site-navigation" className={`site-nav ${open ? 'is-open' : ''}`} aria-label={t.navigationLabel}>
         {navigation.map(page => <a key={page} href={`?page=${page}`} aria-current={activePage === page ? 'page' : undefined}><ChoiceText>{t.nav[page]}</ChoiceText></a>)}
       </nav>
       <div className="header-actions">
