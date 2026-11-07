@@ -96,6 +96,10 @@ test('stage links, full-resolution gallery, focus, wraparound and route changes 
 
 test('every material and its complete ZIP are downloadable, with all image and PDF links intact', async ({ page, request }) => {
   await ready(page, 'en');
+  for (const group of await page.locator('.project-download-groups details').all()) {
+    await group.locator('summary').click();
+    await expect(group).toHaveAttribute('open', '');
+  }
   for (const file of source.resources.files) {
     const link = page.locator(`.project-download-groups a[href$="/${file.src}"]`);
     await expect(link).toHaveAttribute('download', file.name);
@@ -116,6 +120,29 @@ test('Lyublino page and high-resolution viewer meet WCAG on mobile and desktop',
     await expect(new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).resolves.toMatchObject({ violations: [] });
     await page.locator('.project-plate button').first().click();
     await expect(new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).resolves.toMatchObject({ violations: [] });
+    await page.keyboard.press('Escape');
+  }
+});
+
+
+test('project opens with architecture and keeps production notes out of visible and collapsed UI', async ({ page }) => {
+  for (const language of ['ru', 'en', 'zh']) {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await ready(page, language);
+    const lead = page.locator('.project-lead-image img');
+    await lead.evaluate(img => img.decode());
+    expect(await lead.evaluate(img => img.getBoundingClientRect().top)).toBeLessThan(650);
+    const text = await page.locator('main').textContent();
+    expect(text).not.toMatch(/HEIC|JPEG|EXIF|exact duplicate|точн[а-я ]*копи|Некоммерческ|watermark|水印|副本|转换|Снимок экрана/i);
+    await expect(page.locator('.project-download-groups details')).toHaveCount(3);
+    await expect(page.locator('.project-download-groups a[download]')).toHaveCount(15);
+    for (const group of await page.locator('.project-download-groups details').all()) {
+      await group.locator('summary').click();
+      await expect(group.locator('a').first()).toBeVisible();
+    }
+    await lead.click();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await expect(page.locator('.viewer-count')).toHaveText(copy[language].project.count(13, 20));
     await page.keyboard.press('Escape');
   }
 });

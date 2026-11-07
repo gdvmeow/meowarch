@@ -308,6 +308,7 @@ test('Lyublino is one complete, chronological project with all 15 source files a
     assert.equal(localized.resources.files.length, 15);
     assert.ok(localized.resources.files.every(f => f.label));
     assert.ok(localized.resources.heading && localized.resources.description && localized.resources.archiveLabel);
-    assert.match(localized.resources.description, /15/);
+    const visitorCopy = [localized.summary, localized.description, ...localized.sections.map(s => s.text), localized.resources.description, ...localized.resources.files.map(f => f.label)].join(' ');
+    assert.doesNotMatch(visitorCopy, /HEIC|JPEG|EXIF|metadata|exact duplicate|точн[а-я ]*копи|Некоммерческ|watermark|水印|副本|转换/i);
   }
 });

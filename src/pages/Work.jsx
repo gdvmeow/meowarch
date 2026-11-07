@@ -74,6 +74,7 @@ export function ProjectPage({ project, projects, t }) {
   const [zoomIndex, setZoomIndex] = useState(null);
   const next = projects[(projects.findIndex(item => item.id === project.id) + 1) % projects.length];
   const nextImage = next.cover ?? next.images[0];
+  const leadImage = project.leadImageIndex !== undefined ? project.images[project.leadImageIndex] : null;
   const closeImage = useCallback(() => setZoomIndex(null), []);
   return <main id="main" tabIndex="-1" className="project-page">
     <div className={`shell project-heading${project.sections ? ' project-heading--staged' : ''}`}>
@@ -82,7 +83,8 @@ export function ProjectPage({ project, projects, t }) {
       <h1>{project.title}</h1>
       <div className="project-intro"><p>{project.summary}</p><p>{project.description}</p></div>
     </div>
-    {project.sections ? <ProjectStages project={project} renderImage={index => <ProjectImage key={project.images[index].src} image={project.images[index]} onOpen={() => setZoomIndex(index)} t={t} priority={index === 0}/>}/> : <>
+    {leadImage && <figure className="shell project-lead-image"><button className="project-image-button" type="button" onClick={() => setZoomIndex(project.leadImageIndex)} aria-label={t.project.zoomImage(leadImage.alt)}><img src={asset(leadImage.src)} alt={leadImage.alt} width={leadImage.width} height={leadImage.height} fetchPriority="high" decoding="async"/><span className="zoom-label" aria-hidden="true">{t.project.zoom}</span></button></figure>}
+    {project.sections ? <ProjectStages project={project} renderImage={index => <ProjectImage key={project.images[index].src} image={project.images[index]} onOpen={() => setZoomIndex(index)} t={t} priority={!leadImage && index === 0}/>}/> : <>
       <div className="project-cover shell"><ProjectImage image={project.images[0]} onOpen={() => setZoomIndex(0)} t={t} priority/></div>
       {project.images.length > 1 && <div className="shell project-gallery">{project.images.slice(1).map((image, index) => <ProjectImage key={image.src} image={image} onOpen={() => setZoomIndex(index + 1)} t={t}/>)}</div>}
     </>}

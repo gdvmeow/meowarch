@@ -541,3 +541,55 @@ html:has(.gallery-dialog[open]) { background: var(--forest-deep); color-scheme: 
   .project-download-all { justify-self: start; }
   .project-download-groups { margin-top: 28px; }
 }
+
+/* The Lyublino story opens with the architecture; its process stays easy to scan. */
+.project-heading--staged { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(250px, .65fr); gap: 0 56px; padding-bottom: 30px; }
+.project-heading--staged .back-link, .project-heading--staged .project-category { grid-column: 1 / -1; }
+.project-heading--staged h1 { font-size: clamp(38px, 4.5vw, 66px); max-width: 900px; line-height: 1.08; text-wrap: balance; }
+.project-heading--staged .back-link { margin-bottom: 26px; }
+.project-heading--staged .project-intro { display: block; margin: 0; align-self: end; }
+.project-heading--staged .project-intro p:first-child { font-size: 21px; line-height: 1.45; }
+.project-heading--staged .project-intro p:last-child { margin-top: 14px; font-size: 14px; }
+.project-lead-image { margin-block: 0 26px; }
+.project-lead-image img { display: block; width: 100%; height: auto; }
+.project-stages-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: 16px; padding-bottom: 48px; }
+.project-stages-nav a { font-size: 16px; border-bottom: 1px solid var(--rule); padding-block: 12px; }
+.project-stage--clausura { display: grid; grid-template-columns: minmax(200px, .7fr) minmax(0, 1.3fr); gap: 56px; }
+.project-stage--clausura .project-stage-heading { align-self: start; }
+.project-stage--clausura .project-plate { max-width: 520px; }
+.project-stage--presentation .project-plate--full { max-width: 680px; }
+.project-stage--renga .project-image-button { background: #fff; aspect-ratio: 16 / 10; display: flex; justify-content: center; align-items: center; }
+.project-stage--renga .project-image-button img { width: auto; height: auto; max-width: 100%; max-height: 100%; }
+.project-stage-heading p { max-width: 58ch; }
+.project-stage-gallery { gap: 30px 32px; }
+.project-materials-heading { align-items: center; }
+.project-download-groups { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 26px; }
+.project-download-groups details { min-width: 0; border-top: 1px solid var(--rule); }
+.project-download-groups summary { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 58px; cursor: pointer; list-style: none; font-size: 17px; }
+.project-download-groups summary::-webkit-details-marker { display: none; }
+.project-download-groups summary span { font-size: 24px; font-weight: 300; }
+.project-download-groups details[open] summary span { transform: rotate(45deg); }
+.project-download-groups ul { padding-bottom: 16px; }
+.project-download-groups a { grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 12px; }
+.project-download-groups small { white-space: nowrap; font-size: 11px; }
+@media (max-width: 900px) {
+  .project-heading--staged { grid-template-columns: 1fr; gap: 22px; }
+  .project-heading--staged .back-link, .project-heading--staged .project-category { margin: 0; }
+  .project-heading--staged .project-intro { max-width: 65ch; }
+  .project-heading--staged .project-intro p:last-child { display: none; }
+  .project-stages-nav { grid-template-columns: 1fr 1fr; gap: 0 22px; }
+  .project-stage--clausura { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 700px) {
+  .project-heading--staged { padding-top: 24px; padding-bottom: 24px; gap: 18px; }
+  .project-heading--staged h1 { font-size: clamp(34px, 8.6vw, 52px); }
+  .project-heading--staged .project-intro p:first-child { font-size: 19px; }
+  .project-lead-image { margin-bottom: 12px; }
+  .project-stages-nav { padding-bottom: 32px; gap: 0 16px; }
+  .project-stages-nav a { font-size: 14px; gap: 7px; }
+  .project-stage--renga .project-image-button { aspect-ratio: 16 / 10; }
+  .project-stage h2, .project-materials h2 { font-size: 30px; }
+  .project-download-groups { grid-template-columns: 1fr; gap: 0; }
+  .project-materials-heading { gap: 12px; }
+  .project-download-all { padding-top: 0; font-size: 19px; }
+}
