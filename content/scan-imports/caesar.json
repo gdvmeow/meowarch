@@ -3,13 +3,21 @@
   "sourceSha256": "a7247e06b7f33069233eb4d8c50e3e12ebd5b3aa3c62248cbb5f352dcb764e3d",
   "projectId": "caesar-study",
   "sourceTitle": "Цезарь",
-  "processing": "Full frame at native resolution. HEIC decoded with libheif; embedded Display P3 profile converted to sRGB; RGB WebP quality 95, method 6. EXIF, GPS and XMP metadata removed. No crop, resizing, tonal adjustment, retouching or generation. The original HEIC is unchanged and remains outside public assets.",
+  "processing": "Full frame at native resolution. HEIC decoded with libheif; embedded Display P3 profile converted to sRGB. Neutral grayscale, smooth paper illumination normalization and a gentle nonlinear curve whiten paper while preserving faint pencil marks. RGB WebP quality 95, method 6. EXIF, GPS and XMP metadata removed. No crop, resampling of the drawing, geometric transform, retouching or generation. The original HEIC is unchanged and remains outside public assets.",
+  "toneCorrection": {
+    "paperField": "Grayscale luminance, 10% field resolution, dilate Disk:10, Gaussian blur sigma 6, interpolate field to native dimensions.",
+    "normalization": "Native-resolution grayscale divided by smooth paper field.",
+    "gamma": 0.7,
+    "whiteLiftPercent": 1.4,
+    "geometry": "2296 x 3061, full frame, no drawing resampling or geometric transform.",
+    "review": "Full sheet and enlarged forehead, crown and neck compared with the previous uncorrected publication; faint construction lines remain visible."
+  },
   "assets": [
     {
-      "src": "caesar-study.webp",
+      "src": "caesar-study-white.webp",
       "width": 2296,
       "height": 3061,
-      "sha256": "bd96be410882f71b8530b342796d26e15b141dab0209ca60c8dd0473a155c3b8"
+      "sha256": "c9b92d24b0ec43905722eddb49ca27ad874fce907303f1cbf65b7ce60d465c0b"
     }
   ]
 }

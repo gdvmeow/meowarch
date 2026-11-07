@@ -28,7 +28,7 @@ for (const width of [1440, 390, 320]) {
         await page.goto(`./?page=portfolio&filter=graphics&view=${view}`);
         const card = page.locator('.project-tile[href="?project=caesar-study"]');
         await expect(card).toContainText(project.title);
-        await expect(card.locator('img')).toHaveAttribute('src', /caesar-study.webp$/);
+        await expect(card.locator('img')).toHaveAttribute('src', /caesar-study-white.webp$/);
         await expect(page.locator('.portfolio-count')).toContainText(`${projects.filter(project => project.group === 'graphics').length} / ${projects.length}`);
         if (view === 'grid') await fullFrame(card.locator('img'));
         await card.click();
@@ -78,4 +78,47 @@ test('Caesar page and modal pass accessibility checks with reduced motion', asyn
   await expect(page.locator('.viewer-close')).toBeFocused();
   await page.keyboard.press('Escape');
   await expect(page.locator('.project-cover button')).toBeFocused();
+});
+
+
+test('Caesar paper is bright while faint forehead axes and neck detail remain visible', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('./?project=caesar-study');
+  const image = page.locator('.project-cover img');
+  await fullFrame(image);
+  // Read the delivered native pixels, independent of CSS viewport scaling.
+  // Regions are fixed to the unchanged 2296 x 3061 drawing geometry.
+  const pixels = await image.evaluate(image => {
+    const canvas = document.createElement('canvas');
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    context.drawImage(image, 0, 0);
+    const region = (x, y, width, height) => {
+      const { data } = context.getImageData(x, y, width, height);
+      const values = [];
+      for (let i = 0; i < data.length; i += 4) {
+        values.push(.2126 * data[i] + .7152 * data[i + 1] + .0722 * data[i + 2]);
+      }
+      const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+      const deviation = Math.sqrt(values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length);
+      return { mean, deviation };
+    };
+    return {
+      paperTop: region(40, 300, 180, 180),
+      paperRight: region(2040, 1500, 180, 180),
+      foreheadAxis: region(1140, 360, 12, 120),
+      foreheadLeft: region(1110, 360, 12, 120),
+      foreheadRight: region(1170, 360, 12, 120),
+      neck: region(940, 2300, 320, 350),
+    };
+  });
+  expect(pixels.paperTop.mean).toBeGreaterThan(250);
+  expect(pixels.paperRight.mean).toBeGreaterThan(247);
+  const foreheadPaper = (pixels.foreheadLeft.mean + pixels.foreheadRight.mean) / 2;
+  expect(foreheadPaper - pixels.foreheadAxis.mean).toBeGreaterThan(17);
+  expect(pixels.foreheadAxis.mean).toBeGreaterThan(210);
+  expect(pixels.neck.deviation).toBeGreaterThan(25);
+  expect(pixels.neck.mean).toBeGreaterThan(220);
+  expect(pixels.neck.mean).toBeLessThan(240);
 });

@@ -214,12 +214,17 @@ test('the Caesar study preserves its supplied title, full frame and private sour
   const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/caesar.json', import.meta.url), 'utf8'));
   const project = projects.find(project => project.id === manifest.projectId);
   assert.equal(project.title, 'Цезарь');
+  assert.equal(manifest.sourceSha256, 'a7247e06b7f33069233eb4d8c50e3e12ebd5b3aa3c62248cbb5f352dcb764e3d');
+  assert.equal(manifest.toneCorrection.gamma, 0.7);
+  assert.equal(manifest.toneCorrection.whiteLiftPercent, 1.4);
+  assert.match(manifest.toneCorrection.geometry, /full frame, no drawing resampling/);
+  assert.match(manifest.processing, /No crop, resampling of the drawing/);
   assert.equal(manifest.sourceTitle, project.title);
   assert.equal(project.group, 'graphics');
   assert.equal(project.category, 'Академический рисунок');
   assert.equal(project.images.length, 1);
   const [entry] = manifest.assets;
-  assert.deepEqual([entry.src, entry.width, entry.height], ['caesar-study.webp', 2296, 3061]);
+  assert.deepEqual([entry.src, entry.width, entry.height], ['caesar-study-white.webp', 2296, 3061]);
   assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: entry.src, width: entry.width, height: entry.height }]);
   const bytes = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
   assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256);
