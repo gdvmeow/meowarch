@@ -55,7 +55,7 @@ test('removed work categories recover to the complete current catalog', () => {
 });
 
 test('natural scan proportions determine stable, continuous catalog rail breaks', () => {
-  assert.equal(balancedRailBreak(projects), 10);
+  assert.equal(balancedRailBreak(projects), 11);
   assert.equal(balancedRailBreak(projects.filter(project => project.group === 'architecture')), 5);
   assert.equal(balancedRailBreak(projects.filter(project => project.group === 'graphics')), 7);
 });

@@ -5,6 +5,7 @@ import { balancedRailBreak } from '../portfolioLayout.js';
 import PuttyText from '../PuttyText.jsx';
 import ProjectTile from '../components/ProjectTile.jsx';
 import GalleryViewer from '../components/GalleryViewer.jsx';
+import ProjectStages from '../components/ProjectStages.jsx';
 import PortfolioHeading from '../components/PortfolioHeading.jsx';
 import Icon from '../components/Icon.jsx';
 import ChoiceText from '../components/ChoiceText.jsx';
@@ -62,7 +63,7 @@ export function Portfolio({ t, projects, route }) {
 }
 
 function ProjectImage({ image, onOpen, t, priority = false }) {
-  return <figure className={`project-plate${image.height > image.width ? ' project-plate--portrait' : ''}`}>
+  return <figure className={`project-plate${image.height > image.width ? ' project-plate--portrait' : ''}${image.fullWidth ? ' project-plate--full' : ''}`}>
     <button className="project-image-button" type="button" onClick={onOpen} aria-label={t.project.zoomImage(image.alt)}>
       <img src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} decoding="async"/><span className="zoom-label" aria-hidden="true">{t.project.zoom}</span>
     </button><figcaption>{image.alt}</figcaption>
@@ -75,14 +76,16 @@ export function ProjectPage({ project, projects, t }) {
   const nextImage = next.cover ?? next.images[0];
   const closeImage = useCallback(() => setZoomIndex(null), []);
   return <main id="main" tabIndex="-1" className="project-page">
-    <div className="shell project-heading">
+    <div className={`shell project-heading${project.sections ? ' project-heading--staged' : ''}`}>
       <a className="back-link" href="?page=portfolio">{t.project.back}</a>
       <p className="project-category">{project.category}</p>
       <h1>{project.title}</h1>
       <div className="project-intro"><p>{project.summary}</p><p>{project.description}</p></div>
     </div>
-    <div className="project-cover shell"><ProjectImage image={project.images[0]} onOpen={() => setZoomIndex(0)} t={t} priority/></div>
-    {project.images.length > 1 && <div className="shell project-gallery">{project.images.slice(1).map((image, index) => <ProjectImage key={image.src} image={image} onOpen={() => setZoomIndex(index + 1)} t={t}/>)}</div>}
+    {project.sections ? <ProjectStages project={project} renderImage={index => <ProjectImage key={project.images[index].src} image={project.images[index]} onOpen={() => setZoomIndex(index)} t={t} priority={index === 0}/>}/> : <>
+      <div className="project-cover shell"><ProjectImage image={project.images[0]} onOpen={() => setZoomIndex(0)} t={t} priority/></div>
+      {project.images.length > 1 && <div className="shell project-gallery">{project.images.slice(1).map((image, index) => <ProjectImage key={image.src} image={image} onOpen={() => setZoomIndex(index + 1)} t={t}/>)}</div>}
+    </>}
     {projects.length > 1 && <a className="shell project-next" href={`?project=${next.id}`}><span className="next-label">{t.project.next}<Icon name="arrowRight"/></span><span className="next-title">{next.title}</span><span className="next-preview"><img src={asset(nextImage.src)} alt="" width={nextImage.width} height={nextImage.height} loading="lazy" decoding="async"/></span></a>}
     {zoomIndex !== null && <GalleryViewer project={project} index={zoomIndex} onChange={setZoomIndex} onClose={closeImage} t={t}/>}
   </main>;

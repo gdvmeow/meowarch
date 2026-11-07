@@ -1,0 +1,431 @@
+{
+  "projectId": "lyublino-restoration",
+  "sourceFileCount": 15,
+  "publicationNote": "All source content is represented. The HEIC is converted to a metadata-free JPEG; its original remains unchanged outside the repository. The exact PNG duplicate has a separate download, not a repeated gallery plate.",
+  "sourceFiles": [
+    {
+      "source": "вт проект.pdf",
+      "sourceSha256": "6f2c3b9312b4b0564ec777ef9140883e4ae01121d6d4bee518d8095b77e241f1",
+      "sourceBytes": 11028117,
+      "download": "lyublino/files/project-sheet.pdf",
+      "downloadName": "вт проект.pdf",
+      "downloadSha256": "6f2c3b9312b4b0564ec777ef9140883e4ae01121d6d4bee518d8095b77e241f1",
+      "downloadBytes": 11028117,
+      "preview": "lyublino/project-sheet.webp",
+      "stage": "presentation",
+      "pages": 1,
+      "transformation": "unchanged"
+    },
+    {
+      "source": "базовый этаж.pdf",
+      "sourceSha256": "029dce1cfdf13148c659b539a2a64eaf14bca818a610a4a668cdb0691e327e4a",
+      "sourceBytes": 440285,
+      "download": "lyublino/files/ground-floor.pdf",
+      "downloadName": "базовый этаж.pdf",
+      "downloadSha256": "029dce1cfdf13148c659b539a2a64eaf14bca818a610a4a668cdb0691e327e4a",
+      "downloadBytes": 440285,
+      "preview": "lyublino/ground-floor.webp",
+      "stage": "presentation",
+      "pages": 1,
+      "transformation": "unchanged"
+    },
+    {
+      "source": "фасад 1.pdf",
+      "sourceSha256": "ff8aa07b8d4fb37841f6e3db0fbdc940b398e7479f3f723db0e0df51f2abfc7e",
+      "sourceBytes": 970325,
+      "download": "lyublino/files/front-elevation.pdf",
+      "downloadName": "фасад 1.pdf",
+      "downloadSha256": "ff8aa07b8d4fb37841f6e3db0fbdc940b398e7479f3f723db0e0df51f2abfc7e",
+      "downloadBytes": 970325,
+      "preview": "lyublino/front-elevation.webp",
+      "stage": "presentation",
+      "pages": 1,
+      "transformation": "unchanged"
+    },
+    {
+      "source": "клоузура.HEIC",
+      "sourceSha256": "ddbedc8026d39d8c4b22623d407f3dd005eb44a58a87dc572ec8b58666c52bb0",
+      "sourceBytes": 2059888,
+      "download": "lyublino/files/clausura.jpg",
+      "downloadName": "клоузура.jpg",
+      "downloadSha256": "9dcfe4a6e5cdcffa71726fe593111625da47435e0d99ba8552c907d1e90875ca",
+      "downloadBytes": 5098803,
+      "preview": "lyublino/clausura.webp",
+      "stage": "clausura",
+      "transformation": "HEIC to JPEG; sRGB; all EXIF/XMP and private geotags removed"
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-10-24 170226.png",
+      "sourceSha256": "2c3b2dde32271a6251705f5de2c62debaa5369c40fb1dc286636b80ae4a67ba0",
+      "sourceBytes": 391096,
+      "download": "lyublino/files/renga-01.png",
+      "downloadName": "Снимок экрана 2026-10-24 170226.png",
+      "downloadSha256": "2c3b2dde32271a6251705f5de2c62debaa5369c40fb1dc286636b80ae4a67ba0",
+      "downloadBytes": 391096,
+      "preview": "lyublino/renga-01.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-10-24 170306.png",
+      "sourceSha256": "d7cd794acc1b1b9d82cb0c2555733fe17cb4c408c9c171deb4d5543174fbde1c",
+      "sourceBytes": 777919,
+      "download": "lyublino/files/renga-02.png",
+      "downloadName": "Снимок экрана 2026-10-24 170306.png",
+      "downloadSha256": "d7cd794acc1b1b9d82cb0c2555733fe17cb4c408c9c171deb4d5543174fbde1c",
+      "downloadBytes": 777919,
+      "preview": "lyublino/renga-02.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-10-28 124155.png",
+      "sourceSha256": "8d5e02fa3f7738afdcb4f96e160c7f82d94be570e69d583e5c706f6ca3181289",
+      "sourceBytes": 145888,
+      "download": "lyublino/files/renga-03.png",
+      "downloadName": "Снимок экрана 2026-10-28 124155.png",
+      "downloadSha256": "8d5e02fa3f7738afdcb4f96e160c7f82d94be570e69d583e5c706f6ca3181289",
+      "downloadBytes": 145888,
+      "preview": "lyublino/renga-03.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-10-28 124213.png",
+      "sourceSha256": "e9ba02e696b524e8d55c6a615ad6faa1dd5517f310dbd4bccbe62373ad213034",
+      "sourceBytes": 117122,
+      "download": "lyublino/files/renga-04.png",
+      "downloadName": "Снимок экрана 2026-10-28 124213.png",
+      "downloadSha256": "e9ba02e696b524e8d55c6a615ad6faa1dd5517f310dbd4bccbe62373ad213034",
+      "downloadBytes": 117122,
+      "preview": "lyublino/renga-04.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-10-28 124231.png",
+      "sourceSha256": "d6ca0408c157da81628155ec99a96ea33134dc64a1a5c60ce5bf12d5330948d8",
+      "sourceBytes": 89316,
+      "download": "lyublino/files/renga-05.png",
+      "downloadName": "Снимок экрана 2026-10-28 124231.png",
+      "downloadSha256": "d6ca0408c157da81628155ec99a96ea33134dc64a1a5c60ce5bf12d5330948d8",
+      "downloadBytes": 89316,
+      "preview": "lyublino/renga-05.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-11-07 194806.png",
+      "sourceSha256": "4bb5f73b8388d97db2fc114cda4d487d5009ccb364f6bed52cbfc174dbe528aa",
+      "sourceBytes": 980549,
+      "download": "lyublino/files/renga-06.png",
+      "downloadName": "Снимок экрана 2026-11-07 194806.png",
+      "downloadSha256": "4bb5f73b8388d97db2fc114cda4d487d5009ccb364f6bed52cbfc174dbe528aa",
+      "downloadBytes": 980549,
+      "preview": "lyublino/renga-06.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-11-07 194845.png",
+      "sourceSha256": "022158ac4cb0eb8e8c2b0b208cd954af73c12acf023e35f02e1d8b9a168e03e0",
+      "sourceBytes": 951562,
+      "download": "lyublino/files/renga-07.png",
+      "downloadName": "Снимок экрана 2026-11-07 194845.png",
+      "downloadSha256": "022158ac4cb0eb8e8c2b0b208cd954af73c12acf023e35f02e1d8b9a168e03e0",
+      "downloadBytes": 951562,
+      "preview": "lyublino/renga-07.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-11-07 195247.png",
+      "sourceSha256": "f4ee58a9e2f15e9cd6a11b9851c0ce19d214837649f4d695ca9ac323c17c1d9b",
+      "sourceBytes": 687803,
+      "download": "lyublino/files/renga-08.png",
+      "downloadName": "Снимок экрана 2026-11-07 195247.png",
+      "downloadSha256": "f4ee58a9e2f15e9cd6a11b9851c0ce19d214837649f4d695ca9ac323c17c1d9b",
+      "downloadBytes": 687803,
+      "preview": "lyublino/renga-08.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-11-07 195302.png",
+      "sourceSha256": "13be602066c11487c7b0a301d1be3ba0f6c04edca6a7635e6c39d34652b9c5b6",
+      "sourceBytes": 667041,
+      "download": "lyublino/files/renga-09.png",
+      "downloadName": "Снимок экрана 2026-11-07 195302.png",
+      "downloadSha256": "13be602066c11487c7b0a301d1be3ba0f6c04edca6a7635e6c39d34652b9c5b6",
+      "downloadBytes": 667041,
+      "preview": "lyublino/renga-09.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-11-07 195327.png",
+      "sourceSha256": "e43e8018dee29cf8d45e947dc6b3e7ce57118ddd727d5a2a194df8d6c1b79eed",
+      "sourceBytes": 551476,
+      "download": "lyublino/files/renga-10.png",
+      "downloadName": "Снимок экрана 2026-11-07 195327.png",
+      "downloadSha256": "e43e8018dee29cf8d45e947dc6b3e7ce57118ddd727d5a2a194df8d6c1b79eed",
+      "downloadBytes": 551476,
+      "preview": "lyublino/renga-10.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": false
+    },
+    {
+      "source": "скрины с ренги/Снимок экрана 2026-10-28 124231 — копия.png",
+      "sourceSha256": "d6ca0408c157da81628155ec99a96ea33134dc64a1a5c60ce5bf12d5330948d8",
+      "sourceBytes": 89316,
+      "download": "lyublino/files/renga-05-copy.png",
+      "downloadName": "Снимок экрана 2026-10-28 124231 — копия.png",
+      "downloadSha256": "d6ca0408c157da81628155ec99a96ea33134dc64a1a5c60ce5bf12d5330948d8",
+      "downloadBytes": 89316,
+      "preview": "lyublino/renga-05.webp",
+      "stage": "renga",
+      "transformation": "unchanged",
+      "duplicate": true,
+      "duplicateOf": "скрины с ренги/Снимок экрана 2026-10-28 124231.png"
+    }
+  ],
+  "assets": [
+    {
+      "src": "lyublino/project-sheet-full.webp",
+      "width": 4199,
+      "height": 6000,
+      "bytes": 1866110,
+      "sha256": "6030dd61c084dfe5b345c52826d5a29fa7af81bb6724df6ca339c05443d04126"
+    },
+    {
+      "src": "lyublino/project-sheet.webp",
+      "width": 1680,
+      "height": 2400,
+      "bytes": 362736,
+      "sha256": "f0837b9db0fe3dce3ed2bded3495b3a93c368361af537d9846d68c9aac20f4d7",
+      "fullSrc": "lyublino/project-sheet-full.webp"
+    },
+    {
+      "src": "lyublino/render.webp",
+      "width": 2461,
+      "height": 1176,
+      "bytes": 480786,
+      "sha256": "35857c597a1163c71fe91d3b3bd69656b84cb33d8c956aede8db50a299568fd1",
+      "source": "вт проект.pdf",
+      "cropBox": [
+        231,
+        636,
+        2692,
+        1812
+      ]
+    },
+    {
+      "src": "lyublino/site-plan.webp",
+      "width": 1226,
+      "height": 1344,
+      "bytes": 251232,
+      "sha256": "56dd0fffab93843fce18d7e8954552b292a7a74c34d329425e959969e68610ec",
+      "source": "вт проект.pdf",
+      "cropBox": [
+        2801,
+        618,
+        4027,
+        1962
+      ]
+    },
+    {
+      "src": "lyublino/first-floor.webp",
+      "width": 2532,
+      "height": 1134,
+      "bytes": 230726,
+      "sha256": "d0c57947ed88b33d376d84a1ba17ec159f935da18624452cdab35dd70931e1cc",
+      "source": "вт проект.pdf",
+      "cropBox": [
+        105,
+        2022,
+        2637,
+        3156
+      ]
+    },
+    {
+      "src": "lyublino/typical-section.webp",
+      "width": 2645,
+      "height": 1146,
+      "bytes": 216774,
+      "sha256": "edd7005da6c7157b240f38c89ce9939d72e6baa476a1ec7da8dc31c209508499",
+      "source": "вт проект.pdf",
+      "cropBox": [
+        0,
+        3378,
+        2645,
+        4524
+      ]
+    },
+    {
+      "src": "lyublino/section.webp",
+      "width": 1088,
+      "height": 1230,
+      "bytes": 113152,
+      "sha256": "173257d2d19a9fa042e3bbd52292aa87eba074b9e6356592a1d38a2e192d2e6c",
+      "source": "вт проект.pdf",
+      "cropBox": [
+        2851,
+        3294,
+        3939,
+        4524
+      ]
+    },
+    {
+      "src": "lyublino/elevations.webp",
+      "width": 3000,
+      "height": 857,
+      "bytes": 209170,
+      "sha256": "afbd5c2ef9f965f1c5f1e281d08009902571c3a833a6dccd64de018fd91a11b5",
+      "source": "вт проект.pdf",
+      "cropBox": [
+        147,
+        4824,
+        4178,
+        5976
+      ]
+    },
+    {
+      "src": "lyublino/cover.webp",
+      "width": 1480,
+      "height": 707,
+      "bytes": 131894,
+      "sha256": "9cd50bba027d368ce8dee8ba30e873353c809cc3e2512cc3ea947a12350bcf49"
+    },
+    {
+      "src": "lyublino/ground-floor-full.webp",
+      "width": 3200,
+      "height": 2263,
+      "bytes": 197522,
+      "sha256": "e886f6fdb8523340739159690e969d71ae864c4af5a9d4ae18de8f2e7e62bcc8"
+    },
+    {
+      "src": "lyublino/ground-floor.webp",
+      "width": 2400,
+      "height": 1697,
+      "bytes": 126614,
+      "sha256": "8bc71e0e30b1086c5b6ae82a2f5b5e788df5a0a9478807117efa47a95aa89a75",
+      "fullSrc": "lyublino/ground-floor-full.webp"
+    },
+    {
+      "src": "lyublino/front-elevation-full.webp",
+      "width": 3200,
+      "height": 2263,
+      "bytes": 336054,
+      "sha256": "94646b3a6237a449ca849f6c1c1f50da95bab1e83d2f849dc727f98720a6e830"
+    },
+    {
+      "src": "lyublino/front-elevation.webp",
+      "width": 2400,
+      "height": 1697,
+      "bytes": 163982,
+      "sha256": "39d5b347ff32c1f024c2fdcb6e849959a14b283873a06ac829da9c3fc8c4b0fb",
+      "fullSrc": "lyublino/front-elevation-full.webp"
+    },
+    {
+      "src": "lyublino/clausura-full.webp",
+      "width": 2399,
+      "height": 3398,
+      "bytes": 2526200,
+      "sha256": "e8c3986f0ad53b274637c53e7844a2e49ddffb5a1cae9bcd470afb1a7119cd48"
+    },
+    {
+      "src": "lyublino/clausura.webp",
+      "width": 1553,
+      "height": 2200,
+      "bytes": 975534,
+      "sha256": "10ad5ab088d98d6c4e81a07995ef6ea9ea97046e0263615e8b721aa2dcd90b8b",
+      "fullSrc": "lyublino/clausura-full.webp"
+    },
+    {
+      "src": "lyublino/renga-01.webp",
+      "width": 1460,
+      "height": 640,
+      "bytes": 77192,
+      "sha256": "752fa957120de8b1d2052ebe8a762d1dffa5883e2f784fb89921ec707c409a0a"
+    },
+    {
+      "src": "lyublino/renga-02.webp",
+      "width": 1762,
+      "height": 727,
+      "bytes": 170110,
+      "sha256": "e094d5865e7c760bb167d05c993f82ee6c74ec1fdf2b5a7d4d5cba34cd7473ba"
+    },
+    {
+      "src": "lyublino/renga-03.webp",
+      "width": 1572,
+      "height": 792,
+      "bytes": 74868,
+      "sha256": "e504be1f5223f86ba6bdb2eb6bf049879c4bfc1dbc36a2d846badbd0314e16c2"
+    },
+    {
+      "src": "lyublino/renga-04.webp",
+      "width": 1057,
+      "height": 811,
+      "bytes": 61318,
+      "sha256": "eaee8dcb8d7f659f37d4d6a19aaf8fc678b7803181733c83e0826997b2357456"
+    },
+    {
+      "src": "lyublino/renga-05.webp",
+      "width": 1302,
+      "height": 702,
+      "bytes": 49930,
+      "sha256": "3c9dbbf76d3612ba0886b1d876cb25e734c1a84caeb971c1a3c28c07b51760ff"
+    },
+    {
+      "src": "lyublino/renga-06.webp",
+      "width": 1672,
+      "height": 840,
+      "bytes": 128482,
+      "sha256": "218447c6ce76b512a7424a870c8d4101b700c0b758cba55ac98edc047ea4488a"
+    },
+    {
+      "src": "lyublino/renga-07.webp",
+      "width": 1640,
+      "height": 807,
+      "bytes": 136466,
+      "sha256": "f618f64a660f3b5149b4588f0f4e09985c8b48aa16fd4b851a830635e8519a07"
+    },
+    {
+      "src": "lyublino/renga-08.webp",
+      "width": 1492,
+      "height": 745,
+      "bytes": 113726,
+      "sha256": "37b0a14648cf779ea950f74e5c7e3164c7871bf41452eefa1f51e93982b5b389"
+    },
+    {
+      "src": "lyublino/renga-09.webp",
+      "width": 1462,
+      "height": 792,
+      "bytes": 104768,
+      "sha256": "5a29a06b34f1b722544b3a5783159331d8312a8e103af2693ebe106b0556ccaf"
+    },
+    {
+      "src": "lyublino/renga-10.webp",
+      "width": 1446,
+      "height": 852,
+      "bytes": 100954,
+      "sha256": "4e4f9c6beaf29895aa3cd043613cb6cd77f10de57199f6bb3b9e1a2516d1978a"
+    }
+  ],
+  "archive": {
+    "src": "lyublino/lyublino-materials.zip",
+    "bytes": 21143334,
+    "sha256": "9b73814d5ecada5497fa0a4986a6c92bf8d8370265a592cb87e6424419354138",
+    "entries": 15
+  }
+}

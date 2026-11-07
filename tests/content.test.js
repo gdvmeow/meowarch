@@ -22,7 +22,7 @@ test('all languages have matching interface and profile fields', () => {
 });
 
 test('every project has an existing image with dimensions and a translated description', async () => {
-  assert.equal(projects.length, 24);
+  assert.equal(projects.length, 25);
   assert.equal(new Set(projects.map(p => p.id)).size, projects.length);
   for (const project of projects) {
     assert.ok(project.images.length > 0);
@@ -237,5 +237,72 @@ test('the Caesar study preserves its supplied title, full frame and private sour
     const localized = localizeProject(project, code);
     assert.equal(localized.title, { ru: 'Цезарь', en: 'Caesar', zh: '恺撒' }[code]);
     assert.ok(localized.images[0].alt.startsWith(localized.title));
+  }
+});
+
+test('Lyublino is one complete, chronological project with all 15 source files accounted for', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/lyublino.json', import.meta.url), 'utf8'));
+  const project = projects.find(project => project.id === manifest.projectId);
+  assert.equal(project.group, 'architecture');
+  assert.equal(projects.filter(p => p.id.startsWith('lyublino')).length, 1);
+  assert.equal(manifest.sourceFileCount, 15);
+  assert.equal(manifest.sourceFiles.length, 15);
+  assert.equal(new Set(manifest.sourceFiles.map(e => e.source)).size, 15);
+  assert.equal(new Set(manifest.sourceFiles.map(e => e.download)).size, 15);
+  assert.deepEqual(manifest.sourceFiles.filter(e => e.pages).map(e => e.pages), [1, 1, 1]);
+  assert.equal(manifest.sourceFiles.filter(e => e.stage === 'clausura').length, 1);
+  assert.equal(manifest.sourceFiles.filter(e => e.stage === 'renga').length, 11);
+  assert.equal(manifest.sourceFiles.filter(e => e.stage === 'presentation').length, 3);
+  assert.equal(manifest.sourceFiles.filter(e => e.duplicate).length, 1);
+  assert.deepEqual(project.sections.map(s => s.id), ['clausura', 'renga', 'presentation']);
+  assert.deepEqual(project.sections.flatMap(s => s.imageIndexes), Array.from({ length: 20 }, (_, i) => i));
+  assert.equal(project.sections[1].imageIndexes.length, 10);
+  assert.equal(project.images.length, 20);
+  assert.equal(project.resources.files.length, 15);
+  for (const file of manifest.sourceFiles) {
+    const bytes = await readFile(new URL(`../public/assets/${file.download}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), file.downloadSha256, file.source);
+    assert.equal(bytes.length, file.downloadBytes);
+    assert.ok(project.images.some(image => image.src === file.preview), file.source);
+    assert.ok(project.resources.files.some(resource => resource.src === file.download && resource.name === file.downloadName), file.source);
+    if (file.stage !== 'clausura') assert.equal(file.sourceSha256, file.downloadSha256, file.source);
+    else {
+      assert.match(file.download, /\.jpg$/);
+      assert.notEqual(file.sourceSha256, file.downloadSha256);
+      assert.ok(!bytes.includes(Buffer.from('Exif\0\0')), 'No camera EXIF or private geotags are published');
+      assert.ok(!bytes.includes(Buffer.from('http://ns.adobe.com/xap/')), 'No camera XMP is published');
+      await assert.rejects(access(new URL('../public/assets/lyublino/files/клоузура.HEIC', import.meta.url)));
+    }
+  }
+  for (const entry of manifest.assets) {
+    const bytes = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256, entry.src);
+    assert.ok(entry.width > 0 && entry.height > 0);
+    assert.ok(!bytes.includes(Buffer.from('EXIF')), entry.src);
+    assert.ok(!bytes.includes(Buffer.from('XMP ')), entry.src);
+  }
+  const archive = await readFile(new URL(`../public/assets/${manifest.archive.src}`, import.meta.url));
+  assert.equal(createHash('sha256').update(archive).digest('hex'), manifest.archive.sha256);
+  const eocd = archive.length - 22;
+  assert.equal(archive.readUInt32LE(eocd), 0x06054b50);
+  assert.equal(archive.readUInt16LE(eocd + 10), 15);
+  const names = [];
+  let offset = archive.readUInt32LE(eocd + 16);
+  for (let i = 0; i < 15; i++) {
+    assert.equal(archive.readUInt32LE(offset), 0x02014b50);
+    const length = archive.readUInt16LE(offset + 28);
+    names.push(archive.subarray(offset + 46, offset + 46 + length).toString('utf8'));
+    offset += 46 + length + archive.readUInt16LE(offset + 30) + archive.readUInt16LE(offset + 32);
+  }
+  assert.deepEqual(new Set(names), new Set(manifest.sourceFiles.map(e => e.stage === 'clausura' ? 'клоузура.jpg' : e.source)));
+  for (const { code } of languages) {
+    const localized = localizeProject(project, code);
+    assert.equal(localized.sections.length, 3);
+    assert.ok(localized.stagesLabel);
+    assert.ok(localized.sections.every(s => s.title && s.text));
+    assert.equal(localized.resources.files.length, 15);
+    assert.ok(localized.resources.files.every(f => f.label));
+    assert.ok(localized.resources.heading && localized.resources.description && localized.resources.archiveLabel);
+    assert.match(localized.resources.description, /15/);
   }
 });

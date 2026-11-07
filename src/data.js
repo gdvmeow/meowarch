@@ -1,6 +1,8 @@
+import { lyublinoProject } from './lyublino.js';
 import { scanStudies } from './scanStudies.js';
 
 export const projects = [
+  lyublinoProject,
   {
     id: 'low-rise-house',
     title: 'Малоэтажный жилой дом',

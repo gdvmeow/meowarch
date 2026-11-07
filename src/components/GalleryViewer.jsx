@@ -30,7 +30,7 @@ export default function GalleryViewer({ project, index, onChange, onClose, t }) 
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) onClose();
   }} onKeyDown={event => {
     if (event.key === 'Tab') {
-      const controls = [...event.currentTarget.querySelectorAll('button:not(:disabled)')];
+      const controls = [...event.currentTarget.querySelectorAll('button:not(:disabled), a[href]')];
       const first = controls[0], last = controls.at(-1);
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
       if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
@@ -48,8 +48,8 @@ export default function GalleryViewer({ project, index, onChange, onClose, t }) 
         if (!start) return;
         const dx = event.clientX - start.x, dy = event.clientY - start.y;
         if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
-      }}><img key={image.src} src={asset(image.src)} alt={image.alt} width={image.width} height={image.height} decoding="async"/></div>
-      <div className="viewer-bottom"><p>{image.alt}</p>{total > 1 && <div className="viewer-controls"><button type="button" onClick={() => step(-1)} aria-label={t.project.previousLabel}>{t.project.previous}</button><button type="button" onClick={() => step(1)} aria-label={t.project.nextLabel}>{t.project.nextImage}</button></div>}</div>
+      }}><img key={image.src} src={asset(image.fullSrc ?? image.src)} alt={image.alt} width={image.width} height={image.height} decoding="async"/></div>
+      <div className="viewer-bottom"><div className="viewer-caption"><p>{image.alt}</p>{image.fullSrc && <a href={asset(image.fullSrc)} target="_blank" rel="noopener noreferrer">{t.project.openFull} ↗</a>}</div>{total > 1 && <div className="viewer-controls"><button type="button" onClick={() => step(-1)} aria-label={t.project.previousLabel}>{t.project.previous}</button><button type="button" onClick={() => step(1)} aria-label={t.project.nextLabel}>{t.project.nextImage}</button></div>}</div>
     </div>
   </dialog>, document.body);
 }

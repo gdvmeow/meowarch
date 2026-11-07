@@ -1,3 +1,4 @@
+import { lyublinoTranslations } from './lyublino.js';
 import { scanStudyTranslations } from './scanStudies.js';
 
 export const languages = [
@@ -48,6 +49,7 @@ export const copy = {
       nextImage: 'Далее',
       previousLabel: 'Предыдущее изображение',
       nextLabel: 'Следующее изображение',
+      openFull: 'Открыть в полном разрешении',
     },
     education: {
       heading: 'Образование и опыт',
@@ -175,6 +177,7 @@ export const copy = {
       nextImage: 'Next',
       previousLabel: 'Previous image',
       nextLabel: 'Next image',
+      openFull: 'Open full resolution',
     },
     education: {
       heading: 'Education & experience',
@@ -262,6 +265,7 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — architectural projects, hand-drawn presentation, academic drawing and contact details.',
     projects: {
       ...scanStudyTranslations.en,
+      'lyublino-restoration': lyublinoTranslations.en,
       'caesar-study': {
         title: 'Caesar', category: 'Academic drawing',
         summary: 'A frontal construction study of Caesar’s head. Pencil on paper.',
@@ -359,6 +363,7 @@ export const copy = {
       list: '列表',
     },
     project: {
+      openFull: '打开原始分辨率图像',
       back: '全部作品',
       zoom: '查看大图',
       zoomImage: alt => `放大：${alt}`,
@@ -456,6 +461,7 @@ export const copy = {
     metaDescription: 'Viktoria Terzyan — 建筑设计项目、手绘表现、学院素描与联系信息。',
     projects: {
       ...scanStudyTranslations.zh,
+      'lyublino-restoration': lyublinoTranslations.zh,
       'caesar-study': {
         title: '恺撒', category: '学院素描',
         summary: '恺撒头像的正面结构素描。纸本铅笔。',
@@ -534,6 +540,13 @@ export function localizeProject(project, language) {
     category: translated.category,
     summary: translated.summary,
     description: translated.description,
+    stagesLabel: translated.stagesLabel ?? project.stagesLabel,
+    sections: project.sections?.map((section, index) => ({ ...section, ...translated.sections?.[index] })),
+    resources: project.resources && translated.resources ? {
+      ...project.resources,
+      ...translated.resources,
+      files: project.resources.files.map((file, index) => ({ ...file, label: translated.resources.fileLabels[index] ?? file.label })),
+    } : project.resources,
     images: project.images.map((image, index) => ({ ...image, alt: translated.imageAlts[index] ?? image.alt })),
   };
 }

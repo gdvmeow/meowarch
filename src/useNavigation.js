@@ -24,10 +24,23 @@ export default function useNavigation() {
 
     const navigate = event => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const link = event.target.closest('a[href^="?"], button[data-navigation-href]');
+      const link = event.target.closest('a[href^="?"], a[data-navigation-anchor], button[data-navigation-href]');
       if (!link || link.target || link.hasAttribute('download')) return;
       const url = new URL(link.dataset.navigationHref ?? link.href, window.location.href);
       if (url.origin !== window.location.origin || url.pathname !== window.location.pathname) return;
+      if (link.hasAttribute('data-navigation-anchor') && url.search === window.location.search && url.hash) {
+        const anchor = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+        if (!anchor) return;
+        event.preventDefault();
+        saveEntry();
+        currentId = nextId();
+        const margin = parseFloat(getComputedStyle(anchor).scrollMarginTop) || 0;
+        const scroll = [window.scrollX, Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - margin)];
+        positions.set(currentId, scroll);
+        history.pushState({ navigationId: currentId, scroll }, '', `${url.pathname}${url.search}${url.hash}`);
+        setLocation({ route: readRoute(url.search, projects), scroll, anchor: anchor.id });
+        return;
+      }
       event.preventDefault();
       if (url.search === window.location.search) {
         if (!link.closest('.portfolio-toolbar')) {
@@ -69,6 +82,7 @@ export default function useNavigation() {
     if (!location.scroll) return;
     window.scrollTo({ left: location.scroll[0], top: location.scroll[1], behavior: 'instant' });
     if (location.focus) document.getElementById('main')?.focus({ preventScroll: true });
+    if (location.anchor) document.getElementById(location.anchor)?.focus({ preventScroll: true });
   }, [location]);
 
   return location.route;
