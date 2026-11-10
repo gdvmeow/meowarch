@@ -28,8 +28,10 @@ export default function useNavigation() {
       if (!link || link.target || link.hasAttribute('download')) return;
       const url = new URL(link.dataset.navigationHref ?? link.href, window.location.href);
       if (url.origin !== window.location.origin || url.pathname !== window.location.pathname) return;
-      if (link.hasAttribute('data-navigation-anchor') && url.search === window.location.search && url.hash) {
-        const anchor = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+      let hashId;
+      try { hashId = url.hash ? decodeURIComponent(url.hash.slice(1)) : undefined; } catch { /* Ignore malformed fragments. */ }
+      if (url.search === window.location.search && hashId) {
+        const anchor = document.getElementById(hashId);
         if (!anchor) return;
         event.preventDefault();
         saveEntry();
@@ -55,8 +57,8 @@ export default function useNavigation() {
       const scroll = newPage ? [0, 0] : [window.scrollX, window.scrollY];
       currentId = nextId();
       positions.set(currentId, scroll);
-      history.pushState({ navigationId: currentId, scroll }, '', `${url.pathname}${url.search}`);
-      setLocation({ route, scroll, focus: newPage });
+      history.pushState({ navigationId: currentId, scroll }, '', `${url.pathname}${url.search}${url.hash}`);
+      setLocation({ route, scroll, focus: newPage, anchor: hashId });
     };
     const back = event => {
       rememberScroll();
@@ -79,10 +81,38 @@ export default function useNavigation() {
   }, []);
 
   useLayoutEffect(() => {
-    if (!location.scroll) return;
+    if (!location.scroll) {
+      // The initial hash is handled before React has mounted its target.
+      // Repeat after local fonts settle so a shared section link lands correctly.
+      const hash = window.location.hash;
+      if (!hash) return;
+      let anchorId;
+      try { anchorId = decodeURIComponent(hash.slice(1)); } catch { return; }
+      let active = true;
+      const scrollToAnchor = () => {
+        if (!active || window.location.hash !== hash) return;
+        const anchor = document.getElementById(anchorId);
+        if (!anchor) return;
+        const margin = parseFloat(getComputedStyle(anchor).scrollMarginTop) || 0;
+        window.scrollTo({ top: Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - margin), behavior: 'instant' });
+      };
+      const interrupts = ['wheel', 'touchstart', 'pointerdown', 'keydown'];
+      const removeListeners = () => interrupts.forEach(type => window.removeEventListener(type, cancel));
+      const cancel = () => { active = false; removeListeners(); };
+      scrollToAnchor();
+      interrupts.forEach(type => window.addEventListener(type, cancel, { passive: true }));
+      document.fonts?.ready.then(() => { scrollToAnchor(); removeListeners(); });
+      return cancel;
+    }
     window.scrollTo({ left: location.scroll[0], top: location.scroll[1], behavior: 'instant' });
     if (location.focus) document.getElementById('main')?.focus({ preventScroll: true });
-    if (location.anchor) document.getElementById(location.anchor)?.focus({ preventScroll: true });
+    if (location.anchor) {
+      const anchor = document.getElementById(location.anchor);
+      if (!anchor) return;
+      const margin = parseFloat(getComputedStyle(anchor).scrollMarginTop) || 0;
+      window.scrollTo({ top: Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - margin), behavior: 'instant' });
+      anchor.focus({ preventScroll: true });
+    }
   }, [location]);
 
   return location.route;

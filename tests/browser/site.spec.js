@@ -281,7 +281,7 @@ test('card hover, keyboard focus and touch activation share one direct affordanc
   const tile = page.locator('.project-tile').first();
   await tile.hover();
   await expect.poll(() => tile.evaluate(el => getComputedStyle(el).transform)).toBe('matrix(1, 0, 0, 1, 0, -3)');
-  await expect(tile.locator('h3')).toHaveCSS('text-decoration-color', 'rgb(37, 43, 38)');
+  await expect(tile.locator('h2')).toHaveCSS('text-decoration-color', 'rgb(37, 43, 38)');
   await tile.focus();
   await expect(tile).toHaveCSS('outline-style', 'solid');
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -296,7 +296,7 @@ test('card hover, keyboard focus and touch activation share one direct affordanc
 
 test('history restores catalog scroll and new pages start at the top', async ({ page }) => {
   await ready(page, '?page=portfolio');
-  await page.locator('a[href="?project=socrates"] .tile-meta h3').click();
+  await page.locator('a[href="?project=socrates"] .tile-meta :is(h2, h3)').click();
   await expect(page).toHaveURL(/project=socrates/);
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
   await page.goBack();
@@ -321,7 +321,7 @@ test('list titles and categories stay inside their column, clear of thumbnails i
       const rows = await page.locator('.project-tile').evaluateAll(tiles => tiles.map(tile => {
         const column = tile.querySelector('.tile-meta').getBoundingClientRect();
         const thumbnail = tile.querySelector('.tile-image').getBoundingClientRect();
-        return [...tile.querySelectorAll('.tile-meta h3, .tile-meta p')].map(text => {
+        return [...tile.querySelectorAll('.tile-meta :is(h2, h3), .tile-meta p')].map(text => {
           const range = document.createRange();
           range.selectNodeContents(text);
           const rect = range.getBoundingClientRect();

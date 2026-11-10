@@ -5,10 +5,15 @@ import { copy, localizeProject } from '../../src/i18n.js';
 
 const source = projects.find(project => project.id === 'caesar-study');
 
-async function fullFrame(image) {
+async function fullFrame(image, isPreview = false) {
   await image.scrollIntoViewIfNeeded();
   await image.evaluate(image => image.decode());
-  expect(await image.evaluate(image => [image.naturalWidth, image.naturalHeight])).toEqual([2296, 3061]);
+  if (isPreview) {
+    expect(await image.evaluate(image => image.currentSrc)).toContain('/assets/previews/');
+    expect(await image.evaluate(image => Math.abs(image.naturalWidth / image.naturalHeight - 2296 / 3061))).toBeLessThan(.005);
+  } else {
+    expect(await image.evaluate(image => [image.naturalWidth, image.naturalHeight])).toEqual([2296, 3061]);
+  }
   await expect(image).toHaveAttribute('width', '2296');
   await expect(image).toHaveAttribute('height', '3061');
   await expect(image).toHaveCSS('object-fit', 'contain');
@@ -30,7 +35,7 @@ for (const width of [1440, 390, 320]) {
         await expect(card).toContainText(project.title);
         await expect(card.locator('img')).toHaveAttribute('src', /caesar-study-white.webp$/);
         await expect(page.locator('.portfolio-count')).toContainText(`${projects.filter(project => project.group === 'graphics').length} / ${projects.length}`);
-        if (view === 'grid') await fullFrame(card.locator('img'));
+        if (view === 'grid') await fullFrame(card.locator('img'), true);
         await card.click();
         await expect(page.locator('main h1')).toHaveText(project.title);
         await expect(page).toHaveTitle(`${project.title} — ${copy[language].name}`);
@@ -74,6 +79,8 @@ test('Caesar page and modal pass accessibility checks with reduced motion', asyn
   await page.locator('.project-cover button').click();
   await expect(new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).resolves.toMatchObject({ violations: [] });
   await page.locator('.viewer-close').focus();
+  await page.keyboard.press('Tab');
+  await expect(page.locator('.viewer-caption a')).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(page.locator('.viewer-close')).toBeFocused();
   await page.keyboard.press('Escape');

@@ -1,0 +1,969 @@
+{
+  "processing": "Full-frame LANCZOS previews at widths below the original only; WebP quality 90. No crop, colour correction, retouching or generation. Every original remains byte-for-byte unchanged and is used on the project page and in the viewer. Previews and social JPEG contain no source metadata.",
+  "assets": [
+    {
+      "original": "lyublino/cover.webp",
+      "width": 1480,
+      "height": 707,
+      "originalBytes": 131894,
+      "originalSha256": "9cd50bba027d368ce8dee8ba30e873353c809cc3e2512cc3ea947a12350bcf49",
+      "variants": [
+        {
+          "src": "previews/lyublino-cover-400.webp",
+          "width": 400,
+          "height": 191,
+          "bytes": 18320,
+          "sha256": "e1fc635c9d0c701bdae4c5aeec6b1cad205ddae04d0493831fb0630297914a1b"
+        },
+        {
+          "src": "previews/lyublino-cover-800.webp",
+          "width": 800,
+          "height": 382,
+          "bytes": 51546,
+          "sha256": "b36123bdd69c4f695b1e6cb34a758c675bb8972c337ea90c9be5b391604d63d9"
+        },
+        {
+          "src": "previews/lyublino-cover-1200.webp",
+          "width": 1200,
+          "height": 573,
+          "bytes": 96450,
+          "sha256": "1f0525221e5f804e1a6b93809626c378b7c572654d43b2f478f72200312ec3af"
+        }
+      ]
+    },
+    {
+      "original": "low-rise-house-cover.webp",
+      "width": 1480,
+      "height": 945,
+      "originalBytes": 291092,
+      "originalSha256": "c0bbf606df9e259e5278e2ad74e29e2afd3dd15e42656349a079d12cc81fa2b5",
+      "variants": [
+        {
+          "src": "previews/low-rise-house-cover-400.webp",
+          "width": 400,
+          "height": 255,
+          "bytes": 17296,
+          "sha256": "77d1ab1937cdefec305ddb0e1288a48d4306c8cfe613863b7f645bd5722db866"
+        },
+        {
+          "src": "previews/low-rise-house-cover-800.webp",
+          "width": 800,
+          "height": 511,
+          "bytes": 71836,
+          "sha256": "1f96efc7289efc898da1f6c46d10bc210d5ec088b93105440ed8b07b68bb2651"
+        },
+        {
+          "src": "previews/low-rise-house-cover-1200.webp",
+          "width": 1200,
+          "height": 766,
+          "bytes": 154122,
+          "sha256": "7120bb1fd421b3a78910a94296803fd4423502d59bf3086ef4fc24b53865c53b"
+        }
+      ]
+    },
+    {
+      "original": "folded-roof-cafe-cover.webp",
+      "width": 1600,
+      "height": 908,
+      "originalBytes": 268910,
+      "originalSha256": "2422cd0c3ee713790eb8b531e6f06704de95eed66e4135437209bcb6161a14fe",
+      "variants": [
+        {
+          "src": "previews/folded-roof-cafe-cover-400.webp",
+          "width": 400,
+          "height": 227,
+          "bytes": 20224,
+          "sha256": "c205da69e9aed727a3501a44d3b29e4c530b40e2f381e39ec0b57861a5b8c5b0"
+        },
+        {
+          "src": "previews/folded-roof-cafe-cover-800.webp",
+          "width": 800,
+          "height": 454,
+          "bytes": 69184,
+          "sha256": "e8ce150121434c2987029205fa360328b3f02e8bca4278a69d4bee3277758797"
+        },
+        {
+          "src": "previews/folded-roof-cafe-cover-1200.webp",
+          "width": 1200,
+          "height": 681,
+          "bytes": 141104,
+          "sha256": "eeeefd3c74cbaf66ecd65ddb41deeb89f25db13a0cb11fbe26c0b2f088882101"
+        }
+      ]
+    },
+    {
+      "original": "single-storey-house-sheet.webp",
+      "width": 2762,
+      "height": 1690,
+      "originalBytes": 788984,
+      "originalSha256": "db727d4e683bae326884f93b9653b5baabe9621acdb6477797024d9bf24979a1",
+      "variants": [
+        {
+          "src": "previews/single-storey-house-sheet-400.webp",
+          "width": 400,
+          "height": 245,
+          "bytes": 14382,
+          "sha256": "950926e4d5b1c7f819b59b76cdf8feed3cdfdcf6691590371a7785bac5af835a"
+        },
+        {
+          "src": "previews/single-storey-house-sheet-800.webp",
+          "width": 800,
+          "height": 490,
+          "bytes": 51314,
+          "sha256": "43e4774584799f0b8089633b96ca89e48f7716ba5714067827f569c6f89da3fd"
+        },
+        {
+          "src": "previews/single-storey-house-sheet-1200.webp",
+          "width": 1200,
+          "height": 734,
+          "bytes": 104170,
+          "sha256": "055eb8d7f7f83a60ef1d7787df8119cb4377f382450e63b42d2c1fe0c2c9e0a0"
+        },
+        {
+          "src": "previews/single-storey-house-sheet-1600.webp",
+          "width": 1600,
+          "height": 979,
+          "bytes": 181750,
+          "sha256": "58fef574838001f82b04b27f735fdd94d72ab5e9e34c93ab9cb8ccc6861eb167"
+        }
+      ]
+    },
+    {
+      "original": "house-construction-cover.webp",
+      "width": 780,
+      "height": 800,
+      "originalBytes": 72604,
+      "originalSha256": "6e27741090989f43e5030935cc37279e7e4dcf3e3ca0a03f46c9d8549a450dcf",
+      "variants": [
+        {
+          "src": "previews/house-construction-cover-400.webp",
+          "width": 400,
+          "height": 410,
+          "bytes": 18398,
+          "sha256": "bb45dd3c82d84a80d8ade46abdfe3af97021adc65395b586cf1add7ef610ac93"
+        }
+      ]
+    },
+    {
+      "original": "mansard-house-sheet.webp",
+      "width": 1384,
+      "height": 2048,
+      "originalBytes": 2664540,
+      "originalSha256": "ce74cc02e842d9d790bc1cd22e6f2362f6047307cbd3f24b116036525cc588b3",
+      "variants": [
+        {
+          "src": "previews/mansard-house-sheet-400.webp",
+          "width": 400,
+          "height": 592,
+          "bytes": 51640,
+          "sha256": "e66fa8cdce0f374a3968928070b9157440faadfce02ec757e26a22a9bfc35e8a"
+        },
+        {
+          "src": "previews/mansard-house-sheet-800.webp",
+          "width": 800,
+          "height": 1184,
+          "bytes": 158352,
+          "sha256": "73b6e941da2b06556e55ed5c89fd8b260a37e50278744ca012f79919bf10d9c1"
+        },
+        {
+          "src": "previews/mansard-house-sheet-1200.webp",
+          "width": 1200,
+          "height": 1776,
+          "bytes": 306342,
+          "sha256": "2206c7dd2bdf529f163ab4d55535f9994cee198cabcb4b4a5c748a9c653f59f6"
+        }
+      ]
+    },
+    {
+      "original": "house-on-slope-sheet.webp",
+      "width": 2359,
+      "height": 3287,
+      "originalBytes": 1994120,
+      "originalSha256": "6af622934e2f14af4efba3e40f8b893ce9388425aeeb71c970d42f24b8bee459",
+      "variants": [
+        {
+          "src": "previews/house-on-slope-sheet-400.webp",
+          "width": 400,
+          "height": 557,
+          "bytes": 73882,
+          "sha256": "ce7eb0541bcd3ca351d7c00dbde02574fdc9b9253b48fd2c257c6c0832205c8f"
+        },
+        {
+          "src": "previews/house-on-slope-sheet-800.webp",
+          "width": 800,
+          "height": 1115,
+          "bytes": 297050,
+          "sha256": "aec8fa9f2e1b34e3bfaadda54cfa02abf0904185f833591e6807a92f0dc6e2b7"
+        },
+        {
+          "src": "previews/house-on-slope-sheet-1200.webp",
+          "width": 1200,
+          "height": 1672,
+          "bytes": 594330,
+          "sha256": "66bfc5dacba80a022184d8a21d4ba115d625c9158bc82ccabcd0f4a26e547402"
+        },
+        {
+          "src": "previews/house-on-slope-sheet-1600.webp",
+          "width": 1600,
+          "height": 2229,
+          "bytes": 895142,
+          "sha256": "b77a135182f5007234d5e4185ba5b87b2ad804e4235f72eb41b900e7fbb9ec26"
+        }
+      ]
+    },
+    {
+      "original": "rotterdam-house-sheet.webp",
+      "width": 1978,
+      "height": 2630,
+      "originalBytes": 903286,
+      "originalSha256": "13fe33edd0a63d01f05ddf056991aa89f5afe7f88ed9a612e94d06399fec9828",
+      "variants": [
+        {
+          "src": "previews/rotterdam-house-sheet-400.webp",
+          "width": 400,
+          "height": 532,
+          "bytes": 32556,
+          "sha256": "8dcaf6d06b632a15a7ba117a8fa99ce8b7330ecb25caad435f1bf89df88ec115"
+        },
+        {
+          "src": "previews/rotterdam-house-sheet-800.webp",
+          "width": 800,
+          "height": 1064,
+          "bytes": 118432,
+          "sha256": "71fa81248bbd84ea0c03dbcebaeaf262e7686231a0f95fbf3aca7d080f9b22d1"
+        },
+        {
+          "src": "previews/rotterdam-house-sheet-1200.webp",
+          "width": 1200,
+          "height": 1596,
+          "bytes": 244882,
+          "sha256": "0fac266421832c86fb79e29766e1e02cc4a25eb61d005c2b883fb5b396d2351d"
+        },
+        {
+          "src": "previews/rotterdam-house-sheet-1600.webp",
+          "width": 1600,
+          "height": 2127,
+          "bytes": 396952,
+          "sha256": "06e630948770c8228e3a891a0337b51126d25600a10a0ec401917b696fdf33cb"
+        }
+      ]
+    },
+    {
+      "original": "socrates-01.webp",
+      "width": 1650,
+      "height": 2153,
+      "originalBytes": 889914,
+      "originalSha256": "614e1f3a9d0dfcc788e4dbcde789001c68cc58fe50ad342155005069360afb41",
+      "variants": [
+        {
+          "src": "previews/socrates-01-400.webp",
+          "width": 400,
+          "height": 522,
+          "bytes": 28248,
+          "sha256": "558853a2cee8184c5cf7479cce3fcd0e46cbc3a3887ccc27c480db3dd6585abe"
+        },
+        {
+          "src": "previews/socrates-01-800.webp",
+          "width": 800,
+          "height": 1044,
+          "bytes": 134020,
+          "sha256": "b8394b4fdc8694957b523607983c2aba1ac2ea36b1bc27d1b3594481c33bde48"
+        },
+        {
+          "src": "previews/socrates-01-1200.webp",
+          "width": 1200,
+          "height": 1566,
+          "bytes": 317436,
+          "sha256": "76451789e51800ae38488e00f5da573b7be1249718771715804634df49559c86"
+        },
+        {
+          "src": "previews/socrates-01-1600.webp",
+          "width": 1600,
+          "height": 2088,
+          "bytes": 518180,
+          "sha256": "5ceff00dd8bf3a3462bcaca82e738e6c40e0737503183a45e9b21723ad80d098"
+        }
+      ]
+    },
+    {
+      "original": "caesar-study-white.webp",
+      "width": 2296,
+      "height": 3061,
+      "originalBytes": 1342236,
+      "originalSha256": "c9b92d24b0ec43905722eddb49ca27ad874fce907303f1cbf65b7ce60d465c0b",
+      "variants": [
+        {
+          "src": "previews/caesar-study-white-400.webp",
+          "width": 400,
+          "height": 533,
+          "bytes": 39076,
+          "sha256": "de6f860c48493f2b2f647f1773f82a628f3ee75c4bf1657098c6b1c0e7669aac"
+        },
+        {
+          "src": "previews/caesar-study-white-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 147868,
+          "sha256": "e883ee891ee4600bd2e3630cd6b11e5ced859f17ee185b5c98457415c2863671"
+        },
+        {
+          "src": "previews/caesar-study-white-1200.webp",
+          "width": 1200,
+          "height": 1600,
+          "bytes": 312658,
+          "sha256": "e035c98a7e279450ffdb543c8c8eac23034d4358bea7a0642550b96d51486a8b"
+        },
+        {
+          "src": "previews/caesar-study-white-1600.webp",
+          "width": 1600,
+          "height": 2133,
+          "bytes": 512502,
+          "sha256": "7a9a49c12f7a7c99f86eab53bc0ded8c64cebab1a9e53764c7bbd1f5258b7684"
+        }
+      ]
+    },
+    {
+      "original": "towered-cathedral.webp",
+      "width": 1524,
+      "height": 2201,
+      "originalBytes": 627460,
+      "originalSha256": "9b623cbdd0e2bd9339580e125a083581cfeb2be472b53dd97f472ca4289a53f0",
+      "variants": [
+        {
+          "src": "previews/towered-cathedral-400.webp",
+          "width": 400,
+          "height": 578,
+          "bytes": 42698,
+          "sha256": "2d00ad730849ae04316b642a433b7897ed8ef1d40497d9e6ef5071ca83b185db"
+        },
+        {
+          "src": "previews/towered-cathedral-800.webp",
+          "width": 800,
+          "height": 1155,
+          "bytes": 148080,
+          "sha256": "adb64bd585fc9b570be0ee9f77c8595d5f961816eb72cb7c8a327ff5a07f1ab3"
+        },
+        {
+          "src": "previews/towered-cathedral-1200.webp",
+          "width": 1200,
+          "height": 1733,
+          "bytes": 298206,
+          "sha256": "f66957deea4d395586467693acd2b1ef7323ceafddfec34a0061e455a958286e"
+        }
+      ]
+    },
+    {
+      "original": "composition.jpg",
+      "width": 960,
+      "height": 1280,
+      "originalBytes": 186649,
+      "originalSha256": "9763067d8bc9fe456a5d12ddd251f0da222867de5951aef0fff279ebc5640074",
+      "variants": [
+        {
+          "src": "previews/composition-400.webp",
+          "width": 400,
+          "height": 533,
+          "bytes": 48798,
+          "sha256": "9cd6d39f7a939d185c3b7b005c7a0858e5ce5da5adef5018cc04f4a1f7c88732"
+        },
+        {
+          "src": "previews/composition-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 189396,
+          "sha256": "0e3f052daf7abd54f9939065148f6462ae7d6587c39ba69a707b421bd871fe7b"
+        }
+      ]
+    },
+    {
+      "original": "column.jpg",
+      "width": 960,
+      "height": 1280,
+      "originalBytes": 75838,
+      "originalSha256": "de0a602b745e40730545c6cc841b7fa9adccf3c2ebaf156a9b76115c97a7085c",
+      "variants": [
+        {
+          "src": "previews/column-400.webp",
+          "width": 400,
+          "height": 533,
+          "bytes": 19892,
+          "sha256": "ed0fde1cdd9c24a26e9ef165a0bf3d12e1ecc3cc0971e94da2a70dc9cbcbe59e"
+        },
+        {
+          "src": "previews/column-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 61852,
+          "sha256": "6f663633337e2f30530401f0675d0604529e364e8d95fa564e32c6b0f41040e1"
+        }
+      ]
+    },
+    {
+      "original": "still-life.jpg",
+      "width": 1280,
+      "height": 986,
+      "originalBytes": 438813,
+      "originalSha256": "f7a8d4473ddeccb1b8c1b7604cc38815b7e0f0ab69ed4452cadc2339e7f5cdf9",
+      "variants": [
+        {
+          "src": "previews/still-life-400.webp",
+          "width": 400,
+          "height": 308,
+          "bytes": 44222,
+          "sha256": "5943e0c0a46990f0f59c37abd4a4e4aff3e01bd4906acde2af582cceba426723"
+        },
+        {
+          "src": "previews/still-life-800.webp",
+          "width": 800,
+          "height": 616,
+          "bytes": 185718,
+          "sha256": "9ad18fbab44b55268e547c5a0e597278f85268e65b2ee429e559b6d5aabd7fb2"
+        },
+        {
+          "src": "previews/still-life-1200.webp",
+          "width": 1200,
+          "height": 924,
+          "bytes": 375912,
+          "sha256": "bf7a133fa424c0343be93e61210a8525ffff45308eaf1f366de8ae743bc45904"
+        }
+      ]
+    },
+    {
+      "original": "decorative-painting.jpg",
+      "width": 994,
+      "height": 1280,
+      "originalBytes": 567079,
+      "originalSha256": "e1f7bbda33fbf896665c63c547d0d94560e3afdb7d5e29aab9f24456ac3c292c",
+      "variants": [
+        {
+          "src": "previews/decorative-painting-400.webp",
+          "width": 400,
+          "height": 515,
+          "bytes": 105048,
+          "sha256": "ed0a452153c1ae1bed79b48df4e86226d293f160dad3b45e14ac9c9e1e60f779"
+        },
+        {
+          "src": "previews/decorative-painting-800.webp",
+          "width": 800,
+          "height": 1030,
+          "bytes": 357340,
+          "sha256": "1c6cbfa951714d9a6b212ad2c8f7b73aa30be4e3ba309e2a2b722e1fb08d25c1"
+        }
+      ]
+    },
+    {
+      "original": "arcaded-facade.webp",
+      "width": 1545,
+      "height": 2216,
+      "originalBytes": 549450,
+      "originalSha256": "064b0e6d988b3432eecbc65a07e26371bb60957b4d3644a840944a7760d9ff45",
+      "variants": [
+        {
+          "src": "previews/arcaded-facade-400.webp",
+          "width": 400,
+          "height": 574,
+          "bytes": 36990,
+          "sha256": "cdb17de95528ee2aece9e296d0a6b585aaa344a885f88e595d2eaae901465f8b"
+        },
+        {
+          "src": "previews/arcaded-facade-800.webp",
+          "width": 800,
+          "height": 1147,
+          "bytes": 129902,
+          "sha256": "b59e907dd7ba18edca1bd889c63ab94b44cf057751e91873bbfe74c30b2d0898"
+        },
+        {
+          "src": "previews/arcaded-facade-1200.webp",
+          "width": 1200,
+          "height": 1721,
+          "bytes": 266338,
+          "sha256": "a0f5756557bf615454a6b197727b44cac530953232431e6997aa896870b952e1"
+        }
+      ]
+    },
+    {
+      "original": "portal-facade.webp",
+      "width": 2024,
+      "height": 1422,
+      "originalBytes": 427554,
+      "originalSha256": "200ad4147cfc5a0c58c1cc6747bfd18f30d9510fa3d85f72fd8ecc7081f55f8b",
+      "variants": [
+        {
+          "src": "previews/portal-facade-400.webp",
+          "width": 400,
+          "height": 281,
+          "bytes": 19334,
+          "sha256": "7ac597917e9720a01d220c5b0064e7b23f92a3088f04136d840b95ce50b36f8a"
+        },
+        {
+          "src": "previews/portal-facade-800.webp",
+          "width": 800,
+          "height": 562,
+          "bytes": 67984,
+          "sha256": "8c2bbc4adbd34a85f1ee835b2232d625c42c50f55bc5ad8896f0b32f5d7e8ef3"
+        },
+        {
+          "src": "previews/portal-facade-1200.webp",
+          "width": 1200,
+          "height": 843,
+          "bytes": 140572,
+          "sha256": "b06ba6526f921669e4d982c203ca9e42dba3799e13b034f8bdf51cc521ad83c2"
+        },
+        {
+          "src": "previews/portal-facade-1600.webp",
+          "width": 1600,
+          "height": 1124,
+          "bytes": 217630,
+          "sha256": "95b01171d843a313b93e00d745a511a4ef1307886534d8848121177f17687789"
+        }
+      ]
+    },
+    {
+      "original": "three-domed-church.webp",
+      "width": 2024,
+      "height": 1418,
+      "originalBytes": 436466,
+      "originalSha256": "724513e70131f08e0dcb5c4a4b89fadd4ea7f3ec8e01dce05982d5f54b1a18ab",
+      "variants": [
+        {
+          "src": "previews/three-domed-church-400.webp",
+          "width": 400,
+          "height": 280,
+          "bytes": 19336,
+          "sha256": "ce9c44cb7f5c1dae1e82c1613281b5a1f4015ebf7273ac42f778d43dbebbca06"
+        },
+        {
+          "src": "previews/three-domed-church-800.webp",
+          "width": 800,
+          "height": 560,
+          "bytes": 69166,
+          "sha256": "19897facc698eba40cf0a02b72332f7e56f009dc709f94a325ef2c2482367cc3"
+        },
+        {
+          "src": "previews/three-domed-church-1200.webp",
+          "width": 1200,
+          "height": 841,
+          "bytes": 141188,
+          "sha256": "a1074b9a267c454fd956952484efd62aaac59b5b2a36b0fac06076ea8d161aa1"
+        },
+        {
+          "src": "previews/three-domed-church-1600.webp",
+          "width": 1600,
+          "height": 1121,
+          "bytes": 226064,
+          "sha256": "26be2b3b4e762cbe7d84829f7a9b646f2daaac107e6f970b2842915f857056a3"
+        }
+      ]
+    },
+    {
+      "original": "rotunda.webp",
+      "width": 2024,
+      "height": 1417,
+      "originalBytes": 344478,
+      "originalSha256": "4dba270ea1d187e780e754c25938f672bb5912f0a440a1654c519971944f2272",
+      "variants": [
+        {
+          "src": "previews/rotunda-400.webp",
+          "width": 400,
+          "height": 280,
+          "bytes": 11930,
+          "sha256": "c765232b7dc566f3a55fd9fd2d8764393337a278a0f354a1b7f82506708af2c2"
+        },
+        {
+          "src": "previews/rotunda-800.webp",
+          "width": 800,
+          "height": 560,
+          "bytes": 41546,
+          "sha256": "dfee9045f1541237e6aea832d716f2e0d617b32d999881cc78718e2847c29d55"
+        },
+        {
+          "src": "previews/rotunda-1200.webp",
+          "width": 1200,
+          "height": 840,
+          "bytes": 89060,
+          "sha256": "2e1de106179da94a60742f4e415140dfdc1ecb542d92554c9101d57e4c9b988f"
+        },
+        {
+          "src": "previews/rotunda-1600.webp",
+          "width": 1600,
+          "height": 1120,
+          "bytes": 148340,
+          "sha256": "0e61ffa9fbd20e4a2105a684d097adfe415443cf63b35f91966a10f68ebc9fbe"
+        }
+      ]
+    },
+    {
+      "original": "graphic-textures.webp",
+      "width": 1393,
+      "height": 2024,
+      "originalBytes": 921312,
+      "originalSha256": "0ea4eed390de7dcb578f2defa087e109ace226bba37fa5c58e52315684a56800",
+      "variants": [
+        {
+          "src": "previews/graphic-textures-400.webp",
+          "width": 400,
+          "height": 581,
+          "bytes": 99840,
+          "sha256": "34679a71343bbb0f0a519f65ea538174e7750187bc1c6feaf5e5fd83d44f0b0f"
+        },
+        {
+          "src": "previews/graphic-textures-800.webp",
+          "width": 800,
+          "height": 1162,
+          "bytes": 329222,
+          "sha256": "6574ba8900f675e5d85742ea55df5248f00d3fd94463aa5249c468629ecb1494"
+        },
+        {
+          "src": "previews/graphic-textures-1200.webp",
+          "width": 1200,
+          "height": 1744,
+          "bytes": 602900,
+          "sha256": "6ee4ea1c01349a53522f29cf36ae8164726bf20d86a56aac720e187d1ce6922a"
+        }
+      ]
+    },
+    {
+      "original": "line-landscape.webp",
+      "width": 2024,
+      "height": 1435,
+      "originalBytes": 549866,
+      "originalSha256": "dd350cf09896fd942ecc1f7f4906330c122712c91bf14c512873daa939c695cc",
+      "variants": [
+        {
+          "src": "previews/line-landscape-400.webp",
+          "width": 400,
+          "height": 284,
+          "bytes": 31968,
+          "sha256": "a8554bd9c189d9d347945e53e75fd9caac91aef406d2d0cb6730000d53699f06"
+        },
+        {
+          "src": "previews/line-landscape-800.webp",
+          "width": 800,
+          "height": 567,
+          "bytes": 103262,
+          "sha256": "94bbe859511a541cd455a2de1a7f2796415d5595bfc1ba38f201b48628e799db"
+        },
+        {
+          "src": "previews/line-landscape-1200.webp",
+          "width": 1200,
+          "height": 851,
+          "bytes": 193526,
+          "sha256": "f19a134e0d47cb1001634a6b53b5d35138e511c5b9957b809b35cd12af5b4474"
+        },
+        {
+          "src": "previews/line-landscape-1600.webp",
+          "width": 1600,
+          "height": 1134,
+          "bytes": 299454,
+          "sha256": "9fe8d3681b791ceffaf9bb9d999ab50513024dbe83791788854b1b9454d0caa4"
+        }
+      ]
+    },
+    {
+      "original": "garden-site-plan.webp",
+      "width": 1420,
+      "height": 2024,
+      "originalBytes": 687868,
+      "originalSha256": "44036f0eb29679cf54e1d512cab1d59868c36fa6fc4b6b5e0e4013dd570eb262",
+      "variants": [
+        {
+          "src": "previews/garden-site-plan-400.webp",
+          "width": 400,
+          "height": 570,
+          "bytes": 69700,
+          "sha256": "ff39efc1ca99a64056c0ae938890f2bdb57a6daf4ab10d7c596ead3a8082ad49"
+        },
+        {
+          "src": "previews/garden-site-plan-800.webp",
+          "width": 800,
+          "height": 1140,
+          "bytes": 222246,
+          "sha256": "03d16d5537ba15e4ca0a2611135fb0f6da12eda093b667a6d991e5d81ec70ae9"
+        },
+        {
+          "src": "previews/garden-site-plan-1200.webp",
+          "width": 1200,
+          "height": 1710,
+          "bytes": 405518,
+          "sha256": "2076b7656bc91f4d8f179f29680af847e4728f384aff12965cedb501f507eb2c"
+        }
+      ]
+    },
+    {
+      "original": "projection-study.webp",
+      "width": 2024,
+      "height": 1428,
+      "originalBytes": 243688,
+      "originalSha256": "f9b318f5cdb73736d81f2c20964d39906f626ed7b56594555dfbc2cc11facfa6",
+      "variants": [
+        {
+          "src": "previews/projection-study-400.webp",
+          "width": 400,
+          "height": 282,
+          "bytes": 8620,
+          "sha256": "ddf2fc1841d3bba32c7f1312509169cdc7bf1106c1f452dd6925e08372493565"
+        },
+        {
+          "src": "previews/projection-study-800.webp",
+          "width": 800,
+          "height": 564,
+          "bytes": 29006,
+          "sha256": "b7921b33476b5e4759d02dc7c55e434fe39b5a1b505bf214a1463874e2c5c4f7"
+        },
+        {
+          "src": "previews/projection-study-1200.webp",
+          "width": 1200,
+          "height": 847,
+          "bytes": 67796,
+          "sha256": "800463a4fd25245f771d68224eadb303a80346c2731173177e400b46d49eec2f"
+        },
+        {
+          "src": "previews/projection-study-1600.webp",
+          "width": 1600,
+          "height": 1129,
+          "bytes": 116762,
+          "sha256": "4c2bcdf5f80d03ed82846fdac2d1d435434e0f8dcfac74eb6f84dbac8239329f"
+        }
+      ]
+    },
+    {
+      "original": "geometric-solids.webp",
+      "width": 2024,
+      "height": 1435,
+      "originalBytes": 285504,
+      "originalSha256": "a1816124699591ac0365bdaf7c9c0df878ca5f5373c223249a56757aa770972b",
+      "variants": [
+        {
+          "src": "previews/geometric-solids-400.webp",
+          "width": 400,
+          "height": 284,
+          "bytes": 10050,
+          "sha256": "93fe326e19ebd6222f7b23e53331c259095a62bc15c6f1a45475ec4d7799ba09"
+        },
+        {
+          "src": "previews/geometric-solids-800.webp",
+          "width": 800,
+          "height": 567,
+          "bytes": 32732,
+          "sha256": "639ef72512293029d0075c3f185b15f9443412d3722bfd8dad75afde539a16b9"
+        },
+        {
+          "src": "previews/geometric-solids-1200.webp",
+          "width": 1200,
+          "height": 851,
+          "bytes": 71782,
+          "sha256": "b9c3aac9c5cc05b1609db0f68680f5db2624c1f950bcef18e36130f81aabc745"
+        },
+        {
+          "src": "previews/geometric-solids-1600.webp",
+          "width": 1600,
+          "height": 1134,
+          "bytes": 122632,
+          "sha256": "9a81b3f9fa8864d7504c7df035250a663c2375a8b25fa7fa4febf2dbfee7ef44"
+        }
+      ]
+    },
+    {
+      "original": "residential-floor-plan.webp",
+      "width": 2024,
+      "height": 1471,
+      "originalBytes": 351156,
+      "originalSha256": "a609b2c3dbd6283458c4f330e62e183d70c862098734627d6e98d9f92151df25",
+      "variants": [
+        {
+          "src": "previews/residential-floor-plan-400.webp",
+          "width": 400,
+          "height": 291,
+          "bytes": 13390,
+          "sha256": "44c68ca7e86d5800314f6d350839d39d420f324c4bd46a7036ce343baef96f47"
+        },
+        {
+          "src": "previews/residential-floor-plan-800.webp",
+          "width": 800,
+          "height": 581,
+          "bytes": 45734,
+          "sha256": "157e7e04a3dec75b402b84729381317453c0089b15610aad76d3a9c30c64722a"
+        },
+        {
+          "src": "previews/residential-floor-plan-1200.webp",
+          "width": 1200,
+          "height": 872,
+          "bytes": 97688,
+          "sha256": "5eac88f68b4f2b61aace7dd0d208f5642a4d5a13a8a44cdb4e69bcab488743e0"
+        },
+        {
+          "src": "previews/residential-floor-plan-1600.webp",
+          "width": 1600,
+          "height": 1163,
+          "bytes": 162872,
+          "sha256": "78b487002b5019b671cc5f81a3aee6071c38a5d5b06cd08667ce83d7c69e3a73"
+        }
+      ]
+    },
+    {
+      "original": "drawing-studio.webp",
+      "width": 1395,
+      "height": 2024,
+      "originalBytes": 420202,
+      "originalSha256": "371191f094fbaaf6296a968747ad8dc78437f3b658c111d739db8ec55f635d70",
+      "variants": [
+        {
+          "src": "previews/drawing-studio-400.webp",
+          "width": 400,
+          "height": 580,
+          "bytes": 39048,
+          "sha256": "ec12d5b6139868d0bf4ad3cf1bc94d3f9b2eccad3a19ac2279d6c6c8e85292da"
+        },
+        {
+          "src": "previews/drawing-studio-800.webp",
+          "width": 800,
+          "height": 1161,
+          "bytes": 136588,
+          "sha256": "056968d47384bb1798561f0369fec985e73d5b6edc9b4165a379be4893f03350"
+        },
+        {
+          "src": "previews/drawing-studio-1200.webp",
+          "width": 1200,
+          "height": 1741,
+          "bytes": 258964,
+          "sha256": "7d86c228431103fde9a69a2f3e4a1fc8ce3953fad6930908aff76a72b1bc7c92"
+        }
+      ]
+    },
+    {
+      "original": "faceted-head.webp",
+      "width": 1410,
+      "height": 2024,
+      "originalBytes": 348966,
+      "originalSha256": "ba9cb8baa06f50dd354055c8ab8f86de01386843f96926cddb11831b8a5eb50e",
+      "variants": [
+        {
+          "src": "previews/faceted-head-400.webp",
+          "width": 400,
+          "height": 574,
+          "bytes": 23708,
+          "sha256": "1443d236859ed0f5237765ee80bd0dc535f90aba910042598d76fe3a3d0a4854"
+        },
+        {
+          "src": "previews/faceted-head-800.webp",
+          "width": 800,
+          "height": 1148,
+          "bytes": 91704,
+          "sha256": "e85bb35cdbaed6810dac7cc84f2c3e95f11b6e939f83566e182dd57208dbb82b"
+        },
+        {
+          "src": "previews/faceted-head-1200.webp",
+          "width": 1200,
+          "height": 1723,
+          "bytes": 194538,
+          "sha256": "0100289f6e70ddaf90190abaf8e738b036bce3fa2397950799c5a837aae8fa57"
+        }
+      ]
+    },
+    {
+      "original": "head-muscles.webp",
+      "width": 1631,
+      "height": 2312,
+      "originalBytes": 507786,
+      "originalSha256": "adb14f7c3089fb9fe85951ff563e7e71c2da426ab085942165501a6b791e3485",
+      "variants": [
+        {
+          "src": "previews/head-muscles-400.webp",
+          "width": 400,
+          "height": 567,
+          "bytes": 25992,
+          "sha256": "de9854c787ef370bb2c7204186985cf0c7267c86c5b17a2b97ea0f9295bb242a"
+        },
+        {
+          "src": "previews/head-muscles-800.webp",
+          "width": 800,
+          "height": 1134,
+          "bytes": 93856,
+          "sha256": "192680932438dea841f0deedb161ff7c46f0ad06be61c812597bcabc0822e31c"
+        },
+        {
+          "src": "previews/head-muscles-1200.webp",
+          "width": 1200,
+          "height": 1701,
+          "bytes": 209646,
+          "sha256": "6a0794738b0595ef6936ed58efdb7e92e58fe71cb1c63b94fd55ed74663ae22d"
+        },
+        {
+          "src": "previews/head-muscles-1600.webp",
+          "width": 1600,
+          "height": 2268,
+          "bytes": 352724,
+          "sha256": "c126b428da08b8d9ab5f00d112cfc5b04249e9f50da7a02e746f35ce650794d5"
+        }
+      ]
+    },
+    {
+      "original": "skull-studies.webp",
+      "width": 1430,
+      "height": 2024,
+      "originalBytes": 303178,
+      "originalSha256": "9748bf417560ca8b6caf2d252f3fb2e3092a1121d851773b081867c6398ff5c7",
+      "variants": [
+        {
+          "src": "previews/skull-studies-400.webp",
+          "width": 400,
+          "height": 566,
+          "bytes": 23500,
+          "sha256": "1d58ec88ce510753a3fdb221f27dd32d9c90f28ad0a971ce4bc104697d1178dc"
+        },
+        {
+          "src": "previews/skull-studies-800.webp",
+          "width": 800,
+          "height": 1132,
+          "bytes": 80664,
+          "sha256": "6b2419ab42cb4ca0c53aeb728880bc2a6059eea5f82d7c484657869c63877bfe"
+        },
+        {
+          "src": "previews/skull-studies-1200.webp",
+          "width": 1200,
+          "height": 1698,
+          "bytes": 156290,
+          "sha256": "5e80b6dfe3bb1391d210ec015457a40fc77a83816e002a743ec9e543710eb736"
+        }
+      ]
+    },
+    {
+      "original": "antinous.jpg",
+      "width": 1536,
+      "height": 2048,
+      "originalBytes": 638037,
+      "originalSha256": "bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7",
+      "variants": [
+        {
+          "src": "previews/antinous-400.webp",
+          "width": 400,
+          "height": 533,
+          "bytes": 26100,
+          "sha256": "c28d78d21db1bfeb978d9c53d8bb5b5dae175fbeab6ce6b1fb263deaf7558095"
+        },
+        {
+          "src": "previews/antinous-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 91574,
+          "sha256": "12f3ef31671dc655100033a9d80a67d9994299bf629e0c0c5954e6fabd805469"
+        },
+        {
+          "src": "previews/antinous-1200.webp",
+          "width": 1200,
+          "height": 1600,
+          "bytes": 210352,
+          "sha256": "599ce39cc57ced63921d6bd0543a3ccf7107c89b1a4c508b956eb6d9ba7e2bba"
+        }
+      ]
+    }
+  ],
+  "social": {
+    "source": "lyublino/cover.webp",
+    "sourceSha256": "9cd50bba027d368ce8dee8ba30e873353c809cc3e2512cc3ea947a12350bcf49",
+    "src": "social-preview.jpg",
+    "width": 1200,
+    "height": 573,
+    "sha256": "e16d39a3eb1f757b3d58ed8619d28d9b6c32c5ee6c231007899a2a473addb71e"
+  }
+}

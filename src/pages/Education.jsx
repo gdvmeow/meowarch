@@ -4,6 +4,7 @@ import { certificatePages } from '../educationDocument.js';
 import GalleryViewer from '../components/GalleryViewer.jsx';
 import PortfolioHeading from '../components/PortfolioHeading.jsx';
 import PracticeSection from '../components/PracticeSection.jsx';
+import AwardsSection from '../components/AwardsSection.jsx';
 
 export default function Education({ t, route }) {
   const [index, setIndex] = useState(null);
@@ -34,6 +35,7 @@ export default function Education({ t, route }) {
         </figure>)}
       </div>
     </section>
+    <AwardsSection t={t}/>
     {index !== null && <GalleryViewer project={document} index={index} onChange={setIndex} onClose={close} t={t}/>}
   </main>;
 }

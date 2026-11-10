@@ -6,10 +6,15 @@ import { copy, localizeProject } from '../../src/i18n.js';
 
 const source = projects.find(project => project.id === 'antinous');
 
-async function fullFrame(image) {
+async function fullFrame(image, isPreview = false) {
   await image.scrollIntoViewIfNeeded();
   await image.evaluate(image => image.decode());
-  expect(await image.evaluate(image => [image.naturalWidth, image.naturalHeight])).toEqual([1536, 2048]);
+  if (isPreview) {
+    expect(await image.evaluate(image => image.currentSrc)).toContain('/assets/previews/');
+    expect(await image.evaluate(image => Math.abs(image.naturalWidth / image.naturalHeight - 1536 / 2048))).toBeLessThan(.005);
+  } else {
+    expect(await image.evaluate(image => [image.naturalWidth, image.naturalHeight])).toEqual([1536, 2048]);
+  }
   await expect(image).toHaveAttribute('width', '1536');
   await expect(image).toHaveAttribute('height', '2048');
   await expect(image).toHaveCSS('object-fit', 'contain');
@@ -31,11 +36,11 @@ for (const width of [1440, 390, 320]) {
         await expect(card).toContainText(project.title);
         await expect(card.locator('img')).toHaveAttribute('src', /antinous.jpg$/);
         await expect(page.locator('.portfolio-count')).toContainText(`${projects.filter(project => project.group === 'graphics').length} / ${projects.length}`);
-        if (view === 'grid') await fullFrame(card.locator('img'));
+        if (view === 'grid') await fullFrame(card.locator('img'), true);
         await card.click();
         await expect(page.locator('main h1')).toHaveText(project.title);
         await expect(page).toHaveTitle(`${project.title} — ${copy[language].name}`);
-        await expect(page.locator('.project-plate')).toHaveCount(1);
+        await expect(page.locator('.project-plate')).toHaveCount(2);
         await expect(page.locator('.project-intro p').first()).toHaveText(project.summary);
         await expect(page.locator('.project-intro p').last()).toHaveText(project.description);
         await fullFrame(page.locator('.project-cover img'));
@@ -45,8 +50,8 @@ for (const width of [1440, 390, 320]) {
         await expect(page.getByRole('dialog')).toBeVisible();
         await fullFrame(page.locator('.viewer-image img'));
         await expect(page.locator('.viewer-image img')).toHaveAttribute('alt', project.images[0].alt);
-        await expect(page.locator('.viewer-count')).toHaveText(copy[language].project.count(1, 1));
-        await expect(page.locator('.viewer-controls')).toHaveCount(0);
+        await expect(page.locator('.viewer-count')).toHaveText(copy[language].project.count(1, 2));
+        await expect(page.locator('.viewer-controls')).toHaveCount(1);
         await page.keyboard.press('Escape');
         await expect(page.getByRole('dialog')).toHaveCount(0);
         await expect(button).toBeFocused();
@@ -76,7 +81,7 @@ test('Antinous page and modal pass accessibility checks with reduced motion', as
   await expect(new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).resolves.toMatchObject({ violations: [] });
   await page.locator('.viewer-close').focus();
   await page.keyboard.press('Tab');
-  await expect(page.locator('.viewer-close')).toBeFocused();
+  await expect(page.locator('.viewer-caption a')).toBeFocused();
   await page.keyboard.press('Escape');
   await expect(page.locator('.project-cover button')).toBeFocused();
 });

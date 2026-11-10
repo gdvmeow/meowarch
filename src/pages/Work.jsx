@@ -3,7 +3,7 @@ import { asset } from '../data.js';
 import { portfolioHref } from '../routing.js';
 import { balancedRailBreak } from '../portfolioLayout.js';
 import PuttyText from '../PuttyText.jsx';
-import ProjectTile from '../components/ProjectTile.jsx';
+import ProjectTile, { railImageSizes } from '../components/ProjectTile.jsx';
 import GalleryViewer from '../components/GalleryViewer.jsx';
 import ProjectStages from '../components/ProjectStages.jsx';
 import PortfolioHeading from '../components/PortfolioHeading.jsx';
@@ -28,7 +28,7 @@ export function Home({ t, projects }) {
     </section>
     <section id="selected-work" className="selected-section shell" aria-labelledby="selected-heading">
       <div className="section-heading"><h2 id="selected-heading">{t.selectedProjects}</h2><a className="portfolio-cta" href="?page=portfolio"><span>{t.fullPortfolio}</span><Icon name="arrowRight"/></a></div>
-      <div className="selected-grid">{selectedRails.map((rail, index) => <div className="selected-rail" key={index}>{rail.map(project => <ProjectTile key={project.id} project={project}/>)}</div>)}</div>
+      <div className="selected-grid">{selectedRails.map((rail, index) => <div className="selected-rail" key={index}>{rail.map(project => <ProjectTile key={project.id} project={project} imageSizes={railImageSizes[index]}/>)}</div>)}</div>
     </section>
   </main>;
 }
@@ -53,10 +53,10 @@ export function Portfolio({ t, projects, route }) {
       </div>
     </div>}
     <div className={`portfolio-grid ${view === 'list' ? 'is-list' : ''}`}>
-      {view === 'list' ? shown.map(project => <ProjectTile key={project.id} project={project}/>)
+      {view === 'list' ? shown.map(project => <ProjectTile key={project.id} project={project} headingLevel={2} imageSizes="(max-width: 760px) 24vw, 220px"/>)
         : <>
-          <div className="portfolio-rail">{shown.slice(0, railBreak).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
-          <div className="portfolio-rail">{shown.slice(railBreak).map(project => <ProjectTile key={project.id} project={project}/>)}</div>
+          <div className="portfolio-rail">{shown.slice(0, railBreak).map(project => <ProjectTile key={project.id} project={project} headingLevel={2} imageSizes={railImageSizes[0]}/>)}</div>
+          <div className="portfolio-rail">{shown.slice(railBreak).map(project => <ProjectTile key={project.id} project={project} headingLevel={2} imageSizes={railImageSizes[1]}/>)}</div>
         </>}
     </div>
   </main>;

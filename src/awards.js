@@ -1,0 +1,122 @@
+export const awardTranslations = {
+  ru: {
+    heading: 'Грамоты и дипломы',
+    items: {
+      'art-school-letter-2024': {
+        title: 'Благодарственное письмо ДХШ № 2',
+        period: '18 июня 2024',
+        issuer: 'Детская художественная школа № 2, Сочи',
+        description: 'За любовь к изобразительному искусству, трудолюбие и активное участие в фестивалях, выставках и конкурсах.',
+        alt: 'Благодарственное письмо Виктории Терзян от ДХШ № 2, 18 июня 2024 года',
+      },
+      'we-together-certificate': {
+        title: 'Грамота выставки-конкурса «Мы вместе!»',
+        period: '',
+        issuer: 'Краевой учебно-методический центр, Краснодарский край',
+        description: 'Выставка-конкурс творческих работ учащихся художественных школ и школ искусств Краснодарского края, посвящённая Героям Отечества.',
+        alt: 'Грамота Виктории Терзян выставки-конкурса «Мы вместе!»',
+      },
+      'we-together-diploma-2024': {
+        title: 'Диплом лауреата I степени «Мы вместе!»',
+        period: '2024',
+        issuer: 'ДХШ № 1 имени А. И. Пахомова, Сочи',
+        description: 'Зональный этап краевой выставки-конкурса. Номинация «Живопись».',
+        alt: 'Диплом Виктории Терзян, лауреата I степени в номинации «Живопись» конкурса «Мы вместе!», Сочи, 2024 год',
+      },
+      'spring-palette-diploma-2023': {
+        title: 'Диплом лауреата III степени «Весенняя палитра»',
+        period: '2023',
+        issuer: 'Сочинский художественный музей',
+        description: 'Выставка-конкурс «Весенняя палитра». Номинация «Живопись».',
+        alt: 'Диплом Виктории Терзян, лауреата III степени в номинации «Живопись» выставки-конкурса «Весенняя палитра», 2023 год',
+      },
+      'on-our-land-diploma-2024': {
+        title: 'Диплом XIX международного конкурса «На своей земле»',
+        period: '2024',
+        issuer: 'Общественная организация «Белорусский зелёный крест», Минск',
+        description: 'XIX международный конкурс живописи и графики «На сваёй зямлі!».',
+        alt: 'Диплом Виктории Терзян XIX международного конкурса живописи и графики «На сваёй зямлі!», Минск, 2024 год',
+      },
+    },
+  },
+  en: {
+    heading: 'Certificates and diplomas',
+    items: {
+      'art-school-letter-2024': {
+        title: 'Letter of appreciation from Art School No. 2',
+        period: '18 June 2024',
+        issuer: 'Children’s Art School No. 2, Sochi',
+        description: 'For dedication to visual art, hard work and active participation in festivals, exhibitions and competitions.',
+        alt: 'Letter of appreciation to Viktoria Terzyan from Art School No. 2, 18 June 2024',
+      },
+      'we-together-certificate': {
+        title: 'Certificate from “We Are Together!”',
+        period: '',
+        issuer: 'Regional Educational and Methodological Centre, Krasnodar Krai',
+        description: 'An exhibition and competition for art-school students in Krasnodar Krai, dedicated to Heroes of the Fatherland.',
+        alt: 'Viktoria Terzyan’s certificate from the “We Are Together!” exhibition and competition',
+      },
+      'we-together-diploma-2024': {
+        title: 'First-degree laureate diploma, “We Are Together!”',
+        period: '2024',
+        issuer: 'A. I. Pakhomov Children’s Art School No. 1, Sochi',
+        description: 'Zonal stage of the regional exhibition and competition. Painting category.',
+        alt: 'Viktoria Terzyan’s first-degree laureate diploma in Painting from “We Are Together!”, Sochi, 2024',
+      },
+      'spring-palette-diploma-2023': {
+        title: 'Third-degree laureate diploma, “Spring Palette”',
+        period: '2023',
+        issuer: 'Sochi Art Museum',
+        description: '“Spring Palette” exhibition and competition. Painting category.',
+        alt: 'Viktoria Terzyan’s third-degree laureate diploma in Painting from “Spring Palette”, 2023',
+      },
+      'on-our-land-diploma-2024': {
+        title: 'Diploma from the 19th “On Our Land” international competition',
+        period: '2024',
+        issuer: 'Belarusian Green Cross, Minsk',
+        description: 'The 19th “На сваёй зямлі!” international painting and drawing competition.',
+        alt: 'Viktoria Terzyan’s diploma from the 19th “On Our Land” international painting and drawing competition, Minsk, 2024',
+      },
+    },
+  },
+  zh: {
+    heading: '奖状与证书',
+    items: {
+      'art-school-letter-2024': {
+        title: '第二儿童艺术学校感谢信',
+        period: '2024年6月18日',
+        issuer: '索契第二儿童艺术学校',
+        description: '表彰对美术的热爱、勤奋学习以及积极参加艺术节、展览和比赛。',
+        alt: '索契第二儿童艺术学校于2024年6月18日颁发给维多利亚·捷尔江的感谢信',
+      },
+      'we-together-certificate': {
+        title: '“我们在一起！”展览比赛奖状',
+        period: '',
+        issuer: '克拉斯诺达尔边疆区教学方法中心',
+        description: '面向克拉斯诺达尔边疆区艺术学校学生、以祖国英雄为主题的展览比赛。',
+        alt: '“我们在一起！”展览比赛颁发给维多利亚·捷尔江的奖状',
+      },
+      'we-together-diploma-2024': {
+        title: '“我们在一起！”一级获奖证书',
+        period: '2024年',
+        issuer: '索契帕霍莫夫第一儿童艺术学校',
+        description: '边疆区展览比赛的分区赛。绘画组。',
+        alt: '维多利亚·捷尔江在2024年索契“我们在一起！”绘画组获得的一级获奖证书',
+      },
+      'spring-palette-diploma-2023': {
+        title: '“春之调色板”三级获奖证书',
+        period: '2023年',
+        issuer: '索契美术馆',
+        description: '“春之调色板”展览比赛。绘画组。',
+        alt: '维多利亚·捷尔江在2023年“春之调色板”绘画组获得的三级获奖证书',
+      },
+      'on-our-land-diploma-2024': {
+        title: '第十九届“在自己的土地上”国际比赛证书',
+        period: '2024年',
+        issuer: '白俄罗斯绿色十字会，明斯克',
+        description: '第十九届“На сваёй зямлі!”国际绘画与素描比赛。',
+        alt: '维多利亚·捷尔江在2024年明斯克第十九届“在自己的土地上”国际绘画与素描比赛获得的证书',
+      },
+    },
+  },
+};

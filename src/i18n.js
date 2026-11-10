@@ -1,3 +1,4 @@
+import { awardTranslations } from './awards.js';
 import { fourArtworksTranslations } from './fourArtworks.js';
 import { lyublinoTranslations } from './lyublino.js';
 import { scanStudyTranslations } from './scanStudies.js';
@@ -10,6 +11,7 @@ export const languages = [
 
 export const copy = {
   ru: {
+    awards: awardTranslations.ru,
     name: 'Виктория Терзян',
     homeLabel: 'Виктория Терзян — главная',
     skip: 'Перейти к содержимому',
@@ -138,6 +140,7 @@ export const copy = {
     metaDescription: 'Портфолио Виктории Терзян: архитектурные проекты, ручная подача и академический рисунок.',
   },
   en: {
+    awards: awardTranslations.en,
     name: 'Viktoria Terzyan',
     homeLabel: 'Viktoria Terzyan — home',
     skip: 'Skip to content',
@@ -272,7 +275,7 @@ export const copy = {
         title: 'Antinous', category: 'Academic drawing',
         summary: 'Antinous’s head in three-quarter view. Pencil on paper.',
         description: 'Hatching conveys the volume of the face, curls and neck. The drawing explores light and shade and the transitions between the main planes.',
-        imageAlts: ['Antinous: pencil head study in three-quarter view'],
+        imageAlts: ['Antinous: pencil head study in three-quarter view', 'Antinous: scan of the complete pencil drawing'],
       },
       'caesar-study': {
         title: 'Caesar', category: 'Academic drawing',
@@ -341,6 +344,7 @@ export const copy = {
     },
   },
   zh: {
+    awards: awardTranslations.zh,
     name: 'Viktoria Terzyan',
     homeLabel: 'Viktoria Terzyan：首页',
     skip: '跳转到主要内容',
@@ -475,7 +479,7 @@ export const copy = {
         title: '安提诺乌斯', category: '素描习作',
         summary: '安提诺乌斯头像的四分之三侧面。纸本铅笔。',
         description: '排线表现面部、卷发和颈部的体积，刻画明暗关系与主要转折面之间的过渡。',
-        imageAlts: ['安提诺乌斯：四分之三侧面头像铅笔素描'],
+        imageAlts: ['安提诺乌斯：四分之三侧面头像铅笔素描', '安提诺乌斯：完整铅笔素描扫描图'],
       },
       'caesar-study': {
         title: '恺撒', category: '素描习作',

@@ -9,7 +9,6 @@ export default function GalleryViewer({ project, index, onChange, onClose, t }) 
   const titleId = useId();
   const total = project.images.length;
   const image = project.images[index];
-  const hasFullImages = project.images.some(image => image.fullSrc);
   const step = direction => onChange(current => (current + direction + total) % total);
 
   useEffect(() => {
@@ -50,7 +49,7 @@ export default function GalleryViewer({ project, index, onChange, onClose, t }) 
         const dx = event.clientX - start.x, dy = event.clientY - start.y;
         if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
       }}><img key={image.src} src={asset(image.fullSrc ?? image.src)} alt={image.alt} width={image.width} height={image.height} decoding="async"/></div>
-      <div className="viewer-bottom"><div className="viewer-caption"><p>{image.alt}</p>{hasFullImages && <a href={asset(image.fullSrc ?? image.src)} target="_blank" rel="noopener noreferrer">{t.project.openFull} ↗</a>}</div>{total > 1 && <div className="viewer-controls"><button type="button" onClick={() => step(-1)} aria-label={t.project.previousLabel}>{t.project.previous}</button><button type="button" onClick={() => step(1)} aria-label={t.project.nextLabel}>{t.project.nextImage}</button></div>}</div>
+      <div className="viewer-bottom"><div className="viewer-caption"><p>{image.alt}</p><a href={asset(image.fullSrc ?? image.src)} target="_blank" rel="noopener noreferrer">{t.project.openFull} ↗</a></div>{total > 1 && <div className="viewer-controls"><button type="button" onClick={() => step(-1)} aria-label={t.project.previousLabel}>{t.project.previous}</button><button type="button" onClick={() => step(1)} aria-label={t.project.nextLabel}>{t.project.nextImage}</button></div>}</div>
     </div>
   </dialog>, document.body);
 }

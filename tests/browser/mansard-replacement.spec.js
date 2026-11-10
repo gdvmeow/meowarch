@@ -4,10 +4,15 @@ import { projects } from '../../src/data.js';
 
 const source = projects.find(project => project.id === 'mansard-house');
 
-async function fullFrame(image) {
+async function fullFrame(image, isPreview = false) {
   await image.scrollIntoViewIfNeeded();
   await image.evaluate(image => image.decode());
-  expect(await image.evaluate(image => [image.naturalWidth, image.naturalHeight])).toEqual([1384, 2048]);
+  if (isPreview) {
+    expect(await image.evaluate(image => image.currentSrc)).toContain('/assets/previews/');
+    expect(await image.evaluate(image => Math.abs(image.naturalWidth / image.naturalHeight - 1384 / 2048))).toBeLessThan(.005);
+  } else {
+    expect(await image.evaluate(image => [image.naturalWidth, image.naturalHeight])).toEqual([1384, 2048]);
+  }
   await expect(image).toHaveAttribute('width', '1384');
   await expect(image).toHaveAttribute('height', '2048');
   await expect(image).toHaveCSS('object-fit', 'contain');
@@ -26,7 +31,7 @@ for (const width of [1440, 390, 320]) {
       await page.goto('./?page=portfolio&filter=architecture');
       const card = page.locator('.project-tile[href="?project=mansard-house"]');
       await expect(card).toContainText(project.title);
-      await fullFrame(card.locator('img'));
+      await fullFrame(card.locator('img'), true);
       await card.click();
       await expect(page.locator('main h1')).toHaveText(project.title);
       await expect(page.locator('.project-plate')).toHaveCount(1);

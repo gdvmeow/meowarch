@@ -1,3 +1,4 @@
+import { antinousScan } from './awardDocuments.js';
 import { fourArtworks } from './fourArtworks.js';
 import { lyublinoProject } from './lyublino.js';
 import { scanStudies } from './scanStudies.js';
@@ -140,6 +141,7 @@ export const projects = [
     description: 'Штриховка передаёт объём лица, локонов и шеи. В рисунке проработаны светотень и переходы между основными плоскостями.',
     images: [
       { src: 'antinous.jpg', alt: 'Антиной: карандашный рисунок головы в трёхчетвертном повороте', width: 1536, height: 2048 },
+      { ...antinousScan, alt: 'Антиной: скан полного листа с карандашным рисунком' },
     ],
   },
 ];

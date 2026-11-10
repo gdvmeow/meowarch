@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { projects, socialLinks } from '../src/data.js';
 import { scanStudies } from '../src/scanStudies.js';
 import { certificatePages } from '../src/educationDocument.js';
+import { awardDocuments, antinousScan } from '../src/awardDocuments.js';
 import { copy, languages, localizeProject, localizeSocial } from '../src/i18n.js';
 
 function shape(value) {
@@ -322,10 +323,10 @@ test('Antinous retains the exact supplied JPEG bytes and complete translations',
   assert.equal(project.title, 'Антиной');
   assert.equal(project.group, 'graphics');
   assert.equal(project.category, 'Академический рисунок');
-  assert.equal(project.images.length, 1);
+  assert.equal(project.images.length, 2);
   assert.equal(project.cover, undefined);
   const [entry] = manifest.assets;
-  assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: 'antinous.jpg', width: 1536, height: 2048 }]);
+  assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: 'antinous.jpg', width: 1536, height: 2048 }, { src: antinousScan.src, width: antinousScan.width, height: antinousScan.height }]);
   const bytes = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
   assert.equal(bytes.length, 638037);
   assert.equal(bytes.readUInt16BE(0), 0xffd8);
@@ -373,4 +374,85 @@ test('four supplied artworks retain their complete frames and translations', asy
       assert.ok(local.images[0].alt.trim());
     }
   }
+});
+
+
+test('all three November inputs are classified completely as five awards and one existing-project scan', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/awards-2026-11.json', import.meta.url), 'utf8'));
+  assert.equal(manifest.sourceFileCount, 3);
+  assert.equal(manifest.reviewedImageCount, 6);
+  assert.equal(manifest.awardCount, 5);
+  assert.deepEqual(manifest.sources.map(source => source.pages), [4, 1, 1]);
+  assert.equal(manifest.sources.flatMap(source => source.images).length, 6);
+  const images = manifest.sources.flatMap(source => source.images);
+  assert.deepEqual(awardDocuments.map(document => document.id), images.filter(image => image.kind === 'award').map(image => image.id));
+  assert.equal(awardDocuments.length, 5);
+  assert.equal(new Set(awardDocuments.map(document => document.src)).size, 5);
+  for (const entry of images) {
+    const bytes = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256);
+    assert.ok(entry.width > 0 && entry.height > 0);
+    assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
+    assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
+    const chunks = [];
+    for (let offset = 12; offset + 8 <= bytes.length;) {
+      const length = bytes.readUInt32LE(offset + 4);
+      chunks.push(bytes.toString('ascii', offset, offset + 4));
+      offset += 8 + length + length % 2;
+    }
+    assert.ok(!chunks.some(chunk => ['EXIF', 'XMP ', 'ICCP'].includes(chunk)), entry.src);
+  }
+  for (const source of manifest.sources) await assert.rejects(access(new URL(`../public/assets/${source.file}`, import.meta.url)));
+  for (const { code } of languages) {
+    assert.ok(copy[code].awards.heading.trim());
+    assert.deepEqual(Object.keys(copy[code].awards.items), awardDocuments.map(document => document.id));
+    for (const document of awardDocuments) {
+      const item = copy[code].awards.items[document.id];
+      for (const key of ['title', 'issuer', 'description', 'alt']) assert.ok(item[key].trim(), `${code}: ${document.id}: ${key}`);
+    }
+    assert.equal(copy[code].awards.items['we-together-certificate'].period, '', 'No date is printed on this certificate');
+  }
+  assert.match(copy.ru.awards.items['we-together-diploma-2024'].title, /I степени/);
+  assert.match(copy.ru.awards.items['spring-palette-diploma-2023'].title, /III степени/);
+  assert.doesNotMatch(copy.ru.awards.items['we-together-certificate'].title, /степени|место/);
+  assert.doesNotMatch(copy.ru.awards.items['on-our-land-diploma-2024'].title, /степени|место/);
+  assert.equal(projects.filter(project => project.id === 'antinous').length, 1);
+  assert.equal(projects.find(project => project.id === 'antinous').images[1].src, antinousScan.src);
+  assert.ok(!awardDocuments.some(document => document.src === antinousScan.src));
+});
+
+
+test('responsive card previews preserve every original and the complete image frame', async () => {
+  const { imagePreviews } = await import('../src/imagePreviews.js');
+  const manifest = JSON.parse(await readFile(new URL('../content/responsive-previews.json', import.meta.url), 'utf8'));
+  const covers = [...new Set(projects.map(project => (project.cover ?? project.images[0]).src))];
+  assert.deepEqual(Object.keys(imagePreviews), covers);
+  assert.deepEqual(manifest.assets.map(entry => entry.original), covers);
+  let originalBytes = 0, previewBytes = 0;
+  for (const entry of manifest.assets) {
+    const original = await readFile(new URL(`../public/assets/${entry.original}`, import.meta.url));
+    assert.equal(createHash('sha256').update(original).digest('hex'), entry.originalSha256);
+    assert.equal(original.length, entry.originalBytes);
+    assert.deepEqual(imagePreviews[entry.original], entry.variants.map(({ src, width }) => ({ src, width })));
+    originalBytes += original.length;
+    previewBytes += entry.variants[0].bytes;
+    let previousWidth = 0;
+    for (const variant of entry.variants) {
+      const bytes = await readFile(new URL(`../public/assets/${variant.src}`, import.meta.url));
+      assert.equal(createHash('sha256').update(bytes).digest('hex'), variant.sha256);
+      assert.equal(bytes.length, variant.bytes);
+      assert.ok(variant.width > previousWidth && variant.width < entry.width, 'Never upscale a preview');
+      previousWidth = variant.width;
+      assert.ok(Math.abs(variant.width / variant.height - entry.width / entry.height) < .005, 'No crop or stretching');
+    }
+  }
+  assert.ok(previewBytes < originalBytes * .1, 'Small card previews remove at least 90% of original transfer bytes');
+  const social = manifest.social;
+  const socialBytes = await readFile(new URL(`../public/assets/${social.src}`, import.meta.url));
+  assert.equal(createHash('sha256').update(socialBytes).digest('hex'), social.sha256);
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(html, /property="og:url" content="https:\/\/gdvmeow.github.io\/meowarch\/"/);
+  assert.ok(html.includes(`property="og:image" content="https://gdvmeow.github.io/meowarch/assets/${social.src}"`));
+  assert.ok(html.includes(`property="og:image:width" content="${social.width}"`));
+  assert.ok(html.includes(`property="og:image:height" content="${social.height}"`));
 });
