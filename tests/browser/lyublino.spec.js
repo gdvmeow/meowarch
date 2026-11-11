@@ -146,3 +146,33 @@ test('project opens with architecture and keeps production notes out of visible 
     await page.keyboard.press('Escape');
   }
 });
+
+for (const width of [1440, 768, 320]) {
+  test(`project notes stay quiet, unnumbered and readable at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 960 });
+    for (const language of ['ru', 'en', 'zh']) {
+      await ready(page, language);
+      const project = localizeProject(source, language);
+      const navigation = page.locator('.project-stages-nav');
+      await expect(navigation.locator('a')).toHaveText([...project.sections.map(section => section.title), project.resources.heading]);
+      await expect(page.locator('.stage-number')).toHaveCount(0);
+      for (const link of await navigation.locator('a').all()) {
+        await expect(link).toHaveCSS('border-bottom-width', '0px');
+        expect(await link.evaluate(element => element.getBoundingClientRect().height)).toBeGreaterThanOrEqual(44);
+      }
+      for (const section of await page.locator('.project-stage').all()) {
+        await expect(section).toHaveCSS('border-top-width', '0px');
+      }
+      const section = page.locator('#stage-clausura');
+      const heading = await section.locator('.project-stage-heading').boundingBox();
+      const drawing = await section.locator('.project-stage-gallery').boundingBox();
+      if (width > 900) {
+        expect(drawing.x + drawing.width).toBeLessThan(heading.x);
+        expect(drawing.width).toBeGreaterThan(heading.width);
+      } else {
+        expect(heading.y + heading.height).toBeLessThan(drawing.y);
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+  });
+}

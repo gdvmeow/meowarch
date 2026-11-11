@@ -928,32 +928,32 @@
       ]
     },
     {
-      "original": "antinous.jpg",
+      "original": "antinous-neutral.webp",
       "width": 1536,
       "height": 2048,
-      "originalBytes": 638037,
-      "originalSha256": "bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7",
+      "originalBytes": 977010,
+      "originalSha256": "d060942135aef792b2f03bb1fca4329b7a4d9055a5725edf52d24bdee255f47d",
       "variants": [
         {
-          "src": "previews/antinous-400.webp",
+          "src": "previews/antinous-neutral-400.webp",
           "width": 400,
           "height": 533,
-          "bytes": 26100,
-          "sha256": "c28d78d21db1bfeb978d9c53d8bb5b5dae175fbeab6ce6b1fb263deaf7558095"
+          "bytes": 35872,
+          "sha256": "ef7d427244d414db8f40690077a2372e7cb2579db2f39d7a3952fe297d703134"
         },
         {
-          "src": "previews/antinous-800.webp",
+          "src": "previews/antinous-neutral-800.webp",
           "width": 800,
           "height": 1067,
-          "bytes": 91574,
-          "sha256": "12f3ef31671dc655100033a9d80a67d9994299bf629e0c0c5954e6fabd805469"
+          "bytes": 165256,
+          "sha256": "1f103ea07e2cae01e3df9f99777f39133a9087f2a73f93721ba34fb2c73ad2d0"
         },
         {
-          "src": "previews/antinous-1200.webp",
+          "src": "previews/antinous-neutral-1200.webp",
           "width": 1200,
           "height": 1600,
-          "bytes": 210352,
-          "sha256": "599ce39cc57ced63921d6bd0543a3ccf7107c89b1a4c508b956eb6d9ba7e2bba"
+          "bytes": 448934,
+          "sha256": "20564bfe8071f988beaaa20ed0460ed3dbbe7c58c10e512eabcb0572654d18bc"
         }
       ]
     }

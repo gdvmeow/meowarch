@@ -7,12 +7,12 @@ export default function ProjectStages({ project, renderImage }) {
   const { sections, resources } = project;
   return <>
     <nav className="shell project-stages-nav" aria-label={project.stagesLabel}>
-      {sections.map((section, index) => <a data-navigation-anchor href={`#stage-${section.id}`} key={section.id}><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>{section.title}</a>)}
+      {sections.map(section => <a data-navigation-anchor href={`#stage-${section.id}`} key={section.id}>{section.title}</a>)}
       {resources && <a data-navigation-anchor href="#project-materials">{resources.heading}</a>}
     </nav>
     <div className="shell project-stages">
-      {sections.map((section, index) => <section className={`project-stage project-stage--${section.id}`} tabIndex="-1" id={`stage-${section.id}`} key={section.id} aria-labelledby={`stage-title-${section.id}`}>
-        <header className="project-stage-heading"><span className="stage-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><div><h2 id={`stage-title-${section.id}`}>{section.title}</h2><p>{section.text}</p></div></header>
+      {sections.map(section => <section className={`project-stage project-stage--${section.id}`} tabIndex="-1" id={`stage-${section.id}`} key={section.id} aria-labelledby={`stage-title-${section.id}`}>
+        <header className="project-stage-heading"><h2 id={`stage-title-${section.id}`}>{section.title}</h2><p>{section.text}</p></header>
         <div className="project-stage-gallery">{section.imageIndexes.map(imageIndex => renderImage(imageIndex))}</div>
       </section>)}
       {resources && <section id="project-materials" tabIndex="-1" className="project-materials" aria-labelledby="materials-title">

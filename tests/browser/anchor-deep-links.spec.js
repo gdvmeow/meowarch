@@ -80,11 +80,18 @@ test('late font readiness does not override a manual scroll or a newer page', as
   await page.evaluate(() => window.releaseTestFonts());
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   expect(Math.abs((await page.evaluate(() => scrollY)) - manual)).toBeLessThan(3);
-  await page.goto('./?page=education#awards');
+  // Reload creates a fresh document and a new held fonts.ready promise. A goto
+  // of the current URL can instead keep the resolved promise and smooth-scroll
+  // the existing fragment, which tests a different browser behaviour.
+  await page.reload();
+  await expect(page.locator('#awards-heading')).toBeInViewport();
   await page.evaluate(() => document.querySelector('.site-nav a[href="?page=about"]').click());
   await expect(page).toHaveURL(/page=about$/);
+  // pushState changes the URL before React has committed the destination.
+  // Measure the new page after its heading and scroll reset have settled.
+  await expect(page.locator('main h1')).toHaveText('О себе');
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(3);
   const pageScroll = await page.evaluate(() => scrollY);
-  expect(pageScroll).toBeLessThan(3);
   await page.evaluate(() => window.releaseTestFonts());
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   expect(Math.abs((await page.evaluate(() => scrollY)) - pageScroll)).toBeLessThan(3);

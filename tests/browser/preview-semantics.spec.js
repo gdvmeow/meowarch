@@ -44,12 +44,12 @@ test('list previews remain small while project pages keep the original source', 
   const card = page.locator('.project-tile[href="?project=antinous"]');
   await card.locator('img').scrollIntoViewIfNeeded();
   await card.locator('img').evaluate(image => image.decode());
-  expect(await card.locator('img').evaluate(image => image.currentSrc)).toMatch(/previews\/antinous-400\.webp$/);
+  expect(await card.locator('img').evaluate(image => image.currentSrc)).toMatch(/previews\/antinous-neutral-400\.webp$/);
   await expect(card.locator('h2')).toHaveText('Антиной');
   await card.click();
   const original = page.locator('.project-cover img');
   await expect(original).not.toHaveAttribute('srcset');
-  expect(await original.evaluate(image => image.currentSrc)).toMatch(/assets\/antinous\.jpg$/);
+  expect(await original.evaluate(image => image.currentSrc)).toMatch(/assets\/antinous-neutral\.webp$/);
   await page.locator('.project-cover button').click();
-  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /assets\/antinous\.jpg$/);
+  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /assets\/antinous-neutral\.webp$/);
 });

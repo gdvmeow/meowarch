@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { projects, socialLinks } from '../src/data.js';
 import { scanStudies } from '../src/scanStudies.js';
 import { certificatePages } from '../src/educationDocument.js';
+import { imageCorrections, displayImage } from '../src/imageCorrections.js';
 import { awardDocuments, antinousScan } from '../src/awardDocuments.js';
 import { copy, languages, localizeProject, localizeSocial } from '../src/i18n.js';
 
@@ -315,7 +316,7 @@ test('Lyublino is one complete, chronological project with all 15 source files a
 });
 
 
-test('Antinous retains the exact supplied JPEG bytes and complete translations', async () => {
+test('Antinous preserves its supplied JPEG and uses full-frame tonal derivatives with complete translations', async () => {
   const manifest = JSON.parse(await readFile(new URL('../content/scan-imports/antinous.json', import.meta.url), 'utf8'));
   const project = projects.find(project => project.id === manifest.projectId);
   const expectedHash = 'bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7';
@@ -326,7 +327,7 @@ test('Antinous retains the exact supplied JPEG bytes and complete translations',
   assert.equal(project.images.length, 2);
   assert.equal(project.cover, undefined);
   const [entry] = manifest.assets;
-  assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: 'antinous.jpg', width: 1536, height: 2048 }, { src: antinousScan.src, width: antinousScan.width, height: antinousScan.height }]);
+  assert.deepEqual(project.images.map(({ src, width, height }) => ({ src, width, height })), [{ src: imageCorrections['antinous.jpg'].src, width: 1536, height: 2048 }, { src: antinousScan.src, width: antinousScan.width, height: antinousScan.height }]);
   const bytes = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
   assert.equal(bytes.length, 638037);
   assert.equal(bytes.readUInt16BE(0), 0xffd8);
@@ -455,4 +456,38 @@ test('responsive card previews preserve every original and the complete image fr
   assert.ok(html.includes(`property="og:image" content="https://gdvmeow.github.io/meowarch/assets/${social.src}"`));
   assert.ok(html.includes(`property="og:image:width" content="${social.width}"`));
   assert.ok(html.includes(`property="og:image:height" content="${social.height}"`));
+});
+
+
+test('tonal corrections preserve all three source assets and use separate metadata-free display copies', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../content/image-corrections.json', import.meta.url), 'utf8'));
+  assert.equal(manifest.assets.length, 3);
+  assert.equal(manifest.script, 'scripts/correct-portfolio-images.py');
+  const sourceHashes = {
+    'antinous.jpg': 'bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7',
+    'antinous-scan.webp': 'a1261e8f7f08ac3d6f341ee3b7a2fbbd8cf89896ce4d383783b9522637e81b51',
+    'awards/on-our-land-diploma-2024.webp': '3bf720455d82bb92ca30e972fcd02d45c238030b5b26a1dd99e974fce3001559',
+  };
+  for (const entry of manifest.assets) {
+    const original = await readFile(new URL(`../public/assets/${entry.original}`, import.meta.url));
+    const corrected = await readFile(new URL(`../public/assets/${entry.src}`, import.meta.url));
+    assert.equal(createHash('sha256').update(original).digest('hex'), sourceHashes[entry.original]);
+    assert.equal(entry.originalSha256, sourceHashes[entry.original]);
+    assert.notEqual(entry.src, entry.original);
+    assert.equal(createHash('sha256').update(corrected).digest('hex'), entry.sha256);
+    assert.deepEqual(imageCorrections[entry.original], { src: entry.src, width: entry.width, height: entry.height, sha256: entry.sha256 });
+    const chunks = [];
+    for (let offset = 12; offset + 8 <= corrected.length;) {
+      const length = corrected.readUInt32LE(offset + 4);
+      chunks.push(corrected.toString('ascii', offset, offset + 4));
+      offset += 8 + length + length % 2;
+    }
+    assert.ok(!chunks.some(chunk => ['EXIF', 'XMP ', 'ICCP'].includes(chunk)), entry.src);
+  }
+  const antinous = projects.find(project => project.id === 'antinous');
+  assert.equal(antinous.images[0].src, imageCorrections['antinous.jpg'].src);
+  assert.equal(antinous.images[1].src, imageCorrections['antinous-scan.webp'].src);
+  assert.equal(awardDocuments.find(document => document.id === 'on-our-land-diploma-2024').src,
+    imageCorrections['awards/on-our-land-diploma-2024.webp'].src);
+  assert.deepEqual(displayImage({ src: 'unaffected.webp', width: 23, height: 35 }), { src: 'unaffected.webp', width: 23, height: 35 });
 });

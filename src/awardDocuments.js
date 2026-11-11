@@ -1,3 +1,4 @@
+import { displayImage } from './imageCorrections.js';
 // Five individually reviewed awards. Source inventory: content/scan-imports/awards-2026-11.json.
 export const awardDocuments = [
   {
@@ -35,11 +36,11 @@ export const awardDocuments = [
     "height": 1128,
     "sha256": "3bf720455d82bb92ca30e972fcd02d45c238030b5b26a1dd99e974fce3001559"
   }
-];
+].map(displayImage);
 
-export const antinousScan = {
+export const antinousScan = displayImage({
   "src": "antinous-scan.webp",
   "width": 1643,
   "height": 2387,
   "sha256": "a1261e8f7f08ac3d6f341ee3b7a2fbbd8cf89896ce4d383783b9522637e81b51"
-};
+});

@@ -75,7 +75,7 @@ def main():
         'sources': sources,
     }
     (ROOT / 'content/scan-imports/awards-2026-11.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-    (ROOT / 'src/awardDocuments.js').write_text('// Five individually reviewed awards. Source inventory: content/scan-imports/awards-2026-11.json.\nexport const awardDocuments = ' + json.dumps(awards, ensure_ascii=False, indent=2) + ';\n\nexport const antinousScan = ' + json.dumps({key: drawing[key] for key in ['src', 'width', 'height', 'sha256']}, indent=2) + ';\n')
+    (ROOT / 'src/awardDocuments.js').write_text("import { displayImage } from './imageCorrections.js';\n" + '// Five individually reviewed awards. Source inventory: content/scan-imports/awards-2026-11.json.\nexport const awardDocuments = ' + json.dumps(awards, ensure_ascii=False, indent=2) + '.map(displayImage);\n\nexport const antinousScan = displayImage(' + json.dumps({key: drawing[key] for key in ['src', 'width', 'height', 'sha256']}, indent=2) + ');\n')
     print(f'Prepared {len(awards)} awards and one Antinous scan from all three inputs.')
 
 

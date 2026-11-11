@@ -34,7 +34,7 @@ for (const width of [1440, 390, 320]) {
         await page.goto(`./?page=portfolio&filter=graphics&view=${view}`);
         const card = page.locator('.project-tile[href="?project=antinous"]');
         await expect(card).toContainText(project.title);
-        await expect(card.locator('img')).toHaveAttribute('src', /antinous.jpg$/);
+        await expect(card.locator('img')).toHaveAttribute('src', /antinous-neutral.webp$/);
         await expect(page.locator('.portfolio-count')).toContainText(`${projects.filter(project => project.group === 'graphics').length} / ${projects.length}`);
         if (view === 'grid') await fullFrame(card.locator('img'), true);
         await card.click();
@@ -87,7 +87,7 @@ test('Antinous page and modal pass accessibility checks with reduced motion', as
 });
 
 
-test('Antinous serves the original JPEG without any byte changes', async ({ request }) => {
+test('Antinous preserves the source JPEG separately without any byte changes', async ({ request }) => {
   const response = await request.get('./assets/antinous.jpg');
   expect(response.ok()).toBe(true);
   expect(response.headers()['content-type']).toMatch(/image\/jpeg/);

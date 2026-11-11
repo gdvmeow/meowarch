@@ -74,11 +74,11 @@ test('awards and the separate Antinous scan remain accessible across interrupted
   const scanButton = page.locator('.project-gallery button');
   await scanButton.click();
   await expect(page.locator('.viewer-count')).toHaveText('2 из 2');
-  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /antinous-scan.webp$/);
+  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /antinous-scan-neutral.webp$/);
   await page.keyboard.press('ArrowRight');
-  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /antinous.jpg$/);
+  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /antinous-neutral.webp$/);
   await page.keyboard.press('ArrowLeft');
-  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /antinous-scan.webp$/);
+  await expect(page.locator('.viewer-image img')).toHaveAttribute('src', /antinous-scan-neutral.webp$/);
   await page.keyboard.press('Escape');
   await expect(scanButton).toBeFocused();
 });

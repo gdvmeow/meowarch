@@ -438,17 +438,17 @@ export const imagePreviews = {
       "width": 1200
     }
   ],
-  "antinous.jpg": [
+  "antinous-neutral.webp": [
     {
-      "src": "previews/antinous-400.webp",
+      "src": "previews/antinous-neutral-400.webp",
       "width": 400
     },
     {
-      "src": "previews/antinous-800.webp",
+      "src": "previews/antinous-neutral-800.webp",
       "width": 800
     },
     {
-      "src": "previews/antinous-1200.webp",
+      "src": "previews/antinous-neutral-1200.webp",
       "width": 1200
     }
   ]

@@ -1,0 +1,33 @@
+{
+  "processing": "User-requested ordinary tonal corrections. Source assets remain byte-for-byte unchanged. No crop, rotation, perspective warp, resize, generated detail, retouching, inpainting or text replacement. Display derivatives and previews use separate filenames.",
+  "script": "scripts/correct-portfolio-images.py",
+  "assets": [
+    {
+      "original": "antinous.jpg",
+      "originalSha256": "bf08e1cd0de71a8fb32b8de5b259de8c5bce0a60a5684e748004b17cdfb270b7",
+      "processing": "Neutral grayscale, levels 22/168, gamma exponent 0.88, mild unsharp mask 1.1px/65%/3. Full photograph retained.",
+      "src": "antinous-neutral.webp",
+      "width": 1536,
+      "height": 2048,
+      "sha256": "d060942135aef792b2f03bb1fca4329b7a4d9055a5725edf52d24bdee255f47d"
+    },
+    {
+      "original": "antinous-scan.webp",
+      "originalSha256": "a1261e8f7f08ac3d6f341ee3b7a2fbbd8cf89896ce4d383783b9522637e81b51",
+      "processing": "Neutral grayscale; smooth blank-paper illumination compensation; levels 72/252, gamma exponent 1.08; mild unsharp mask 1.1px/65%/3. Full sheet retained.",
+      "src": "antinous-scan-neutral.webp",
+      "width": 1643,
+      "height": 2387,
+      "sha256": "b776976d4cc15a255a23eb849a8950eeb5d6e4ce3b869853079bd3270834d64f"
+    },
+    {
+      "original": "awards/on-our-land-diploma-2024.webp",
+      "originalSha256": "3bf720455d82bb92ca30e972fcd02d45c238030b5b26a1dd99e974fce3001559",
+      "processing": "Broad sampled-paper RGB illumination/white-balance compensation; levels 40/230, gamma exponent 0.9; small edge-preserving laminate-grain reduction; mild unsharp mask 0.8px/75%/4. Full frame, printed colours and all text retained. Residual laminate reflections are not reconstructed.",
+      "src": "awards/on-our-land-diploma-2024-neutral.webp",
+      "width": 745,
+      "height": 1128,
+      "sha256": "bac3fde9ded8668861bc16259f268a5ac2106e2a633041716f1a5f1bc9b474fd"
+    }
+  ]
+}
